@@ -4,11 +4,13 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.OData;
 using Microsoft.WindowsAzure.Mobile.Service;
+using Microsoft.WindowsAzure.Mobile.Service.Security;
 using TestIncidentQueueService.DataObjects;
 using TestIncidentQueueService.Models;
 
 namespace TestIncidentQueueService.Controllers
 {
+    [AuthorizeLevel(AuthorizationLevel.User)]
     public class IncidentController : TableController<Incident>
     {
         protected override void Initialize(HttpControllerContext controllerContext)
