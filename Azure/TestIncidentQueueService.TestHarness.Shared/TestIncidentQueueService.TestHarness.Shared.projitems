@@ -9,6 +9,9 @@
     <Import_RootNamespace>TestIncidentQueueService.TestHarness</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Incident.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\UserProfile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\UserStatus.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\MobileService.cs" />
   </ItemGroup>
 </Project>

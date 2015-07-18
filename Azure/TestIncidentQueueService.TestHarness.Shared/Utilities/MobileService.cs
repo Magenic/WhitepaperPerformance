@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.WindowsAzure.MobileServices;
+﻿using Microsoft.WindowsAzure.MobileServices;
 
 namespace TestIncidentQueueService.TestHarness.Utilities
 {

@@ -60,6 +60,9 @@ namespace TestIncidentQueueService.TestHarness
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050005
+			public const int btnIncidents = 2131034117;
+			
 			// aapt resource value: 0x7f050000
 			public const int btnLogin = 2131034112;
 			
@@ -67,7 +70,13 @@ namespace TestIncidentQueueService.TestHarness
 			public const int btnLogout = 2131034113;
 			
 			// aapt resource value: 0x7f050002
-			public const int lblUser = 2131034114;
+			public const int btnProfileInfo = 2131034114;
+			
+			// aapt resource value: 0x7f050004
+			public const int btnStatuses = 2131034116;
+			
+			// aapt resource value: 0x7f050003
+			public const int btnWorkers = 2131034115;
 			
 			static Id()
 			{
@@ -98,14 +107,26 @@ namespace TestIncidentQueueService.TestHarness
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040002
-			public const int ApplicationName = 2130968578;
+			// aapt resource value: 0x7f040006
+			public const int ApplicationName = 2130968582;
+			
+			// aapt resource value: 0x7f040005
+			public const int Incidents = 2130968581;
 			
 			// aapt resource value: 0x7f040000
 			public const int Login = 2130968576;
 			
 			// aapt resource value: 0x7f040001
 			public const int Logout = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int ProfileInfo = 2130968578;
+			
+			// aapt resource value: 0x7f040004
+			public const int StatusList = 2130968580;
+			
+			// aapt resource value: 0x7f040003
+			public const int WorkerList = 2130968579;
 			
 			static String()
 			{

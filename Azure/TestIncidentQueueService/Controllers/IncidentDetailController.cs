@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Controllers;
@@ -41,6 +42,7 @@ namespace TestIncidentQueueService.Controllers
         // POST tables/IncidentDetail
         public async Task<IHttpActionResult> PostIncidentDetail(IncidentDetail item)
         {
+            item.DateEntered = DateTime.UtcNow;
             IncidentDetail current = await InsertAsync(item);
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }

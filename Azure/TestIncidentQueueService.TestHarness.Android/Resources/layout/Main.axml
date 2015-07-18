@@ -13,8 +13,24 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/Logout" />
-    <TextView
-        android:id="@+id/lblUser"
+    <Button
+        android:id="@+id/btnProfileInfo"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/ProfileInfo" />
+    <Button
+        android:id="@+id/btnWorkers"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/WorkerList" />
+    <Button
+        android:id="@+id/btnStatuses"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/StatusList" />
+    <Button
+        android:id="@+id/btnIncidents"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Incidents" />
 </LinearLayout>

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Controllers;
@@ -13,6 +15,11 @@ namespace TestIncidentQueueService.Controllers
     [AuthorizeLevel(AuthorizationLevel.User)]
     public class IncidentController : TableController<Incident>
     {
+        internal void InitializeInt(HttpControllerContext controllerContext)
+        {
+            this.Initialize(controllerContext);    
+        }
+
         protected override void Initialize(HttpControllerContext controllerContext)
         {
             base.Initialize(controllerContext);
@@ -41,6 +48,7 @@ namespace TestIncidentQueueService.Controllers
         // POST tables/Incident
         public async Task<IHttpActionResult> PostIncident(Incident item)
         {
+            item.DateOpened = DateTime.UtcNow;
             Incident current = await InsertAsync(item);
             return CreatedAtRoute("Tables", new {id = current.Id}, current);
         }
