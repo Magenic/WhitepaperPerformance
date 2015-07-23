@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Acr.MvvmCross.Plugins.Network;
 using Acr.UserDialogs;
-using Microsoft.WindowsAzure.MobileServices;
 using Xamarin.IncidentApp.Models;
 
 namespace Xamarin.IncidentApp.ViewModels
@@ -12,6 +11,11 @@ namespace Xamarin.IncidentApp.ViewModels
     {
         public DashboardViewModel(INetworkService networkService, IUserDialogs userDialogs) : base(networkService, userDialogs)
         {
+        }
+
+        public string Title
+        {
+            get { return "Team Performance";  }
         }
 
         private  IList<UserStatus> _userStatuses ;
@@ -27,10 +31,10 @@ namespace Xamarin.IncidentApp.ViewModels
 
         public async void Init()
         {
-            await LoadDashboardAsync();
+            await RefreshDashboardAsync();
         }
 
-        private async Task LoadDashboardAsync()
+        public async Task RefreshDashboardAsync()
         {
             var service = Utilities.MobileService.Service;
             if (service.CurrentUser != null)
