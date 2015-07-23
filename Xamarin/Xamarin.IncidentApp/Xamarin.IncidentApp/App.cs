@@ -5,7 +5,7 @@ using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp
 {
-    public class App : Cirrious.MvvmCross.ViewModels.MvxApplication
+    public class App : MvxApplication
     {
         public override void Initialize()
         {
@@ -15,7 +15,7 @@ namespace Xamarin.IncidentApp
                 .RegisterAsLazySingleton();
 				
             Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<LoginViewModel>());
-            RegisterAppStart<ViewModels.LoginViewModel>();
+            RegisterAppStart<LoginViewModel>();
         }
     }
 }

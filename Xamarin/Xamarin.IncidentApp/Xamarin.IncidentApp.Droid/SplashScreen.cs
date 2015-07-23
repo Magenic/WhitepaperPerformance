@@ -8,7 +8,7 @@ namespace Xamarin.IncidentApp.Droid
 		Label = "Xamarin.IncidentApp.Droid"
 		, MainLauncher = true
 		, Icon = "@drawable/icon"
-		, Theme = "@style/Theme.Splash"
+        , Theme = "@style/Theme.IncidentSplash"
 		, NoHistory = true
 		, ScreenOrientation = ScreenOrientation.Portrait)]
     public class SplashScreen : MvxSplashScreenActivity

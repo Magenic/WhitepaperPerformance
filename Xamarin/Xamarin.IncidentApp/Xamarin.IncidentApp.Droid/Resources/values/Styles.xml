@@ -1,0 +1,54 @@
+﻿<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowTitleSize">0dp</item>
+    </style>
+
+    <style name="Theme.IncidentSplash" parent="Theme.AppCompat.Light">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowTitleSize">0dp</item>
+        <item name="android:windowBackground">@color/normal</item>
+    </style>
+
+    <style name="Theme.Incident.ActionBar" parent="Theme.AppCompat.Light">
+        <item name="android:windowActionBar">true</item>
+        <item name="android:windowTitleSize">50dp</item>
+        <item name="android:windowBackground">@color/normal</item>
+    </style>
+
+    <style name="SegmentedControlOption" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/segmented_control_background</item>
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@color/segmented_control_text</item>
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:minWidth">85dp</item>
+        <item name="android:minHeight">@dimen/segmented_control_default_height</item>
+        <item name="android:textSize">@dimen/segmented_control_text_size</item>
+        <!--        <item name="android:textStyle">bold</item>-->
+        <item name="android:stretchColumns">0</item>
+
+        <item name="lineColor">@null</item>
+        <item name="lineHeightUnselected">0dp</item>
+        <item name="lineHeightSelected">0dp</item>
+    </style>
+
+</resources>
