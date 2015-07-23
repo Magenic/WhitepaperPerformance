@@ -8,6 +8,7 @@ using Xamarin.IncidentApp.ViewModels;
 namespace Xamarin.IncidentApp.iOS.Controllers
 {
     [MvxViewFor(typeof(DashboardViewModel))]
+    //[Register("DashboardViewController")]
     partial class DashboardViewController : BaseViewController
     {
         public DashboardViewController()
