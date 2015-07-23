@@ -1,7 +1,10 @@
 using Cirrious.CrossCore.Platform;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Touch.Platform;
+using Cirrious.MvvmCross.Touch.Views;
+using Cirrious.MvvmCross.Touch.Views.Presenters;
 using UIKit;
+using Xamarin.IncidentApp.iOS.Views;
 
 namespace Xamarin.IncidentApp.iOS
 {
@@ -12,7 +15,12 @@ namespace Xamarin.IncidentApp.iOS
 		{
 		}
 
-		protected override IMvxApplication CreateApp()
+        public Setup(MvxApplicationDelegate applicationDelegate, IMvxTouchViewPresenter presenter)
+            : base(applicationDelegate, presenter)
+        {
+        }
+
+	    protected override IMvxApplication CreateApp()
 		{
 			return new App();
 		}
@@ -21,5 +29,10 @@ namespace Xamarin.IncidentApp.iOS
         {
             return new DebugTrace();
         }
+
+	    protected override IMvxTouchViewsContainer CreateTouchViewsContainer()
+	    {
+	        return new TouchViewsContainer();
+	    }
 	}
 }

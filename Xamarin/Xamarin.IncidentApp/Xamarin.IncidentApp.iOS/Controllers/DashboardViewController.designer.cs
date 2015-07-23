@@ -9,21 +9,13 @@ using System;
 using System.CodeDom.Compiler;
 using UIKit;
 
-namespace Xamarin.IncidentApp.iOS
+namespace Xamarin.IncidentApp.iOS.Controllers
 {
-	[Register ("ViewController")]
-	partial class ViewController
+	[Register ("DashboardViewController")]
+	partial class DashboardViewController
 	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel HelloLabel { get; set; }
-
 		void ReleaseDesignerOutlets ()
 		{
-			if (HelloLabel != null) {
-				HelloLabel.Dispose ();
-				HelloLabel = null;
-			}
 		}
 	}
 }

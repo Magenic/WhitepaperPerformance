@@ -23,7 +23,10 @@ namespace Xamarin.IncidentApp.iOS
 		{
 			_window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-			var setup = new Setup(this, _window);
+            _window.RootViewController = new UINavigationController();
+		    var presenter = new ViewPresenter(this, _window);
+
+			var setup = new Setup(this, presenter);
 			setup.Initialize();
 
 			var startup = Mvx.Resolve<IMvxAppStart>();
@@ -45,7 +48,7 @@ namespace Xamarin.IncidentApp.iOS
 		public override void DidEnterBackground (UIApplication application)
 		{
 			// Use this method to release shared resources, save user data, invalidate timers and store the application state.
-			// If your application supports background exection this method is called instead of WillTerminate when the user quits.
+			// If your application supports background execution this method is called instead of WillTerminate when the user quits.
 		}
 
 		public override void WillEnterForeground (UIApplication application)
