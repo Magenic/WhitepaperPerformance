@@ -1,4 +1,7 @@
+using Cirrious.CrossCore;
 using Cirrious.CrossCore.IoC;
+using Cirrious.MvvmCross.ViewModels;
+using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp
 {
@@ -11,7 +14,8 @@ namespace Xamarin.IncidentApp
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 				
-            RegisterAppStart<ViewModels.FirstViewModel>();
+            Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<LoginViewModel>());
+            RegisterAppStart<ViewModels.LoginViewModel>();
         }
     }
 }
