@@ -9,20 +9,14 @@ namespace Xamarin.IncidentApp.Droid.Views
 {
     [Activity(Label = "", Theme = "@style/Theme.IncidentSplash",
         ScreenOrientation = ScreenOrientation.Portrait)]
-    public class LoginView : MvxActivity
+    public class LoginView : MvxActivity<LoginViewModel>
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Login);
 
-            this.ViewModel.LoginService = new LoginService(this);
-        }
-
-        public new LoginViewModel ViewModel
-        {
-            get { return (LoginViewModel)base.ViewModel; }
-            set { base.ViewModel = value; }
+            ViewModel.LoginService = new LoginService(this);
         }
     }
 }
