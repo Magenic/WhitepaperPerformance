@@ -27,4 +27,3 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
         }
     }
 }
-}

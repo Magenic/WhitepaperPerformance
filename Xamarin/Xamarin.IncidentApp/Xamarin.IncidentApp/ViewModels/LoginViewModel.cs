@@ -65,15 +65,16 @@ namespace Xamarin.IncidentApp.ViewModels
                 }
                 else
                 {
-                    ShowViewModel<WorkerQueueViewModel>();
+                    //ShowViewModel<WorkerQueueViewModel>();
+                    ShowViewModel<DashboardViewModel>();
                 }
                 Close(this);
             }
-            catch (InvalidOperationException)
+            catch (InvalidOperationException e)
             {
-                UserDialogs.Alert("User login cancelled", "Login Error");
+                UserDialogs.Alert("User login canceled", "Login Error");
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 UserDialogs.Alert("An unknown exception occurred logging in, please try again.", "Login Error");
             }

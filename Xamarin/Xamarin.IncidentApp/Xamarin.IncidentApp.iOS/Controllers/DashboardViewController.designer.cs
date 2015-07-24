@@ -18,16 +18,8 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 		[GeneratedCode ("iOS Designer", "1.0")]
 		Xamarin.IncidentApp.iOS.TeamUITableView TeamTableView { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UITableView TeamTableView { get; set; }
-
 		void ReleaseDesignerOutlets ()
 		{
-			if (TeamTableView != null) {
-				TeamTableView.Dispose ();
-				TeamTableView = null;
-			}
 			if (TeamTableView != null) {
 				TeamTableView.Dispose ();
 				TeamTableView = null;
