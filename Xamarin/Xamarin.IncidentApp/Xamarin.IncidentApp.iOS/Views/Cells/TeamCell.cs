@@ -14,16 +14,21 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
         public static readonly NSString Identifier = new NSString("TeamCell");
         private const string BindingText = "";
 
-        public TeamCell() 
-            : base(BindingText)
+		public TeamCell (IntPtr handle) : base (handle)
+		{
+			InitializeBindings();
+		}
+
+        public TeamCell()
         {
+			InitializeBindings();
+		}
 
-        }
-
-        public TeamCell(IntPtr handle)
-            : base(BindingText, handle)
+        //ToDo: Add Bindings here!
+        private void InitializeBindings()
         {
             
         }
+
     }
 }
