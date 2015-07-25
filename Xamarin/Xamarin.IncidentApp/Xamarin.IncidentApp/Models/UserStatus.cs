@@ -12,5 +12,6 @@ namespace Xamarin.IncidentApp.Models
         public int TotalCompleteIncidentsPast30Days { get; set; }
         public Double AvgWaitTimeOfOpenIncidents { get; set; }
         public int TotalOpenIncidents { get; set; }
+        public int ClosedProportion { get { return 50; } }
     }
 }

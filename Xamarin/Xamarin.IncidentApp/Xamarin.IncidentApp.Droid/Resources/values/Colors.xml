@@ -4,4 +4,7 @@
     <color name="light">#ffffff</color>
     <color name="highlight">#007aff</color>
     <color name="selected">@color/highlight</color>
+    <color name="primary">#03A9F4</color>
+    <color name="primarydark">#0288D1</color>
+    <color name="accent">#259B24</color>
 </resources>

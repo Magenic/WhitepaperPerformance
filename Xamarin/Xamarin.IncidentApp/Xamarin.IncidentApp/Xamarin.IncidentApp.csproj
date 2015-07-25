@@ -43,6 +43,7 @@
     <Compile Include="Interfaces\IDialogProviderService.cs" />
     <Compile Include="Utilities\MobileService.cs" />
     <Compile Include="Utilities\UserContext.cs" />
+    <Compile Include="ViewModels\AddIncidentViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />

@@ -17,6 +17,9 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:windowActionBar">false</item>
         <item name="android:windowTitleSize">0dp</item>
+        <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:colorPrimaryDark">@color/primarydark</item>
+        <item name="android:colorAccent">@color/accent</item>
     </style>
 
     <style name="Theme.IncidentSplash" parent="Theme.AppCompat.Light">
@@ -26,9 +29,25 @@
     </style>
 
     <style name="Theme.Incident.ActionBar" parent="Theme.AppCompat.Light">
+        <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:colorPrimaryDark">@color/primarydark</item>
+        <item name="android:colorAccent">@color/accent</item>
         <item name="android:windowActionBar">true</item>
         <item name="android:windowTitleSize">50dp</item>
         <item name="android:windowBackground">@color/normal</item>
+        <item name="android:actionBarStyle">@style/IncidentActionBar</item>
+        <item name="actionBarStyle">@style/IncidentActionBar</item>
+    </style>
+
+    <style name="IncidentActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:background">@color/primary</item>
+        <item name="background">@color/primary</item>
+        <item name="android:titleTextStyle">@style/IncidentActionBarText</item>
+        <item name="titleTextStyle">@style/IncidentActionBarText</item>
+    </style>
+
+    <style name="IncidentActionBarText" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/normal</item>
     </style>
 
     <style name="SegmentedControlOption" parent="@android:style/Widget.CompoundButton.RadioButton">
