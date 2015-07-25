@@ -2,13 +2,6 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {
 
-  var mobileService = new WindowsAzure.MobileServiceClient(
-          "https://testincidentqueue.azure-mobile.net/",
-          "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-      );
-
-  var todoTable = mobileService.getTable('TodoItem');
-  
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
@@ -19,6 +12,15 @@ angular.module('starter.controllers', [])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+
+  var mobileService = new WindowsAzure.MobileServiceClient(
+          "https://testincidentqueue.azure-mobile.net/",
+          azureKey
+      );
+
+  var token = mobileService.login(this, MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory);
+
+  var todoTable = mobileService.getTable('TodoItem');
 
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
