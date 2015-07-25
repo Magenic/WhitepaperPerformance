@@ -1,10 +1,38 @@
-angular.module('starter.controllers', [])
+app.controller('LoginController', function(Azure, $state, $ionicHistory) {
 
-.controller('DashCtrl', function($scope) {
+  Azure.login()
+    .then(function (result) {
 
-})
+        if (result == true) {
 
-.controller('ChatsCtrl', function($scope) {
+          //hack to not show login view in back nav stack
+          //see issue here: https://github.com/driftyco/ionic/issues/1287
+          $ionicHistory.currentView($ionicHistory.backView());
+
+          $state.go('dash');
+
+        } else {
+
+          $state.go('/LoginFailed');
+
+        }
+
+    });
+
+});
+
+app.controller('DashController', function($scope, Azure) {
+
+});
+
+
+
+// this is the one from the tabs stuff
+app.controller('DashCtrl', function($scope) {
+
+});
+
+app.controller('ChatsCtrl', function($scope) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -13,35 +41,13 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  var azureUrl = "https://testincidentqueue.azure-mobile.net/";
-  var mobileService = new WindowsAzure.MobileServiceClient(azureUrl, azureKey);
+});
 
-  mobileService.login("WindowsAzureActiveDirectory").done(function (results) {
-    
-    var userId = results.userId;    
-    var token = mobileService.currentUser.mobileServiceAuthenticationToken;
-
-    mobileService.invokeApi("StatusList", {
-        body: null,
-        method: "get"
-    }).done(function (results) {
-        
-        $scope.users = results.result;
-
-    }, function(error) {
-        
-        alert(error.message);
-
-    });
-  })
-
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+app.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
-})
+});
 
-.controller('AccountCtrl', function($scope) {
+app.controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
   };

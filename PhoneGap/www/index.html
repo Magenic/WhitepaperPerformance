@@ -18,6 +18,9 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
+    <!-- Azure Mobile Services JS (loading from the plugin was too slow and the services loaded before it loaded) -->
+    <script src="lib/AzureMobileServices/MobileServices.Web-1.2.5.min.js"></script>
+
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/azureKey.js"></script>
@@ -25,7 +28,7 @@
     <script src="js/services.js"></script>
 
   </head>
-  <body ng-app="starter">
+  <body ng-app="IncidentApp">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
