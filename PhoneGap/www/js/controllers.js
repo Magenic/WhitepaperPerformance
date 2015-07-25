@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('ChatsCtrl', function($scope) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -13,19 +13,28 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  var mobileService = new WindowsAzure.MobileServiceClient(
-          "https://testincidentqueue.azure-mobile.net/",
-          azureKey
-      );
+  var azureUrl = "https://testincidentqueue.azure-mobile.net/";
+  var mobileService = new WindowsAzure.MobileServiceClient(azureUrl, azureKey);
 
-  var token = mobileService.login(this, MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory);
+  mobileService.login("WindowsAzureActiveDirectory").done(function (results) {
+    
+    var userId = results.userId;    
+    var token = mobileService.currentUser.mobileServiceAuthenticationToken;
 
-  var todoTable = mobileService.getTable('TodoItem');
+    mobileService.invokeApi("StatusList", {
+        body: null,
+        method: "get"
+    }).done(function (results) {
+        
+        $scope.users = results.result;
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+    }, function(error) {
+        
+        alert(error.message);
+
+    });
+  })
+
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
