@@ -28,11 +28,11 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIView uvCompletedBar { get; set; }
+		UIProgressView pvCompletedBar { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIView uvWaitTime { get; set; }
+		UIProgressView pvWaitTimeBar { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
@@ -48,13 +48,13 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
 				lblWaitTime.Dispose ();
 				lblWaitTime = null;
 			}
-			if (uvCompletedBar != null) {
-				uvCompletedBar.Dispose ();
-				uvCompletedBar = null;
+			if (pvCompletedBar != null) {
+				pvCompletedBar.Dispose ();
+				pvCompletedBar = null;
 			}
-			if (uvWaitTime != null) {
-				uvWaitTime.Dispose ();
-				uvWaitTime = null;
+			if (pvWaitTimeBar != null) {
+				pvWaitTimeBar.Dispose ();
+				pvWaitTimeBar = null;
 			}
 		}
 	}

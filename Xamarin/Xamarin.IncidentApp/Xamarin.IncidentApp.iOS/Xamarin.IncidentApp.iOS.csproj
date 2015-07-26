@@ -272,12 +272,6 @@
   <ItemGroup>
     <Content Include="AppDelegate.cs.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="oxyplot">
-      <Visible>False</Visible>
-      <Version>2015.1.744</Version>
-    </XamarinComponentReference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

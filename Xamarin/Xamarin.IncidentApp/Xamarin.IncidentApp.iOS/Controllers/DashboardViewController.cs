@@ -1,4 +1,12 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : XamarinIncidentAppiOS
+// Author           : Ken Ross
+// Created          : 07-22-2015
+//
+// Last Modified By : Ken Ross
+// Last Modified On : 07-26-2015
+// ***********************************************************************
+using System;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Binding.Touch.Views;
 using Cirrious.MvvmCross.ViewModels;
@@ -7,19 +15,28 @@ using UIKit;
 using Xamarin.IncidentApp.iOS.Views.Cells;
 using Xamarin.IncidentApp.ViewModels;
 
+/// <summary>
+/// The Controllers namespace.
+/// </summary>
 namespace Xamarin.IncidentApp.iOS.Controllers
 {
     /// <summary>
     /// Class DashboardViewController.
     /// </summary>
     [MvxViewFor(typeof (DashboardViewModel))]
-    //[Register("DashboardViewController")]
     partial class DashboardViewController : BaseViewController
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DashboardViewController"/> class.
+        /// </summary>
         public DashboardViewController()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DashboardViewController"/> class.
+        /// </summary>
+        /// <param name="handle">The handle.</param>
         public DashboardViewController(IntPtr handle) : base(handle)
         {
         }
@@ -34,6 +51,9 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             set { base.ViewModel = value; }
         }
 
+        /// <summary>
+        /// Override to handle memory warnings.
+        /// </summary>
         public override void DidReceiveMemoryWarning()
         {
             // Releases the view if it doesn't have a superview.
@@ -68,7 +88,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
             var source = new DashboardTableSource(TeamTableView);
             this.CreateBinding(source).To<DashboardViewModel>(vm => vm.UserStatuses).Apply();
-            this.CreateBinding(source).For(s => s.SelectionChangedCommand).To<DashboardViewModel>(vm => vm.ItemSelectedCommand).Apply();
+            this.CreateBinding(source).For(s => s.SelectionChangedCommand).To<DashboardViewModel>(vm => vm.ShowWorkerQueueCommand).Apply();
 
             TeamTableView.Source = source;
             TeamTableView.AddSubview(refreshControl);
@@ -81,8 +101,15 @@ namespace Xamarin.IncidentApp.iOS.Controllers
     /// </summary>
     public class DashboardTableSource : MvxStandardTableViewSource
     {
+        /// <summary>
+        /// The team cell identifier
+        /// </summary>
         private static readonly NSString TeamCellIdentifier = new NSString("TeamStatusCell");
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DashboardTableSource"/> class.
+        /// </summary>
+        /// <param name="tableView">The table view.</param>
         public DashboardTableSource(UITableView tableView) : base(tableView)
         {
         }
@@ -102,7 +129,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         }
 
         /// <summary>
-        /// Gets the or create cell for.
+        /// Returns the custom Team Status Cell.
         /// </summary>
         /// <param name="tableView">The table view.</param>
         /// <param name="indexPath">The index path.</param>
@@ -111,7 +138,6 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
         {
             var cell = (TeamStatusCell)tableView.DequeueReusableCell(TeamCellIdentifier);
-            cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
             return cell;
         }
     }
