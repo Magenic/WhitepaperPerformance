@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.MvvmCross.Plugins.Network;
 using Acr.UserDialogs;
+using Cirrious.MvvmCross.Commands;
 using Cirrious.MvvmCross.ViewModels;
 using Xamarin.IncidentApp.Models;
 
@@ -21,14 +23,14 @@ namespace Xamarin.IncidentApp.ViewModels
             get { return "Team Performance";  }
         }
 
-        private  IList<UserStatus> _userStatuses ;
-        public IList<UserStatus> UserStautes
+        private ObservableCollection<UserStatus> _userStatuses;
+        public ObservableCollection<UserStatus> UserStatuses
         {
             get { return _userStatuses; }
             private set
             {
                 _userStatuses = value;
-                RaisePropertyChanged(() => UserStautes);
+                RaisePropertyChanged(() => UserStatuses);
             }
         }
 
@@ -44,7 +46,16 @@ namespace Xamarin.IncidentApp.ViewModels
             {
                 if (NetworkService.IsConnected)
                 {
-                    UserStautes = await service.InvokeApiAsync<IList<UserStatus>>("StatusList", HttpMethod.Get, null);
+                    var userStatuses = await service.InvokeApiAsync<IList<UserStatus>>("StatusList", HttpMethod.Get, null);
+                    var maxCompleted = MaxCompletedIncidents(userStatuses);
+                    var maxWaitTime = MaxWaitTime(userStatuses);
+                    foreach (var userStatus in userStatuses)
+                    {
+                        userStatus.MaxCompletedIncidents = maxCompleted;
+                        userStatus.MaxWaitTime = maxWaitTime;
+                    }
+                    var collection = new ObservableCollection<UserStatus>(userStatuses);
+                    UserStatuses = collection;
                 }
             }
         }
@@ -66,28 +77,39 @@ namespace Xamarin.IncidentApp.ViewModels
             ShowViewModel<AddIncidentViewModel>();
         }
 
-        public int MaxOpenIncidents
+        private ICommand _showWorkerQueueCommand;
+        public ICommand ShowWorkerQueueCommand
         {
             get
             {
-                if (UserStautes == null || UserStautes.Count == 0)
+                return _showWorkerQueueCommand ?? (_showWorkerQueueCommand = new MvxRelayCommand<UserStatus>(user =>
                 {
-                    return 0;
-                }
-                return UserStautes.Max(u => u.TotalOpenIncidents);
+                    ShowWorkerQueue(user.User.UserId);
+                }));
             }
         }
 
-        public int MaxClosedIncidents
+        private void ShowWorkerQueue(string userId)
         {
-            get
+            ShowViewModel<WorkerQueueViewModel>(userId);
+        }
+
+        private double MaxWaitTime(IList<UserStatus> userStatuses)
+        {
+            if (userStatuses == null || userStatuses.Count == 0)
             {
-                if (UserStautes == null || UserStautes.Count == 0)
-                {
-                    return 0;
-                }
-                return UserStautes.Max(u => u.TotalCompleteIncidentsPast30Days);
+                return 0;
             }
+            return userStatuses.Max(u => u.AvgWaitTimeOfOpenIncidents);
+        }
+
+        private int MaxCompletedIncidents(IList<UserStatus> userStatuses)
+        {
+            if (userStatuses == null || userStatuses.Count == 0)
+            {
+                return 0;
+            }
+            return userStatuses.Max(u => u.TotalCompleteIncidentsPast30Days);
         }
     }
 }

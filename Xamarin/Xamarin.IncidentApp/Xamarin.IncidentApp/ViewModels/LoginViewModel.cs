@@ -65,7 +65,7 @@ namespace Xamarin.IncidentApp.ViewModels
                 }
                 else
                 {
-                    ShowViewModel<WorkerQueueViewModel>();
+                    ShowViewModel<WorkerQueueViewModel>(profile.UserId);
                 }
                 Close(this);
             }

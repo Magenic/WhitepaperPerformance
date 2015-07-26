@@ -6,9 +6,9 @@ using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.Droid.Views
 {
-    [Activity(Label = "Worker Queue", Theme = "@style/Theme.Incident.ActionBar",
+    [Activity(Label = "New Incident", Theme = "@style/Theme.Incident.ActionBar",
         ScreenOrientation = ScreenOrientation.Portrait)]
-    public class WorkerQueueView : MvxActionBarActivity
+    public class AddIncidentView : MvxActionBarActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
@@ -17,12 +17,11 @@ namespace Xamarin.IncidentApp.Droid.Views
 
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetHomeButtonEnabled(true);
-
         }
 
-        public new WorkerQueueViewModel ViewModel
+        public new AddIncidentViewModel ViewModel
         {
-            get { return (WorkerQueueViewModel)base.ViewModel; }
+            get { return (AddIncidentViewModel)base.ViewModel; }
             set { base.ViewModel = value; }
         }
 
