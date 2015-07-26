@@ -1,13 +1,11 @@
-app.controller('LoginController', function(Azure, $state, $ionicHistory) {
+app.controller('LoginController', function(Azure, $state, ClearNavigationHistory) {
 
   Azure.login()
     .then(function (result) {
 
-        if (result == true) {
+        ClearNavigationHistory.clear();
 
-          //hack to not show login view in back nav stack
-          //see issue here: https://github.com/driftyco/ionic/issues/1287
-          $ionicHistory.currentView($ionicHistory.backView());
+        if (result == true) {
 
           $state.go('dash');
 
@@ -25,6 +23,9 @@ app.controller('DashController', function($scope, Azure) {
 
 });
 
+app.controller('OfflineController', function($scope, Azure) {
+
+});
 
 
 // this is the one from the tabs stuff

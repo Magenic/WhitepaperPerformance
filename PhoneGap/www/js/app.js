@@ -1,10 +1,3 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
 var app = angular.module('IncidentApp', ['ionic'])
 
 app.run(function($ionicPlatform) {
@@ -23,14 +16,28 @@ app.run(function($ionicPlatform) {
       StatusBar.styleLightContent();
     }
 
+
     document.addEventListener("offline", onOffline, false);
+
+    function onOffline() {
+        alert('you have gone offline');
+    }
+
+    document.addEventListener("online", onOnline, false);
+
+    function onOnline() {
+        alert('you have gone back online');
+    }
 
   });
 });
 
 function onOffline() {
-    // Handle the offline event
-    alert('you are offline');
+
+  //clearNavigationHistory();
+
+  $state.go('offline');
+
 }
 
 app.config(function($stateProvider, $urlRouterProvider) {
@@ -53,9 +60,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
     controller: 'DashController'
   })
 
-
-
-
+  .state('offline', {
+    url: '/offline',
+    templateUrl: 'templates/offline.html',
+    controller: 'OfflineController'
+  })
 
   // setup an abstract state for the tabs directive
     .state('tab', {
