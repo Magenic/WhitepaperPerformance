@@ -9,21 +9,31 @@ var app = angular.module('IncidentApp', ['ionic'])
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+    
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
+    // for form inputs)    
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
+    
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
-  });
-})
 
-.config(function($stateProvider, $urlRouterProvider) {
+    document.addEventListener("offline", onOffline, false);
+
+  });
+});
+
+function onOffline() {
+    // Handle the offline event
+    alert('you are offline');
+}
+
+app.config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
