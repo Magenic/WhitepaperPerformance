@@ -11,19 +11,11 @@ using UIKit;
 
 namespace Xamarin.IncidentApp.iOS.Controllers
 {
-	[Register ("LoginViewController")]
-	partial class LoginViewController
+	[Register ("WorkerQueueViewController")]
+	partial class WorkerQueueViewController
 	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton btnLogin { get; set; }
-
 		void ReleaseDesignerOutlets ()
 		{
-			if (btnLogin != null) {
-				btnLogin.Dispose ();
-				btnLogin = null;
-			}
 		}
 	}
 }

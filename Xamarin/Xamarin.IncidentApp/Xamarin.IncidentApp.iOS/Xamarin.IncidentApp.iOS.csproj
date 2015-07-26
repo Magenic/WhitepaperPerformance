@@ -248,6 +248,10 @@
     <Compile Include="Controllers\LoginViewController.designer.cs">
       <DependentUpon>LoginViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\WorkerQueueViewController.cs" />
+    <Compile Include="Controllers\WorkerQueueViewController.designer.cs">
+      <DependentUpon>WorkerQueueViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="DebugTrace.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Main.cs" />
@@ -259,7 +263,10 @@
       <DependentUpon>TeamUITableView.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewPresenter.cs" />
-    <Compile Include="Views\Cells\TeamCell.cs" />
+    <Compile Include="Views\Cells\TeamStatusCell.cs" />
+    <Compile Include="Views\Cells\TeamStatusCell.designer.cs">
+      <DependentUpon>TeamStatusCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\TouchViewsContainer.cs" />
   </ItemGroup>
   <ItemGroup>

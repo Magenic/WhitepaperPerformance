@@ -38,7 +38,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             this.ViewModel.LoginService = new LoginService(this);
 
             NavigationController.NavigationBarHidden = true;
-            this.CreateBinding(btnClicker).To((LoginViewModel vm) => vm.LoginCommand).Apply();
+            this.CreateBinding(btnLogin).To((LoginViewModel vm) => vm.LoginCommand).Apply();
 
         }
 

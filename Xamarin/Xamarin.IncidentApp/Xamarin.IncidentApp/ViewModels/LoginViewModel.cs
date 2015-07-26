@@ -65,8 +65,7 @@ namespace Xamarin.IncidentApp.ViewModels
                 }
                 else
                 {
-                    //ShowViewModel<WorkerQueueViewModel>();
-                    ShowViewModel<DashboardViewModel>();
+                    ShowViewModel<WorkerQueueViewModel>();
                 }
                 Close(this);
             }

@@ -5,9 +5,13 @@ namespace Xamarin.IncidentApp.ViewModels
 {
     public class WorkerQueueViewModel : BaseViewModel
     {
-        public WorkerQueueViewModel(INetworkService networkService, IUserDialogs userDialogs)
-            : base(networkService, userDialogs)
+        public WorkerQueueViewModel(INetworkService networkService, IUserDialogs userDialogs) : base(networkService, userDialogs)
         {
+        }
+
+        public void Init(string userId)
+        {
+            
         }
     }
 }

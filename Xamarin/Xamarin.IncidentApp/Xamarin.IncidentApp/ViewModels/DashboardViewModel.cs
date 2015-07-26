@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Acr.MvvmCross.Plugins.Network;
 using Acr.UserDialogs;
+using Cirrious.MvvmCross.ViewModels;
 using Xamarin.IncidentApp.Models;
+using Xamarin.IncidentApp.Utilities;
 
 namespace Xamarin.IncidentApp.ViewModels
 {
@@ -19,13 +22,13 @@ namespace Xamarin.IncidentApp.ViewModels
         }
 
         private  IList<UserStatus> _userStatuses ;
-        public IList<UserStatus> UserStautes
+        public IList<UserStatus> UserStatuses
         {
             get { return _userStatuses; }
             private set
             {
                 _userStatuses = value;
-                RaisePropertyChanged(() => UserStautes);
+                RaisePropertyChanged(() => UserStatuses);
             }
         }
 
@@ -36,14 +39,30 @@ namespace Xamarin.IncidentApp.ViewModels
 
         public async Task RefreshDashboardAsync()
         {
-            var service = Utilities.MobileService.Service;
+            var service = MobileService.Service;
             if (service.CurrentUser != null)
             {
                 if (NetworkService.IsConnected)
                 {
-                    UserStautes = await service.InvokeApiAsync<IList<UserStatus>>("StatusList", HttpMethod.Get, null);                        
+                    UserStatuses = await service.InvokeApiAsync<IList<UserStatus>>("StatusList", HttpMethod.Get, null);                        
                 }
             }
+        }
+
+        private MvxCommand<UserStatus> _itemSelectedCommand;
+
+        public ICommand ItemSelectedCommand
+        {
+            get
+            {
+                _itemSelectedCommand = _itemSelectedCommand ?? new MvxCommand<UserStatus>(DoSelectItem);
+                return _itemSelectedCommand;
+            }
+        }
+
+        public void DoSelectItem(UserStatus userStatus)
+        {
+            ShowViewModel<WorkerQueueViewModel>(new {userId = userStatus.User.UserId});
         }
     }
 }
