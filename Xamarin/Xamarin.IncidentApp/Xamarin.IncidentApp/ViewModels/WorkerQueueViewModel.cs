@@ -11,10 +11,11 @@ namespace Xamarin.IncidentApp.ViewModels
             : base(networkService, userDialogs)
         {
         }
-
+        
         public void Init(string userId)
         {
-            _userId = userId;
+             _userId = userId;
         }
+
     }
 }

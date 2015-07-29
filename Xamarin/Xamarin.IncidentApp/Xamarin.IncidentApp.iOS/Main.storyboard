@@ -7,7 +7,7 @@
         <!--View Controller-->
         <scene sceneID="24">
             <objects>
-                <viewController id="25" sceneMemberID="viewController" storyboardIdentifier="LoginViewController" customClass="LoginViewController">
+                <viewController id="25" sceneMemberID="viewController" storyboardIdentifier="LoginViewController" customClass="LoginViewController" title="Login">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="22"/>
                         <viewControllerLayoutGuide type="bottom" id="23"/>
@@ -17,60 +17,133 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading..." lineBreakMode="tailTruncation" minimumFontSize="10" id="33" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="center" misplaced="YES">
-                                <rect key="frame" x="84" y="323" width="207" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="47" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="164" y="185" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="47" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="318" width="188" height="30"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0" green="0.50196078431372548" blue="0" alpha="1"/>
+                                <state key="normal" title="Click to Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
                                 </state>
                             </button>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="26" firstAttribute="trailing" secondItem="33" secondAttribute="trailing" constant="84" id="34"/>
-                            <constraint firstItem="33" firstAttribute="leading" secondItem="26" secondAttribute="leading" constant="84" id="35"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="lblLoading" destination="33" id="name-outlet-33"/>
-                        <outlet property="btnClicker" destination="47" id="name-outlet-47"/>
+                        <outlet property="btnLogin" destination="47" id="name-outlet-47"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="242" y="64"/>
         </scene>
-        <scene sceneID="53">
+        <scene sceneID="91">
             <objects>
-                <viewController id="54" sceneMemberID="viewController" customClass="DashboardViewController" storyboardIdentifier="DashboardViewController">
+                <viewController id="92" sceneMemberID="viewController" customClass="DashboardViewController" storyboardIdentifier="DashboardViewController" title="Team Performance">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="51"/>
-                        <viewControllerLayoutGuide type="bottom" id="52"/>
+                        <viewControllerLayoutGuide type="top" id="89"/>
+                        <viewControllerLayoutGuide type="bottom" id="90"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="55">
+                    <view key="view" contentMode="scaleToFill" id="93">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dashboard" lineBreakMode="tailTruncation" minimumFontSize="10" id="58" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="114" y="276" width="134" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="22" id="96" translatesAutoresizingMaskIntoConstraints="NO" customClass="TeamUITableView" fixedFrame="YES">
+                                <rect key="frame" x="5" y="30" width="327" height="426"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="97" reuseIdentifier="TeamStatusCell" customClass="TeamStatusCell" restorationIdentifier="TeamStatusCell" accessoryType="disclosureIndicator">
+                                        <rect key="frame" x="0.0" y="1" width="327" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="98" tableViewCell="97">
+                                            <rect key="frame" x="0.0" y="0.0" width="294" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="183" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" restorationIdentifier="lblTeamLead">
+                                                    <rect key="frame" x="2" y="5" width="140" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="197" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" restorationIdentifier="lblCompleted">
+                                                    <rect key="frame" x="275" y="5" width="25" height="15"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="206" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" restorationIdentifier="lblWaitTime">
+                                                    <rect key="frame" x="275" y="25" width="25" height="15"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="253" fixedFrame="YES">
+                                                    <rect key="frame" x="150" y="12" width="120" height="2"/>
+                                                    <color key="progressTintColor" colorSpace="calibratedRGB" red="0" green="0.50196078431372548" blue="0" alpha="1"/>
+                                                </progressView>
+                                                <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="258">
+                                                    <rect key="frame" x="150" y="32" width="120" height="2"/>
+                                                    <color key="progressTintColor" colorSpace="calibratedRGB" red="1" green="0.6470588235294118" blue="0" alpha="1"/>
+                                                </progressView>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="lblTeamLead" destination="183" id="name-outlet-183"/>
+                                            <outlet property="lblCompleted" destination="197" id="name-outlet-197"/>
+                                            <outlet property="lblWaitTime" destination="206" id="name-outlet-206"/>
+                                            <outlet property="pvCompletedBar" destination="253" id="name-outlet-253"/>
+                                            <outlet property="pvWaitTimeBar" destination="258" id="name-outlet-258"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="99">
+                                        <rect key="frame" x="0.0" y="45" width="327" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="100" tableViewCell="99">
+                                            <rect key="frame" x="0.0" y="0.0" width="327" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="101">
+                                        <rect key="frame" x="0.0" y="89" width="327" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="102" tableViewCell="101">
+                                            <rect key="frame" x="0.0" y="0.0" width="327" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                     </view>
-                    <connections/>
+                    <connections>
+                        <outlet property="TeamTableView" destination="96" id="name-outlet-96"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="56" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="94" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="789" y="62"/>
+            <point key="canvasLocation" x="652" y="63"/>
+        </scene>
+        <scene sceneID="237">
+            <objects>
+                <viewController id="238" sceneMemberID="viewController" customClass="WorkerQueueViewController" storyboardIdentifier="WorkerQueueViewController" title="Incident Queue">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="235"/>
+                        <viewControllerLayoutGuide type="bottom" id="236"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="239">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="240" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048" y="62"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

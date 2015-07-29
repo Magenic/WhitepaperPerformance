@@ -40,6 +40,7 @@
     <Compile Include="Models\UserStatus.cs" />
     <Compile Include="MvxRelayCommandcs.cs" />
     <Compile Include="MyClass.cs" />
+    <Compile Include="PresentationBundleFlagKeys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\IDialogProviderService.cs" />
     <Compile Include="Utilities\MobileService.cs" />
