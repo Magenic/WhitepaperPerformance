@@ -1,4 +1,12 @@
-﻿using System.Collections.Generic;
+﻿// ***********************************************************************
+// Assembly         : Xamarin.IncidentApp
+// Author           : Ken Ross
+// Created          : 07-26-2015
+//
+// Last Modified By : Ken Ross
+// Last Modified On : 07-26-2015
+// ***********************************************************************
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
@@ -9,21 +17,45 @@ using Acr.UserDialogs;
 using Cirrious.MvvmCross.Commands;
 using Cirrious.MvvmCross.ViewModels;
 using Xamarin.IncidentApp.Models;
+using Xamarin.IncidentApp.Utilities;
 
+/// <summary>
+/// The ViewModels namespace.
+/// </summary>
 namespace Xamarin.IncidentApp.ViewModels
 {
+    /// <summary>
+    /// Class DashboardViewModel.
+    /// </summary>
     public class DashboardViewModel : BaseViewModel
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DashboardViewModel"/> class.
+        /// </summary>
+        /// <param name="networkService">The network service.</param>
+        /// <param name="userDialogs">The user dialogs.</param>
         public DashboardViewModel(INetworkService networkService, IUserDialogs userDialogs) : base(networkService, userDialogs)
         {
         }
 
+        /// <summary>
+        /// Gets the title.
+        /// </summary>
+        /// <value>The title.</value>
         public string Title
         {
             get { return "Team Performance";  }
         }
 
+        /// <summary>
+        /// The private _userstatuses collection.
+        /// </summary>
         private ObservableCollection<UserStatus> _userStatuses;
+
+        /// <summary>
+        /// Gets the user statuses.
+        /// </summary>
+        /// <value>The user statuses.</value>
         public ObservableCollection<UserStatus> UserStatuses
         {
             get { return _userStatuses; }
@@ -34,14 +66,21 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         public async void Init()
         {
             await RefreshDashboardAsync();
         }
 
+        /// <summary>
+        /// Refresh dashboard as an asynchronous operation.
+        /// </summary>
+        /// <returns>Task.</returns>
         public async Task RefreshDashboardAsync()
         {
-            var service = Utilities.MobileService.Service;
+            var service = MobileService.Service;
             if (service.CurrentUser != null)
             {
                 if (NetworkService.IsConnected)
@@ -60,7 +99,15 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
+        /// <summary>
+        /// Command to add a new incident.
+        /// </summary>
         private ICommand _addIncidentCommand;
+
+        /// <summary>
+        /// Gets the add incident command.
+        /// </summary>
+        /// <value>The add incident command.</value>
         public ICommand AddIncidentCommand
         {
             get
@@ -72,12 +119,23 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
+        /// <summary>
+        /// Adds the incident.
+        /// </summary>
         private void AddIncident()
         {
             ShowViewModel<AddIncidentViewModel>();
         }
 
+        /// <summary>
+        /// Command to show the Worker [Incident] Queue.
+        /// </summary>
         private ICommand _showWorkerQueueCommand;
+
+        /// <summary>
+        /// Gets the show worker queue command.
+        /// </summary>
+        /// <value>The show worker queue command.</value>
         public ICommand ShowWorkerQueueCommand
         {
             get
@@ -89,11 +147,20 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
+        /// <summary>
+        /// Shows the worker queue.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
         private void ShowWorkerQueue(string userId)
         {
             ShowViewModel<WorkerQueueViewModel>(userId);
         }
 
+        /// <summary>
+        /// Returns the maximum value for average wait times.
+        /// </summary>
+        /// <param name="userStatuses">The user statuses.</param>
+        /// <returns>System.Double.</returns>
         private double MaxWaitTime(IList<UserStatus> userStatuses)
         {
             if (userStatuses == null || userStatuses.Count == 0)
@@ -103,6 +170,11 @@ namespace Xamarin.IncidentApp.ViewModels
             return userStatuses.Max(u => u.AvgWaitTimeOfOpenIncidents);
         }
 
+        /// <summary>
+        /// Returns the maximum value for total completed incidents.
+        /// </summary>
+        /// <param name="userStatuses">The user statuses.</param>
+        /// <returns>System.Int32.</returns>
         private int MaxCompletedIncidents(IList<UserStatus> userStatuses)
         {
             if (userStatuses == null || userStatuses.Count == 0)

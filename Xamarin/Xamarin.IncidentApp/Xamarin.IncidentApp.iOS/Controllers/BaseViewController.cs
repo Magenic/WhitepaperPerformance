@@ -22,6 +22,8 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             }
         }
 
+        
+
         public override void DidReceiveMemoryWarning()
         {
             base.DidReceiveMemoryWarning();

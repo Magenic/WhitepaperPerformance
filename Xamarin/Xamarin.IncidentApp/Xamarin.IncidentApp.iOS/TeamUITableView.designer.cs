@@ -9,21 +9,13 @@ using System;
 using System.CodeDom.Compiler;
 using UIKit;
 
-namespace Xamarin.IncidentApp.iOS.Controllers
+namespace Xamarin.IncidentApp.iOS
 {
-	[Register ("LoginViewController")]
-	partial class LoginViewController
+	[Register ("TeamUITableView")]
+	partial class TeamUITableView
 	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton btnLogin { get; set; }
-
 		void ReleaseDesignerOutlets ()
 		{
-			if (btnLogin != null) {
-				btnLogin.Dispose ();
-				btnLogin = null;
-			}
 		}
 	}
 }
