@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Login">Login</string>
+    <string name="Logout">Logout</string>
+    <string name="ProfileInfo">Profile Information</string>
+    <string name="WorkerList">Get Workers</string>
+    <string name="StatusList">Get Statuses</string>
+    <string name="Incidents">Get Incidents For User</string>
+    <string name="ApplicationName">TestIncidentQueueService.TestHarness</string>
+</resources>

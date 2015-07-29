@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/refresh_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            local:MvxBind="Text Title" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp" />
+        <Mvx.MvxListView
+            android:id="@+id/worker_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            local:MvxItemTemplate="@layout/statusitem"
+            local:MvxBind="ItemsSource UserStautes" />
+    </LinearLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

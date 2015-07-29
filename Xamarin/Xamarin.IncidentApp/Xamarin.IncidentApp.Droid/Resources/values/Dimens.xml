@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="segmented_control_default_height">24dp</dimen>
+    <dimen name="segmented_control_text_size">10sp</dimen>
+    <dimen name="login_marginTop_large">20dp</dimen>
+    <dimen name="login_marginTop_small">10dp</dimen>
+    <dimen name="login_small_font_size">12sp</dimen>
+</resources>

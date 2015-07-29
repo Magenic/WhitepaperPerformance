@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Login" />
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Logout" />
+    <Button
+        android:id="@+id/btnProfileInfo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ProfileInfo" />
+    <Button
+        android:id="@+id/btnWorkers"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/WorkerList" />
+    <Button
+        android:id="@+id/btnStatuses"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/StatusList" />
+    <Button
+        android:id="@+id/btnIncidents"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Incidents" />
+</LinearLayout>
