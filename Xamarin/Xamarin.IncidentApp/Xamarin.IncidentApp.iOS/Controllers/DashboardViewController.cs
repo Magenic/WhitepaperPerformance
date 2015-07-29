@@ -9,6 +9,7 @@
 using System;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Binding.Touch.Views;
+using Cirrious.MvvmCross.Touch.Views.Presenters;
 using Cirrious.MvvmCross.ViewModels;
 using Foundation;
 using UIKit;

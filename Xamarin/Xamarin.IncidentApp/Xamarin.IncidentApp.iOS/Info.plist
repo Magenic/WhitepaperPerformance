@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>Xamarin.IncidentApp.iOS</string>
+	<string>IncidentApp</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.your-company.Xamarin.IncidentApp.iOS</string>
 	<key>CFBundleShortVersionString</key>
