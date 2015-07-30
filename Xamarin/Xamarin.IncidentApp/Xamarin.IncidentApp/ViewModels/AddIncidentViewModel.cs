@@ -33,14 +33,14 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
-        private string _description;
-        public string Description
+        private string _assignedToId;
+        public string AssignedToId
         {
-            get { return _description; }
+            get { return _assignedToId; }
             set
             {
-                _description = value;
-                RaisePropertyChanged(() => Description);
+                _assignedToId = value;
+                RaisePropertyChanged(() => AssignedToId);
             }
         }
 
