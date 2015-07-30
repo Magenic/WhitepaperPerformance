@@ -1,17 +1,39 @@
-angular.module('starter.controllers', [])
+app.controller('LoginController', function(Azure, $state, ClearNavigationHistory) {
 
-.controller('DashCtrl', function($scope) {
+  Azure.login()
+    .then(function (result) {
 
-  var mobileService = new WindowsAzure.MobileServiceClient(
-          "https://testincidentqueue.azure-mobile.net/",
-          "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-      );
+        ClearNavigationHistory.clear();
 
-  var todoTable = mobileService.getTable('TodoItem');
-  
-})
+        if (result == true) {
 
-.controller('ChatsCtrl', function($scope, Chats) {
+          $state.go('dash');
+
+        } else {
+
+          $state.go('/LoginFailed');
+
+        }
+
+    });
+
+});
+
+app.controller('DashController', function($scope, Azure) {
+
+});
+
+app.controller('OfflineController', function($scope, Azure) {
+
+});
+
+
+// this is the one from the tabs stuff
+app.controller('DashCtrl', function($scope) {
+
+});
+
+app.controller('ChatsCtrl', function($scope) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -20,17 +42,13 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
+});
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+app.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
-})
+});
 
-.controller('AccountCtrl', function($scope) {
+app.controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
   };
