@@ -40,18 +40,31 @@ app.factory('Azure', function($q) {
 
     azureService.getStatusList = function () {
 
-      mobileService.invokeApi("StatusList", {
-          body: null,
-          method: "get"
-      }).done(function (results) {
-          
-          return results.result;
+      var deferred = $q.defer();
 
-      }, function(error) {
-          
-          alert(error.message);
+      if (mobileService.currentUser == null) {
 
-      });
+            alert('you are not logged in');
+            deferred.resolve(null);
+
+      } else {
+
+        mobileService.invokeApi("StatusList", {
+            body: null,
+            method: "get"
+        }).done(function (results) {
+            
+            deferred.resolve(results.result);
+
+        }, function(error) {
+            
+            alert(error.message);
+
+        });
+
+      }
+
+      return deferred.promise;
 
     };
 

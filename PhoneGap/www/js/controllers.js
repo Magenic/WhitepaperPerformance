@@ -39,6 +39,13 @@ app.controller('LoginController', function(Azure, $state, ClearNavigationHistory
 
 app.controller('DashController', function($scope, Azure) {
 
+  Azure.getStatusList()
+    .then(function (statusList) {
+
+      $scope.statusList = statusList;
+
+    });
+
 });
 
 app.controller('OfflineController', function($scope, Azure) {
