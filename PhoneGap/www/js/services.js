@@ -40,29 +40,46 @@ app.factory('Azure', function($q) {
 
     azureService.getStatusList = function () {
 
-      if (mobileService.currentUser == null) {
+      mobileService.invokeApi("StatusList", {
+          body: null,
+          method: "get"
+      }).done(function (results) {
+          
+          return results.result;
 
-            alert('you are not logged in');
+      }, function(error) {
+          
+          alert(error.message);
 
-      } else {
+      });
 
-        mobileService.invokeApi("StatusList", {
-            body: null,
-            method: "get"
-        }).done(function (results) {
-            
-            return results.result;
+    };
 
-        }, function(error) {
-            
-            alert(error.message);
+    azureService.getUserProfile = function () {
 
-        });
+      var deferred = $q.defer();
 
-      }
+      mobileService.invokeApi("Profile", {
+          body: null,
+          method: "get"
+      }).done(function (results) {
+          
+          deferred.resolve(results.result);
+
+      }, function(error) {
+          
+          alert(error.message);
+
+      });
+
+      return deferred.promise;
 
     };
 
     return azureService;
 
 });
+
+
+
+

@@ -9,7 +9,21 @@ app.controller('LoginController', function(Azure, $state, ClearNavigationHistory
 
           if (result == true) {
 
-            $state.go('dash');
+            Azure.getUserProfile()
+              .then(function (userProfile) {
+
+                var isManager = userProfile.manager;
+                if (isManager) {
+      
+                  $state.go('dash');
+      
+                } else {
+      
+                  $state.go('incidents');
+      
+                }
+
+              });
 
           } else {
 
