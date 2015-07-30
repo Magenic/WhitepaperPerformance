@@ -1,21 +1,25 @@
-app.controller('LoginController', function(Azure, $state, ClearNavigationHistory) {
+app.controller('LoginController', function(Azure, $state, ClearNavigationHistory, $scope) {
 
-  Azure.login()
-    .then(function (result) {
+  $scope.$on('$ionicView.enter', function(e) {
 
-        ClearNavigationHistory.clear();
+    Azure.login()
+      .then(function (result) {
 
-        if (result == true) {
+          ClearNavigationHistory.clear();
 
-          $state.go('dash');
+          if (result == true) {
 
-        } else {
+            $state.go('dash');
 
-          $state.go('/LoginFailed');
+          } else {
 
-        }
+            $state.go('/LoginFailed');
 
-    });
+          }
+
+      });
+
+  });
 
 });
 
