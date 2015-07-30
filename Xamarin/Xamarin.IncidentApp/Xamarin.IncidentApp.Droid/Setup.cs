@@ -1,9 +1,12 @@
 using System;
 using Android.Content;
+using Android.Views;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Platform;
+using Cirrious.MvvmCross.Binding.Bindings.Target.Construction;
 using Cirrious.MvvmCross.Droid.Platform;
 using Cirrious.MvvmCross.ViewModels;
+using Xamarin.IncidentApp.Droid.Bindings;
 using Xamarin.IncidentApp.Interfaces;
 
 namespace Xamarin.IncidentApp.Droid
@@ -27,6 +30,14 @@ namespace Xamarin.IncidentApp.Droid
         protected override void InitializeFirstChance()
         {
             base.InitializeFirstChance();
+        }
+
+        protected override void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)
+        {
+            registry.RegisterCustomBindingFactory<View>(
+                            "ViewWidth",
+                            v => new ViewWidthBinging(v));
+            base.FillTargetFactories(registry);
         }
     }
 }

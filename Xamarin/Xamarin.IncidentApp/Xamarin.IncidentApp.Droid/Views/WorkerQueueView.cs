@@ -1,25 +1,39 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Cirrious.MvvmCross.Droid.Views;
+using Android.Views;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.Droid.Views
 {
     [Activity(Label = "Worker Queue", Theme = "@style/Theme.Incident.ActionBar",
         ScreenOrientation = ScreenOrientation.Portrait)]
-    public class WorkerQueueView : MvxActivity
+    public class WorkerQueueView : MvxActionBarActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.WorkerQueue);
+
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            SupportActionBar.SetHomeButtonEnabled(true);
+
         }
 
         public new WorkerQueueViewModel ViewModel
         {
             get { return (WorkerQueueViewModel)base.ViewModel; }
             set { base.ViewModel = value; }
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
+                Finish();
+                return true;
+            }
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

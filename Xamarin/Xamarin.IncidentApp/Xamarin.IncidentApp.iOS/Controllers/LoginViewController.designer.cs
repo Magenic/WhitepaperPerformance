@@ -16,21 +16,13 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton btnClicker { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel lblLoading { get; set; }
+		UIButton btnLogin { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (btnClicker != null) {
-				btnClicker.Dispose ();
-				btnClicker = null;
-			}
-			if (lblLoading != null) {
-				lblLoading.Dispose ();
-				lblLoading = null;
+			if (btnLogin != null) {
+				btnLogin.Dispose ();
+				btnLogin = null;
 			}
 		}
 	}
