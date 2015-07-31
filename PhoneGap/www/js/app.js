@@ -1,6 +1,6 @@
 var app = angular.module('IncidentApp', ['ionic'])
 
-app.run(function($ionicPlatform) {
+app.run(function($ionicPlatform, $state, ClearNavigationHistory) {
   $ionicPlatform.ready(function() {
     
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -18,27 +18,20 @@ app.run(function($ionicPlatform) {
 
 
     document.addEventListener("offline", onOffline, false);
-
-    function onOffline() {
-        alert('you have gone offline');
-    }
-
     document.addEventListener("online", onOnline, false);
 
+    function onOffline() {
+        ClearNavigationHistory.clear();
+        $state.go('offline');
+    }
+
     function onOnline() {
-        alert('you have gone back online');
+        ClearNavigationHistory.clear();
+        $state.go('login');
     }
 
   });
 });
-
-function onOffline() {
-
-  //clearNavigationHistory();
-
-  $state.go('offline');
-
-}
 
 app.config(function($stateProvider, $urlRouterProvider) {
 

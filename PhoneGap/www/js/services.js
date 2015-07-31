@@ -40,9 +40,12 @@ app.factory('Azure', function($q) {
 
     azureService.getStatusList = function () {
 
+      var deferred = $q.defer();
+
       if (mobileService.currentUser == null) {
 
             alert('you are not logged in');
+            deferred.resolve(null);
 
       } else {
 
@@ -51,7 +54,7 @@ app.factory('Azure', function($q) {
             method: "get"
         }).done(function (results) {
             
-            return results.result;
+            deferred.resolve(results.result);
 
         }, function(error) {
             
@@ -61,8 +64,35 @@ app.factory('Azure', function($q) {
 
       }
 
+      return deferred.promise;
+
+    };
+
+    azureService.getUserProfile = function () {
+
+      var deferred = $q.defer();
+
+      mobileService.invokeApi("Profile", {
+          body: null,
+          method: "get"
+      }).done(function (results) {
+          
+          deferred.resolve(results.result);
+
+      }, function(error) {
+          
+          alert(error.message);
+
+      });
+
+      return deferred.promise;
+
     };
 
     return azureService;
 
 });
+
+
+
+

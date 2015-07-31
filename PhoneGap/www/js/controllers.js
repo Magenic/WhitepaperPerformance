@@ -1,25 +1,50 @@
-app.controller('LoginController', function(Azure, $state, ClearNavigationHistory) {
+app.controller('LoginController', function(Azure, $state, ClearNavigationHistory, $scope) {
 
-  Azure.login()
-    .then(function (result) {
+  $scope.$on('$ionicView.enter', function(e) {
 
-        ClearNavigationHistory.clear();
+    Azure.login()
+      .then(function (result) {
 
-        if (result == true) {
+          ClearNavigationHistory.clear();
 
-          $state.go('dash');
+          if (result == true) {
 
-        } else {
+            Azure.getUserProfile()
+              .then(function (userProfile) {
 
-          $state.go('/LoginFailed');
+                var isManager = userProfile.manager;
+                if (isManager) {
+      
+                  $state.go('dash');
+      
+                } else {
+      
+                  $state.go('incidents');
+      
+                }
 
-        }
+              });
 
-    });
+          } else {
+
+            $state.go('/LoginFailed');
+
+          }
+
+      });
+
+  });
 
 });
 
 app.controller('DashController', function($scope, Azure) {
+
+  Azure.getStatusList()
+    .then(function (statusList) {
+
+      $scope.statusList = statusList;
+
+    });
 
 });
 
