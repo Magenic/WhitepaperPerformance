@@ -16,6 +16,7 @@ using Acr.MvvmCross.Plugins.Network;
 using Acr.UserDialogs;
 using Cirrious.MvvmCross.Commands;
 using Cirrious.MvvmCross.ViewModels;
+using Xamarin.IncidentApp.Interfaces;
 using Xamarin.IncidentApp.Models;
 using Xamarin.IncidentApp.Utilities;
 
@@ -29,13 +30,17 @@ namespace Xamarin.IncidentApp.ViewModels
     /// </summary>
     public class DashboardViewModel : BaseViewModel
     {
+        private IAzureServices _mobileService;
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="DashboardViewModel"/> class.
         /// </summary>
         /// <param name="networkService">The network service.</param>
         /// <param name="userDialogs">The user dialogs.</param>
-        public DashboardViewModel(INetworkService networkService, IUserDialogs userDialogs) : base(networkService, userDialogs)
+        /// <param name="mobileService">Service for accessing Azure.</param>
+        public DashboardViewModel(INetworkService networkService, IUserDialogs userDialogs, IAzureServices mobileService) : base(networkService, userDialogs)
         {
+            _mobileService = mobileService;
         }
 
         /// <summary>
@@ -80,7 +85,7 @@ namespace Xamarin.IncidentApp.ViewModels
         /// <returns>Task.</returns>
         public async Task RefreshDashboardAsync()
         {
-            var service = MobileService.Service;
+            var service = _mobileService.MobileService;
             if (service.CurrentUser != null)
             {
                 if (NetworkService.IsConnected)

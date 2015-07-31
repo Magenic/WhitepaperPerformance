@@ -6,5 +6,6 @@
     <string name="WorkerList">Get Workers</string>
     <string name="StatusList">Get Statuses</string>
     <string name="Incidents">Get Incidents For User</string>
+    <string name="GenerateSasKey">Generate Sas Key</string>
     <string name="ApplicationName">TestIncidentQueueService.TestHarness</string>
 </resources>
