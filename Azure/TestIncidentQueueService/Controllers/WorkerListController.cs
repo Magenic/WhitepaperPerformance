@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.Azure.ActiveDirectory.GraphClient;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Mobile.Service.Security;
 using TestIncidentQueueService.Models;
 using TestIncidentQueueService.Utils;
@@ -17,9 +18,9 @@ namespace TestIncidentQueueService.Controllers
         // GET api/WorkerList
         public async Task<IList<UserProfile>> Get()
         {
-            var authenticationResult = await Utils.AdIntegration.GetAuthenticationTokenAsync();
+            var authenticationResult = await AdIntegration.GetAuthenticationTokenAsync();
             var graphConnection = new GraphConnection(authenticationResult.AccessToken);
-            var adWorkers = graphConnection.Get<Group>(Constants.AdIntegration.WorkerAdGroup);
+            var adWorkers = graphConnection.Get<Group>(CloudConfigurationManager.GetSetting(Constants.ConfigurationKeys.WorkerAdGroup));
             var members = graphConnection.GetLinkedObjects(adWorkers, LinkProperty.Members, null, -1);
 
             var returnValue = new List<UserProfile>();
@@ -35,7 +36,7 @@ namespace TestIncidentQueueService.Controllers
                             FirstName = user.GivenName,
                             LastName = user.Surname,
                             UserId = user.UserPrincipalName,
-                            Manager = groups.Results.ToList().Any(g => g.ObjectId == Constants.AdIntegration.ManagerAdGroup)
+                            Manager = groups.Results.ToList().Any(g => g.ObjectId == CloudConfigurationManager.GetSetting(Constants.ConfigurationKeys.ManagerAdGroup))
                         });                    
                 }
             }

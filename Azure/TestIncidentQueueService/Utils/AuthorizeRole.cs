@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Mobile.Service;
 using Microsoft.WindowsAzure.Mobile.Service.Security;
 using Newtonsoft.Json;
@@ -58,11 +59,11 @@ namespace TestIncidentQueueService.Utils
 
             if (!groupIds.ContainsKey((int)Enums.AdRoles.Manager))
             {
-                groupIds.Add((int)Enums.AdRoles.Manager, Constants.AdIntegration.ManagerAdGroup);
+                groupIds.Add((int)Enums.AdRoles.Manager, CloudConfigurationManager.GetSetting(Constants.ConfigurationKeys.ManagerAdGroup));
             }
             if (!groupIds.ContainsKey((int)Enums.AdRoles.Worker))
             {
-                groupIds.Add((int)Enums.AdRoles.Worker, Constants.AdIntegration.WorkerAdGroup);
+                groupIds.Add((int)Enums.AdRoles.Worker, CloudConfigurationManager.GetSetting(Constants.ConfigurationKeys.WorkerAdGroup));
             }
         }
 
@@ -84,7 +85,7 @@ namespace TestIncidentQueueService.Utils
         private bool CheckMembership(string memberId)
         {
             bool membership = false;
-            string url = Constants.AdIntegration.Graph + "/" + Constants.AdIntegration.AdSite + "/isMemberOf" + ApiVersion;
+            string url = Constants.AdIntegration.Graph + "/" + CloudConfigurationManager.GetSetting(Constants.ConfigurationKeys.AdSite) + "/isMemberOf" + ApiVersion;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
             // Use the Graph REST API to check group membership in the AAD

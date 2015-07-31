@@ -33,4 +33,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/Incidents" />
+    <Button
+        android:id="@+id/btnSasKey"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GenerateSasKey" />
 </LinearLayout>

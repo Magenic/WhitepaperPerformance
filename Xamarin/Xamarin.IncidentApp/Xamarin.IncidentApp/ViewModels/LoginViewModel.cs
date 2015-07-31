@@ -33,15 +33,18 @@ namespace Xamarin.IncidentApp.ViewModels
     {
         private ILoginService _login;
         private ICommand _loginCommand;
+        private IAzureServices _azureService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginViewModel" /> class.
         /// </summary>
         /// <param name="networkService">The network service.</param>
         /// <param name="userDialogs">The user dialogs.</param>
-        public LoginViewModel(INetworkService networkService, IUserDialogs userDialogs)
+        /// <param name="azureService">Link to Azure service Proxy.</param>
+        public LoginViewModel(INetworkService networkService, IUserDialogs userDialogs, IAzureServices azureService)
             : base(networkService, userDialogs)
         {
+            _azureService = azureService;
         }
 
         /// <summary>
@@ -91,7 +94,7 @@ namespace Xamarin.IncidentApp.ViewModels
 
             try
             {
-                var service = MobileService.Service;
+                var service = _azureService.MobileService;
 
                 await _login.LoginAsync().ConfigureAwait(true);
                 var profile = await LoadProfileAsync(service);
@@ -124,7 +127,7 @@ namespace Xamarin.IncidentApp.ViewModels
         /// </summary>
         /// <param name="service">The service.</param>
         /// <returns>Task&lt;UserProfile&gt;.</returns>
-        private async Task<UserProfile> LoadProfileAsync(MobileServiceClient service)
+        private async Task<UserProfile> LoadProfileAsync(IMobileServiceClient service)
         {
             try
             {

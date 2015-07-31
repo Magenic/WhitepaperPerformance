@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.Azure.ActiveDirectory.GraphClient;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Mobile.Service.Security;
 using TestIncidentQueueService.Models;
 
@@ -26,7 +28,7 @@ namespace TestIncidentQueueService.Controllers
                 FirstName = adUser.GivenName,
                 LastName = adUser.Surname,
                 UserId = adUser.UserPrincipalName,
-                Manager = groups.Results.ToList().Any(g => g.ObjectId == Constants.AdIntegration.ManagerAdGroup)
+                Manager = groups.Results.ToList().Any(g => g.ObjectId == CloudConfigurationManager.GetSetting(Constants.ConfigurationKeys.ManagerAdGroup))
             };
             return returnValue;
         }

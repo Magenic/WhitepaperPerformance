@@ -25,6 +25,7 @@ namespace TestIncidentQueueService.TestHarness
             var btnWorkers = FindViewById<Button>(Resource.Id.btnWorkers);
             var btnStatuses = FindViewById<Button>(Resource.Id.btnStatuses);
             var btnIncidents = FindViewById<Button>(Resource.Id.btnIncidents);
+            var btnSasKey = FindViewById<Button>(Resource.Id.btnSasKey);
 
             btnLogin.Click += btnLogin_Click;
             btnLogout.Click += btnLogout_Click;
@@ -32,6 +33,18 @@ namespace TestIncidentQueueService.TestHarness
             btnWorkers.Click += btnWorkers_Click;
             btnStatuses.Click += btnStatuses_Click;
             btnIncidents.Click += btnIncidents_Click;
+            btnSasKey.Click += btnSasKey_Click;
+        }
+
+        private async void btnSasKey_Click(object sender, EventArgs e)
+        {
+            var service = Utilities.MobileService.Service;
+            if (service.CurrentUser != null)
+            {
+                var profile = await service.InvokeApiAsync<UserProfile>("Profile", HttpMethod.Get, null);
+                var sasKey = await service.InvokeApiAsync<string>("SasGenerator", HttpMethod.Get, null);
+                // Do something with the result. Used to know Id of currently logged on person and their name/display name and if they are a manager.
+            }
         }
 
         private async void btnIncidents_Click(object sender, EventArgs e)
