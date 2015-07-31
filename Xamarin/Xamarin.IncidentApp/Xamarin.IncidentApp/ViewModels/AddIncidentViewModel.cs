@@ -12,9 +12,9 @@ namespace Xamarin.IncidentApp.ViewModels
 {
     public class AddIncidentViewModel : BaseViewModel
     {
-        private IAzureServices _azureService;
+        private IAzureService _azureService;
 
-        public AddIncidentViewModel(INetworkService networkService, IUserDialogs userDialogs, IAzureServices azureService)
+        public AddIncidentViewModel(INetworkService networkService, IUserDialogs userDialogs, IAzureService azureService)
             : base(networkService, userDialogs)
         {
             _azureService = azureService;

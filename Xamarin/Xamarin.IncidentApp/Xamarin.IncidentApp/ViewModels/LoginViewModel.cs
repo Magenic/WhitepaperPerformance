@@ -31,9 +31,9 @@ namespace Xamarin.IncidentApp.ViewModels
     /// </summary>
     public class LoginViewModel : BaseViewModel
     {
-        private ILoginService _login;
+        private ILoginService _loginService;
         private ICommand _loginCommand;
-        private IAzureServices _azureService;
+        private IAzureService _azureService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginViewModel" /> class.
@@ -41,7 +41,7 @@ namespace Xamarin.IncidentApp.ViewModels
         /// <param name="networkService">The network service.</param>
         /// <param name="userDialogs">The user dialogs.</param>
         /// <param name="azureService">Link to Azure service Proxy.</param>
-        public LoginViewModel(INetworkService networkService, IUserDialogs userDialogs, IAzureServices azureService)
+        public LoginViewModel(INetworkService networkService, IUserDialogs userDialogs, IAzureService azureService)
             : base(networkService, userDialogs)
         {
             _azureService = azureService;
@@ -53,7 +53,7 @@ namespace Xamarin.IncidentApp.ViewModels
         /// <value>The login service.</value>
         public ILoginService LoginService
         {
-            set { _login = value; }
+            set { _loginService = value; }
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Xamarin.IncidentApp.ViewModels
         /// <exception cref="System.ArgumentException">Login Service must be set.</exception>
         public async Task LoginAndGo()
         {
-            if (_login == null)
+            if (_loginService == null)
             {
                 throw new ArgumentException("Login Service must be set.");
             }
@@ -96,7 +96,7 @@ namespace Xamarin.IncidentApp.ViewModels
             {
                 var service = _azureService.MobileService;
 
-                await _login.LoginAsync().ConfigureAwait(true);
+                await _loginService.LoginAsync().ConfigureAwait(true);
                 var profile = await LoadProfileAsync(service);
                 UserContext.UserProfile = profile;
 

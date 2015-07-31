@@ -30,7 +30,7 @@ namespace Xamarin.IncidentApp.ViewModels
     /// </summary>
     public class DashboardViewModel : BaseViewModel
     {
-        private IAzureServices _mobileService;
+        private IAzureService _mobileService;
         
         /// <summary>
         /// Initializes a new instance of the <see cref="DashboardViewModel"/> class.
@@ -38,7 +38,7 @@ namespace Xamarin.IncidentApp.ViewModels
         /// <param name="networkService">The network service.</param>
         /// <param name="userDialogs">The user dialogs.</param>
         /// <param name="mobileService">Service for accessing Azure.</param>
-        public DashboardViewModel(INetworkService networkService, IUserDialogs userDialogs, IAzureServices mobileService) : base(networkService, userDialogs)
+        public DashboardViewModel(INetworkService networkService, IUserDialogs userDialogs, IAzureService mobileService) : base(networkService, userDialogs)
         {
             _mobileService = mobileService;
         }

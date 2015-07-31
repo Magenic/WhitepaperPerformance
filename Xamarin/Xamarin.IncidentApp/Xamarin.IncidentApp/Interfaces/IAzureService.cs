@@ -4,7 +4,7 @@ using Microsoft.WindowsAzure.MobileServices;
 
 namespace Xamarin.IncidentApp.Interfaces
 {
-    public interface IAzureServices
+    public interface IAzureService
     {
         IMobileServiceClient MobileService { get; }
         Task<string> SaveBlobAsync(byte[] bytes, string blobExtension);

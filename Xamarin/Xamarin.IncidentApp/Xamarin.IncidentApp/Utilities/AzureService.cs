@@ -7,7 +7,7 @@ using Xamarin.IncidentApp.Interfaces;
 
 namespace Xamarin.IncidentApp.Utilities
 {
-    public class AzureServices : IAzureServices
+    public class AzureService : IAzureService
     {
         private const string StorageUrl = "https://testincidentqueue.blob.core.windows.net/";
 
