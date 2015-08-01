@@ -39,12 +39,24 @@ app.controller('LoginController', function(Azure, $state, ClearNavigationHistory
 
 app.controller('DashController', function($scope, Azure) {
 
-  Azure.getStatusList()
-    .then(function (statusList) {
 
-      $scope.statusList = statusList;
+  refreshDashboard();
 
-    });
+  function refreshDashboard() {
+
+    Azure.getStatusList()
+      .then(function (statusList) {
+
+        $scope.statusList = statusList;
+        $scope.$broadcast('scroll.refreshComplete');
+
+      });
+
+  };
+
+  $scope.doRefresh = function() {
+    refreshDashboard();
+  };    
 
 });
 
