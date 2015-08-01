@@ -14,8 +14,24 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 	[Register ("WorkerQueueViewController")]
 	partial class WorkerQueueViewController
 	{
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		Xamarin.IncidentApp.iOS.IncidentQueueUITableView IncidentQueueTableView { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UISegmentedControl sgOpenCloseFilter { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
+			if (IncidentQueueTableView != null) {
+				IncidentQueueTableView.Dispose ();
+				IncidentQueueTableView = null;
+			}
+			if (sgOpenCloseFilter != null) {
+				sgOpenCloseFilter.Dispose ();
+				sgOpenCloseFilter = null;
+			}
 		}
 	}
 }

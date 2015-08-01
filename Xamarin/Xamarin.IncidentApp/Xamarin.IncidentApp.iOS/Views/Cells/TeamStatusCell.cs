@@ -28,8 +28,6 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
         /// </summary>
         public static readonly NSString Identifier = new NSString("TeamStatusCell");
 
-        private float _maxCompletedPercentConv;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="TeamStatusCell"/> class.
         /// </summary>
