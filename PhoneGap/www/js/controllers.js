@@ -37,7 +37,7 @@ app.controller('LoginController', function(Azure, $state, ClearNavigationHistory
 
 });
 
-app.controller('DashController', function($scope, Azure) {
+app.controller('DashController', function($scope, Azure, $state) {
 
 
   refreshDashboard();
@@ -58,11 +58,28 @@ app.controller('DashController', function($scope, Azure) {
     refreshDashboard();
   };    
 
+  $scope.selectUser = function(userId) {
+
+    // go to incident queue for user user...
+    $state.go('incidents', { userId: userId });
+
+  };
+
 });
 
 app.controller('OfflineController', function($scope, Azure) {
 
 });
+
+app.controller('IncidentsController', function($scope, Azure, $stateParams) {
+
+  var userId = $stateParams.userId;
+  $scope.UserId = userId;
+
+});
+
+
+
 
 
 // this is the one from the tabs stuff
