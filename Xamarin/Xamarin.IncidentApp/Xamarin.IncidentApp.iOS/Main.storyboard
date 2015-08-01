@@ -17,18 +17,145 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="47" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="318" width="188" height="30"/>
-                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0" green="0.50196078431372548" blue="0" alpha="1"/>
-                                <state key="normal" title="Click to Login">
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="47" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" restorationIdentifier="btnLogin">
+                                <rect key="frame" x="94" y="513" width="188" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Sign In">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
+                                    <color key="titleColor" colorSpace="calibratedRGB" red="0.011764705882352941" green="0.66274509803921566" blue="0.95686274509803926" alpha="1"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="105" y="481" width="166" height="36"/>
+                                </variation>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="264" translatesAutoresizingMaskIntoConstraints="NO" image="Incidentrackr_banner.jpg" misplaced="YES">
+                                <rect key="frame" x="20" y="68" width="335" height="72"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="24" y="77" width="327" height="74"/>
+                                </variation>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="265" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Email Address" misplaced="YES">
+                                <rect key="frame" x="20" y="211" width="335" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <constraints>
+                                    <constraint id="359" firstAttribute="height" constant="30"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="359"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="359"/>
+                                    </mask>
+                                    <rect key="frame" x="24" y="211" width="331" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="266" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Password" misplaced="YES">
+                                <rect key="frame" x="20" y="273" width="335" height="30"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint id="341" firstItem="266" firstAttribute="width" constant="335"/>
+                                    <constraint id="351" firstAttribute="height" constant="30"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="341"/>
+                                        <exclude reference="351"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="351"/>
+                                    </mask>
+                                    <rect key="frame" x="24" y="275" width="331" height="30"/>
+                                </variation>
+                            </textField>
+                            <view contentMode="scaleToFill" id="267" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="0.0" y="195" width="377" height="1"/>
+                                <color key="backgroundColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                <subviews/>
+                                <constraints>
+                                    <constraint id="354" firstAttribute="width" constant="377"/>
+                                    <constraint id="355" firstAttribute="height" constant="1"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="354"/>
+                                        <exclude reference="355"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="354"/>
+                                        <include reference="355"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" id="270" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="255" width="377" height="1"/>
+                                <color key="backgroundColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="271" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="0.0" y="318" width="377" height="1"/>
+                                <color key="backgroundColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                            </view>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="264" firstAttribute="leading" secondItem="26" secondAttribute="leading" constant="24" id="274"/>
+                            <constraint firstItem="26" firstAttribute="trailing" secondItem="264" secondAttribute="trailing" constant="24" id="275"/>
+                            <constraint firstItem="264" firstAttribute="top" secondItem="22" secondAttribute="bottom" constant="57" id="283"/>
+                            <constraint id="348" firstItem="266" firstAttribute="top" secondItem="26" secondAttribute="top" constant="275"/>
+                            <constraint id="349" constant="20" firstItem="26" firstAttribute="trailing" secondItem="266" secondAttribute="trailing"/>
+                            <constraint id="352" firstItem="267" firstAttribute="top" secondItem="26" secondAttribute="top" constant="195"/>
+                            <constraint id="353" constant="-2" firstItem="26" firstAttribute="trailing" secondItem="267" secondAttribute="trailing"/>
+                            <constraint id="356" firstItem="265" firstAttribute="top" secondItem="26" secondAttribute="top" constant="211"/>
+                            <constraint id="357" constant="20" firstItem="26" firstAttribute="trailing" secondItem="265" secondAttribute="trailing"/>
+                            <constraint firstItem="265" firstAttribute="leading" secondItem="26" secondAttribute="leading" constant="24" id="362"/>
+                            <constraint firstItem="266" firstAttribute="leading" secondItem="26" secondAttribute="leading" constant="24" id="363"/>
+                            <constraint firstItem="23" firstAttribute="top" secondItem="47" secondAttribute="bottom" constant="150" id="416"/>
+                            <constraint firstItem="47" firstAttribute="leading" secondItem="26" secondAttribute="leading" constant="105" id="419"/>
+                            <constraint firstItem="26" firstAttribute="trailing" secondItem="47" secondAttribute="trailing" constant="104" id="422"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="348"/>
+                                <exclude reference="349"/>
+                                <exclude reference="352"/>
+                                <exclude reference="353"/>
+                                <exclude reference="356"/>
+                                <exclude reference="357"/>
+                                <exclude reference="362"/>
+                                <exclude reference="363"/>
+                                <exclude reference="416"/>
+                                <exclude reference="419"/>
+                                <exclude reference="422"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="348"/>
+                                <include reference="349"/>
+                                <include reference="352"/>
+                                <include reference="353"/>
+                                <include reference="356"/>
+                                <include reference="357"/>
+                                <include reference="362"/>
+                                <include reference="363"/>
+                                <include reference="416"/>
+                                <include reference="419"/>
+                                <include reference="422"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="btnLogin" destination="47" id="name-outlet-47"/>
+                        <outlet property="txtEmailAddress" destination="265" id="name-outlet-265"/>
+                        <outlet property="txtPassword" destination="266" id="name-outlet-266"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -47,15 +174,15 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="22" id="96" translatesAutoresizingMaskIntoConstraints="NO" customClass="TeamUITableView" fixedFrame="YES">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="1" sectionFooterHeight="1" id="96" translatesAutoresizingMaskIntoConstraints="NO" customClass="TeamUITableView" fixedFrame="YES">
                                 <rect key="frame" x="5" y="30" width="327" height="426"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="97" reuseIdentifier="TeamStatusCell" customClass="TeamStatusCell" restorationIdentifier="TeamStatusCell" accessoryType="disclosureIndicator">
-                                        <rect key="frame" x="0.0" y="1" width="327" height="44"/>
+                                        <rect key="frame" x="0.0" y="1" width="342" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="98" tableViewCell="97">
-                                            <rect key="frame" x="0.0" y="0.0" width="294" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="294" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <subviews>
@@ -72,6 +199,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="245" y="33" width="25" height="15"/>
+                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="206" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" restorationIdentifier="lblWaitTime">
                                                     <rect key="frame" x="275" y="25" width="25" height="15"/>
@@ -79,16 +209,59 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="245" y="57" width="25" height="15"/>
+                                                    </variation>
                                                 </label>
                                                 <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="253" fixedFrame="YES">
                                                     <rect key="frame" x="150" y="12" width="120" height="2"/>
-                                                    <color key="progressTintColor" colorSpace="calibratedRGB" red="0" green="0.50196078431372548" blue="0" alpha="1"/>
+                                                    <color key="progressTintColor" colorSpace="calibratedRGB" red="0.9137254901960784" green="0.11764705882352941" blue="0.38823529411764707" alpha="1"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="2" y="40" width="240" height="2"/>
+                                                    </variation>
+                                                    <color key="trackTintColor" colorSpace="calibratedRGB" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1"/>
                                                 </progressView>
                                                 <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="258">
                                                     <rect key="frame" x="150" y="32" width="120" height="2"/>
-                                                    <color key="progressTintColor" colorSpace="calibratedRGB" red="1" green="0.6470588235294118" blue="0" alpha="1"/>
+                                                    <color key="progressTintColor" colorSpace="calibratedRGB" red="1" green="0.75686274509803919" blue="0.027450980392156862" alpha="1"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="2" y="65" width="240" height="2"/>
+                                                    </variation>
+                                                    <color key="trackTintColor" colorSpace="calibratedRGB" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1"/>
                                                 </progressView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="# Incidents" lineBreakMode="tailTruncation" minimumFontSize="10" id="375" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                    <rect key="frame" x="335" y="65" width="25" height="15"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="2" y="25" width="150" height="15"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Average Wait Time in Minutes" lineBreakMode="tailTruncation" minimumFontSize="10" id="376" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                                    <rect key="frame" x="22" y="44" width="25" height="15"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="2" y="50" width="150" height="15"/>
+                                                    </variation>
+                                                </label>
                                             </subviews>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="375"/>
+                                                    <exclude reference="376"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="375"/>
+                                                    <include reference="376"/>
+                                                </mask>
+                                            </variation>
                                         </view>
                                         <connections>
                                             <outlet property="lblTeamLead" destination="183" id="name-outlet-183"/>
@@ -96,29 +269,56 @@
                                             <outlet property="lblWaitTime" destination="206" id="name-outlet-206"/>
                                             <outlet property="pvCompletedBar" destination="253" id="name-outlet-253"/>
                                             <outlet property="pvWaitTimeBar" destination="258" id="name-outlet-258"/>
+                                            <outlet property="lblIncidentTitle" destination="375" id="name-outlet-375"/>
+                                            <outlet property="lblAvgWaitTitle" destination="376" id="name-outlet-376"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="99">
-                                        <rect key="frame" x="0.0" y="45" width="327" height="44"/>
+                                        <rect key="frame" x="0.0" y="81" width="342" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="100" tableViewCell="99">
-                                            <rect key="frame" x="0.0" y="0.0" width="327" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="327" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="101">
-                                        <rect key="frame" x="0.0" y="89" width="327" height="44"/>
+                                        <rect key="frame" x="0.0" y="161" width="342" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="102" tableViewCell="101">
-                                            <rect key="frame" x="0.0" y="0.0" width="327" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="327" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="19" y="27" width="342" height="628"/>
+                                </variation>
                             </tableView>
                         </subviews>
+                        <constraints>
+                            <constraint id="479" constant="14" firstItem="93" firstAttribute="trailing" secondItem="96" secondAttribute="trailing"/>
+                            <constraint id="480" constant="12" firstItem="93" firstAttribute="bottom" secondItem="96" secondAttribute="bottom"/>
+                            <constraint firstItem="96" firstAttribute="leading" secondItem="93" secondAttribute="leading" constant="19" id="485"/>
+                            <constraint firstItem="96" firstAttribute="top" secondItem="89" secondAttribute="bottom" constant="7" id="488"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="479"/>
+                                <exclude reference="480"/>
+                                <exclude reference="485"/>
+                                <exclude reference="488"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="479"/>
+                                <include reference="480"/>
+                                <include reference="485"/>
+                                <include reference="488"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="TeamTableView" destination="96" id="name-outlet-96"/>
@@ -149,4 +349,14 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedScreenMetrics key="destination" type="retina47"/>
     </simulatedMetricsContainer>
+    <resources>
+        <image name="Images.xcassets/AppIcons.appiconset/Icon-60.png" width="180" height="180"/>
+        <image name="Images.xcassets/AppIcons.appiconset/Icon-76.png" width="76" height="76"/>
+        <image name="Images.xcassets/AppIcons.appiconset/Icon-Small-40.png" width="40" height="40"/>
+        <image name="Images.xcassets/AppIcons.appiconset/Icon-Small.png" width="29" height="29"/>
+        <image name="Images.xcassets/LaunchImage.launchimage/Default-568h.png" width="640" height="1136"/>
+        <image name="Images.xcassets/LaunchImage.launchimage/Default-Portrait.png" width="768" height="1004"/>
+        <image name="Images.xcassets/LaunchImage.launchimage/Default.png" width="320" height="480"/>
+        <image name="Incidentrackr_banner.jpg" width="523" height="74"/>
+    </resources>
 </document>

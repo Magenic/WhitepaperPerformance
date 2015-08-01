@@ -77,7 +77,7 @@ namespace Xamarin.IncidentApp.ViewModels
         /// </summary>
         /// <returns>Task.</returns>
         /// <exception cref="System.ArgumentException">Login Service must be set.</exception>
-        public async Task LoginAndGo()
+        private async Task LoginAndGo()
         {
             if (_loginService == null)
             {
@@ -95,7 +95,7 @@ namespace Xamarin.IncidentApp.ViewModels
             try
             {
                 var service = _azureService.MobileService;
-
+                
                 await _loginService.LoginAsync().ConfigureAwait(true);
                 var profile = await LoadProfileAsync(service);
                 UserContext.UserProfile = profile;

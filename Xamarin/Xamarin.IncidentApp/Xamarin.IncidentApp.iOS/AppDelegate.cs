@@ -26,6 +26,15 @@ namespace Xamarin.IncidentApp.iOS
             _window.RootViewController = new UINavigationController();
 		    var presenter = new ViewPresenter(this, _window);
 
+            // Setup the navigation bar background, foreground, and text colors through
+            // the static UINavigationBar class which will impact all nav bars in the app.
+            UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(3, 169, 244);
+            UINavigationBar.Appearance.TintColor = UIColor.White;
+            UINavigationBar.Appearance.TitleTextAttributes = new UIStringAttributes()
+            {
+                ForegroundColor = UIColor.White
+            };
+
 			var setup = new Setup(this, presenter);
 			setup.Initialize();
 
