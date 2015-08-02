@@ -279,9 +279,15 @@ namespace Xamarin.IncidentApp.ViewModels
 
             if (!NetworkService.IsConnected)
             {
-                await
-                    UserDialogs.AlertAsync("Device not connected to network, cannot login. Please try again later",
+                await UserDialogs.AlertAsync("Device not connected to network, cannot login. Please try again later",
                         "Network Error");
+                return;
+            }
+
+            if (Subject == string.Empty || Image == null || Image.Length == 0)
+            {
+                await UserDialogs.AlertAsync("An incident must at least have a subject and image to be saved.",
+                "Validation Error");
                 return;
             }
 

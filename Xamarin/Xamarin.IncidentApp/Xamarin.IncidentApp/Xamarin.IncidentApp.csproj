@@ -55,6 +55,7 @@
     <Compile Include="ViewModels\AddIncidentViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\DisplayIncidentViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\WorkerQueueViewModel.cs" />
   </ItemGroup>

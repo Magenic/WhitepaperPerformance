@@ -170,7 +170,7 @@ namespace Xamarin.IncidentApp.ViewModels
         /// <param name="userId">The user identifier.</param>
         private void ShowWorkerQueue(string userId)
         {
-            ShowViewModel<WorkerQueueViewModel>(userId);
+            ShowViewModel<WorkerQueueViewModel>(new { userId = userId });
         }
 
         /// <summary>

@@ -104,7 +104,7 @@ namespace Xamarin.IncidentApp.ViewModels
                 }
                 else
                 {
-                    ShowViewModel<WorkerQueueViewModel>(profile.UserId, clearStackBundle);
+                    ShowViewModel<WorkerQueueViewModel>(new { userId = profile.UserId }, clearStackBundle);
                 }
                 Close(this);
             }
