@@ -92,11 +92,13 @@ namespace Xamarin.IncidentApp.ViewModels
                 {
                     var userStatuses = await service.InvokeApiAsync<IList<UserStatus>>("StatusList", HttpMethod.Get, null);
                     var maxCompleted = MaxCompletedIncidents(userStatuses);
+                    var maxOpen = MaxOpenIncidents(userStatuses);
                     var maxWaitTime = MaxWaitTime(userStatuses);
                     foreach (var userStatus in userStatuses)
                     {
                         userStatus.MaxCompletedIncidents = maxCompleted;
                         userStatus.MaxWaitTime = maxWaitTime;
+                        userStatus.MaxOpenIncidents = maxOpen;
                     }
                     var collection = new ObservableCollection<UserStatus>(userStatuses);
                     UserStatuses = collection;
@@ -188,5 +190,15 @@ namespace Xamarin.IncidentApp.ViewModels
             }
             return userStatuses.Max(u => u.TotalCompleteIncidentsPast30Days);
         }
+
+        private int MaxOpenIncidents(IList<UserStatus> userStatuses)
+        {
+            if (userStatuses == null || userStatuses.Count == 0)
+            {
+                return 0;
+            }
+            return userStatuses.Max(u => u.TotalOpenIncidents);
+        }
+
     }
 }

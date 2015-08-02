@@ -1,10 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    xmlns:views="Xamarin.IncidentApp.Droid.Views"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Worker Queue" />
-</LinearLayout>
+        android:layout_height="fill_parent">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Subject"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/secondary" />
+        <EditText
+            android:id="@+id/AddIncidentSubject"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            local:MvxBind="Text Subject, Mode=TwoWay"
+            style="@style/EditTextIncidentracker" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Subject"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/secondary" />
+        <EditText
+            android:id="@+id/AddIncidentDescription"
+            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:inputType="textMultiLine"
+            local:MvxBind="Text Description, Mode=TwoWay"
+            style="@style/EditTextIncidentracker" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Assigned To"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/secondary" />
+        <Mvx.MvxSpinner
+            android:id="@+id/AddIncidentSpinner"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            local:MvxBind="ItemsSource Workers; SelectedItem AssignedToId, Converter=UserProfileId" />
+        <BitmapImageView
+            android:id="@+id/AddIncidentImage"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:scaleType="fitXY"
+            local:MvxBind="CurrentBitmap Image, Mode=OneWay, Converter=ByteBitmap" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/secondary">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="kitten.jpg" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

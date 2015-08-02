@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
+using Xamarin.IncidentApp.Constants;
 using Xamarin.IncidentApp.Interfaces;
 
 namespace Xamarin.IncidentApp.Utilities
@@ -23,28 +24,20 @@ namespace Xamarin.IncidentApp.Utilities
 
         private async Task<string> RetrieveStorageAccessSignatureAsync()
         {
-            var result = string.Empty;
-
-            using (var client = new HttpClient())
+            if (MobileService.CurrentUser == null)
             {
-                client.BaseAddress = new Uri(StorageUrl);
-
-                var response = await client.GetAsync("api/SasGenerator").ConfigureAwait(false);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                }
+                return string.Empty;
             }
-            return result;
+            return await MobileService.InvokeApiAsync<string>("SasGenerator", HttpMethod.Get, null);
+                // Do something with the result. Used to know Id of currently logged on person and their name/display name and if they are a manager.
         }
 
         public async Task<string> SaveBlobAsync(byte[] bytes, string blobExtension)
         {
-            var blobName = Guid.NewGuid().ToString();
+            var blobName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), blobExtension);
 
             var sasUrl = await RetrieveStorageAccessSignatureAsync().ConfigureAwait(false);
-
+            sasUrl = sasUrl.Replace(AzureConstants.StorageAccountName, String.Format("{0}/{1}", AzureConstants.StorageAccountName, blobName));
 
            	var request = (HttpWebRequest)WebRequest.Create(sasUrl);
 			request.Method = "PUT";
@@ -52,12 +45,12 @@ namespace Xamarin.IncidentApp.Utilities
 
             var stream = await request.GetRequestStreamAsync();
             stream.Write(bytes, 0, bytes.Length);
-
+           
 			request.Headers["x-ms-blob-type"] = "BlockBlob";
-            request.Headers["x-ms-blob-content-disposition"] = String.Format("attachment; filename=\"{0}.{1}\"", blobName, blobExtension);
+            request.Headers["x-ms-blob-content-disposition"] = String.Format("attachment; filename=\"{0}\"", blobName);
 
-			var response = await Task.Factory.FromAsync<WebResponse>(request.BeginGetResponse, request.EndGetResponse, null).ConfigureAwait(false);
-            return blobName;
+			await Task.Factory.FromAsync<WebResponse>(request.BeginGetResponse, request.EndGetResponse, null).ConfigureAwait(true);
+            return string.Format(AzureConstants.StorageAccount, blobName);
         }
     }
 }

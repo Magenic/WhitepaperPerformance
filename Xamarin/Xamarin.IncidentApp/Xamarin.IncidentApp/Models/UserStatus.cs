@@ -35,11 +35,11 @@ namespace Xamarin.IncidentApp.Models
         public int TotalCompleteIncidentsPast30Days {
             get
             {
-                if (_totalComplete == 0)
-                {
-                    if (_random == null) _random = new Random();
-                    _totalComplete = _random.Next(50);                    
-                }
+                //if (_totalComplete == 0)
+                //{
+                //    if (_random == null) _random = new Random();
+                //    _totalComplete = _random.Next(50);                    
+                //}
                 return _totalComplete;
             }
             set { _totalComplete = value; }
@@ -53,11 +53,11 @@ namespace Xamarin.IncidentApp.Models
         {
             get
             {
-                if (_avgWait.Equals(0))
-                {
-                    if (_random == null) _random = new Random(); 
-                    _avgWait = _random.Next(150);
-                }
+                //if (_avgWait.Equals(0))
+                //{
+                //    if (_random == null) _random = new Random(); 
+                //    _avgWait = _random.Next(150);
+                //}
                 return _avgWait;
             }
             set { _avgWait = value; }
@@ -73,6 +73,8 @@ namespace Xamarin.IncidentApp.Models
         /// </summary>
         /// <value>The maximum completed incidents.</value>
         internal int MaxCompletedIncidents { get; set; }
+
+        internal int MaxOpenIncidents { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum wait time.
@@ -93,6 +95,18 @@ namespace Xamarin.IncidentApp.Models
                     return 0;
                 }
                 return Convert.ToInt32(((float)TotalCompleteIncidentsPast30Days / (float)MaxCompletedIncidents) * 100);
+            }
+        }
+
+        public int MaxOpenPercent
+        {
+            get
+            {
+                if (MaxOpenIncidents == 0)
+                {
+                    return 0;
+                }
+                return Convert.ToInt32(((float)TotalOpenIncidents / (float)MaxOpenIncidents) * 100);
             }
         }
 
