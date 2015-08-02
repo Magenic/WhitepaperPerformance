@@ -35,11 +35,6 @@ namespace Xamarin.IncidentApp.Models
         public int TotalCompleteIncidentsPast30Days {
             get
             {
-                //if (_totalComplete == 0)
-                //{
-                //    if (_random == null) _random = new Random();
-                //    _totalComplete = _random.Next(50);                    
-                //}
                 return _totalComplete;
             }
             set { _totalComplete = value; }
@@ -53,11 +48,6 @@ namespace Xamarin.IncidentApp.Models
         {
             get
             {
-                //if (_avgWait.Equals(0))
-                //{
-                //    if (_random == null) _random = new Random(); 
-                //    _avgWait = _random.Next(150);
-                //}
                 return _avgWait;
             }
             set { _avgWait = value; }

@@ -34,6 +34,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Constants\AzureConstants.cs" />
+    <Compile Include="Converters\BinaryAssetExistsConverter.cs" />
     <Compile Include="Converters\UserProfileIdConverter.cs" />
     <Compile Include="EventArgs\AudioCompleteEventArgs.cs" />
     <Compile Include="EventArgs\PhotoCompleteEventArgs.cs" />

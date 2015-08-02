@@ -1762,100 +1762,106 @@ namespace Xamarin.IncidentApp.Droid
 			public const int ic_add_white_24dp = 2130837565;
 			
 			// aapt resource value: 0x7f02003e
-			public const int ic_errorstatus = 2130837566;
+			public const int ic_clear_black_24dp = 2130837566;
 			
 			// aapt resource value: 0x7f02003f
-			public const int ic_send_white_24dp = 2130837567;
+			public const int ic_errorstatus = 2130837567;
 			
 			// aapt resource value: 0x7f020040
-			public const int ic_successstatus = 2130837568;
+			public const int ic_play_arrow_black_24dp = 2130837568;
 			
 			// aapt resource value: 0x7f020041
-			public const int icon = 2130837569;
+			public const int ic_send_white_24dp = 2130837569;
 			
 			// aapt resource value: 0x7f020042
-			public const int incidentracker_btn_default_disabled_focused_holo_light = 2130837570;
+			public const int ic_successstatus = 2130837570;
 			
 			// aapt resource value: 0x7f020043
-			public const int incidentracker_btn_default_disabled_holo_light = 2130837571;
+			public const int icon = 2130837571;
 			
 			// aapt resource value: 0x7f020044
-			public const int incidentracker_btn_default_focused_holo_light = 2130837572;
+			public const int incidentracker_btn_default_disabled_focused_holo_light = 2130837572;
 			
 			// aapt resource value: 0x7f020045
-			public const int incidentracker_btn_default_holo_light = 2130837573;
+			public const int incidentracker_btn_default_disabled_holo_light = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int incidentracker_btn_default_normal_holo_light = 2130837574;
+			public const int incidentracker_btn_default_focused_holo_light = 2130837574;
 			
 			// aapt resource value: 0x7f020047
-			public const int incidentracker_btn_default_pressed_holo_light = 2130837575;
+			public const int incidentracker_btn_default_holo_light = 2130837575;
 			
 			// aapt resource value: 0x7f020048
-			public const int incidentracker_edit_text_holo_light = 2130837576;
+			public const int incidentracker_btn_default_normal_holo_light = 2130837576;
 			
 			// aapt resource value: 0x7f020049
-			public const int incidentracker_tab_indicator_holo = 2130837577;
+			public const int incidentracker_btn_default_pressed_holo_light = 2130837577;
 			
 			// aapt resource value: 0x7f02004a
-			public const int incidentracker_tab_selected_focused_holo = 2130837578;
+			public const int incidentracker_edit_text_holo_light = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int incidentracker_tab_selected_holo = 2130837579;
+			public const int incidentracker_tab_indicator_holo = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
-			public const int incidentracker_tab_selected_pressed_holo = 2130837580;
+			public const int incidentracker_tab_selected_focused_holo = 2130837580;
 			
 			// aapt resource value: 0x7f02004d
-			public const int incidentracker_tab_unselected_focused_holo = 2130837581;
+			public const int incidentracker_tab_selected_holo = 2130837581;
 			
 			// aapt resource value: 0x7f02004e
-			public const int incidentracker_tab_unselected_holo = 2130837582;
+			public const int incidentracker_tab_selected_pressed_holo = 2130837582;
 			
 			// aapt resource value: 0x7f02004f
-			public const int incidentracker_tab_unselected_pressed_holo = 2130837583;
+			public const int incidentracker_tab_unselected_focused_holo = 2130837583;
 			
 			// aapt resource value: 0x7f020050
-			public const int incidentracker_textfield_activated_holo_light = 2130837584;
+			public const int incidentracker_tab_unselected_holo = 2130837584;
 			
 			// aapt resource value: 0x7f020051
-			public const int incidentracker_textfield_default_holo_light = 2130837585;
+			public const int incidentracker_tab_unselected_pressed_holo = 2130837585;
 			
 			// aapt resource value: 0x7f020052
-			public const int incidentracker_textfield_disabled_focused_holo_light = 2130837586;
+			public const int incidentracker_textfield_activated_holo_light = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int incidentracker_textfield_disabled_holo_light = 2130837587;
+			public const int incidentracker_textfield_default_holo_light = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int incidentracker_textfield_focused_holo_light = 2130837588;
-			
-			// aapt resource value: 0x7f02005d
-			public const int notification_template_icon_bg = 2130837597;
+			public const int incidentracker_textfield_disabled_focused_holo_light = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int OpenBar = 2130837589;
+			public const int incidentracker_textfield_disabled_holo_light = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int roundedbg = 2130837590;
+			public const int incidentracker_textfield_focused_holo_light = 2130837590;
+			
+			// aapt resource value: 0x7f02005f
+			public const int notification_template_icon_bg = 2130837599;
 			
 			// aapt resource value: 0x7f020057
-			public const int roundedbgdark = 2130837591;
+			public const int OpenBar = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int segmented_control_background = 2130837592;
+			public const int roundedbg = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int segmented_control_first_background = 2130837593;
+			public const int roundedbgdark = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int segmented_control_last_background = 2130837594;
+			public const int segmented_control_background = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int snackbar_background = 2130837595;
+			public const int segmented_control_first_background = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int splash = 2130837596;
+			public const int segmented_control_last_background = 2130837596;
+			
+			// aapt resource value: 0x7f02005d
+			public const int snackbar_background = 2130837597;
+			
+			// aapt resource value: 0x7f02005e
+			public const int splash = 2130837598;
 			
 			static Drawable()
 			{

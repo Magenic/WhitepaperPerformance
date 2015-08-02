@@ -8,7 +8,6 @@ using Android.Database;
 using Android.OS;
 using Android.Provider;
 using Android.Views;
-using Android.Widget;
 using Xamarin.IncidentApp.Droid.Services;
 using Xamarin.IncidentApp.ViewModels;
 using Xamarin.Media;
@@ -29,7 +28,6 @@ namespace Xamarin.IncidentApp.Droid.Views
 
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetHomeButtonEnabled(true);
-
             _mediaService = new MediaService(this);
             ViewModel.SetActivityServices(_mediaService);
         }
@@ -122,6 +120,9 @@ namespace Xamarin.IncidentApp.Droid.Views
                 var realAudioUri = GetRealPathFromUri(audioUri);
                 var bytes = File.ReadAllBytes(realAudioUri);
                 _mediaService.AudioResult(bytes);
+                // Todo: file not being removed correctly, OK for demo app.
+                var file = new Java.IO.File(realAudioUri);
+                file.DeleteOnExit();
             }
         }
 
@@ -147,33 +148,5 @@ namespace Xamarin.IncidentApp.Droid.Views
                 return ms.ToArray();
             }
         }
-
-        //private override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-        //{
-        //    base.OnActivityResult(requestCode, resultCode, data);
-
-        //    // Make it available in the gallery
-
-        //    var mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-        //    Uri contentUri = Uri.FromFile(App._file);
-        //    mediaScanIntent.SetData(contentUri);
-        //    SendBroadcast(mediaScanIntent);
-
-        //    // Display in ImageView. We will resize the bitmap to fit the display.
-        //    // Loading the full sized image will consume to much memory
-        //    // and cause the application to crash.
-
-        //    int height = Resources.DisplayMetrics.HeightPixels;
-        //    int width = _imageView.Height;
-        //    App.bitmap = App._file.Path.LoadAndResizeBitmap(width, height);
-        //    if (App.bitmap != null)
-        //    {
-        //        _imageView.SetImageBitmap(App.bitmap);
-        //        App.bitmap = null;
-        //    }
-
-        //    // Dispose of the Java side bitmap.
-        //    GC.Collect();
-        //}
     }
 }

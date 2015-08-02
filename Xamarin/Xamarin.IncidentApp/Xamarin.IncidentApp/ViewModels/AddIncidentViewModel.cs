@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -160,10 +159,60 @@ namespace Xamarin.IncidentApp.ViewModels
         {
             get
             {
-                return _playAudioCommand ?? (_playAudioCommand = new MvxRelayCommand(async () =>
+                return _playAudioCommand ?? (_playAudioCommand = new MvxRelayCommand(() =>
                 {
                     PlayAudio();
                 }));
+            }
+        }
+
+        private ICommand _removeImageCommand;
+        public ICommand RemoveImageCommand
+        {
+            get
+            {
+                return _removeImageCommand ?? (_removeImageCommand = new MvxRelayCommand(async () =>
+                {
+                    await RemoveImageAsync();
+                }));
+            }
+        }
+
+        private ICommand _removeAudioCommand;
+        public ICommand RemoveAudioCommand
+        {
+            get
+            {
+                return _removeAudioCommand ?? (_removeAudioCommand = new MvxRelayCommand(async () =>
+                {
+                    await RemoveAudioAsync();
+                }));
+            }
+        }
+
+        private async Task RemoveAudioAsync()
+        {
+            var response = await UserDialogs.ConfirmAsync(new ConfirmConfig
+            {
+                Title = "Remove Audio Recording",
+                Message = "Are you sure you want to remove this audio recording?"
+            });
+            if (response)
+            {
+                AudioRecording = null;
+            }
+        }
+
+        private async Task RemoveImageAsync()
+        {
+            var response = await UserDialogs.ConfirmAsync(new ConfirmConfig
+            {
+                Title = "Remove Image", 
+                Message = "Are you sure you want to remove this image?"
+            });
+            if (response)
+            {
+                Image = null;
             }
         }
 
@@ -221,7 +270,7 @@ namespace Xamarin.IncidentApp.ViewModels
         {
             if (e.AudioStream != null && e.AudioStream.Length > 0)
             {
-                Image = e.AudioStream;
+                AudioRecording = e.AudioStream;
             }
         }
 
