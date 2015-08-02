@@ -18,11 +18,27 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UIButton btnLogin { get; set; }
 
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UITextField txtEmailAddress { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UITextField txtPassword { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (btnLogin != null) {
 				btnLogin.Dispose ();
 				btnLogin = null;
+			}
+			if (txtEmailAddress != null) {
+				txtEmailAddress.Dispose ();
+				txtEmailAddress = null;
+			}
+			if (txtPassword != null) {
+				txtPassword.Dispose ();
+				txtPassword = null;
 			}
 		}
 	}

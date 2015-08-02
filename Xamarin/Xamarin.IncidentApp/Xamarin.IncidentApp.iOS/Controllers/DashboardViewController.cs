@@ -7,6 +7,7 @@
 // Last Modified On : 07-26-2015
 // ***********************************************************************
 using System;
+using System.Diagnostics;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Binding.Touch.Views;
 using Cirrious.MvvmCross.Touch.Views.Presenters;
@@ -72,6 +73,12 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
             // Perform any additional setup after loading the view
             NavigationController.NavigationBarHidden = false;
+            NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender, args) =>
+                {
+                    // button was clicked
+                    Debug.WriteLine("Add incident pressed!");
+                })
+            , true);
             SetupTable();
         }
 
@@ -113,20 +120,6 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         /// <param name="tableView">The table view.</param>
         public DashboardTableSource(UITableView tableView) : base(tableView)
         {
-        }
-
-        /// <summary>
-        /// Called to determine the height of the row at <paramref name="indexPath" />.
-        /// </summary>
-        /// <param name="tableView">Table view.</param>
-        /// <param name="indexPath">Location of the row.</param>
-        /// <returns>The height of the row (in points) as a <see langword="float" />.</returns>
-        /// <remarks><para>This method allows rows to have different heights (for example, rows that contain a variable number of text lines). If this method is implemented, it overrides the <see cref="P:UIKit.UITableView.RowHeight" /> property set on the table view, for the row at <paramref name="indexPath" />.</para>
-        /// <para>There are performance implications to using this method instead of <see cref="P:UIKit.UITableView.RowHeight" />: every time a table view is displayed it calls this method for each of its rows. This can result in poor performance when the table has a large number of rows (for example, 1000 rows or more).</para>
-        /// <para>Declared in [UITableViewDelegate]</para></remarks>
-        public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
-        {
-            return 50;
         }
 
         /// <summary>

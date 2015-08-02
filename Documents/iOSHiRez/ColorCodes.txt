@@ -1,0 +1,6 @@
+Blue: 03A9F4 (3,169,244)
+Pink: E91E63 (233,30,99)
+Yellow: FFC107 (255,193,7)
+Green: 259B24
+
+Bar Background: F0F0F0 (240,240,240)

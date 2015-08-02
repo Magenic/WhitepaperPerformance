@@ -16,7 +16,15 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel lblAvgWaitTitle { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel lblCompleted { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel lblIncidentTitle { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
@@ -36,9 +44,17 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (lblAvgWaitTitle != null) {
+				lblAvgWaitTitle.Dispose ();
+				lblAvgWaitTitle = null;
+			}
 			if (lblCompleted != null) {
 				lblCompleted.Dispose ();
 				lblCompleted = null;
+			}
+			if (lblIncidentTitle != null) {
+				lblIncidentTitle.Dispose ();
+				lblIncidentTitle = null;
 			}
 			if (lblTeamLead != null) {
 				lblTeamLead.Dispose ();

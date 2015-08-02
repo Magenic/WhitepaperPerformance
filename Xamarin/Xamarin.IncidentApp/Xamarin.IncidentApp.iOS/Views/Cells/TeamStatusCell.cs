@@ -28,6 +28,8 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
         /// </summary>
         public static readonly NSString Identifier = new NSString("TeamStatusCell");
 
+        private float _maxCompletedPercentConv;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TeamStatusCell"/> class.
         /// </summary>
@@ -46,6 +48,26 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
 		}
 
         /// <summary>
+        /// Gets or sets the maximum completed percentage, divided by 100 for easy binding to a progress bar.
+        /// </summary>
+        /// <value>The maximum completed percent.</value>
+        public float MaxCompletedPercentConv
+        {
+            get { return pvCompletedBar.Progress; }
+            set { pvCompletedBar.Progress = value / 100; }
+        }
+
+        /// <summary>
+        /// Gets or sets the maximum average wait time, divided by 100 for easy binding to a progress bar.
+        /// </summary>
+        /// <value>The maximum average wait time.</value>
+        public float MaxAvgWaitTimeConv
+        {
+            get { return pvWaitTimeBar.Progress; }
+            set { pvWaitTimeBar.Progress = value / 100; }
+        }
+
+        /// <summary>
         /// Initializes the bindings.
         /// </summary>
         private void InitializeBindings()
@@ -53,10 +75,10 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
             this.DelayBind(() =>
             {
                 this.CreateBinding(lblTeamLead).For(c => c.Text).To((UserStatus property) => property.User.FullName).Apply();
-                this.CreateBinding(pvCompletedBar).For(c => c.Progress).To((UserStatus property) => property.MaxCompletedPercent).Apply();
-                this.CreateBinding(pvWaitTimeBar).For(c => c.Progress).To((UserStatus property) => property.MaxAvgWaitTimePercent).Apply();
                 this.CreateBinding(lblCompleted).For(c => c.Text).To((UserStatus property) => property.MaxCompletedPercent).Apply();
                 this.CreateBinding(lblWaitTime).For(c => c.Text).To((UserStatus property) => property.MaxAvgWaitTimePercent).Apply();
+                this.CreateBinding().For(c => c.MaxCompletedPercentConv).To((UserStatus property) => property.MaxCompletedPercent).Apply();
+                this.CreateBinding().For(c => c.MaxAvgWaitTimeConv).To((UserStatus property) => property.MaxAvgWaitTimePercent).Apply();
             });
         }
 

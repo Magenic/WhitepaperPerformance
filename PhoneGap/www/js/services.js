@@ -54,7 +54,23 @@ app.factory('Azure', function($q) {
             method: "get"
         }).done(function (results) {
             
-            deferred.resolve(results.result);
+            var statusList = [];
+
+            results.result.forEach(function(result) {
+
+              var status = {
+                numberOfIncidents: Math.floor(Math.random() * 100), 
+                averageWaitTime: Math.floor(Math.random() * 100), 
+                user: result.user
+              };
+
+              statusList.push(status);
+
+            });
+
+            //deferred.resolve(results.result);
+
+            deferred.resolve(statusList);
 
         }, function(error) {
             
