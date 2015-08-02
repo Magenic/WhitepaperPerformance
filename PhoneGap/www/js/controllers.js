@@ -39,6 +39,8 @@ app.controller('LoginController', function(Azure, $state, ClearNavigationHistory
 
 app.controller('DashController', function($scope, Azure, $state) {
 
+  $scope.isIOS = ionic.Platform.isIOS();
+  $scope.isAndroid = ionic.Platform.isAndroid();
 
   refreshDashboard();
 
@@ -65,6 +67,13 @@ app.controller('DashController', function($scope, Azure, $state) {
 
   };
 
+  $scope.addIncident = function() {
+
+    // add new incident
+    $state.go('add-incident');
+
+  };
+
 });
 
 app.controller('OfflineController', function($scope, Azure) {
@@ -75,6 +84,10 @@ app.controller('IncidentsController', function($scope, Azure, $stateParams) {
 
   var userId = $stateParams.userId;
   $scope.UserId = userId;
+
+});
+
+app.controller('AddIncidentController', function($scope, Azure) {
 
 });
 
