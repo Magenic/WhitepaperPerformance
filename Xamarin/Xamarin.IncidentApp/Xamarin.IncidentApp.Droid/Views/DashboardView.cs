@@ -1,8 +1,10 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Provider;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Widget;
+using Xamarin.IncidentApp.Droid.MvxMaterial;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.Droid.Views
