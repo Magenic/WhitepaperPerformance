@@ -14,7 +14,7 @@ using Android.Util;
 
 namespace Xamarin.IncidentApp.Droid.MvxMaterial
 {
-    [Register("cirrious.mvvmcross.droid.support.v4.MvxSwipeRefreshLayout")]
+    [Register("xamarin.incidentapp.droid.mvxmaterial.MvxSwipeRefreshLayout")]
     public class MvxSwipeRefreshLayout : SwipeRefreshLayout
     {
         protected MvxSwipeRefreshLayout(IntPtr javaReference, JniHandleOwnership transfer)

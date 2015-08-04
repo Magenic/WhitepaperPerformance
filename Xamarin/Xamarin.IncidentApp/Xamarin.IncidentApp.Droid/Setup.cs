@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Reflection;
 using Android.Content;
 using Android.Views;
 using Cirrious.CrossCore;
@@ -38,6 +40,16 @@ namespace Xamarin.IncidentApp.Droid
                             "ViewWidth",
                             v => new ViewWidthBinging(v));
             base.FillTargetFactories(registry);
+        }
+
+        protected override IList<Assembly> AndroidViewAssemblies
+        {
+            get
+            {
+                var toReturn = base.AndroidViewAssemblies;
+                toReturn.Add(ExecutableAssembly);
+                return toReturn;
+            }
         }
     }
 }

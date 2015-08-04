@@ -17,7 +17,7 @@ using Cirrious.MvvmCross.Binding.Droid.Views;
 
 namespace Xamarin.IncidentApp.Droid.MvxMaterial
 {
-    [Register("cirrious.mvvmcross.droid.support.recyclerview.MvxRecyclerView")]
+    [Register("xamarin.incidentapp.droid.mvxmaterial.MvxRecyclerView")]
     public class MvxRecyclerView : Android.Support.V7.Widget.RecyclerView
     {
         #region ctor

@@ -2125,17 +2125,17 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f060039
 			public const int mini = 2131099705;
 			
-			// aapt resource value: 0x7f06008a
-			public const int mnuAddIncidentAttachImage = 2131099786;
+			// aapt resource value: 0x7f06008c
+			public const int mnuAddIncidentAttachImage = 2131099788;
 			
-			// aapt resource value: 0x7f060088
-			public const int mnuAddIncidentContinue = 2131099784;
+			// aapt resource value: 0x7f06008a
+			public const int mnuAddIncidentContinue = 2131099786;
+			
+			// aapt resource value: 0x7f06008d
+			public const int mnuAddIncidentRecordAudio = 2131099789;
 			
 			// aapt resource value: 0x7f06008b
-			public const int mnuAddIncidentRecordAudio = 2131099787;
-			
-			// aapt resource value: 0x7f060089
-			public const int mnuAddIncidentTakePhoto = 2131099785;
+			public const int mnuAddIncidentTakePhoto = 2131099787;
 			
 			// aapt resource value: 0x7f060021
 			public const int multiply = 2131099681;
@@ -2307,6 +2307,12 @@ namespace Xamarin.IncidentApp.Droid
 			
 			// aapt resource value: 0x7f06006d
 			public const int worker_list = 2131099757;
+			
+			// aapt resource value: 0x7f060089
+			public const int worker_queue_list = 2131099785;
+			
+			// aapt resource value: 0x7f060088
+			public const int worker_refresh_layout = 2131099784;
 			
 			// aapt resource value: 0x7f060020
 			public const int wrap_content = 2131099680;
@@ -2522,6 +2528,9 @@ namespace Xamarin.IncidentApp.Droid
 			
 			// aapt resource value: 0x7f030037
 			public const int WorkerQueue = 2130903095;
+			
+			// aapt resource value: 0x7f030038
+			public const int WorkerQueueItem = 2130903096;
 			
 			static Layout()
 			{
