@@ -4,7 +4,7 @@ using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 using Cirrious.MvvmCross.Droid.Views;
 using Cirrious.MvvmCross.ViewModels;
 
-namespace Xamarin.IncidentApp.Droid
+namespace Xamarin.IncidentApp.Droid.MvxMaterial
 {
     public class MvxActionBarActivity : MvxActionBarEventSourceActivity, IMvxAndroidView
     {

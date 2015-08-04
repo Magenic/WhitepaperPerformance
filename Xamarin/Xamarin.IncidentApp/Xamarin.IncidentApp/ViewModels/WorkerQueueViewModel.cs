@@ -26,7 +26,7 @@ namespace Xamarin.IncidentApp.ViewModels
         public void Init(string userId)
         {
              _userId = userId;
-            Task.Run(async () => await RefeshIncidentListAsync(_userId, _showClosed));
+             Task.Run(async () => await RefeshIncidentListAsync());
         }
 
         public IList<Incident> Incidents
@@ -44,11 +44,11 @@ namespace Xamarin.IncidentApp.ViewModels
             set
             {
                 _showClosed = value;
-                Task.Run(async () => await RefeshIncidentListAsync(_userId, _showClosed));
+                Task.Run(async () => await RefeshIncidentListAsync());
             }
         }
 
-        private async Task RefeshIncidentListAsync(string userId, bool showClosed)
+        public async Task RefeshIncidentListAsync()
         {
             var service = _azureService.MobileService;
             if (service.CurrentUser != null)
@@ -60,7 +60,7 @@ namespace Xamarin.IncidentApp.ViewModels
                         UserDialogs.ShowLoading("Retrieving Worker Queue...");
 
                         Incidents = await _azureService.MobileService.GetTable<Incident>()
-                            .Where(r => r.AssignedToId == userId && r.Closed == showClosed)
+                            .Where(r => r.AssignedToId == _userId && r.Closed == _showClosed)
                             .ToListAsync();
                     }
                     finally

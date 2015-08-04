@@ -8,6 +8,7 @@ using Android.Database;
 using Android.OS;
 using Android.Provider;
 using Android.Views;
+using Xamarin.IncidentApp.Droid.MvxMaterial;
 using Xamarin.IncidentApp.Droid.Services;
 using Xamarin.IncidentApp.ViewModels;
 using Xamarin.Media;

@@ -6,7 +6,7 @@ using Android.Support.V7.App;
 using Cirrious.CrossCore.Core;
 using Cirrious.CrossCore.Droid.Views;
 
-namespace Xamarin.IncidentApp.Droid
+namespace Xamarin.IncidentApp.Droid.MvxMaterial
 {
     public abstract class MvxActionBarEventSourceActivity : AppCompatActivity, IMvxEventSourceActivity
     {

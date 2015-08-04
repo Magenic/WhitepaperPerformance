@@ -2,6 +2,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
+using Xamarin.IncidentApp.Droid.MvxMaterial;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.Droid.Views
@@ -18,6 +19,17 @@ namespace Xamarin.IncidentApp.Droid.Views
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetHomeButtonEnabled(true);
 
+            var openIncidents = SupportActionBar.NewTab();
+            openIncidents.SetText("OPEN");
+            openIncidents.SetTabListener(new TabListener<WorkerQueueFragment>("A", ViewModel));
+            SupportActionBar.AddTab(openIncidents);
+
+            var closedIncidents = SupportActionBar.NewTab();
+            closedIncidents.SetText("Closed");
+            closedIncidents.SetTabListener(new TabListener<WorkerQueueFragment>("B", ViewModel));
+            SupportActionBar.AddTab(closedIncidents);
+
+            SupportActionBar.NavigationMode = Android.Support.V7.App.ActionBar.NavigationModeTabs;
         }
 
         public new WorkerQueueViewModel ViewModel
