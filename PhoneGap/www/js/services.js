@@ -20,6 +20,7 @@ app.factory('Azure', function($q) {
     var mobileService;
     var azureService = {};
 
+    // Login
     azureService.login = function () {
 
       var deferred = $q.defer();
@@ -38,6 +39,7 @@ app.factory('Azure', function($q) {
 
     };
 
+    // Get Status List
     azureService.getStatusList = function () {
 
       var deferred = $q.defer();
@@ -84,6 +86,7 @@ app.factory('Azure', function($q) {
 
     };
 
+    // Get User Profile
     azureService.getUserProfile = function () {
 
       var deferred = $q.defer();
@@ -104,6 +107,32 @@ app.factory('Azure', function($q) {
       return deferred.promise;
 
     };
+
+    // Get Incident List
+    azureService.getIncidentList = function (assignedToUserId, isClosed) {
+
+      var deferred = $q.defer();
+
+      var incidentTable = mobileService.getTable('Incident')
+        .where({
+            
+            assignedToId: assignedToUserId,
+            closed: isClosed
+          
+          })
+        .read().done(function (incidentTable) {
+
+            deferred.resolve(incidentTable);
+
+        }, function (err) {
+
+            alert("Error: " + err);
+
+        });
+
+      return deferred.promise;
+
+    };    
 
     return azureService;
 

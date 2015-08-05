@@ -83,7 +83,28 @@ app.controller('OfflineController', function($scope, Azure) {
 app.controller('IncidentsController', function($scope, Azure, $stateParams) {
 
   var userId = $stateParams.userId;
-  $scope.UserId = userId;
+
+  // get user
+  $scope.selectedUserId = userId;
+  $scope.selectedUserFullName = userId;   //TODO - this needs to be the users full name
+
+  refreshIncidents();
+
+  $scope.doRefresh = function() {
+    refreshIncidents();
+  };    
+
+  function refreshIncidents() {
+
+    Azure.getIncidentList(userId, false)
+      .then(function (incidentList) {
+
+        $scope.incidentList = incidentList;
+        $scope.$broadcast('scroll.refreshComplete');
+
+      });
+
+  };  
 
 });
 
