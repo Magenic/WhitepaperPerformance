@@ -6,6 +6,8 @@
 // Last Modified By : Ken Ross
 // Last Modified On : 07-26-2015
 // ***********************************************************************
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -18,7 +20,6 @@ using Cirrious.MvvmCross.Commands;
 using Cirrious.MvvmCross.ViewModels;
 using Xamarin.IncidentApp.Interfaces;
 using Xamarin.IncidentApp.Models;
-using Xamarin.IncidentApp.Utilities;
 
 /// <summary>
 /// The ViewModels namespace.
@@ -30,7 +31,7 @@ namespace Xamarin.IncidentApp.ViewModels
     /// </summary>
     public class DashboardViewModel : BaseViewModel
     {
-        private IAzureService _mobileService;
+        private IAzureService _azureService;
         
         /// <summary>
         /// Initializes a new instance of the <see cref="DashboardViewModel"/> class.
@@ -40,7 +41,7 @@ namespace Xamarin.IncidentApp.ViewModels
         /// <param name="mobileService">Service for accessing Azure.</param>
         public DashboardViewModel(INetworkService networkService, IUserDialogs userDialogs, IAzureService mobileService) : base(networkService, userDialogs)
         {
-            _mobileService = mobileService;
+            _azureService = mobileService;
         }
 
         /// <summary>
@@ -85,21 +86,32 @@ namespace Xamarin.IncidentApp.ViewModels
         /// <returns>Task.</returns>
         public async Task RefreshDashboardAsync()
         {
-            var service = _mobileService.MobileService;
+            var service = _azureService.MobileService;
             if (service.CurrentUser != null)
             {
                 if (NetworkService.IsConnected)
                 {
-                    var userStatuses = await service.InvokeApiAsync<IList<UserStatus>>("StatusList", HttpMethod.Get, null);
-                    var maxCompleted = MaxCompletedIncidents(userStatuses);
-                    var maxWaitTime = MaxWaitTime(userStatuses);
-                    foreach (var userStatus in userStatuses)
+                    try
                     {
-                        userStatus.MaxCompletedIncidents = maxCompleted;
-                        userStatus.MaxWaitTime = maxWaitTime;
+                        UserDialogs.ShowLoading("Retrieving Worker Statistics...");
+                        
+                        var userStatuses = await service.InvokeApiAsync<IList<UserStatus>>("StatusList", HttpMethod.Get, null);
+                        var maxCompleted = MaxCompletedIncidents(userStatuses);
+                        var maxOpen = MaxOpenIncidents(userStatuses);
+                        var maxWaitTime = MaxWaitTime(userStatuses);
+                        foreach (var userStatus in userStatuses)
+                        {
+                            userStatus.MaxCompletedIncidents = maxCompleted;
+                            userStatus.MaxWaitTime = maxWaitTime;
+                            userStatus.MaxOpenIncidents = maxOpen;
+                        }
+                        var collection = new ObservableCollection<UserStatus>(userStatuses);
+                        UserStatuses = collection;
                     }
-                    var collection = new ObservableCollection<UserStatus>(userStatuses);
-                    UserStatuses = collection;
+                    finally
+                    {
+                        UserDialogs.HideLoading();
+                    }
                 }
             }
         }
@@ -158,7 +170,7 @@ namespace Xamarin.IncidentApp.ViewModels
         /// <param name="userId">The user identifier.</param>
         private void ShowWorkerQueue(string userId)
         {
-            ShowViewModel<WorkerQueueViewModel>(userId);
+            ShowViewModel<WorkerQueueViewModel>(new { userId = userId });
         }
 
         /// <summary>
@@ -188,5 +200,15 @@ namespace Xamarin.IncidentApp.ViewModels
             }
             return userStatuses.Max(u => u.TotalCompleteIncidentsPast30Days);
         }
+
+        private int MaxOpenIncidents(IList<UserStatus> userStatuses)
+        {
+            if (userStatuses == null || userStatuses.Count == 0)
+            {
+                return 0;
+            }
+            return userStatuses.Max(u => u.TotalOpenIncidents);
+        }
+
     }
 }

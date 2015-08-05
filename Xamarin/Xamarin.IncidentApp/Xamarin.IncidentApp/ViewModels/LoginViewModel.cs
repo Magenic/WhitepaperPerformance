@@ -20,10 +20,6 @@ using Xamarin.IncidentApp.Interfaces;
 using Xamarin.IncidentApp.Models;
 using Xamarin.IncidentApp.Utilities;
 
-/// <summary>
-/// The ViewModels namespace.
-/// </summary>
-
 namespace Xamarin.IncidentApp.ViewModels
 {
     /// <summary>
@@ -108,15 +104,15 @@ namespace Xamarin.IncidentApp.ViewModels
                 }
                 else
                 {
-                    ShowViewModel<WorkerQueueViewModel>(profile.UserId, clearStackBundle);
+                    ShowViewModel<WorkerQueueViewModel>(new { userId = profile.UserId }, clearStackBundle);
                 }
                 Close(this);
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException)
             {
                 UserDialogs.Alert("User login canceled", "Login Error");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 UserDialogs.Alert("An unknown exception occurred logging in, please try again.", "Login Error");
             }

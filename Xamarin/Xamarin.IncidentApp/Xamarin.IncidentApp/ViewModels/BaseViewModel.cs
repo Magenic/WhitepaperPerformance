@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Acr.MvvmCross.Plugins.Network;
 using Acr.UserDialogs;
 using Cirrious.MvvmCross.ViewModels;
-using Xamarin.IncidentApp.Interfaces;
+
 
 namespace Xamarin.IncidentApp.ViewModels
 {

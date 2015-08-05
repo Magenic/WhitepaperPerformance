@@ -37,20 +37,62 @@ app.controller('LoginController', function(Azure, $state, ClearNavigationHistory
 
 });
 
-app.controller('DashController', function($scope, Azure) {
+app.controller('DashController', function($scope, Azure, $state) {
 
-  Azure.getStatusList()
-    .then(function (statusList) {
+  $scope.isIOS = ionic.Platform.isIOS();
+  $scope.isAndroid = ionic.Platform.isAndroid();
 
-      $scope.statusList = statusList;
+  refreshDashboard();
 
-    });
+  function refreshDashboard() {
+
+    Azure.getStatusList()
+      .then(function (statusList) {
+
+        $scope.statusList = statusList;
+        $scope.$broadcast('scroll.refreshComplete');
+
+      });
+
+  };
+
+  $scope.doRefresh = function() {
+    refreshDashboard();
+  };    
+
+  $scope.selectUser = function(userId) {
+
+    // go to incident queue for user user...
+    $state.go('incidents', { userId: userId });
+
+  };
+
+  $scope.addIncident = function() {
+
+    // add new incident
+    $state.go('add-incident');
+
+  };
 
 });
 
 app.controller('OfflineController', function($scope, Azure) {
 
 });
+
+app.controller('IncidentsController', function($scope, Azure, $stateParams) {
+
+  var userId = $stateParams.userId;
+  $scope.UserId = userId;
+
+});
+
+app.controller('AddIncidentController', function($scope, Azure) {
+
+});
+
+
+
 
 
 // this is the one from the tabs stuff

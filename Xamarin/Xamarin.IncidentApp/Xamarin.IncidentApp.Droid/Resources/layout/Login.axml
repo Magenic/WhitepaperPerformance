@@ -45,20 +45,22 @@
         <EditText
             android:id="@+id/emailAdress"
             android:layout_height="wrap_content"
-            android:layout_width="240dp"
+            android:layout_width="match_parent"
             android:hint="Email Address"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/appTitle"
             style="@style/EditTextIncidentracker" />
         <EditText
             android:id="@+id/password"
             android:layout_height="wrap_content"
-            android:layout_width="240dp"
+            android:layout_width="match_parent"
             android:hint="Password"
             android:inputType="textPassword"
             android:ellipsize="start"
-            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_below="@id/emailAdress"
             style="@style/EditTextIncidentracker" />
         <Button

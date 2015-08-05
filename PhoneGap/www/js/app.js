@@ -53,6 +53,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
     controller: 'DashController'
   })
 
+  .state('incidents', {
+    url: '/incidents/:userId',
+    templateUrl: 'templates/incidents.html',
+    controller: 'IncidentsController'
+  })
+
+  .state('add-incident', {
+    url: '/add-incident',
+    templateUrl: 'templates/add-incident.html',
+    controller: 'AddIncidentController'
+  })
+
   .state('offline', {
     url: '/offline',
     templateUrl: 'templates/offline.html',

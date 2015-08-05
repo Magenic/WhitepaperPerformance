@@ -35,8 +35,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Constants\AzureConstants.cs" />
+    <Compile Include="Converters\BinaryAssetExistsConverter.cs" />
+    <Compile Include="Converters\UserProfileIdConverter.cs" />
+    <Compile Include="EventArgs\AudioCompleteEventArgs.cs" />
+    <Compile Include="EventArgs\PhotoCompleteEventArgs.cs" />
     <Compile Include="Interfaces\ILoginService.cs" />
     <Compile Include="Interfaces\IAzureService.cs" />
+    <Compile Include="Interfaces\IMediaService.cs" />
     <Compile Include="Models\Incident.cs" />
     <Compile Include="Models\Token.cs" />
     <Compile Include="Models\UserProfile.cs" />
@@ -51,6 +57,7 @@
     <Compile Include="ViewModels\AddIncidentViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\DisplayIncidentViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\WorkerQueueViewModel.cs" />
   </ItemGroup>

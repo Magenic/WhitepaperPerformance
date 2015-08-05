@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\xamstore-xamarin.mobile.0.7.1\build\monoandroid\xamstore-xamarin.mobile.props" Condition="Exists('..\..\packages\xamstore-xamarin.mobile.0.7.1\build\monoandroid\xamstore-xamarin.mobile.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -147,6 +148,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Xamarin.Android.Support.v7.AppCompat.22.2.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
+      <HintPath>..\..\packages\Xamarin.Android.Support.v7.RecyclerView.22.2.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Mobile">
+      <HintPath>..\..\Components\xamarin.mobile-0.7.1\lib\android\Xamarin.Mobile.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xamarin.IncidentApp\Xamarin.IncidentApp.csproj">
@@ -158,18 +165,42 @@
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Bootstrap\NetworkPluginBootstrap.cs" />
     <Compile Include="Bootstrap\UserDialogsPluginBootstrap.cs" />
+    <Compile Include="Constants\IntentConstants.cs" />
+    <Compile Include="Converters\BinaryAssetExistsConverter.cs" />
+    <Compile Include="Converters\ByteBitmapConverter.cs" />
     <Compile Include="DebugTrace.cs" />
+    <Compile Include="MvxMaterial\IMvxEventSourceFragment.cs" />
+    <Compile Include="MvxMaterial\IMvxFragmentView.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
-    <Compile Include="MvxActionBarActivity.cs" />
-    <Compile Include="MvxActionBarEventSourceActivity.cs" />
+    <Compile Include="MvxMaterial\IMvxRecyclerViewHolder.cs" />
+    <Compile Include="MvxMaterial\MvxActionBarActivity.cs" />
+    <Compile Include="MvxMaterial\MvxActionBarEventSourceActivity.cs" />
+    <Compile Include="MvxMaterial\MvxBaseFragmentAdapter.cs" />
+    <Compile Include="MvxMaterial\MvxBindingFragmentAdapter.cs" />
+    <Compile Include="MvxMaterial\MvxCreateViewParameters.cs" />
+    <Compile Include="MvxMaterial\MvxFragment.cs" />
+    <Compile Include="MvxMaterial\MvxEventSourceFragment.cs" />
+    <Compile Include="MvxMaterial\MvxFragmentExtensions.cs" />
+    <Compile Include="MvxMaterial\MvxOwnedViewModelFragmentAttribute.cs" />
+    <Compile Include="MvxMaterial\MvxOwnedViewModelFragmentAttributeExtensionMethods.cs" />
+    <Compile Include="MvxMaterial\IMvxRecyclerAdapter.cs" />
+    <Compile Include="MvxMaterial\MvxRecyclerAdapter.cs" />
+    <Compile Include="MvxMaterial\MvxRecyclerView.cs" />
+    <Compile Include="MvxMaterial\MvxRecyclerViewHolder.cs" />
+    <Compile Include="MvxMaterial\MvxSimpleLayoutInflaterHolder.cs" />
+    <Compile Include="MvxMaterial\MvxSwipeRefreshLayout.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LoginService.cs" />
+    <Compile Include="Services\MediaService.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Views\AddIncidentView.cs" />
+    <Compile Include="Views\BitmapImageView.cs" />
     <Compile Include="Views\DashboardView.cs" />
     <Compile Include="Views\LoginView.cs" />
+    <Compile Include="Views\TabListener.cs" />
+    <Compile Include="Views\WorkerQueueFragment.cs" />
     <Compile Include="Views\WorkerQueueView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -179,7 +210,9 @@
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\SplashScreen.axml" />
-    <AndroidResource Include="Resources\layout\Login.axml" />
+    <AndroidResource Include="Resources\layout\Login.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\WorkerQueue.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
@@ -187,15 +220,20 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\StatusItem.axml">
-      <SubType>AndroidResource</SubType>
+      <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\incidentracker_tab_indicator_holo.axml" />
     <AndroidResource Include="Resources\layout\AddIncident.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\WorkerQueueItem.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\values\Strings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
@@ -211,7 +249,9 @@
     <AndroidResource Include="Resources\drawable-mdpi\segmented_control_last_background.xml" />
     <AndroidResource Include="Resources\Color\segmented_control_text.xml" />
     <AndroidResource Include="Resources\drawable\ClosedBar.xml" />
-    <AndroidResource Include="Resources\drawable\OpenBar.xml" />
+    <AndroidResource Include="Resources\drawable\OpenBar.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\splash.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon.png" />
@@ -296,8 +336,27 @@
     <AndroidResource Include="Resources\drawable-mdpi\ic_add_white_24dp.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_add_white_24dp.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_add_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_send_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_send_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_send_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_send_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_send_white_24dp.png" />
+    <AndroidResource Include="Resources\menu\AddIncidentMenu.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_clear_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_play_arrow_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_clear_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_play_arrow_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_clear_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_play_arrow_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_clear_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_play_arrow_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_clear_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_play_arrow_black_24dp.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -306,6 +365,12 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\xamstore-xamarin.mobile.0.7.1\build\monoandroid\xamstore-xamarin.mobile.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\xamstore-xamarin.mobile.0.7.1\build\monoandroid\xamstore-xamarin.mobile.props'))" />
   </Target>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

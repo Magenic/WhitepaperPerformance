@@ -18,13 +18,13 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
         android:textColor="@color/secondary"
-        android:text="# Closed Incidents" />
+        android:text="# Open Incidents" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ProgressBar
             android:id="@+id/closedProgress"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:progressDrawable="@drawable/closedbar"
@@ -35,7 +35,7 @@
             android:layout_marginTop="2dp"
             android:layout_marginBottom="5dp"
             android:background="@color/secondary"
-            local:MvxBind="Progress MaxCompletedPercent" />
+            local:MvxBind="Progress MaxOpenPercent" />
         <TextView
             android:background="#00000000"
             android:textColor="#FFFFFF"
@@ -48,10 +48,10 @@
             android:layout_alignTop="@id/closedProgress"
             android:layout_alignRight="@id/closedProgress"
             android:layout_alignBottom="@id/closedProgress"
-            local:MvxBind="Text TotalCompleteIncidentsPast30Days" />
+            local:MvxBind="Text TotalOpenIncidents" />
     </RelativeLayout>
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"

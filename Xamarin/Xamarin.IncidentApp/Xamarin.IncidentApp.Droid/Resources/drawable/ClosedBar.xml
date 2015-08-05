@@ -13,9 +13,9 @@
         <clip>
             <shape>
                 <corners android:radius="5dip" />
-                <solid android:color="@color/popped" />
+                <solid android:color="@color/accent" />
             </shape>
         </clip>
-        <color android:color="@color/popped" />
+        <color android:color="@color/accent" />
     </item>
 </layer-list>
