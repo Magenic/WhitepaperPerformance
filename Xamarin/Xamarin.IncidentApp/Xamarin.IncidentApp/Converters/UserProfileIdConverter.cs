@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using Cirrious.CrossCore;
 using Cirrious.CrossCore.Converters;
 using Xamarin.IncidentApp.Models;
 

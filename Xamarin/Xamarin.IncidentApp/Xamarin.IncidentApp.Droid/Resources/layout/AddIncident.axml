@@ -49,7 +49,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:textColor="@color/secondary" />
-        <cirrious.mvvmcross.droid.support.appcompat.widget.MvxAppCompatSpinner
+        <Mvx.MvxSpinner
             android:id="@+id/AddIncidentSpinner"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"

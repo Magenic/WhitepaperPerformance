@@ -89,7 +89,6 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
-
         private string _userId;
         public string UserId
         {

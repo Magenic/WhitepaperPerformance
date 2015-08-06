@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -120,7 +119,7 @@ namespace Xamarin.IncidentApp.ViewModels
 
         private void ShowIncidentItem(WorkerQueueItemViewModel incident)
         {
-            ShowViewModel<DisplayIncidentViewModel>(incident.Id);
+            ShowViewModel<DisplayIncidentViewModel>(new { incidentId = incident.Id });
         }
     }
 }
