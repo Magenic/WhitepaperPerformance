@@ -2,15 +2,15 @@ var app = angular.module('IncidentApp', ['ionic'])
 
 app.run(function($ionicPlatform, $state, ClearNavigationHistory) {
   $ionicPlatform.ready(function() {
-    
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)    
+    // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
-    
+
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
@@ -54,7 +54,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('incidents', {
-    url: '/incidents/:userId',
+    url: '/incidents/:userId/:userFullName',
     templateUrl: 'templates/incidents.html',
     controller: 'IncidentsController'
   })

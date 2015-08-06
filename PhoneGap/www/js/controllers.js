@@ -60,10 +60,13 @@ app.controller('DashController', function($scope, Azure, $state) {
     refreshDashboard();
   };    
 
-  $scope.selectUser = function(userId) {
+  $scope.selectUser = function(userId, userFullName) {
 
-    // go to incident queue for user user...
-    $state.go('incidents', { userId: userId });
+    // go to incident queue for user ...
+    $state.go('incidents', { 
+      userId: userId,
+      userFullName: userFullName
+    });
 
   };
 
@@ -83,10 +86,11 @@ app.controller('OfflineController', function($scope, Azure) {
 app.controller('IncidentsController', function($scope, Azure, $stateParams) {
 
   var userId = $stateParams.userId;
+  var userFullName = $stateParams.userFullName;
 
   // get user
   $scope.selectedUserId = userId;
-  $scope.selectedUserFullName = userId;   //TODO - this needs to be the users full name
+  $scope.selectedUserFullName = userFullName;
 
   refreshIncidents();
 

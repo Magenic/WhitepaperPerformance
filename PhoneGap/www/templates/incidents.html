@@ -1,4 +1,4 @@
-<ion-view view-title="Team Performance">
+<ion-view view-title="{{ selectedUserFullName }}">
 	<ion-content>
 
 	<ion-refresher
@@ -23,7 +23,7 @@
 					
 					<h2>{{ incident.subject }}</h2>
 
-					Owner: {{ incident.assignedToId }}<br />
+					Owner: {{ selectedUserFullName }}<br />
 
 					{{ incident.dateOpened | date:'M/dd/yyyy @ h:mm a' }}
 
