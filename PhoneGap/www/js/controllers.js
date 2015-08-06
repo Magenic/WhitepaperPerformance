@@ -14,13 +14,13 @@ app.controller('LoginController', function(Azure, $state, ClearNavigationHistory
 
                 var isManager = userProfile.manager;
                 if (isManager) {
-      
+
                   $state.go('dash');
-      
+
                 } else {
-      
+
                   $state.go('incidents');
-      
+
                 }
 
               });
@@ -58,12 +58,12 @@ app.controller('DashController', function($scope, Azure, $state) {
 
   $scope.doRefresh = function() {
     refreshDashboard();
-  };    
+  };
 
   $scope.selectUser = function(userId, userFullName) {
 
     // go to incident queue for user ...
-    $state.go('incidents', { 
+    $state.go('incidents', {
       userId: userId,
       userFullName: userFullName
     });
@@ -85,22 +85,25 @@ app.controller('OfflineController', function($scope, Azure) {
 
 app.controller('IncidentsController', function($scope, Azure, $stateParams) {
 
+  // get user
   var userId = $stateParams.userId;
   var userFullName = $stateParams.userFullName;
-
-  // get user
   $scope.selectedUserId = userId;
   $scope.selectedUserFullName = userFullName;
 
+  // setup open / closed
+  $scope.showOpen = true;
+
+  // do initial load of incidents
   refreshIncidents();
 
   $scope.doRefresh = function() {
     refreshIncidents();
-  };    
+  };
 
   function refreshIncidents() {
 
-    Azure.getIncidentList(userId, false)
+    Azure.getIncidentList(userId)
       .then(function (incidentList) {
 
         $scope.incidentList = incidentList;
@@ -108,7 +111,7 @@ app.controller('IncidentsController', function($scope, Azure, $stateParams) {
 
       });
 
-  };  
+  };
 
 });
 

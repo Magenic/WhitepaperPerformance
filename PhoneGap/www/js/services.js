@@ -27,8 +27,8 @@ app.factory('Azure', function($q) {
 
       mobileService = new WindowsAzure.MobileServiceClient(azureUrl, azureKey);
       mobileService.login("WindowsAzureActiveDirectory").done(function (results) {
-        
-        // var userId = results.userId;    
+
+        // var userId = results.userId;
         // var token = mobileService.currentUser.mobileServiceAuthenticationToken;
 
         deferred.resolve(true);
@@ -55,14 +55,14 @@ app.factory('Azure', function($q) {
             body: null,
             method: "get"
         }).done(function (results) {
-            
+
             var statusList = [];
 
             results.result.forEach(function(result) {
 
               var status = {
-                numberOfIncidents: Math.floor(Math.random() * 100), 
-                averageWaitTime: Math.floor(Math.random() * 100), 
+                numberOfIncidents: Math.floor(Math.random() * 100),
+                averageWaitTime: Math.floor(Math.random() * 100),
                 user: result.user
               };
 
@@ -75,7 +75,7 @@ app.factory('Azure', function($q) {
             deferred.resolve(statusList);
 
         }, function(error) {
-            
+
             alert(error.message);
 
         });
@@ -95,11 +95,11 @@ app.factory('Azure', function($q) {
           body: null,
           method: "get"
       }).done(function (results) {
-          
+
           deferred.resolve(results.result);
 
       }, function(error) {
-          
+
           alert(error.message);
 
       });
@@ -109,16 +109,15 @@ app.factory('Azure', function($q) {
     };
 
     // Get Incident List
-    azureService.getIncidentList = function (assignedToUserId, isClosed) {
+    azureService.getIncidentList = function (assignedToUserId) {
 
       var deferred = $q.defer();
 
       var incidentTable = mobileService.getTable('Incident')
         .where({
-            
-            assignedToId: assignedToUserId,
-            closed: isClosed
-          
+
+            assignedToId: assignedToUserId
+
           })
         .read().done(function (incidentTable) {
 
@@ -132,12 +131,8 @@ app.factory('Azure', function($q) {
 
       return deferred.promise;
 
-    };    
+    };
 
     return azureService;
 
 });
-
-
-
-

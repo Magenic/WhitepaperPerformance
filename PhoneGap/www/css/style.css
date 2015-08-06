@@ -46,7 +46,7 @@
 .dashboardItem progress:after {
     color: #fff;
     font-size: 25px;
-    
+
     position: relative;
     top: -24px;
     left: 10px;
@@ -56,28 +56,25 @@
 
 .float-button {
   color: #249a23;
-  position: fixed; 
+  position: fixed;
   font-size: 45px;
   bottom: 10px;
   right: 15px;
   z-index: 9999;
 }
 
-/* Incident Queue */
+/* Incident List */
 
-.incidentItem .incidentThumb {
-    float: left
+.incidentListHeaderButton {
+  color: lightgrey !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  border: 0px;
 }
 
-.incidentItem .incidentThumb img {
-    display: block
+.incidentListHeaderButton .active {
+  color: #ffffff !important;
+  border-bottom: 10px;
+  border-bottom-color: #E91E63;
+  border-bottom-style: solid;
 }
-
-.incidentItem .incidentContent {
-    margin-left: 110px
-}
-
-
-
-
-
