@@ -164,6 +164,7 @@
     <Compile Include="Bootstrap\NetworkPluginBootstrap.cs" />
     <Compile Include="Bootstrap\UserDialogsPluginBootstrap.cs" />
     <Compile Include="Constants\IntentConstants.cs" />
+    <Compile Include="Constants\KeyConstants.cs" />
     <Compile Include="Converters\BinaryAssetExistsConverter.cs" />
     <Compile Include="Converters\ByteBitmapConverter.cs" />
     <Compile Include="DebugTrace.cs" />
@@ -173,6 +174,8 @@
     <Compile Include="MvxMaterial\IMvxRecyclerViewHolder.cs" />
     <Compile Include="MvxMaterial\MvxActionBarActivity.cs" />
     <Compile Include="MvxMaterial\MvxActionBarEventSourceActivity.cs" />
+    <Compile Include="MvxMaterial\MvxAppCompatSpinner.cs" />
+    <Compile Include="MvxMaterial\MvxAppCompatSpinnerSelectedItemBinding.cs" />
     <Compile Include="MvxMaterial\MvxBaseFragmentAdapter.cs" />
     <Compile Include="MvxMaterial\MvxBindingFragmentAdapter.cs" />
     <Compile Include="MvxMaterial\MvxCreateViewParameters.cs" />
@@ -196,6 +199,7 @@
     <Compile Include="Views\AddIncidentView.cs" />
     <Compile Include="Views\BitmapImageView.cs" />
     <Compile Include="Views\DashboardView.cs" />
+    <Compile Include="Views\DisplayIncident.cs" />
     <Compile Include="Views\LoginView.cs" />
     <Compile Include="Views\TabListener.cs" />
     <Compile Include="Views\WorkerQueueFragment.cs" />
@@ -227,6 +231,9 @@
     <AndroidResource Include="Resources\layout\WorkerQueueItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\DisplayIncident.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml">
@@ -234,7 +241,9 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
+    <AndroidResource Include="Resources\values\MvxBindingAttributes.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\values\Styles.xml">
       <SubType>Designer</SubType>
     </AndroidResource>

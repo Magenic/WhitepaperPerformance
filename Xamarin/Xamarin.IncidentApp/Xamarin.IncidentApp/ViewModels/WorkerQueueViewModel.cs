@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.MvvmCross.Plugins.Network;
@@ -13,7 +15,7 @@ namespace Xamarin.IncidentApp.ViewModels
     public class WorkerQueueViewModel : BaseViewModel
     {
         private string _userId;
-        private IList<Incident> _incidents;
+        private IList<WorkerQueueItemViewModel> _incidents;
         private bool _showClosed = false;
         private IAzureService _azureService;
 
@@ -29,7 +31,7 @@ namespace Xamarin.IncidentApp.ViewModels
              Task.Run(async () => await RefeshIncidentListAsync());
         }
 
-        public IList<Incident> Incidents
+        public IList<WorkerQueueItemViewModel> Incidents
         {
             get { return _incidents; }
             set
@@ -39,12 +41,26 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
+        private string _fullName;
+        public string FullName
+        {
+            get { return _fullName; }
+            set
+            {
+                _fullName = value;
+                RaisePropertyChanged(() => FullName);
+            }
+        }
+
         public bool ShowClosed
         {
             set
             {
-                _showClosed = value;
-                Task.Run(async () => await RefeshIncidentListAsync());
+                if (_showClosed != value)
+                {
+                    _showClosed = value;
+                    Task.Run(async () => await RefeshIncidentListAsync());                    
+                }
             }
         }
 
@@ -59,9 +75,31 @@ namespace Xamarin.IncidentApp.ViewModels
                     {
                         UserDialogs.ShowLoading("Retrieving Worker Queue...");
 
-                        Incidents = await _azureService.MobileService.GetTable<Incident>()
+                        var incidents = await _azureService.MobileService.GetTable<Incident>()
                             .Where(r => r.AssignedToId == _userId && r.Closed == _showClosed)
                             .ToListAsync();
+
+                        var newIncidents = new List<WorkerQueueItemViewModel>();
+                        foreach (var incident in incidents)
+                        {
+                            var newIncident = new WorkerQueueItemViewModel(NetworkService, UserDialogs)
+                            {
+                                DateOpened = incident.DateOpened,
+                                Id = incident.Id,
+                                ImageLink = incident.ImageLink,
+                                Subject = incident.Subject,
+                                UserId = incident.AssignedToId
+                            };
+                            newIncidents.Add(newIncident);
+                        }
+                        Incidents = newIncidents;
+
+                        var workers = await service.InvokeApiAsync<IList<UserProfile>>("WorkerList", HttpMethod.Get, null);
+                        FullName = workers.Single(w => w.UserId == _userId).FullName;
+                        foreach (var incident in Incidents)
+                        {
+                            incident.FullName = FullName;
+                        }
                     }
                     finally
                     {
@@ -76,13 +114,13 @@ namespace Xamarin.IncidentApp.ViewModels
         {
             get
             {
-                return _showIncidentItemCommand ?? (_showIncidentItemCommand = new MvxRelayCommand<string>(ShowIncidentItem));
+                return _showIncidentItemCommand ?? (_showIncidentItemCommand = new MvxRelayCommand<WorkerQueueItemViewModel>(ShowIncidentItem));
             }
         }
-        
-        private void ShowIncidentItem(string incidentId)
+
+        private void ShowIncidentItem(WorkerQueueItemViewModel incident)
         {
-            ShowViewModel<DisplayIncidentViewModel>(incidentId);
+            ShowViewModel<DisplayIncidentViewModel>(incident.Id);
         }
     }
 }

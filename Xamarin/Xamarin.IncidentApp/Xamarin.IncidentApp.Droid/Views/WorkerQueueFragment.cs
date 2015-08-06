@@ -1,7 +1,10 @@
+using Android.App;
 using Android.OS;
 using Android.Support.V4.Widget;
 using Android.Views;
-using Xamarin.IncidentApp.Droid.MvxMaterial;
+using Cirrious.MvvmCross.Droid.Support.Fragging.Fragments;
+using Cirrious.MvvmCross.Droid.Support.RecyclerView;
+using Cirrious.MvvmCross.Droid.Support.V4;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.Droid.Views
@@ -10,15 +13,18 @@ namespace Xamarin.IncidentApp.Droid.Views
     {
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            var ignored = base.OnCreateView(inflater, container, savedInstanceState);
+        //    var ignored = base.OnCreateView(inflater, container, savedInstanceState);
 
-            return inflater.Inflate(Resource.Layout.WorkerQueue, null);
+        //    return inflater.Inflate(Resource.Layout.WorkerQueue, null);
+            return base.OnCreateView(inflater, container, savedInstanceState);
         }
 
-        public override void OnResume()
+        public override void OnAttach(Activity activity)
         {
-            base.OnResume();
-            var refreshLayout = Activity.FindViewById<SwipeRefreshLayout>(Resource.Id.worker_refresh_layout);
+            base.OnAttach(activity);
+            //var workerQueue = Activity.FindViewById<MvxRecyclerView>(Resource.Id.worker_queue_list);
+            //workerQueue.ItemClick = ((WorkerQueueViewModel) ViewModel).ShowIncidentItemCommand;
+            var refreshLayout = Activity.FindViewById<MvxSwipeRefreshLayout>(Resource.Id.worker_refresh_layout);
             refreshLayout.Refresh -= HandleRefresh;
             refreshLayout.Refresh += HandleRefresh;
             refreshLayout.ViewTreeObserver.ScrollChanged -= ScrollChanged;
@@ -26,9 +32,9 @@ namespace Xamarin.IncidentApp.Droid.Views
 
         }
 
-        public override void OnPause()
+        public override void OnDetach()
         {
-            base.OnPause();
+            base.OnDetach();
             var refreshLayout = Activity.FindViewById<MvxSwipeRefreshLayout>(Resource.Id.worker_refresh_layout);
             refreshLayout.Refresh -= HandleRefresh;
             refreshLayout.ViewTreeObserver.ScrollChanged -= ScrollChanged;

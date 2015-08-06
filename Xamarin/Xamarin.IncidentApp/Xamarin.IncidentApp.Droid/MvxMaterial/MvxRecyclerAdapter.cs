@@ -19,7 +19,7 @@ using Cirrious.MvvmCross.Binding.Attributes;
 using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 using Cirrious.MvvmCross.Binding.ExtensionMethods;
 
-namespace Xamarin.IncidentApp.Droid.MvxMaterial
+namespace Cirrious.MvvmCross.Droid.Support.RecyclerView
 {
     public class MvxRecyclerAdapter : Android.Support.V7.Widget.RecyclerView.Adapter, IMvxRecyclerAdapter
     {
