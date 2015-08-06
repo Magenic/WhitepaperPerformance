@@ -4,7 +4,7 @@ using Cirrious.MvvmCross.Droid.Views;
 
 namespace Xamarin.IncidentApp.Droid
 {
-    [Activity(Label = "Xamarin.IncidentApp.Droid"
+    [Activity(Label = "Incidentracker"
 		, MainLauncher = true
 		, Icon = "@drawable/icon"
         , Theme = "@style/Theme.IncidentSplash"

@@ -1,7 +1,11 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Provider;
+using Android.Support.V4.Widget;
 using Android.Views;
+using Cirrious.MvvmCross.Droid.Support.RecyclerView;
+using Xamarin.IncidentApp.Droid.Constants;
 using Xamarin.IncidentApp.Droid.MvxMaterial;
 using Xamarin.IncidentApp.ViewModels;
 
@@ -20,16 +24,33 @@ namespace Xamarin.IncidentApp.Droid.Views
             SupportActionBar.SetHomeButtonEnabled(true);
 
             var openIncidents = SupportActionBar.NewTab();
-            openIncidents.SetText("OPEN");
-            openIncidents.SetTabListener(new TabListener<WorkerQueueFragment>("A", ViewModel));
+            openIncidents.SetText("Open");
+            openIncidents.SetTag(KeyConstants.OpenTab);
+            openIncidents.SetTabListener(new TabListener<WorkerQueueFragment>(ViewModel));
             SupportActionBar.AddTab(openIncidents);
 
             var closedIncidents = SupportActionBar.NewTab();
             closedIncidents.SetText("Closed");
-            closedIncidents.SetTabListener(new TabListener<WorkerQueueFragment>("B", ViewModel));
+            closedIncidents.SetTag(KeyConstants.ClosedTab);
+            closedIncidents.SetTabListener(new TabListener<WorkerQueueFragment>(ViewModel));
             SupportActionBar.AddTab(closedIncidents);
 
             SupportActionBar.NavigationMode = Android.Support.V7.App.ActionBar.NavigationModeTabs;
+            ViewModel.PropertyChanged += PropertyChanged;
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            ViewModel.PropertyChanged -= PropertyChanged;
+        }
+
+        private void PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "FullName")
+            {
+                SupportActionBar.Title = ViewModel.FullName;
+            }
         }
 
         public new WorkerQueueViewModel ViewModel

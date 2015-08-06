@@ -1,5 +1,7 @@
+using Cirrious.MvvmCross.Droid.Support.Fragging.Fragments;
 using Cirrious.MvvmCross.ViewModels;
-using Xamarin.IncidentApp.Droid.MvxMaterial;
+using Xamarin.IncidentApp.Droid.Constants;
+using Xamarin.IncidentApp.ViewModels;
 using ActionBar = Android.Support.V7.App.ActionBar;
 
 namespace Xamarin.IncidentApp.Droid.Views
@@ -7,12 +9,10 @@ namespace Xamarin.IncidentApp.Droid.Views
     public class TabListener<T> : Java.Lang.Object, ActionBar.ITabListener where T : MvxFragment, new()
     {
         private MvxFragment _Fragment;
-        private string _Tag;
         private IMvxViewModel _viewModel;
 
-        public TabListener(string tag, IMvxViewModel viewModel)
+        public TabListener(IMvxViewModel viewModel)
         {
-            _Tag = tag;
             _viewModel = viewModel;
         }
 
@@ -30,13 +30,15 @@ namespace Xamarin.IncidentApp.Droid.Views
                 _Fragment = new T();
                 _Fragment.ViewModel = _viewModel;
 
-                ft.Add(Android.Resource.Id.Content, _Fragment, _Tag);
+                ft.Add(Android.Resource.Id.Content, _Fragment, tab.Tag.ToString());
             }
             else
             {
                 // If it exists, simply attach it in order to show it
                 ft.Attach(_Fragment);
             }
+
+            ((WorkerQueueViewModel) _Fragment.ViewModel).ShowClosed = _Fragment.Tag == KeyConstants.ClosedTab;
         }
 
         public void OnTabUnselected(ActionBar.Tab tab, Android.Support.V4.App.FragmentTransaction ft)

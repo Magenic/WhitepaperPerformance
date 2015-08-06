@@ -36,12 +36,12 @@ namespace TestIncidentQueueService.Controllers
                     incidentController.GetAllIncidents().Count(i => i.AssignedToId== worker.UserId && i.DateClosed >= startDate);
                 userStatus.TotalOpenIncidents = incidentController.GetAllIncidents().Count(i => i.AssignedToId == worker.UserId && !i.Closed);
                 var openIncidents = incidentController.GetAllIncidents().Where(i => i.AssignedToId == worker.UserId && !i.Closed);//.Average(i => ((currentDate - i.DateOpened).Minutes));
-                int totalMinutes = 0;
+                double totalMinutes = 0;
                 if (openIncidents.Any())
                 {
                     foreach (var incident in openIncidents)
                     {
-                        totalMinutes += (DateTime.UtcNow - incident.DateOpened).Minutes;
+                        totalMinutes += (DateTime.UtcNow - incident.DateOpened).TotalMinutes;
                     }
                     userStatus.AvgWaitTimeOfOpenIncidents = Convert.ToInt32(totalMinutes/openIncidents.Count());
                 }

@@ -9,7 +9,7 @@ using System.Collections;
 using System.Windows.Input;
 using Cirrious.MvvmCross.Binding.Attributes;
 
-namespace Xamarin.IncidentApp.Droid.MvxMaterial
+namespace Cirrious.MvvmCross.Droid.Support.RecyclerView
 {
     public interface IMvxRecyclerAdapter
     {

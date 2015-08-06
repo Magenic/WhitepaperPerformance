@@ -1,15 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Android.Content;
 using Android.Views;
-using Cirrious.CrossCore;
 using Cirrious.CrossCore.Platform;
 using Cirrious.MvvmCross.Binding.Bindings.Target.Construction;
 using Cirrious.MvvmCross.Droid.Platform;
 using Cirrious.MvvmCross.ViewModels;
 using Xamarin.IncidentApp.Droid.Bindings;
-using Xamarin.IncidentApp.Interfaces;
 
 namespace Xamarin.IncidentApp.Droid
 {
@@ -27,11 +24,6 @@ namespace Xamarin.IncidentApp.Droid
         protected override IMvxTrace CreateDebugTrace()
         {
             return new DebugTrace();
-        }
-
-        protected override void InitializeFirstChance()
-        {
-            base.InitializeFirstChance();
         }
 
         protected override void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)

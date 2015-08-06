@@ -1,11 +1,19 @@
+// MvxBaseFragmentAdapter.cs
+// (c) Copyright Cirrious Ltd. http://www.cirrious.com
+// MvvmCross is licensed using Microsoft Public License (Ms-PL)
+// Contributions and inspirations noted in readme.md and license.txt
+// 
+// Project Lead - Stuart Lodge, @slodge, me@slodge.com
+
 using System;
 using Android.App;
 using Android.OS;
+using Android.Support.V4.App;
 using Cirrious.CrossCore.Core;
 
 using Fragment = Android.Support.V4.App.Fragment;
 
-namespace Xamarin.IncidentApp.Droid.MvxMaterial
+namespace Cirrious.MvvmCross.Droid.Support.Fragging.Fragments.EventSource
 {
     public class MvxBaseFragmentAdapter
     {

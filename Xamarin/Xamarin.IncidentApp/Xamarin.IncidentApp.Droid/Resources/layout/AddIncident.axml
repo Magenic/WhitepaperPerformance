@@ -49,7 +49,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:textColor="@color/secondary" />
-        <Mvx.MvxSpinner
+        <cirrious.mvvmcross.droid.support.appcompat.widget.MvxAppCompatSpinner
             android:id="@+id/AddIncidentSpinner"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -101,9 +101,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="0dp"
-            android:adjustViewBounds="true"
-            android:cropToPadding="false"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             local:MvxBind="CurrentBitmap Image, Mode=OneWay, Converter=ByteBitmap" />
         <LinearLayout
             android:orientation="horizontal"
