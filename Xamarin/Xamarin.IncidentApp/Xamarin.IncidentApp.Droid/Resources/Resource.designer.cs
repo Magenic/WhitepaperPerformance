@@ -2194,6 +2194,9 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f060090
 			public const int mnuAddIncidentTakePhoto = 2131099792;
 			
+			// aapt resource value: 0x7f060093
+			public const int mnuDisplayIncidentClose = 2131099795;
+			
 			// aapt resource value: 0x7f060021
 			public const int multiply = 2131099681;
 			
@@ -2620,6 +2623,9 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f0c0000
 			public const int AddIncidentMenu = 2131492864;
 			
+			// aapt resource value: 0x7f0c0001
+			public const int DisplayIncidentMenu = 2131492865;
+			
 			static Menu()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -2698,6 +2704,9 @@ namespace Xamarin.IncidentApp.Droid
 			
 			// aapt resource value: 0x7f090019
 			public const int attach_image = 2131296281;
+			
+			// aapt resource value: 0x7f09001b
+			public const int close = 2131296283;
 			
 			// aapt resource value: 0x7f090016
 			public const int hello = 2131296278;

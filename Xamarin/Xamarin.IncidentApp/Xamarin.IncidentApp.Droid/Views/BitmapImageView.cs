@@ -36,5 +36,12 @@ namespace Xamarin.IncidentApp.Droid.Views
                 SetImageBitmap(value);
             }
         }
+
+        protected override void OnMeasure(int widthMeasureSpec, int heightMeasureSpec)
+        {
+            base.OnMeasure(widthMeasureSpec, heightMeasureSpec);
+
+            SetMeasuredDimension(MeasuredWidth, MeasuredWidth);
+        }
     }
 }

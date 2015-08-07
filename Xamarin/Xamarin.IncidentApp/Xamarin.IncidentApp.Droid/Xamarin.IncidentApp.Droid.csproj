@@ -364,6 +364,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_play_arrow_black_24dp.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_clear_black_24dp.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_play_arrow_black_24dp.png" />
+    <AndroidResource Include="Resources\menu\DisplayIncidentMenu.xml" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup />

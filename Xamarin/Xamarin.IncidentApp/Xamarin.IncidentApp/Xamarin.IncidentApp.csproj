@@ -43,6 +43,7 @@
     <Compile Include="Interfaces\IAzureService.cs" />
     <Compile Include="Interfaces\IMediaService.cs" />
     <Compile Include="Models\Incident.cs" />
+    <Compile Include="Models\IncidentDetail.cs" />
     <Compile Include="Models\Token.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Models\UserStatus.cs" />

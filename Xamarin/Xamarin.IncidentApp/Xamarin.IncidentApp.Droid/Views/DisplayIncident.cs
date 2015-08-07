@@ -7,7 +7,7 @@ using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.Droid.Views
 {
-    [Activity(Label = "Team Performance", Theme = "@style/Theme.Incident.TransparentActionBar",
+    [Activity(Label = "", Theme = "@style/Theme.Incident.TransparentActionBar",
     ScreenOrientation = ScreenOrientation.Portrait)]
     public class DisplayIncident : MvxActionBarActivity
     {
@@ -24,6 +24,13 @@ namespace Xamarin.IncidentApp.Droid.Views
         {
             get { return (DisplayIncidentViewModel)base.ViewModel; }
             set { base.ViewModel = value; }
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater inflater = MenuInflater;
+            inflater.Inflate(Resource.Menu.DisplayIncidentMenu, menu);
+            return base.OnCreateOptionsMenu(menu);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
