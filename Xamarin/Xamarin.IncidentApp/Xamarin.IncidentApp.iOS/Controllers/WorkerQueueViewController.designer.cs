@@ -22,6 +22,10 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UISegmentedControl sgOpenCloseFilter { get; set; }
 
+		[Action ("sgOpenCloseFilter_ValueChanged:")]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		partial void sgOpenCloseFilter_ValueChanged (UISegmentedControl sender);
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (IncidentQueueTableView != null) {

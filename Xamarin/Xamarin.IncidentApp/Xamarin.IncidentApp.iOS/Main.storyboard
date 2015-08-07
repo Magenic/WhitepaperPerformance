@@ -340,47 +340,96 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="496">
-                                <rect key="frame" x="126" y="33" width="123" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="496">
+                                <rect key="frame" x="75" y="80" width="285" height="31"/>
                                 <segments>
                                     <segment title="Open"/>
                                     <segment title="Closed"/>
                                 </segments>
+                                <connections>
+                                    <action selector="sgOpenCloseFilter_ValueChanged:" destination="238" id="515" eventType="valueChanged"/>
+                                </connections>
+                                <constraints>
+                                    <constraint id="566" firstAttribute="width" constant="285"/>
+                                    <constraint id="567" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="499" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" customClass="IncidentQueueUITableView">
-                                <rect key="frame" x="20" y="82" width="335" height="401"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="499" translatesAutoresizingMaskIntoConstraints="NO" customClass="IncidentQueueUITableView">
+                                <rect key="frame" x="0.0" y="140" width="348" height="411"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="500" accessoryType="disclosureIndicator" customClass="IncidentQueueCell">
-                                        <rect key="frame" x="0.0" y="22" width="335" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="500" accessoryType="disclosureIndicator" customClass="IncidentQueueCell" rowHeight="80" reuseIdentifier="IncidentQueueCell" restorationIdentifier="IncidentQueueCell">
+                                        <rect key="frame" x="0.0" y="22" width="348" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="501" tableViewCell="500">
-                                            <rect key="frame" x="0.0" y="0.0" width="302" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="315" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="576" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="4" y="0.0" width="80" height="80"/>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="577" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="90" y="4" width="260" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Owner:" lineBreakMode="tailTruncation" minimumFontSize="10" id="578" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="90" y="34" width="260" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="07/14/15 @ 3:41pm" lineBreakMode="tailTruncation" minimumFontSize="10" id="579" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="90" y="57" width="260" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
+                                        <connections>
+                                            <outlet property="imgIncidentPicture" destination="576" id="name-outlet-576"/>
+                                            <outlet property="lblSubject" destination="577" id="name-outlet-577"/>
+                                            <outlet property="lblIncidentDate" destination="579" id="name-outlet-579"/>
+                                            <outlet property="lblOwner" destination="578" id="name-outlet-578"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="502">
-                                        <rect key="frame" x="0.0" y="66" width="335" height="44"/>
+                                        <rect key="frame" x="0.0" y="102" width="348" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="503" tableViewCell="502">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="348" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="504">
-                                        <rect key="frame" x="0.0" y="110" width="335" height="44"/>
+                                        <rect key="frame" x="0.0" y="146" width="348" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="505" tableViewCell="504">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="348" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
                                 </prototypes>
+                                <constraints>
+                                    <constraint id="541" firstAttribute="width" constant="348"/>
+                                    <constraint id="542" firstAttribute="height" constant="411"/>
+                                </constraints>
                             </tableView>
                         </subviews>
+                        <constraints>
+                            <constraint id="539" constant="0.0" firstItem="499" firstAttribute="leading" secondItem="239" secondAttribute="leading"/>
+                            <constraint id="540" constant="140" firstItem="499" firstAttribute="top" secondItem="239" secondAttribute="top"/>
+                            <constraint id="564" firstItem="239" firstAttribute="trailing" secondItem="496" secondAttribute="trailing" constant="15"/>
+                            <constraint id="565" constant="80" firstItem="496" firstAttribute="top" secondItem="239" secondAttribute="top"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="sgOpenCloseFilter" destination="496" id="name-outlet-496"/>
@@ -390,6 +439,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="240" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1048" y="62"/>
+        </scene>
+        <scene sceneID="547">
+            <objects>
+                <viewController id="548" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="545"/>
+                        <viewControllerLayoutGuide type="bottom" id="546"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="549">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="550" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1449" y="63"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

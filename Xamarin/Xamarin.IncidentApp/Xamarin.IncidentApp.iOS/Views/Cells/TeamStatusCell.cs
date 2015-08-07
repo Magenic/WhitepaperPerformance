@@ -52,7 +52,7 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
         public float MaxCompletedPercentConv
         {
             get { return pvCompletedBar.Progress; }
-            set { pvCompletedBar.Progress = value / 100; }
+            set { pvCompletedBar.Progress = value; }
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
         public float MaxAvgWaitTimeConv
         {
             get { return pvWaitTimeBar.Progress; }
-            set { pvWaitTimeBar.Progress = value / 100; }
+            set { pvWaitTimeBar.Progress = value; }
         }
 
         /// <summary>
