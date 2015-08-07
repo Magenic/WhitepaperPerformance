@@ -1,7 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Acr.MvvmCross.Plugins.Network;
 using Acr.UserDialogs;
+using Cirrious.MvvmCross.Commands;
 using Xamarin.IncidentApp.Interfaces;
 using Xamarin.IncidentApp.Models;
 using Xamarin.IncidentApp.Utilities;
@@ -40,10 +45,20 @@ namespace Xamarin.IncidentApp.ViewModels
                             .Where(r => r.Id == _incidentId)
                             .ToListAsync();
 
-                        var indicent = incidents.Single();
+                        var incident = incidents.Single();
 
-                        ImageLink = indicent.ImageLink;
+                        ImageLink = incident.ImageLink;
+                        Description = incident.Description;
+                        Subject = incident.Subject;
+                        AudioRecordingLink = incident.AudioLink;
+                        DateOpened = incident.DateOpened;
 
+                        var workers = await service.InvokeApiAsync<IList<UserProfile>>("WorkerList", HttpMethod.Get, null);
+                        FullName = workers.Single(w => w.UserId == incident.AssignedToId).FullName;
+
+                        IncidentDetails = await _azureService.MobileService.GetTable<IncidentDetail>()
+                            .Where(r => r.IncidentId == _incidentId)
+                            .ToListAsync();
                     }
                     finally
                     {
@@ -75,14 +90,14 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
-        private string _assignedToId;
-        public string AssignedToId
+        private string _fullName;
+        public string FullName
         {
-            get { return _assignedToId; }
+            get { return _fullName; }
             set
             {
-                _assignedToId = value;
-                RaisePropertyChanged(() => AssignedToId);
+                _fullName = value;
+                RaisePropertyChanged(() => FullName);
             }
         }
 
@@ -112,8 +127,8 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
-        private byte[] _audioRecordingLink;
-        public byte[] AudioRecordingLink
+        private string _audioRecordingLink;
+        public string AudioRecordingLink
         {
             get { return _audioRecordingLink; }
             set
@@ -122,5 +137,47 @@ namespace Xamarin.IncidentApp.ViewModels
                 RaisePropertyChanged(() => AudioRecordingLink);
             }
         }
+
+        private DateTime _dateOpened;
+        public DateTime DateOpened
+        {
+            get { return _dateOpened; }
+            set
+            {
+                _dateOpened = value;
+                RaisePropertyChanged(() => DateOpened);
+            }
+        }
+
+        private IList<IncidentDetail> _incidentDetails;
+        public IList<IncidentDetail> IncidentDetails
+        {
+            get { return _incidentDetails; }
+            set
+            {
+                _incidentDetails = value;
+                RaisePropertyChanged(() => IncidentDetails);
+            }
+        }
+
+        private ICommand _closeIncidentCommand;
+        public ICommand CloseIncidentCommand
+        {
+            get
+            {
+                return _closeIncidentCommand ?? (_closeIncidentCommand = new MvxRelayCommand(async() => await CloseIncidentAsync()));
+            }
+        }
+
+        private async Task CloseIncidentAsync()
+        {
+            var incidents = await _azureService.MobileService.GetTable<Incident>()
+                .Where(r => r.Id == _incidentId).ToListAsync();
+
+            var incident = incidents.Single();
+            incident.Closed = true;
+            await _azureService.MobileService.GetTable<Incident>().UpdateAsync(incident);
+        }
+
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Threading.Tasks;
 using Acr.MvvmCross.Plugins.Network;
 using Acr.UserDialogs;
@@ -53,7 +52,7 @@ namespace Xamarin.IncidentApp.ViewModels
             {
                 _imageLink = value;
                 RaisePropertyChanged(() => ImageLink);
-                Task.Run(async () => await LoadImageBytesAsync());
+                Task.Run(async () => ImageBytes = await Utilities.BinaryHandling.LoadBytesFromUrlAsync(_imageLink));
             }
         }
 
@@ -72,21 +71,7 @@ namespace Xamarin.IncidentApp.ViewModels
         {
             var myWebClient = System.Net.HttpWebRequest.Create(ImageLink);
             var objResponse = await myWebClient.GetResponseAsync();
-            ImageBytes = ReadFully(objResponse.GetResponseStream());
-        }
-
-        public byte[] ReadFully(Stream input)
-        {
-            var buffer = new byte[16 * 1024];
-            using (var ms = new MemoryStream())
-            {
-                int read;
-                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
-                {
-                    ms.Write(buffer, 0, read);
-                }
-                return ms.ToArray();
-            }
+            ImageBytes = Utilities.BinaryHandling.ReadFully(objResponse.GetResponseStream());
         }
 
         private string _userId;
