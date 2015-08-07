@@ -1,4 +1,4 @@
-app.controller('AddIncidentController', function($scope, Azure, $ionicPopover) {
+app.controller('AddIncidentController', function($scope, Azure, Camera, $ionicPopover) {
 
   // create incident model
   $scope.incident = {
@@ -39,8 +39,25 @@ app.controller('AddIncidentController', function($scope, Azure, $ionicPopover) {
 
   // take photo
   $scope.takePhoto = function() {
-    alert('take photo');
+
+    Camera.getPicture().then(function (imageData) {
+
+      $scope.imageSource = "data:image/jpeg;base64," + imageData;
+
+    });
+
     $scope.popover.hide();
+
+  };
+
+  $scope.imageHasBeenAdded = function() {
+
+    if ($scope.imageSource == null) {
+      return false;
+    }
+
+    return true;
+
   };
 
   // add image

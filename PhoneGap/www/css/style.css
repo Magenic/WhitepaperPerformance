@@ -84,3 +84,7 @@
 .addIncident span {
   color: darkgrey;
 }
+
+img {
+  max-height: 25%;
+}

@@ -31,6 +31,10 @@
                         {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -40,6 +44,10 @@
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
                             "count": 1
                         }
                     ]
@@ -67,6 +75,9 @@
             "PACKAGE_NAME": "com.ionicframework.phonegapincidentapp119484"
         },
         "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.ionicframework.phonegapincidentapp119484"
+        },
+        "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.ionicframework.phonegapincidentapp119484"
         }
     },
