@@ -1,33 +1,18 @@
-app.factory('ClearNavigationHistory', function($ionicHistory) {
-
-    var clearNavigationHistoryService = {};
-
-    clearNavigationHistoryService.clear = function () {
-
-      //hack to not show login view in back nav stack
-      //see issue here: https://github.com/driftyco/ionic/issues/1287
-      $ionicHistory.currentView($ionicHistory.backView());
-
-    };
-
-    return clearNavigationHistoryService;
-
-});
-
 app.factory('Azure', function($q) {
 
     var azureUrl = "https://testincidentqueue.azure-mobile.net/";
     var mobileService;
     var azureService = {};
 
+    // Login
     azureService.login = function () {
 
       var deferred = $q.defer();
 
       mobileService = new WindowsAzure.MobileServiceClient(azureUrl, azureKey);
       mobileService.login("WindowsAzureActiveDirectory").done(function (results) {
-        
-        // var userId = results.userId;    
+
+        // var userId = results.userId;
         // var token = mobileService.currentUser.mobileServiceAuthenticationToken;
 
         deferred.resolve(true);
@@ -38,6 +23,7 @@ app.factory('Azure', function($q) {
 
     };
 
+    // Get Status List
     azureService.getStatusList = function () {
 
       var deferred = $q.defer();
@@ -53,14 +39,14 @@ app.factory('Azure', function($q) {
             body: null,
             method: "get"
         }).done(function (results) {
-            
+
             var statusList = [];
 
             results.result.forEach(function(result) {
 
               var status = {
-                numberOfIncidents: Math.floor(Math.random() * 100), 
-                averageWaitTime: Math.floor(Math.random() * 100), 
+                numberOfIncidents: Math.floor(Math.random() * 100),
+                averageWaitTime: Math.floor(Math.random() * 100),
                 user: result.user
               };
 
@@ -73,7 +59,7 @@ app.factory('Azure', function($q) {
             deferred.resolve(statusList);
 
         }, function(error) {
-            
+
             alert(error.message);
 
         });
@@ -84,6 +70,7 @@ app.factory('Azure', function($q) {
 
     };
 
+    // Get User Profile
     azureService.getUserProfile = function () {
 
       var deferred = $q.defer();
@@ -92,11 +79,11 @@ app.factory('Azure', function($q) {
           body: null,
           method: "get"
       }).done(function (results) {
-          
+
           deferred.resolve(results.result);
 
       }, function(error) {
-          
+
           alert(error.message);
 
       });
@@ -105,10 +92,31 @@ app.factory('Azure', function($q) {
 
     };
 
+    // Get Incident List
+    azureService.getIncidentList = function (assignedToUserId) {
+
+      var deferred = $q.defer();
+
+      var incidentTable = mobileService.getTable('Incident')
+        .where({
+
+            assignedToId: assignedToUserId
+
+          })
+        .read().done(function (incidentTable) {
+
+            deferred.resolve(incidentTable);
+
+        }, function (err) {
+
+            alert("Error: " + err);
+
+        });
+
+      return deferred.promise;
+
+    };
+
     return azureService;
 
 });
-
-
-
-
