@@ -117,6 +117,28 @@ app.factory('Azure', function($q) {
 
     };
 
+    // Get User Profile
+    azureService.getWorkersList = function () {
+
+      var deferred = $q.defer();
+
+      mobileService.invokeApi("WorkerList", {
+          body: null,
+          method: "get"
+      }).done(function (results) {
+
+          deferred.resolve(results.result);
+
+      }, function(error) {
+
+          alert(error.message);
+
+      });
+
+      return deferred.promise;
+
+    };
+
     return azureService;
 
 });

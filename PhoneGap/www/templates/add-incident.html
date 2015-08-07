@@ -1,7 +1,37 @@
-<ion-view view-title="Team Performance">
+<ion-view view-title="New Incident" class="addIncident">
+
+	<ion-nav-buttons side="right">
+			<button class="button button-icon icon ion-paper-airplane" ng-click="saveIncident()" ng-disabled="!canSave()"></button>
+			<button class="button button-icon icon ion-android-more-vertical" ng-click="popover.show($event)"></button>
+	</ion-nav-buttons>
+
 	<ion-content>
 
-	  add incident view goes here<br />
+		<div class="list">
+
+		  <label class="item item-input item-stacked-label">
+		    <span class="input-label">Subject</span>
+		    <input type="text" ng-model="incident.subject">
+		  </label>
+
+			<label class="item item-input item-stacked-label">
+		    <span class="input-label">Description</span>
+		    <input type="text" ng-model="incident.description">
+		  </label>
+
+			<label class="item item-input item-stacked-label">
+		    <span class="input-label">Assign To</span>
+
+				<div class="list">
+
+			    <select ng-model="incident.assignTo" ng-options="worker.userId as worker.fullName for worker in workersList">
+			    </select>
+
+				</div>
+
+		  </label>
+
+		</div>
 
 	</ion-content>
 </ion-view>

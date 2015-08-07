@@ -78,3 +78,9 @@
   border-bottom-color: #E91E63;
   border-bottom-style: solid;
 }
+
+/* Add Incident */
+
+.addIncident span {
+  color: darkgrey;
+}
