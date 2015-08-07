@@ -1,10 +1,12 @@
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Database;
+using Android.Graphics;
 using Android.OS;
 using Android.Provider;
 using Android.Views;
@@ -108,7 +110,7 @@ namespace Xamarin.IncidentApp.Droid.Views
             if (resultCode == Result.Ok)
             {
                 MediaFile file = await data.GetMediaFileExtraAsync(this);
-                var bytes = ReadFully(file.GetStream());
+                var bytes = Utilities.BinaryHandling.ReadFully(file.GetStream());
                 _mediaService.PhotoResult(bytes);
             }
         }
@@ -134,20 +136,6 @@ namespace Xamarin.IncidentApp.Droid.Views
             var columnIndex = cursor.GetColumnIndex(MediaStore.Audio.AudioColumns.Data);
             cursor.MoveToFirst();
             return cursor.GetString(columnIndex);
-        }
-
-        public byte[] ReadFully(Stream input)
-        {
-            var buffer = new byte[16 * 1024];
-            using (var ms = new MemoryStream())
-            {
-                int read;
-                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
-                {
-                    ms.Write(buffer, 0, read);
-                }
-                return ms.ToArray();
-            }
         }
     }
 }

@@ -149,6 +149,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Xamarin.Android.Support.v7.AppCompat.22.2.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.CardView">
+      <HintPath>..\..\packages\Xamarin.Android.Support.v7.CardView.22.2.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.CardView.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
       <HintPath>..\..\packages\Xamarin.Android.Support.v7.RecyclerView.22.2.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
     </Reference>
@@ -167,6 +170,7 @@
     <Compile Include="Bootstrap\NetworkPluginBootstrap.cs" />
     <Compile Include="Bootstrap\UserDialogsPluginBootstrap.cs" />
     <Compile Include="Constants\IntentConstants.cs" />
+    <Compile Include="Constants\KeyConstants.cs" />
     <Compile Include="Converters\BinaryAssetExistsConverter.cs" />
     <Compile Include="Converters\ByteBitmapConverter.cs" />
     <Compile Include="DebugTrace.cs" />
@@ -176,6 +180,8 @@
     <Compile Include="MvxMaterial\IMvxRecyclerViewHolder.cs" />
     <Compile Include="MvxMaterial\MvxActionBarActivity.cs" />
     <Compile Include="MvxMaterial\MvxActionBarEventSourceActivity.cs" />
+    <Compile Include="MvxMaterial\MvxAppCompatSpinner.cs" />
+    <Compile Include="MvxMaterial\MvxAppCompatSpinnerSelectedItemBinding.cs" />
     <Compile Include="MvxMaterial\MvxBaseFragmentAdapter.cs" />
     <Compile Include="MvxMaterial\MvxBindingFragmentAdapter.cs" />
     <Compile Include="MvxMaterial\MvxCreateViewParameters.cs" />
@@ -199,6 +205,7 @@
     <Compile Include="Views\AddIncidentView.cs" />
     <Compile Include="Views\BitmapImageView.cs" />
     <Compile Include="Views\DashboardView.cs" />
+    <Compile Include="Views\DisplayIncident.cs" />
     <Compile Include="Views\LoginView.cs" />
     <Compile Include="Views\TabListener.cs" />
     <Compile Include="Views\WorkerQueueFragment.cs" />
@@ -230,6 +237,9 @@
     <AndroidResource Include="Resources\layout\WorkerQueueItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\DisplayIncident.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml">
@@ -237,7 +247,9 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
+    <AndroidResource Include="Resources\values\MvxBindingAttributes.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\values\Styles.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -355,6 +367,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_play_arrow_black_24dp.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_clear_black_24dp.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_play_arrow_black_24dp.png" />
+    <AndroidResource Include="Resources\menu\DisplayIncidentMenu.xml" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup />

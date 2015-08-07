@@ -3,15 +3,21 @@
     xmlns:local="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
+    android:layout_height="match_parent"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp">
+    <BitmapImageView
+        android:id="@+id/queue_item_image"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:scaleType="centerCrop"
+        local:MvxBind="CurrentBitmap ImageBytes, Mode=OneWay, Converter=ByteBitmap" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/queue_item_subject"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginLeft="20dp"
@@ -19,7 +25,7 @@
             android:layout_marginTop="5dp"
             local:MvxBind="Text Subject" />
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -28,23 +34,24 @@
                 android:text="Owner:"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="5dp"
-                android:textColor="@color/secondary"
-                local:MvxBind="Text Description" />
+                android:textColor="@color/secondary" />
             <TextView
+                android:id="@+id/queue_item_assigned_to_name"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Subject"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="20dp"
                 android:textColor="@color/secondary"
-                local:MvxBind="Text AssignedToId" />
+                local:MvxBind="Text FullName" />
         </LinearLayout>
         <TextView
+            android:id="@+id/queue_item_description"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:textColor="@color/secondary"
-            local:MvxBind="Text Description" />
+            local:MvxBind="Text DateOpened, Converter=Date" />
     </LinearLayout>
 </LinearLayout>

@@ -1,3 +1,10 @@
+// MvxFragmentExtensions.cs
+// (c) Copyright Cirrious Ltd. http://www.cirrious.com
+// MvvmCross is licensed using Microsoft Public License (Ms-PL)
+// Contributions and inspirations noted in readme.md and license.txt
+// 
+// Project Lead - Stuart Lodge, @slodge, me@slodge.com
+
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
@@ -5,13 +12,13 @@ using Cirrious.CrossCore;
 using Cirrious.CrossCore.Exceptions;
 using Cirrious.CrossCore.Platform;
 using Cirrious.MvvmCross.Binding.Droid.BindingContext;
-
+using Cirrious.MvvmCross.Droid.Support.Fragging.Fragments.EventSource;
 using Cirrious.MvvmCross.Droid.Platform;
 using Cirrious.MvvmCross.Droid.Views;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Views;
 
-namespace Xamarin.IncidentApp.Droid.MvxMaterial
+namespace Cirrious.MvvmCross.Droid.Support.Fragging.Fragments
 {
     public static class MvxFragmentExtensions
     {

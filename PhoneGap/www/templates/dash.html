@@ -18,9 +18,9 @@
 		<ion-list>
 
 			<!-- TODO: get this working with collection-repeat -->
-			<ion-item ng-repeat="status in statusList" ng-click="selectUser(status.user.userId)">
+			<ion-item ng-repeat="status in statusList" ng-click="selectUser(status.user.userId, status.user.fullName)">
 
-				<div class="dashboardItem" href="#/incidents/{{ status.user.userId }}">
+				<div class="dashboardItem">
 
 					<span class="name">{{ status.user.fullName }}</span><br />
 
