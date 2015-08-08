@@ -245,6 +245,7 @@
     <Compile Include="Controllers\DashboardViewController.designer.cs">
       <DependentUpon>DashboardViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\WorkerQueueItemViewController.cs" />
     <Compile Include="Controllers\LoginViewController.cs" />
     <Compile Include="Controllers\LoginViewController.designer.cs">
       <DependentUpon>LoginViewController.cs</DependentUpon>

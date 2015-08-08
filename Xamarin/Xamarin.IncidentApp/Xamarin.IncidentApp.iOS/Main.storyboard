@@ -174,15 +174,15 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="1" sectionFooterHeight="1" id="96" translatesAutoresizingMaskIntoConstraints="NO" customClass="TeamUITableView">
-                                <rect key="frame" x="5" y="30" width="327" height="426"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="96" translatesAutoresizingMaskIntoConstraints="NO" customClass="TeamUITableView">
+                                <rect key="frame" x="5" y="60" width="335" height="426"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="97" reuseIdentifier="TeamStatusCell" customClass="TeamStatusCell" restorationIdentifier="TeamStatusCell" accessoryType="disclosureIndicator">
-                                        <rect key="frame" x="0.0" y="1" width="327" height="80"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="97" reuseIdentifier="TeamStatusCell" customClass="TeamStatusCell" restorationIdentifier="TeamStatusCell" accessoryType="disclosureIndicator" rowHeight="80">
+                                        <rect key="frame" x="0.0" y="22" width="335" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="98" tableViewCell="97">
-                                            <rect key="frame" x="0.0" y="0.0" width="294" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="302" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <subviews>
@@ -274,19 +274,19 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="99">
-                                        <rect key="frame" x="0.0" y="81" width="327" height="80"/>
+                                        <rect key="frame" x="0.0" y="102" width="335" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="100" tableViewCell="99">
-                                            <rect key="frame" x="0.0" y="0.0" width="327" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="101">
-                                        <rect key="frame" x="0.0" y="161" width="327" height="80"/>
+                                        <rect key="frame" x="0.0" y="182" width="335" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="102" tableViewCell="101">
-                                            <rect key="frame" x="0.0" y="0.0" width="327" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -295,22 +295,12 @@
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <rect key="frame" x="19" y="27" width="342" height="628"/>
                                 </variation>
+                                <constraints>
+                                    <constraint id="600" firstAttribute="width" constant="335"/>
+                                    <constraint id="601" firstAttribute="height" constant="426"/>
+                                </constraints>
                             </tableView>
                         </subviews>
-                        <constraints>
-                            <constraint id="479" constant="14" firstItem="93" firstAttribute="trailing" secondItem="96" secondAttribute="trailing"/>
-                            <constraint id="480" constant="12" firstItem="93" firstAttribute="bottom" secondItem="96" secondAttribute="bottom"/>
-                            <constraint firstItem="96" firstAttribute="leading" secondItem="93" secondAttribute="leading" constant="19" id="485"/>
-                            <constraint firstItem="96" firstAttribute="top" secondItem="89" secondAttribute="bottom" constant="7" id="488"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="479"/>
-                                <exclude reference="480"/>
-                                <exclude reference="485"/>
-                                <exclude reference="488"/>
-                            </mask>
-                        </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
                                 <include reference="479"/>
@@ -319,6 +309,10 @@
                                 <include reference="488"/>
                             </mask>
                         </variation>
+                        <constraints>
+                            <constraint id="598" constant="5" firstItem="96" firstAttribute="leading" secondItem="93" secondAttribute="leading"/>
+                            <constraint id="599" constant="60" firstItem="96" firstAttribute="top" secondItem="93" secondAttribute="top"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="TeamTableView" destination="96" id="name-outlet-96"/>
@@ -354,8 +348,8 @@
                                     <constraint id="567" firstAttribute="height" constant="30"/>
                                 </constraints>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="499" translatesAutoresizingMaskIntoConstraints="NO" customClass="IncidentQueueUITableView">
-                                <rect key="frame" x="0.0" y="140" width="348" height="411"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="499" translatesAutoresizingMaskIntoConstraints="NO" customClass="IncidentQueueUITableView">
+                                <rect key="frame" x="0.0" y="135" width="348" height="411"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="500" accessoryType="disclosureIndicator" customClass="IncidentQueueCell" rowHeight="80" reuseIdentifier="IncidentQueueCell" restorationIdentifier="IncidentQueueCell">
@@ -426,7 +420,7 @@
                         </subviews>
                         <constraints>
                             <constraint id="539" constant="0.0" firstItem="499" firstAttribute="leading" secondItem="239" secondAttribute="leading"/>
-                            <constraint id="540" constant="140" firstItem="499" firstAttribute="top" secondItem="239" secondAttribute="top"/>
+                            <constraint id="540" constant="135" firstItem="499" firstAttribute="top" secondItem="239" secondAttribute="top"/>
                             <constraint id="564" firstItem="239" firstAttribute="trailing" secondItem="496" secondAttribute="trailing" constant="15"/>
                             <constraint id="565" constant="80" firstItem="496" firstAttribute="top" secondItem="239" secondAttribute="top"/>
                         </constraints>
@@ -439,23 +433,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="240" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1048" y="62"/>
-        </scene>
-        <scene sceneID="547">
-            <objects>
-                <viewController id="548" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="545"/>
-                        <viewControllerLayoutGuide type="bottom" id="546"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="549">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="550" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1449" y="63"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

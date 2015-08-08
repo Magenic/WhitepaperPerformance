@@ -6,6 +6,7 @@ using Cirrious.MvvmCross.ViewModels;
 using Foundation;
 using UIKit;
 using Xamarin.IncidentApp.iOS.Views.Cells;
+using Xamarin.IncidentApp.Models;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.iOS.Controllers
@@ -28,26 +29,41 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             set { base.ViewModel = value; }
         }
 
+        /// <summary>
+        /// Fires when the user taps the segmented control to switch between
+        /// Open or Closed incidents. Setting SelectedSegment also reloads the data.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
         partial void sgOpenCloseFilter_ValueChanged(UIKit.UISegmentedControl sender)
         {
             ViewModel.ShowClosed = (sgOpenCloseFilter.SelectedSegment == 1);
         }
 
+        /// <summary>
+        /// Override the ViewDidLoad() method so we can add our "Add Incident" button
+        /// and setup bindings for the TableView and navigation bar title.
+        /// </summary>
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
             NavigationController.NavigationBarHidden = false;
-            NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Done, (sender, args) =>
+            NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender, args) =>
             {
                 // button was clicked
                 Debug.WriteLine("Add incident pressed!");
             })
             , true);
 
+            // Create a binding between the View's Title and FullName property of the View Model
+            this.CreateBinding().For(c => c.Title).To<WorkerQueueViewModel>(vm => vm.FullName).Apply();
+
             SetupTable();
         }
 
+        /// <summary>
+        /// Setupup bindings for our TableView.
+        /// </summary>
         private void SetupTable()
         {
             var refreshControl = new UIRefreshControl();
@@ -68,6 +84,9 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
     }
 
+    /// <summary>
+    /// Class IncidentQueueTableSource.
+    /// </summary>
     public class IncidentQueueTableSource : MvxStandardTableViewSource
     {
         /// <summary>

@@ -26,7 +26,7 @@ namespace Xamarin.IncidentApp.ViewModels
         
         public void Init(string userId)
         {
-             _userId = userId;
+            _userId = userId;
              Task.Run(async () => await RefeshIncidentListAsync());
         }
 
