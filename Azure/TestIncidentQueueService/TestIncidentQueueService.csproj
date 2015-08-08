@@ -216,6 +216,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constants\AdIntegration.cs" />
     <Compile Include="Constants\ConfigurationKeys.cs" />
+    <Compile Include="Controllers\AllUserListController.cs" />
     <Compile Include="Controllers\IncidentController.cs" />
     <Compile Include="Controllers\IncidentDetailController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
