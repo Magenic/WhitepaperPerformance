@@ -27,7 +27,6 @@ namespace Xamarin.IncidentApp.ViewModels
             Task.Run(async () => await LoadWorkersAsync());
         }
 
-
         public void SetActivityServices(IMediaService takePhotoService)
         {
             _mediaService = takePhotoService;
@@ -306,7 +305,7 @@ namespace Xamarin.IncidentApp.ViewModels
 
         private async Task SaveIncidentDataAsync()
         {
-// First save the image/audio
+            // First save the image/audio
             string imagePath = string.Empty;
             if (Image != null && Image.Length > 0)
             {
