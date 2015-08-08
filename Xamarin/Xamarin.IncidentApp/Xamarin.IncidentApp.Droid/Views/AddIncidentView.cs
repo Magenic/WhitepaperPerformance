@@ -19,7 +19,6 @@ namespace Xamarin.IncidentApp.Droid.Views
         ScreenOrientation = ScreenOrientation.Portrait)]
     public class AddIncidentView : MvxActionBarActivity
     {
-
         private MediaService _mediaService;
 
         protected override void OnCreate(Bundle bundle)
