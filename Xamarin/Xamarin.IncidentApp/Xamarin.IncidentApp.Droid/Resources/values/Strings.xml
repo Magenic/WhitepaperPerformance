@@ -6,4 +6,5 @@
     <string name="attach_image">Attach Image</string>
     <string name="record_audio">Record Audio</string>
     <string name="close">Close</string>
+    <string name="AddComment">Add Comment</string>
 </resources>
