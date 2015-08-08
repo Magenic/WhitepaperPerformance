@@ -15,7 +15,7 @@ namespace Xamarin.IncidentApp.ViewModels
     {
         private string _userId;
         private IList<WorkerQueueItemViewModel> _incidents;
-        private bool _showClosed = false;
+        private bool _showClosed;
         private IAzureService _azureService;
 
         public WorkerQueueViewModel(INetworkService networkService, IUserDialogs userDialogs, IAzureService azureService)

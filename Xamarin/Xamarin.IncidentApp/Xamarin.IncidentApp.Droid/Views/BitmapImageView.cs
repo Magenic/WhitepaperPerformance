@@ -42,6 +42,7 @@ namespace Xamarin.IncidentApp.Droid.Views
             base.OnMeasure(widthMeasureSpec, heightMeasureSpec);
 
             SetMeasuredDimension(MeasuredWidth, MeasuredWidth);
+            Invalidate();
         }
     }
 }
