@@ -33,7 +33,12 @@ namespace Xamarin.IncidentApp.ViewModels
             Task.Run(async () => await LoadIncidentAsync());
         }
 
-        private async Task LoadIncidentAsync()
+        internal IMediaService MediaService
+        {
+            get { return _mediaService; }
+        }
+
+        public async Task LoadIncidentAsync()
         {
             var service = _azureService.MobileService;
             if (service.CurrentUser != null)
@@ -67,7 +72,7 @@ namespace Xamarin.IncidentApp.ViewModels
                             .OrderBy(r => r.DateEntered)
                             .ToListAsync();
 
-                        IncidentDetails = details.Select(detail => new DisplayIncidentDetailViewModel(NetworkService, UserDialogs, detail, users.Single(u => u.UserId == detail.DetailEnteredById).FullName)).ToList();
+                        IncidentDetails = details.Select(detail => new DisplayIncidentDetailViewModel(NetworkService, UserDialogs, detail, users.Single(u => u.UserId == detail.DetailEnteredById).FullName, this)).ToList();
                     }
                     finally
                     {
@@ -257,6 +262,8 @@ namespace Xamarin.IncidentApp.ViewModels
             incident.Closed = true;
             incident.DateClosed = DateTime.UtcNow;
             await _azureService.MobileService.GetTable<Incident>().UpdateAsync(incident);
+            
+            Close(this);
         }
     }
 }

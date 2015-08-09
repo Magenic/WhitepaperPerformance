@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
@@ -43,7 +44,6 @@ namespace Xamarin.IncidentApp.Droid.Views
         {
             base.OnMeasure(widthMeasureSpec, heightMeasureSpec);
             SetMeasuredDimension(MeasuredWidth, MeasuredWidth);
-            Invalidate();
         }
     }
 }

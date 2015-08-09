@@ -40,6 +40,7 @@ namespace Xamarin.IncidentApp.Droid
             {
                 var toReturn = base.AndroidViewAssemblies;
                 toReturn.Add(ExecutableAssembly);
+                toReturn.Add(typeof(Android.Support.V7.Widget.CardView).Assembly);
                 return toReturn;
             }
         }
