@@ -1,11 +1,9 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Android.Provider;
-using Android.Support.V4.Widget;
 using Android.Views;
-using Cirrious.MvvmCross.Droid.Support.RecyclerView;
 using Xamarin.IncidentApp.Droid.Constants;
+using Xamarin.IncidentApp.Droid.Converters;
 using Xamarin.IncidentApp.Droid.MvxMaterial;
 using Xamarin.IncidentApp.ViewModels;
 
@@ -15,6 +13,9 @@ namespace Xamarin.IncidentApp.Droid.Views
         ScreenOrientation = ScreenOrientation.Portrait)]
     public class WorkerQueueView : MvxActionBarActivity
     {
+
+        private bool refresh;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -36,13 +37,27 @@ namespace Xamarin.IncidentApp.Droid.Views
             SupportActionBar.AddTab(closedIncidents);
 
             SupportActionBar.NavigationMode = Android.Support.V7.App.ActionBar.NavigationModeTabs;
-            ViewModel.PropertyChanged += PropertyChanged;
+            refresh = false;
         }
 
-        protected override void OnDestroy()
+        protected override async void OnResume()
         {
-            base.OnDestroy();
+            base.OnResume();
             ViewModel.PropertyChanged -= PropertyChanged;
+            ViewModel.PropertyChanged += PropertyChanged;
+            
+            if (refresh)
+            {
+                await ViewModel.RefeshIncidentListAsync();
+            }
+            refresh = true;
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            ViewModel.PropertyChanged -= PropertyChanged;
+            ByteBitmapConverter.ClearCache();
         }
 
         private void PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

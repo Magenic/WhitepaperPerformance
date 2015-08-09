@@ -12,7 +12,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             local:MvxItemTemplate="@layout/displayincidentdetail"
-            local:MvxBind="ItemsSource ., Converter=DetailList; ItemClick ShowWorkerQueueCommand"
+            local:MvxBind="ItemsSource CurrentViewModel, Converter=DetailList; ItemClick ShowWorkerQueueCommand"
             android:layout_weight="4" />
     </LinearLayout>
     <android.support.design.widget.FloatingActionButton

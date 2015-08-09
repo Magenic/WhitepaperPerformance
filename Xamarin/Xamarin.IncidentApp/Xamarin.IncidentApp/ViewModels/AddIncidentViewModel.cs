@@ -275,7 +275,6 @@ namespace Xamarin.IncidentApp.ViewModels
 
         private async Task SaveNewIncidentAsync()
         {
-
             if (!NetworkService.IsConnected)
             {
                 await UserDialogs.AlertAsync("Device not connected to network, cannot login. Please try again later",
@@ -311,7 +310,6 @@ namespace Xamarin.IncidentApp.ViewModels
             {
                 imagePath = await _azureService.SaveBlobAsync(Image, "png");
             }
-
 
             string audioPath = string.Empty;
             if (AudioRecording != null && AudioRecording.Length > 0)

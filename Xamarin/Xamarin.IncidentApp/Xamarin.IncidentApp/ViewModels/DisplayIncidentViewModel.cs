@@ -13,6 +13,7 @@ using Xamarin.IncidentApp.Utilities;
 
 namespace Xamarin.IncidentApp.ViewModels
 {
+
     public class DisplayIncidentViewModel : BaseViewModel
     {
         private string _incidentId;
@@ -32,7 +33,12 @@ namespace Xamarin.IncidentApp.ViewModels
             Task.Run(async () => await LoadIncidentAsync());
         }
 
-        private async Task LoadIncidentAsync()
+        internal IMediaService MediaService
+        {
+            get { return _mediaService; }
+        }
+
+        public async Task LoadIncidentAsync()
         {
             var service = _azureService.MobileService;
             if (service.CurrentUser != null)
@@ -63,9 +69,10 @@ namespace Xamarin.IncidentApp.ViewModels
                         
                         var details = await _azureService.MobileService.GetTable<IncidentDetail>()
                             .Where(r => r.IncidentId == _incidentId)
+                            .OrderBy(r => r.DateEntered)
                             .ToListAsync();
 
-                        IncidentDetails = details.Select(detail => new DisplayIncidentDetailViewModel(NetworkService, UserDialogs, detail, users.Single(u => u.UserId == detail.DetailEnteredById).FullName)).ToList();
+                        IncidentDetails = details.Select(detail => new DisplayIncidentDetailViewModel(NetworkService, UserDialogs, detail, users.Single(u => u.UserId == detail.DetailEnteredById).FullName, this)).ToList();
                     }
                     finally
                     {
@@ -192,8 +199,15 @@ namespace Xamarin.IncidentApp.ViewModels
             {
                 _incidentDetails = value;
                 RaisePropertyChanged(() => IncidentDetails);
+                RaisePropertyChanged(() => CurrentViewModel);
             }
         }
+
+        public DisplayIncidentViewModel CurrentViewModel
+        {
+            get { return this; }
+        }
+
 
         private ICommand _closeIncidentCommand;
         public ICommand CloseIncidentCommand
@@ -248,6 +262,8 @@ namespace Xamarin.IncidentApp.ViewModels
             incident.Closed = true;
             incident.DateClosed = DateTime.UtcNow;
             await _azureService.MobileService.GetTable<Incident>().UpdateAsync(incident);
+            
+            Close(this);
         }
     }
 }

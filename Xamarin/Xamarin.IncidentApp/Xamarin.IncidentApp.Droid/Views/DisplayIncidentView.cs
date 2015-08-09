@@ -1,11 +1,15 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Provider;
 using Android.Support.Design.Widget;
 using Android.Views;
+using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 using Cirrious.MvvmCross.Droid.Support.RecyclerView;
+using Xamarin.IncidentApp.Droid.Converters;
 using Xamarin.IncidentApp.Droid.MvxMaterial;
+using Xamarin.IncidentApp.Droid.Services;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.Droid.Views
@@ -14,6 +18,9 @@ namespace Xamarin.IncidentApp.Droid.Views
     ScreenOrientation = ScreenOrientation.Portrait)]
     public class DisplayIncidentView : MvxActionBarActivity
     {
+        private MediaService _mediaService;
+        private bool refresh;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -24,9 +31,14 @@ namespace Xamarin.IncidentApp.Droid.Views
 
             var incidentDetailList = FindViewById<MvxRecyclerView>(Resource.Id.incident_detail_list);
             incidentDetailList.Adapter = new DisplayIncidentAdapter((IMvxAndroidBindingContext)BindingContext);
+
+            _mediaService = new MediaService(this);
+            ViewModel.SetActivityServices(_mediaService);
+
+            refresh = false;
         }
 
-        protected override void OnResume()
+        protected override async void OnResume()
         {
             var fab = FindViewById<FloatingActionButton>(Resource.Id.addIncidentDetail);
             fab.Visibility = ViewModel.Closed ? ViewStates.Gone : ViewStates.Visible;
@@ -35,7 +47,14 @@ namespace Xamarin.IncidentApp.Droid.Views
 
             ViewModel.PropertyChanged -= PropertyChanged;
             ViewModel.PropertyChanged += PropertyChanged;
-            base.OnResume();
+
+            base.OnResume(); 
+            
+            if (refresh)
+            {
+                await ViewModel.LoadIncidentAsync();
+            }
+            refresh = true;
         }
 
         protected override void OnPause()
@@ -43,6 +62,8 @@ namespace Xamarin.IncidentApp.Droid.Views
             var fab = FindViewById<FloatingActionButton>(Resource.Id.addIncidentDetail);
             fab.Click -= Fab_Click;
             ViewModel.PropertyChanged -= PropertyChanged;
+
+            ByteBitmapConverter.ClearCache();
 
             base.OnPause();
         }
@@ -91,5 +112,7 @@ namespace Xamarin.IncidentApp.Droid.Views
             }
             return base.OnOptionsItemSelected(item);
         }
+
+        
     }
 }

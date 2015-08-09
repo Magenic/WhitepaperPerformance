@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Acr.MvvmCross.Plugins.Network;
 using Acr.UserDialogs;
+using Cirrious.MvvmCross.Commands;
 using Xamarin.IncidentApp.Models;
 using Xamarin.IncidentApp.Utilities;
 
@@ -9,7 +11,9 @@ namespace Xamarin.IncidentApp.ViewModels
 {
     public class DisplayIncidentDetailViewModel : BaseViewModel
     {
-        public DisplayIncidentDetailViewModel(INetworkService networkService, IUserDialogs userDialogs, IncidentDetail model, string fullName)
+        private  WeakReference _parent;
+
+        public DisplayIncidentDetailViewModel(INetworkService networkService, IUserDialogs userDialogs, IncidentDetail model, string fullName, DisplayIncidentViewModel parent)
             : base(networkService, userDialogs)
         {
             DetailText = model.DetailText;
@@ -17,6 +21,8 @@ namespace Xamarin.IncidentApp.ViewModels
             AudioRecordingLink = model.AudioLink;
             DateOpened = model.DateEntered;
             FullName = fullName;
+
+            _parent = new WeakReference(parent);
         }
 
         private string _fullName;
@@ -101,5 +107,29 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
+        private ICommand _playAudioCommand;
+        public ICommand PlayAudioCommand
+        {
+            get
+            {
+                return _playAudioCommand ?? (_playAudioCommand = new MvxRelayCommand(() =>
+                {
+                    PlayAudio();
+                }));
+            }
+        }
+
+        private void PlayAudio()
+        {
+            var mediaService = ((DisplayIncidentViewModel) _parent.Target).MediaService;
+            if (mediaService != null)
+            {
+                if (AudioRecordingBytes == null || AudioRecordingBytes.Length == 0)
+                {
+                    UserDialogs.Alert("No audio recording to play", "Playback Error");
+                }
+                mediaService.PlayAudio(AudioRecordingBytes);
+            }
+        }
     }
 }

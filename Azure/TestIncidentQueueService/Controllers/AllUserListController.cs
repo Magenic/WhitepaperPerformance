@@ -11,7 +11,6 @@ using TestIncidentQueueService.Utils;
 namespace TestIncidentQueueService.Controllers
 {
     [AuthorizeLevel(AuthorizationLevel.User)]
-    [AuthorizeRole(Enums.AdRoles.Manager)]
     [RoutePrefix("api/AllUserList")]
     public class AllUserListController : ApiController
     {
