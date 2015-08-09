@@ -236,7 +236,37 @@ namespace Xamarin.IncidentApp.ViewModels
 
         private async Task SaveNewIncidentDetailAsync()
         {
-            // First save the image/audio
+            if (!NetworkService.IsConnected)
+            {
+                await UserDialogs.AlertAsync("Device not connected to network, cannot login. Please try again later",
+                        "Network Error");
+                return;
+            }
+
+            if (DetailText == string.Empty && (Image == null || Image.Length == 0) && (AudioRecording == null || AudioRecording.Length == 0))
+            {
+                await UserDialogs.AlertAsync("An incident must at least have a subject and image to be saved.",
+                "Validation Error");
+                return;
+            }
+
+            try
+            {
+                UserDialogs.ShowLoading("Saving Incident Comment...");
+
+                await SaveIncidentDetailDataAsync();
+            }
+            finally
+            {
+                UserDialogs.HideLoading();
+            }
+
+            Close(this);
+        }
+
+        private async Task SaveIncidentDetailDataAsync()
+        {
+// First save the image/audio
             string imagePath = string.Empty;
             if (Image != null && Image.Length > 0)
             {
@@ -260,8 +290,6 @@ namespace Xamarin.IncidentApp.ViewModels
             };
 
             await _azureService.MobileService.GetTable<IncidentDetail>().InsertAsync(newIncidentDetail);
-
-            Close(this);
         }
     }
 }

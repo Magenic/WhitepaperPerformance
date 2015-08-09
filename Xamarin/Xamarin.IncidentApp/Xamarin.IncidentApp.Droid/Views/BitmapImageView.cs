@@ -1,6 +1,7 @@
 using System;
 using Android.Content;
 using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.Runtime;
 using Android.Util;
 using Android.Widget;
@@ -29,18 +30,18 @@ namespace Xamarin.IncidentApp.Droid.Views
         {
         }
 
-        public Bitmap CurrentBitmap
+        public Drawable CurrentBitmap
         {
             set
             {
-                SetImageBitmap(value);
+                SetImageDrawable(value);
+                //SetImageBitmap(value);
             }
         }
 
         protected override void OnMeasure(int widthMeasureSpec, int heightMeasureSpec)
         {
             base.OnMeasure(widthMeasureSpec, heightMeasureSpec);
-
             SetMeasuredDimension(MeasuredWidth, MeasuredWidth);
             Invalidate();
         }

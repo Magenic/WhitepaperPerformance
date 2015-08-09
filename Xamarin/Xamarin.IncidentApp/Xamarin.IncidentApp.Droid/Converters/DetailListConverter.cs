@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Android.Graphics;
 using Cirrious.CrossCore.Converters;
-using Cirrious.MvvmCross.ViewModels;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.Droid.Converters
@@ -21,5 +19,4 @@ namespace Xamarin.IncidentApp.Droid.Converters
             return returnList;
         }
     }
-
 }

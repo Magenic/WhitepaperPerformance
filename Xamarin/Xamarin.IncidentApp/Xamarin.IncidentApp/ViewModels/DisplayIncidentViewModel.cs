@@ -13,6 +13,7 @@ using Xamarin.IncidentApp.Utilities;
 
 namespace Xamarin.IncidentApp.ViewModels
 {
+
     public class DisplayIncidentViewModel : BaseViewModel
     {
         private string _incidentId;
@@ -63,6 +64,7 @@ namespace Xamarin.IncidentApp.ViewModels
                         
                         var details = await _azureService.MobileService.GetTable<IncidentDetail>()
                             .Where(r => r.IncidentId == _incidentId)
+                            .OrderBy(r => r.DateEntered)
                             .ToListAsync();
 
                         IncidentDetails = details.Select(detail => new DisplayIncidentDetailViewModel(NetworkService, UserDialogs, detail, users.Single(u => u.UserId == detail.DetailEnteredById).FullName)).ToList();
@@ -192,8 +194,15 @@ namespace Xamarin.IncidentApp.ViewModels
             {
                 _incidentDetails = value;
                 RaisePropertyChanged(() => IncidentDetails);
+                RaisePropertyChanged(() => CurrentViewModel);
             }
         }
+
+        public DisplayIncidentViewModel CurrentViewModel
+        {
+            get { return this; }
+        }
+
 
         private ICommand _closeIncidentCommand;
         public ICommand CloseIncidentCommand

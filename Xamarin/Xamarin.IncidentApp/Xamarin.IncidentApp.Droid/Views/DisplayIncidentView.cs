@@ -1,11 +1,14 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Provider;
 using Android.Support.Design.Widget;
 using Android.Views;
+using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 using Cirrious.MvvmCross.Droid.Support.RecyclerView;
 using Xamarin.IncidentApp.Droid.MvxMaterial;
+using Xamarin.IncidentApp.Droid.Services;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.Droid.Views
@@ -14,6 +17,8 @@ namespace Xamarin.IncidentApp.Droid.Views
     ScreenOrientation = ScreenOrientation.Portrait)]
     public class DisplayIncidentView : MvxActionBarActivity
     {
+        private MediaService _mediaService;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -24,6 +29,9 @@ namespace Xamarin.IncidentApp.Droid.Views
 
             var incidentDetailList = FindViewById<MvxRecyclerView>(Resource.Id.incident_detail_list);
             incidentDetailList.Adapter = new DisplayIncidentAdapter((IMvxAndroidBindingContext)BindingContext);
+
+            _mediaService = new MediaService(this);
+            ViewModel.SetActivityServices(_mediaService);
         }
 
         protected override void OnResume()
@@ -91,5 +99,7 @@ namespace Xamarin.IncidentApp.Droid.Views
             }
             return base.OnOptionsItemSelected(item);
         }
+
+        
     }
 }
