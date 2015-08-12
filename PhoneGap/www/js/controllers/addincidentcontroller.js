@@ -38,9 +38,21 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, $ionicPo
   });
 
   // take photo
-  $scope.takePhoto = function() {
+  $scope.getPictureFromCamera = function() {
 
-    Camera.getPicture().then(function (imageData) {
+    Camera.getPictureFromCamera().then(function (imageData) {
+
+      $scope.imageSource = "data:image/jpeg;base64," + imageData;
+
+    });
+
+    $scope.popover.hide();
+
+  };
+
+  $scope.getPictureFromPhotoLibrary = function() {
+
+    Camera.getPictureFromPhotoLibrary().then(function (imageData) {
 
       $scope.imageSource = "data:image/jpeg;base64," + imageData;
 
