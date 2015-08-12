@@ -34,12 +34,14 @@ app.factory('Camera', function($q) {
 
     // Get Picture From Camera
     cameraService.getPictureFromCamera = function () {
-      return getOrTakePicture(true);
+      var sourceIsCamera = true;
+      return getOrTakePicture(sourceIsCamera);
     };
 
     // Get Picture From Photo Library
     cameraService.getPictureFromPhotoLibrary = function () {
-      return getOrTakePicture(false);
+      var sourceIsCamera = false;
+      return getOrTakePicture(sourceIsCamera);
     };
 
     return cameraService;

@@ -21,7 +21,9 @@
     "cordova-plugin-splashscreen",
     "com.ionic.keyboard",
     "cordova-plugin-network-information",
-    "cordova-plugin-camera"
+    "cordova-plugin-camera",
+    "cordova-plugin-media-capture",
+    "cordova-plugin-media"
   ],
   "cordovaPlatforms": [
     "ios",
