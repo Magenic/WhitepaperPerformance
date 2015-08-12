@@ -47,14 +47,6 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         {
             base.ViewDidLoad();
 
-            NavigationController.NavigationBarHidden = false;
-            NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender, args) =>
-            {
-                // button was clicked
-                Debug.WriteLine("Add incident pressed!");
-            })
-            , true);
-
             // Create a binding between the View's Title and FullName property of the View Model
             this.CreateBinding().For(c => c.Title).To<WorkerQueueViewModel>(vm => vm.FullName).Apply();
 
@@ -62,7 +54,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         }
 
         /// <summary>
-        /// Setupup bindings for our TableView.
+        /// Setup bindings for our TableView.
         /// </summary>
         private void SetupTable()
         {

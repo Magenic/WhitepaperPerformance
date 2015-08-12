@@ -11,8 +11,8 @@ using UIKit;
 
 namespace Xamarin.IncidentApp.iOS
 {
-	[Register ("WorkerQueueItemViewController")]
-	partial class WorkerQueueItemViewController
+	[Register ("IncidentCommentTableView")]
+	partial class IncidentCommentTableView
 	{
 		void ReleaseDesignerOutlets ()
 		{
