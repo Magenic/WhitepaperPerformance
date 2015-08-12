@@ -85,6 +85,28 @@
   color: darkgrey;
 }
 
-img {
-  max-height: 25%;
+.addIncident .list a.item {
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
+}
+
+.addIncident .attachmentItemPhoto {
+  background-color: darkgray;
+  text-align: right;
+}
+.addIncident .attachmentItemPhoto img {
+  width: 100%;
+}
+
+.addIncident .attachmentItemAudioRecording {
+  background-color: darkgray;
+  text-align: right;
+}
+.addIncident .attachmentItemAudioRecording .outerSpan {
+  text-align: center;
+}
+.addIncident .attachmentItemAudioRecording span {
+  color: white;
 }

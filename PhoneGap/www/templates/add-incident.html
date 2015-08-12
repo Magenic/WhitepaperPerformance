@@ -31,12 +31,37 @@
 
 		  </label>
 
-			<div class="addedImage" ng-show="imageHasBeenAdded()">
-				<img data-ng-src="{{ imageSource }}" /><br />
-				image name and delete button go here...<br />
-			</div>
+			<!-- Attached Photos -->
+			<ion-list>
 
-			Audio Url: {{ audioSource }}
+				<ion-item ng-repeat="attachedPhoto in attachedPhotos">
+
+					<div class="attachmentItemPhoto">
+
+						<img data-ng-src="{{ attachedPhoto }}" /><br />
+						<button class="button button-icon icon ion-close-round" ng-click="removeAttachedPhotos(attachedPhoto)"></button>
+
+					</div>
+
+				</ion-item>
+
+			</ion-list>
+
+			<!-- Attached Audio Recordings -->
+			<ion-list>
+
+				<ion-item ng-repeat="attachedAudioRecording in attachedAudioRecordings">
+
+					<div class="attachmentItemAudioRecording">
+
+						<div class="outerSpan"><span class="button button-icon icon ion-ios-recording-outline"></span></div><br />
+						<button class="button button-icon icon ion-close-round" ng-click="removeAttachedAudio(attachedAudioRecording)"></button>
+
+					</div>
+
+				</ion-item>
+
+			</ion-list>
 
 		</div>
 

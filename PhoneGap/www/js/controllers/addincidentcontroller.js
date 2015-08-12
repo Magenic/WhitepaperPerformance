@@ -9,11 +9,14 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
     attachedAudio: null
   };
 
+  $scope.attachedPhotos = [];
+  $scope.attachedAudioRecordings = [];
+
   // save button disabled state
   $scope.canSave = function() {
 
     // required subject and at least one image
-    if ($scope.incident.subject === "") {
+    if ($scope.incident.subject === "" || $scope.attachedPhotos.length == 0) {
       return false;
     }
 
@@ -42,7 +45,7 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
 
     Camera.getPictureFromCamera().then(function (imageData) {
 
-      $scope.imageSource = "data:image/jpeg;base64," + imageData;
+      $scope.attachedPhotos.push("data:image/jpeg;base64," + imageData);
 
     });
 
@@ -54,19 +57,23 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
 
     Camera.getPictureFromPhotoLibrary().then(function (imageData) {
 
-      $scope.imageSource = "data:image/jpeg;base64," + imageData;
+      $scope.attachedPhotos.push("data:image/jpeg;base64," + imageData);
 
     });
 
     $scope.popover.hide();
 
+  };
+
+  $scope.removeAttachedPhotos = function(attachedPhoto) {
+    $scope.attachedPhotos.splice($scope.attachedPhotos.indexOf(attachedPhoto), 1);
   };
 
   $scope.recordAudio = function() {
 
     Audio.recordAudio().then(function (audioUrl) {
 
-      $scope.audioSource = audioUrl;
+      $scope.attachedAudioRecordings.push(audioUrl);
 
     });
 
@@ -74,14 +81,8 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
 
   };
 
-  $scope.imageHasBeenAdded = function() {
-
-    if ($scope.imageSource == null) {
-      return false;
-    }
-
-    return true;
-
+  $scope.removeAttachedAudio = function(attachedAudio) {
+    $scope.attachedAudioRecordings.splice($scope.attachedAudioRecordings.indexOf(attachedAudio), 1);
   };
 
 });
