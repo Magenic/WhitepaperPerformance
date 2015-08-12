@@ -1,4 +1,4 @@
-app.controller('AddIncidentController', function($scope, Azure, Camera, $ionicPopover) {
+app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $ionicPopover) {
 
   // create incident model
   $scope.incident = {
@@ -62,6 +62,18 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, $ionicPo
 
   };
 
+  $scope.recordAudio = function() {
+
+    Audio.recordAudio().then(function (audioUrl) {
+
+      $scope.audioSource = audioUrl;
+
+    });
+
+    $scope.popover.hide();
+
+  };
+
   $scope.imageHasBeenAdded = function() {
 
     if ($scope.imageSource == null) {
@@ -70,18 +82,6 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, $ionicPo
 
     return true;
 
-  };
-
-  // add image
-  $scope.attachImage = function() {
-    alert('attach image');
-    $scope.popover.hide();
-  };
-
-  // add audio
-  $scope.recordAudio = function() {
-    alert('record audio');
-    $scope.popover.hide();
   };
 
 });
