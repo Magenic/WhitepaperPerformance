@@ -24,6 +24,17 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
 
   };
 
+  // save incident
+  $scope.saveIncident = function() {
+    Azure.saveNewIncident($scope.attachedPhotos, $scope.attachedAudioRecordings, $scope.incident.subject, $scope.incident.assignTo, $scope.incident.description)
+    .then(function (newIncident) {
+
+        //TODO - forward to new incident
+        var incidentId = newIncident.id;
+
+    });
+  };
+
   // get workers list
   Azure.getWorkersList()
     .then(function (workersList) {
