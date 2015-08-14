@@ -16,15 +16,15 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		Xamarin.IncidentApp.iOS.IncidentCommentTableView CommentTableView { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
 		UIImageView imgGradient { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UIImageView imgIncidentImage { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIScrollView IncidentScrollView { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
@@ -40,10 +40,6 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (CommentTableView != null) {
-				CommentTableView.Dispose ();
-				CommentTableView = null;
-			}
 			if (imgGradient != null) {
 				imgGradient.Dispose ();
 				imgGradient = null;
@@ -51,6 +47,10 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 			if (imgIncidentImage != null) {
 				imgIncidentImage.Dispose ();
 				imgIncidentImage = null;
+			}
+			if (IncidentScrollView != null) {
+				IncidentScrollView.Dispose ();
+				IncidentScrollView = null;
 			}
 			if (lblDescription != null) {
 				lblDescription.Dispose ();

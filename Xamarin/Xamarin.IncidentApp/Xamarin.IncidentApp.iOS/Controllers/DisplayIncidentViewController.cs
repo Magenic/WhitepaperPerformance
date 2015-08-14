@@ -6,6 +6,7 @@ using System.Text;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Binding.Touch.Views;
 using Cirrious.MvvmCross.ViewModels;
+using CoreGraphics;
 using Foundation;
 using UIKit;
 using Xamarin.IncidentApp.iOS.Views.Cells;
@@ -21,6 +22,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private string _ownerInfo;
         private string _incidentImage;
         private UIActionSheet _actionSheet;
+        private int _commentProxy;
 
         public DisplayIncidentViewController(IntPtr p) : base(p)
         {
@@ -83,7 +85,86 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             this.Title = "";
 
             SetupBindings();
+
+            //AddComments();
         }
+
+        private void AddComments()
+        {
+            double yOffset = 360;
+            double viewSpacing = 10;
+            double labelHeight = 25;
+            double labelWidth = 350;
+            double imageHeight = 150;
+            double imageWidth = 300;
+            double buttonHeight = 30;
+            double buttonWidth = 200;
+
+            try
+            {
+                foreach (var incidentDetailVm in ViewModel.IncidentDetails)
+                {
+                    if (incidentDetailVm.DetailText != null)
+                    {
+                        var comment = new UILabel()
+                        {
+                            Text = incidentDetailVm.DetailText,
+                            Frame = new CGRect(5, yOffset, labelWidth, labelHeight)
+                        };
+                        IncidentScrollView.AddSubview(comment);
+                        yOffset += (labelHeight + viewSpacing);
+                    }
+
+                    if (incidentDetailVm.AudioRecordingLink != null && incidentDetailVm.AudioRecordingLink.Length != 0)
+                    {
+                        var audioNote = UIButton.FromType(UIButtonType.RoundedRect);
+                        audioNote.SetTitle("Play Audio Note", UIControlState.Normal);
+                        audioNote.SetTitleColor(UIColor.White, UIControlState.Normal );
+                        audioNote.BackgroundColor = UIColor.FromRGB(3, 169, 244);
+                        audioNote.Frame = new CGRect(5, yOffset, buttonWidth, buttonHeight);
+
+                        audioNote.TouchUpInside += (sender, e) =>
+                        {
+                            new UIAlertView("Play Audio", ("At " + yOffset.ToString()), null, "OK", null).Show();
+                        };
+                        IncidentScrollView.AddSubview(audioNote);
+                        yOffset += (buttonHeight + viewSpacing);
+                    }
+
+                    if (incidentDetailVm.ImageLink != null && incidentDetailVm.ImageLink.Length != 0)
+                    {
+                        var image = new UIImageView()
+                        {
+                            Image = LoadImage(incidentDetailVm.ImageLink),
+                            Frame = new CGRect(5,yOffset,imageWidth,imageHeight),
+                            ContentMode = UIViewContentMode.ScaleAspectFit
+                        };
+                        IncidentScrollView.AddSubview(image);
+                        yOffset += (imageHeight + viewSpacing);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            yOffset += (labelHeight + imageHeight);
+
+            IncidentScrollView.LayoutIfNeeded();
+            IncidentScrollView.ContentSize = new CGSize(IncidentScrollView.Bounds.Size.Width, yOffset);
+        }
+
+        public int CommentProxy
+        {
+            get { return _commentProxy; }
+            set
+            {
+                if(value > 0) AddComments();
+                _commentProxy = value;
+            }
+        }
+
         public new DisplayIncidentViewModel ViewModel
         {
             get { return (DisplayIncidentViewModel)base.ViewModel; }
@@ -119,7 +200,10 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             get { return _incidentImage; }
             set
             {
-                this.imgIncidentImage.Image = LoadImage(value);
+                if (value != null)
+                {
+                    this.imgIncidentImage.Image = LoadImage(value);
+                }
                 _incidentImage = value;
             }
         }
@@ -131,23 +215,31 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         /// <returns>UIImage.</returns>
         private UIImage LoadImage(string imgUrl)
         {
+            if (imgUrl.Length == 0)
+            {
+                return new UIImage();
+            }
+
             using (var url = new NSUrl(imgUrl))
             using (var data = NSData.FromUrl(url))
-                return UIImage.LoadFromData(data);
+
+            return UIImage.LoadFromData(data);
         }
         private void SetupBindings()
         {
-            var source = new CommentTableSource(CommentTableView);
-            this.CreateBinding(source).To<DisplayIncidentViewModel>(vm => vm.IncidentDetails).Apply();
+            //var source = new CommentTableSource(CommentTableView);
+            //this.CreateBinding(source).To<DisplayIncidentViewModel>(vm => vm.IncidentDetails).Apply();
 
-            CommentTableView.Source = source;
-            CommentTableView.ReloadData();
+            //CommentTableView.Source = source;
+            //CommentTableView.ReloadData();
 
             this.CreateBinding().For(c => c.IncidentImage).To((DisplayIncidentViewModel property) => property.ImageLink).Apply();
             this.CreateBinding(lblSubject).For(f => f.Text).To<DisplayIncidentViewModel>(vm => vm.Subject).Apply();
             this.CreateBinding().For(c => c.OwnerName).To((DisplayIncidentViewModel property) => property.FullName).Apply();
             this.CreateBinding().For(c => c.OwnerInfo).To((DisplayIncidentViewModel property) => property.DateOpened).Apply();
             this.CreateBinding(lblDescription).For(f => f.Text).To<DisplayIncidentViewModel>(vm => vm.Description).Apply();
+
+            this.CreateBinding().For(c => c.CommentProxy).To<DisplayIncidentViewModel>(vm => vm.IncidentDetails.Count).Apply();
         }
     }
 
