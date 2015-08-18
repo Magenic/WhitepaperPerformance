@@ -1,7 +1,7 @@
 app.factory('Azure', function($q, $http) {
 
     var azureUrl = "https://testincidentqueue.azure-mobile.net/";
-    var storageAccount = "https://testincidentqueue.blog.core.windows.net/incidentbinaries/";
+    var storageAccount = "https://testincidentqueue.blob.core.windows.net/incidentbinaries/";
     var storageAccountName = "/incidentbinaries";
 
     var mobileService;
