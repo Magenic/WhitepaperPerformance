@@ -59,6 +59,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     controller: 'IncidentsController'
   })
 
+  .state('incident-detail', {
+    url: '/incident-detail/:incidentId',
+    templateUrl: 'templates/incident-detail.html',
+    controller: 'IncidentDetailController'
+  })
+
   .state('add-incident', {
     url: '/add-incident',
     templateUrl: 'templates/add-incident.html',

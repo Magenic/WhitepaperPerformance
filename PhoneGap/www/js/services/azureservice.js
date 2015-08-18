@@ -120,6 +120,31 @@ app.factory('Azure', function($q, $http) {
 
     };
 
+    // Get Single Incident
+    azureService.getIncident = function (incidentId) {
+
+      var deferred = $q.defer();
+
+      var incidentTable = mobileService.getTable('Incident')
+        .where({
+
+            Id: incidentId
+
+          })
+        .read().done(function (incidentTable) {
+
+            deferred.resolve(incidentTable[0]);
+
+        }, function (err) {
+
+            alert("Error: " + err);
+
+        });
+
+      return deferred.promise;
+
+    };
+
     // Get User Profile
     azureService.getWorkersList = function () {
 

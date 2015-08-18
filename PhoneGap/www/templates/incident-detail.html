@@ -1,0 +1,19 @@
+<ion-view view-title="{{ selectedUserFullName }}">
+
+	<ion-content>
+
+	<ion-refresher
+		pulling-text="Pull to refresh..."
+		on-refresh="doRefresh()">
+	</ion-refresher>
+
+  incident id: {{ incidentId }}<br />
+	subject: {{ incident.subject }}<br />
+	description: {{ incident.description }}<br />
+
+	<hr />
+
+	{{ incident }}
+
+	</ion-content>
+</ion-view>

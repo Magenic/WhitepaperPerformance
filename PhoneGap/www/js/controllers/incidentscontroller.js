@@ -1,4 +1,4 @@
-app.controller('IncidentsController', function($scope, Azure, $stateParams) {
+app.controller('IncidentsController', function($scope, Azure, $stateParams, $state) {
 
   // get user
   var userId = $stateParams.userId;
@@ -14,6 +14,14 @@ app.controller('IncidentsController', function($scope, Azure, $stateParams) {
 
   $scope.doRefresh = function() {
     refreshIncidents();
+  };
+
+  $scope.selectIncident = function(incidentId) {
+
+    $state.go('incident-detail', {
+      incidentId: incidentId
+    });
+
   };
 
   function refreshIncidents() {

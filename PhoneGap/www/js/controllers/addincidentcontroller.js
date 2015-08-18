@@ -1,4 +1,4 @@
-app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $ionicPopover) {
+app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $ionicPopover, $state) {
 
   // create incident model
   $scope.incident = {
@@ -29,8 +29,9 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
     Azure.saveNewIncident($scope.attachedPhotos, $scope.attachedAudioRecordings, $scope.incident.subject, $scope.incident.assignTo, $scope.incident.description)
     .then(function (newIncident) {
 
-        //TODO - forward to new incident
-        var incidentId = newIncident.id;
+        $state.go('incident-detail', {
+          incidentId: newIncident.id
+        });
 
     });
   };
