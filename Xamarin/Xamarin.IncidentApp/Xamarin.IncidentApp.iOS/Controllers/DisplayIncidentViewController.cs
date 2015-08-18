@@ -125,7 +125,8 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
                         audioNote.TouchUpInside += (sender, e) =>
                         {
-                            new UIAlertView("Play Audio", ("At " + yOffset.ToString()), null, "OK", null).Show();
+                            //new UIAlertView("Play Audio", ("At " + yOffset.ToString()), null, "OK", null).Show();
+                            
                         };
                         IncidentScrollView.AddSubview(audioNote);
                         yOffset += (buttonHeight + viewSpacing);
