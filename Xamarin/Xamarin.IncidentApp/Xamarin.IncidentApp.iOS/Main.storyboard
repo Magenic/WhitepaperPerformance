@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="47" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" restorationIdentifier="btnLogin">
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="47" translatesAutoresizingMaskIntoConstraints="NO" restorationIdentifier="btnLogin">
                                 <rect key="frame" x="94" y="513" width="188" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Sign In">
@@ -34,7 +34,7 @@
                                     <rect key="frame" x="24" y="77" width="327" height="74"/>
                                 </variation>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="265" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Email Address" misplaced="YES">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="265" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Email Address">
                                 <rect key="frame" x="20" y="211" width="335" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -53,7 +53,7 @@
                                     <rect key="frame" x="24" y="211" width="331" height="30"/>
                                 </variation>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="266" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Password" misplaced="YES">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="266" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Password">
                                 <rect key="frame" x="20" y="273" width="335" height="30"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
@@ -75,7 +75,7 @@
                                     <rect key="frame" x="24" y="275" width="331" height="30"/>
                                 </variation>
                             </textField>
-                            <view contentMode="scaleToFill" id="267" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <view contentMode="scaleToFill" id="267" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="0.0" y="195" width="377" height="1"/>
                                 <color key="backgroundColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
                                 <subviews/>
@@ -174,15 +174,15 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="1" sectionFooterHeight="1" id="96" translatesAutoresizingMaskIntoConstraints="NO" customClass="TeamUITableView" fixedFrame="YES">
-                                <rect key="frame" x="5" y="30" width="327" height="426"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="96" translatesAutoresizingMaskIntoConstraints="NO" customClass="TeamUITableView">
+                                <rect key="frame" x="10" y="20" width="355" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="97" reuseIdentifier="TeamStatusCell" customClass="TeamStatusCell" restorationIdentifier="TeamStatusCell" accessoryType="disclosureIndicator">
-                                        <rect key="frame" x="0.0" y="1" width="342" height="80"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="97" reuseIdentifier="TeamStatusCell" customClass="TeamStatusCell" restorationIdentifier="TeamStatusCell" accessoryType="disclosureIndicator" rowHeight="80">
+                                        <rect key="frame" x="0.0" y="22" width="355" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="98" tableViewCell="97">
-                                            <rect key="frame" x="0.0" y="0.0" width="294" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="322" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <subviews>
@@ -274,19 +274,19 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="99">
-                                        <rect key="frame" x="0.0" y="81" width="342" height="80"/>
+                                        <rect key="frame" x="0.0" y="102" width="355" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="100" tableViewCell="99">
-                                            <rect key="frame" x="0.0" y="0.0" width="327" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="101">
-                                        <rect key="frame" x="0.0" y="161" width="342" height="80"/>
+                                        <rect key="frame" x="0.0" y="182" width="355" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="102" tableViewCell="101">
-                                            <rect key="frame" x="0.0" y="0.0" width="327" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -295,22 +295,9 @@
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <rect key="frame" x="19" y="27" width="342" height="628"/>
                                 </variation>
+                                <inset key="scrollIndicatorInsets" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
                             </tableView>
                         </subviews>
-                        <constraints>
-                            <constraint id="479" constant="14" firstItem="93" firstAttribute="trailing" secondItem="96" secondAttribute="trailing"/>
-                            <constraint id="480" constant="12" firstItem="93" firstAttribute="bottom" secondItem="96" secondAttribute="bottom"/>
-                            <constraint firstItem="96" firstAttribute="leading" secondItem="93" secondAttribute="leading" constant="19" id="485"/>
-                            <constraint firstItem="96" firstAttribute="top" secondItem="89" secondAttribute="bottom" constant="7" id="488"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="479"/>
-                                <exclude reference="480"/>
-                                <exclude reference="485"/>
-                                <exclude reference="488"/>
-                            </mask>
-                        </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
                                 <include reference="479"/>
@@ -319,6 +306,12 @@
                                 <include reference="488"/>
                             </mask>
                         </variation>
+                        <constraints>
+                            <constraint firstItem="96" firstAttribute="top" secondItem="89" secondAttribute="bottom" constant="0.0" id="792"/>
+                            <constraint firstItem="96" firstAttribute="leading" secondItem="93" secondAttribute="leading" constant="10" id="793"/>
+                            <constraint firstItem="93" firstAttribute="trailing" secondItem="96" secondAttribute="trailing" constant="10" id="794"/>
+                            <constraint firstItem="96" firstAttribute="bottom" secondItem="90" secondAttribute="top" constant="0.0" id="795"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="TeamTableView" destination="96" id="name-outlet-96"/>
@@ -339,11 +332,229 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="496">
+                                <rect key="frame" x="75" y="80" width="285" height="31"/>
+                                <segments>
+                                    <segment title="Open"/>
+                                    <segment title="Closed"/>
+                                </segments>
+                                <connections>
+                                    <action selector="sgOpenCloseFilter_ValueChanged:" destination="238" id="515" eventType="valueChanged"/>
+                                </connections>
+                                <constraints>
+                                    <constraint id="566" firstAttribute="width" constant="285"/>
+                                    <constraint id="567" firstAttribute="height" constant="30"/>
+                                </constraints>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="499" translatesAutoresizingMaskIntoConstraints="NO" customClass="IncidentQueueUITableView" misplaced="YES">
+                                <rect key="frame" x="10" y="135" width="358" height="511"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="500" accessoryType="disclosureIndicator" customClass="IncidentQueueCell" rowHeight="80" reuseIdentifier="IncidentQueueCell" restorationIdentifier="IncidentQueueCell">
+                                        <rect key="frame" x="0.0" y="22" width="358" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="501" tableViewCell="500">
+                                            <rect key="frame" x="0.0" y="0.0" width="325" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="576" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="4" y="0.0" width="80" height="80"/>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="577" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="90" y="4" width="260" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Owner:" lineBreakMode="tailTruncation" minimumFontSize="10" id="578" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="90" y="34" width="260" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="07/14/15 @ 3:41pm" lineBreakMode="tailTruncation" minimumFontSize="10" id="579" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="90" y="57" width="260" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="imgIncidentPicture" destination="576" id="name-outlet-576"/>
+                                            <outlet property="lblSubject" destination="577" id="name-outlet-577"/>
+                                            <outlet property="lblIncidentDate" destination="579" id="name-outlet-579"/>
+                                            <outlet property="lblOwner" destination="578" id="name-outlet-578"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="502">
+                                        <rect key="frame" x="0.0" y="102" width="358" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="503" tableViewCell="502">
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="504">
+                                        <rect key="frame" x="0.0" y="146" width="358" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="505" tableViewCell="504">
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint id="564" firstItem="239" firstAttribute="trailing" secondItem="496" secondAttribute="trailing" constant="15"/>
+                            <constraint id="565" constant="80" firstItem="496" firstAttribute="top" secondItem="239" secondAttribute="top"/>
+                            <constraint firstItem="239" firstAttribute="trailing" secondItem="499" secondAttribute="trailing" constant="8" id="784"/>
+                            <constraint firstItem="499" firstAttribute="leading" secondItem="239" secondAttribute="leading" constant="12" id="785"/>
+                            <constraint firstItem="499" firstAttribute="top" secondItem="496" secondAttribute="bottom" constant="28" id="786"/>
+                            <constraint firstItem="499" firstAttribute="bottom" secondItem="236" secondAttribute="top" constant="0.0" id="789"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="sgOpenCloseFilter" destination="496" id="name-outlet-496"/>
+                        <outlet property="IncidentQueueTableView" destination="499" id="name-outlet-499"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="240" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1048" y="62"/>
+        </scene>
+        <scene sceneID="611">
+            <objects>
+                <viewController id="612" sceneMemberID="viewController" customClass="WorkerQueueItemViewController" storyboardIdentifier="WorkerQueueItemViewController" title="Worker Item Detail">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="609"/>
+                        <viewControllerLayoutGuide type="bottom" id="610"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="613">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="623" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="36" width="343" height="240"/>
+                                <constraints>
+                                    <constraint id="629" firstAttribute="width" constant="343"/>
+                                    <constraint id="630" firstAttribute="height" constant="240"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="708" translatesAutoresizingMaskIntoConstraints="NO" image="BlackGradient_Background2.png">
+                                <rect key="frame" x="20" y="36" width="343" height="240"/>
+                                <constraints>
+                                    <constraint id="711" firstAttribute="width" constant="343"/>
+                                    <constraint id="712" firstAttribute="height" constant="240"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Subject" lineBreakMode="tailTruncation" minimumFontSize="10" id="631" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="216" width="355" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Owner" lineBreakMode="tailTruncation" minimumFontSize="10" id="632" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="245" width="343" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="View not used yet..." lineBreakMode="wordWrap" minimumFontSize="10" id="633" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" baselineAdjustment="none">
+                                <rect key="frame" x="20" y="294" width="335" height="108"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint id="627" constant="12" firstItem="613" firstAttribute="trailing" secondItem="623" secondAttribute="trailing"/>
+                            <constraint id="628" constant="36" firstItem="623" firstAttribute="top" secondItem="613" secondAttribute="top"/>
+                            <constraint id="709" constant="12" firstItem="613" firstAttribute="trailing" secondItem="708" secondAttribute="trailing"/>
+                            <constraint id="710" constant="36" firstItem="708" firstAttribute="top" secondItem="613" secondAttribute="top"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imgIncidentImage" destination="623" id="name-outlet-623"/>
+                        <outlet property="lblOwnerInfo" destination="632" id="name-outlet-632"/>
+                        <outlet property="lblDescription" destination="633" id="name-outlet-633"/>
+                        <outlet property="lblSubject" destination="631" id="name-outlet-631"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="614" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1445" y="62"/>
+        </scene>
+        <scene sceneID="638">
+            <objects>
+                <viewController id="639" sceneMemberID="viewController" customClass="DisplayIncidentViewController" title="Incident Detail" storyboardIdentifier="DisplayIncidentViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="636"/>
+                        <viewControllerLayoutGuide type="bottom" id="637"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="640">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="849" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="5" y="30" width="365" height="659"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="650" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                        <rect key="frame" x="0.0" y="0.0" width="365" height="260"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="717" translatesAutoresizingMaskIntoConstraints="NO" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" horizontalContentHuggingPriority="1000" image="BlackGradient_Background2.png" fixedFrame="YES">
+                                        <rect key="frame" x="0.0" y="0.0" width="365" height="260"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="This is a bunch of text that will tell me if this is wrapping correctly or not." lineBreakMode="wordWrap" id="660" translatesAutoresizingMaskIntoConstraints="NO" baselineAdjustment="none" numberOfLines="4" adjustsFontSizeToFit="NO" fixedFrame="YES">
+                                        <rect key="frame" x="10" y="280" width="350" height="41"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Subject" lineBreakMode="tailTruncation" minimumFontSize="10" id="658" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                        <rect key="frame" x="15" y="210" width="340" height="20"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Owner" lineBreakMode="tailTruncation" minimumFontSize="10" id="659" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                        <rect key="frame" x="15" y="235" width="337" height="17"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="IncidentScrollView" destination="849" id="name-outlet-849"/>
+                        <outlet property="lblSubject" destination="658" id="name-outlet-658"/>
+                        <outlet property="lblOwnerInfo" destination="659" id="name-outlet-659"/>
+                        <outlet property="lblDescription" destination="660" id="name-outlet-660"/>
+                        <outlet property="imgGradient" destination="717" id="name-outlet-717"/>
+                        <outlet property="imgIncidentImage" destination="650" id="name-outlet-650"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="641" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1444" y="801"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -358,5 +569,6 @@
         <image name="Images.xcassets/LaunchImage.launchimage/Default-Portrait.png" width="768" height="1004"/>
         <image name="Images.xcassets/LaunchImage.launchimage/Default.png" width="320" height="480"/>
         <image name="Incidentrackr_banner.jpg" width="523" height="74"/>
+        <image name="BlackGradient_Background2.png" width="400" height="400"/>
     </resources>
 </document>

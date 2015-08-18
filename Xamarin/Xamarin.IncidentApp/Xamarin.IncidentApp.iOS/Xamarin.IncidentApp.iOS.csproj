@@ -10,6 +10,8 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>XamarinIncidentAppiOS</AssemblyName>
     <NuGetPackageImportStamp>779941cf</NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -243,15 +245,31 @@
     <Compile Include="Controllers\DashboardViewController.designer.cs">
       <DependentUpon>DashboardViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\DisplayIncidentViewController.cs" />
+    <Compile Include="Controllers\DisplayIncidentViewController.designer.cs">
+      <DependentUpon>DisplayIncidentViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\WorkerQueueItemViewController.cs" />
     <Compile Include="Controllers\LoginViewController.cs" />
     <Compile Include="Controllers\LoginViewController.designer.cs">
       <DependentUpon>LoginViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\WorkerQueueItemViewController.designer.cs">
+      <DependentUpon>WorkerQueueItemViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\WorkerQueueViewController.cs" />
     <Compile Include="Controllers\WorkerQueueViewController.designer.cs">
       <DependentUpon>WorkerQueueViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="DebugTrace.cs" />
+    <Compile Include="IncidentCommentTableView.cs" />
+    <Compile Include="IncidentCommentTableView.designer.cs">
+      <DependentUpon>IncidentCommentTableView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IncidentQueueUITableView.cs" />
+    <Compile Include="IncidentQueueUITableView.designer.cs">
+      <DependentUpon>IncidentQueueUITableView.cs</DependentUpon>
+    </Compile>
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -261,7 +279,16 @@
     <Compile Include="TeamUITableView.designer.cs">
       <DependentUpon>TeamUITableView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utility\MediaUtility.cs" />
     <Compile Include="ViewPresenter.cs" />
+    <Compile Include="Views\Cells\CommentCell.cs" />
+    <Compile Include="Views\Cells\CommentCell.designer.cs">
+      <DependentUpon>CommentCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cells\IncidentQueueCell.cs" />
+    <Compile Include="Views\Cells\IncidentQueueCell.designer.cs">
+      <DependentUpon>IncidentQueueCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Cells\TeamStatusCell.cs" />
     <Compile Include="Views\Cells\TeamStatusCell.designer.cs">
       <DependentUpon>TeamStatusCell.cs</DependentUpon>
@@ -271,6 +298,7 @@
   <ItemGroup>
     <Content Include="AppDelegate.cs.txt" />
     <BundleResource Include="Resources\Incidentrackr_banner.jpg" />
+    <BundleResource Include="Resources\BlackGradient_Background2.png" />
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default%402x.png">
       <InProject>false</InProject>
     </ImageAsset>
@@ -319,10 +347,19 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <!-- <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" /> -->
 </Project>
