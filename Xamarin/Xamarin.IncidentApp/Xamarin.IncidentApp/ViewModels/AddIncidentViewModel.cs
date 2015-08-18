@@ -27,7 +27,6 @@ namespace Xamarin.IncidentApp.ViewModels
             Task.Run(async () => await LoadWorkersAsync());
         }
 
-
         public void SetActivityServices(IMediaService takePhotoService)
         {
             _mediaService = takePhotoService;
@@ -276,7 +275,6 @@ namespace Xamarin.IncidentApp.ViewModels
 
         private async Task SaveNewIncidentAsync()
         {
-
             if (!NetworkService.IsConnected)
             {
                 await UserDialogs.AlertAsync("Device not connected to network, cannot login. Please try again later",
@@ -306,13 +304,12 @@ namespace Xamarin.IncidentApp.ViewModels
 
         private async Task SaveIncidentDataAsync()
         {
-// First save the image/audio
+            // First save the image/audio
             string imagePath = string.Empty;
             if (Image != null && Image.Length > 0)
             {
                 imagePath = await _azureService.SaveBlobAsync(Image, "png");
             }
-
 
             string audioPath = string.Empty;
             if (AudioRecording != null && AudioRecording.Length > 0)
