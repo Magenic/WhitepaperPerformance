@@ -44,9 +44,9 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
         };
 
         // go to detail page for new incident
-        // $state.go('incident-detail', {
-        //   incidentId: newIncident.id
-        // });
+        $state.go('incident-detail', {
+          incidentId: newIncident.id
+        });
 
     });
 

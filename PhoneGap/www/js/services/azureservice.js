@@ -57,7 +57,12 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
       getSASUrl().then(function (sasURL) {
 
         // convert base64 data
-        var byteArray = convertBase64toBlob(base64data);
+        var byteArray;
+        if (contentType == 'image/jpeg') {
+          byteArray = convertBase64toBlob(base64data);
+        } else {
+          byteArray = base64data;
+        }
 
         // generate blob name and SAS url
         var blobName = guid() + "." + blobExtension;
