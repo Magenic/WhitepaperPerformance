@@ -1,4 +1,4 @@
-var app = angular.module('IncidentApp', ['ionic'])
+var app = angular.module('IncidentApp', ['ionic', 'ngCordova'])
 
 app.run(function($ionicPlatform, $state, ClearNavigationHistory) {
   $ionicPlatform.ready(function() {
