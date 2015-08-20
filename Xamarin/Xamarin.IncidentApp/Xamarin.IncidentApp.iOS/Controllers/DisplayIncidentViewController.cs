@@ -1,15 +1,22 @@
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
+using System.IO;
+using System.Net;
+using System.Threading;
+using AudioToolbox;
+using AVFoundation;
 using Cirrious.MvvmCross.Binding.BindingContext;
+using Cirrious.MvvmCross.Binding.ExtensionMethods;
 using Cirrious.MvvmCross.Binding.Touch.Views;
 using Cirrious.MvvmCross.ViewModels;
 using CoreGraphics;
 using Foundation;
+using StreamingAudio;
 using UIKit;
+using Xamarin.IncidentApp.iOS.Services;
 using Xamarin.IncidentApp.iOS.Views.Cells;
+using Xamarin.IncidentApp.Interfaces;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.iOS.Controllers
@@ -23,13 +30,20 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private string _incidentImage;
         private UIActionSheet _actionSheet;
         private int _commentProxy;
+        private ArrayList _audioLinks;
+        private MediaService _mediaService;
 
         public DisplayIncidentViewController(IntPtr p) : base(p)
         {
-            SetupActionSheet();
+            InitView();
         }
 
         public DisplayIncidentViewController()
+        {
+            InitView();
+        }
+
+        private void InitView()
         {
             SetupActionSheet();
         }
@@ -47,6 +61,8 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             _actionSheet.CancelButtonIndex = 4;
 
             _actionSheet.Clicked += _actionSheet_Clicked;
+
+            _audioLinks = new ArrayList();
         }
 
         void _actionSheet_Clicked(object sender, UIButtonEventArgs e)
@@ -74,6 +90,9 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         {
             base.ViewDidLoad();
 
+            _mediaService = new MediaService();
+            ViewModel.SetActivityServices(_mediaService);
+
             NavigationController.NavigationBarHidden = false;
             NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Action, (sender, args) =>
             {
@@ -89,7 +108,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             //AddComments();
         }
 
-        private void AddComments()
+        private void LoadComments()
         {
             double yOffset = 360;
             double viewSpacing = 10;
@@ -117,17 +136,20 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
                     if (incidentDetailVm.AudioRecordingLink != null && incidentDetailVm.AudioRecordingLink.Length != 0)
                     {
+                        var linkCount = _audioLinks.Count();
+                        _audioLinks.Add(incidentDetailVm.AudioRecordingLink);
+
                         var audioNote = UIButton.FromType(UIButtonType.RoundedRect);
                         audioNote.SetTitle("Play Audio Note", UIControlState.Normal);
                         audioNote.SetTitleColor(UIColor.White, UIControlState.Normal );
                         audioNote.BackgroundColor = UIColor.FromRGB(3, 169, 244);
                         audioNote.Frame = new CGRect(5, yOffset, buttonWidth, buttonHeight);
+                        audioNote.Tag = linkCount;
 
-                        audioNote.TouchUpInside += (sender, e) =>
-                        {
-                            //new UIAlertView("Play Audio", ("At " + yOffset.ToString()), null, "OK", null).Show();
-                            
-                        };
+                        var bindings = this.CreateBindingSet<DisplayIncidentViewController, DisplayIncidentViewModel>();
+                        bindings.Bind(audioNote).To(x => x.PlayAudioCommand);
+                        bindings.Apply();
+
                         IncidentScrollView.AddSubview(audioNote);
                         yOffset += (buttonHeight + viewSpacing);
                     }
@@ -161,7 +183,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             get { return _commentProxy; }
             set
             {
-                if(value > 0) AddComments();
+                if(value > 0) LoadComments();
                 _commentProxy = value;
             }
         }

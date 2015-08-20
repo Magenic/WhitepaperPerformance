@@ -249,7 +249,10 @@ namespace Xamarin.IncidentApp.ViewModels
                 {
                     UserDialogs.Alert("No audio recording to play", "Playback Error");
                 }
-                _mediaService.PlayAudio(AudioRecordingBytes);
+                else
+                {
+                    _mediaService.PlayAudio(AudioRecordingBytes);
+                }
             }
         }
 
