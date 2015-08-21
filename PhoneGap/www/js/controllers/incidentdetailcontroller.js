@@ -34,7 +34,7 @@ app.controller('IncidentDetailController', function($scope, Azure, $stateParams,
 
   function refreshIncident() {
 
-    Azure.getWorkersList()
+    Azure.getAllUserList()
       .then(function (workersListFromAzure) {
 
         workersList = workersListFromAzure;

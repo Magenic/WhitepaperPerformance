@@ -332,12 +332,34 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
 
     };
 
-    // Get User Profile
+    // Get Worker List
     azureService.getWorkersList = function () {
 
       var deferred = $q.defer();
 
       mobileService.invokeApi("WorkerList", {
+          body: null,
+          method: "get"
+      }).done(function (results) {
+
+          deferred.resolve(results.result);
+
+      }, function(error) {
+
+          alert(error.message);
+
+      });
+
+      return deferred.promise;
+
+    };
+
+    // Get All User List
+    azureService.getAllUserList = function () {
+
+      var deferred = $q.defer();
+
+      mobileService.invokeApi("AllUserList", {
           body: null,
           method: "get"
       }).done(function (results) {
