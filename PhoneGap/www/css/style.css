@@ -79,35 +79,42 @@
   border-bottom-style: solid;
 }
 
-/* Add Incident */
+/* Add Incident / Add Comment */
 
-.addIncident span {
+.addIncident span.
+.addComment span {
   color: darkgrey;
 }
 
-.addIncident .list a.item {
+.addIncident .list a.item,
+.addComment .list a.item {
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
   border-bottom: 0px;
 }
 
-.addIncident .attachmentItemPhoto {
+.addIncident .attachmentItemPhoto,
+.addComment .attachmentItemPhoto {
   background-color: darkgray;
   text-align: right;
 }
-.addIncident .attachmentItemPhoto img {
+.addIncident .attachmentItemPhoto img,
+.addComment .attachmentItemPhoto img {
   width: 100%;
 }
 
-.addIncident .attachmentItemAudioRecording {
+.addIncident .attachmentItemAudioRecording,
+.addComment .attachmentItemAudioRecording {
   background-color: darkgray;
   text-align: right;
 }
-.addIncident .attachmentItemAudioRecording .outerSpan {
+.addIncident .attachmentItemAudioRecording .outerSpan,
+.addComment .attachmentItemAudioRecording .outerSpan {
   text-align: center;
 }
-.addIncident .attachmentItemAudioRecording span {
+.addIncident .attachmentItemAudioRecording span,
+.addComment .attachmentItemAudioRecording span {
   color: white;
 }
 
@@ -162,7 +169,7 @@
 
 .incidentDetail .detailInner {
   background-color: #eeeeee;
-  padding: 10px;  
+  padding: 10px;
 }
 
 .incidentDetail .detailInner img {

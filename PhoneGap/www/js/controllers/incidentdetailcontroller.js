@@ -1,4 +1,4 @@
-app.controller('IncidentDetailController', function($scope, Azure, $stateParams, $timeout, $cordovaMedia, $ionicPopover, $ionicHistory) {
+app.controller('IncidentDetailController', function($scope, Azure, $stateParams, $timeout, $cordovaMedia, $ionicPopover, $ionicHistory, $state) {
 
   // get incident
   var incidentId = $stateParams.incidentId;
@@ -81,6 +81,14 @@ app.controller('IncidentDetailController', function($scope, Azure, $stateParams,
 
   // add comment
   $scope.addComment = function() {
+
+    var iid = $scope.incidentId;
+
+    $state.go('incident-detail-add-comment');
+
+    // $state.go('incident-detail-add-comment', {
+    //   incidentId: $scope.incidentId
+    // });
 
     $scope.popover.hide();
 

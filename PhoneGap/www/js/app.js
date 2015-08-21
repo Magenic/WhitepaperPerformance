@@ -65,6 +65,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
     controller: 'IncidentDetailController'
   })
 
+  .state('incident-detail-add-comment', {
+    url: '/incident-detail-add-comment',
+    templateUrl: 'templates/incident-detail-add-comment.html',
+    controller: 'IncidentDetailAddCommentController'
+  })
+
+  // .state('incident-detail-add-comment', {
+  //   url: '/incident-detail-add-comment/:incidentId',
+  //   templateUrl: 'templates/incident-detail-add-comment.html',
+  //   controller: 'IncidentDetailAddCommentController'
+  // })
+
   .state('add-incident', {
     url: '/add-incident',
     templateUrl: 'templates/add-incident.html',
