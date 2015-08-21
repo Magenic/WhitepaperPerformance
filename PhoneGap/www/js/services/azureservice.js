@@ -265,6 +265,31 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
 
     };
 
+    // Get Single Incident
+    azureService.getIncidentDetails = function (incidentId) {
+
+      var deferred = $q.defer();
+
+      var incidentTable = mobileService.getTable('IncidentDetail')
+        .where({
+
+            IncidentId: incidentId
+
+          })
+        .read().done(function (incidentDetailTable) {
+
+            deferred.resolve(incidentDetailTable);
+
+        }, function (err) {
+
+            alert("Error: " + err);
+
+        });
+
+      return deferred.promise;
+
+    };
+
     // Get User Profile
     azureService.getWorkersList = function () {
 
@@ -276,6 +301,28 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
       }).done(function (results) {
 
           deferred.resolve(results.result);
+
+      }, function(error) {
+
+          alert(error.message);
+
+      });
+
+      return deferred.promise;
+
+    };
+
+    // Get Worker Name
+    azureService.getWorker = function (workerId) {
+
+      var deferred = $q.defer();
+
+      mobileService.invokeApi("WorkerList", {
+          body: null,
+          method: "get"
+      }).done(function (results) {
+
+          deferred.resolve(results.result.filter(function (el) { return el.userId == workerId; }));
 
       }, function(error) {
 

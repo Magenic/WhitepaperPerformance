@@ -1,19 +1,67 @@
-<ion-view view-title="{{ selectedUserFullName }}">
+<ion-view view-title="" class="incidentDetail">
+
+	<ion-nav-buttons side="right">
+     	<button class="button button-icon icon ion-more" ng-click="showMenu()"></button>
+	</ion-nav-buttons>
 
 	<ion-content>
 
-	<ion-refresher
-		pulling-text="Pull to refresh..."
-		on-refresh="doRefresh()">
-	</ion-refresher>
+		<ion-refresher
+			pulling-text="Pull to refresh..."
+			on-refresh="doRefresh()">
+		</ion-refresher>
 
-  incident id: {{ incidentId }}<br />
-	subject: {{ incident.subject }}<br />
-	description: {{ incident.description }}<br />
+		<div class="bannerImage" style="height: {{ bannerHeight }}px;">
 
-	<hr />
+			<img src="{{ incident.imageLink }}" id="bannerImageImg" />
 
-	{{ incident }}
+			<div class="overlay" style="height: {{ bannerHeight }}px;" id="bannerImageOverlay">
+
+				<div class="overlayContent">
+					<h2>{{ incident.subject }}</h2>
+					{{ getWorkerFullName(incident.assignedToId) }} &middot; {{ incident.dateOpened | date:'M/dd/yy @ h:mm a' }}
+				</div>
+
+			</div>
+
+		</div>
+
+		<ion-list>
+
+			<!-- Description  -->
+			<ion-item ng-show="incident.description != ''">
+
+				{{ incident.description }}
+
+			</ion-item>
+
+			<!-- Audio  -->
+			<ion-item ng-show="incident.audioUrl != ''">
+
+					<audio controls>
+					  <source src="incident.audioUrl" type="audio/mpeg">
+					</audio>
+
+			</ion-item>
+
+			<!-- Incident Details  -->
+			<ion-item ng-repeat="incidentDetail in incidentDetails | orderBy:'dateEntered'">
+
+				<div class="detailInner">
+
+					<span ng-show="incidentDetail.detailText != ''">{{ incidentDetail.detailText }}</span>
+					<img src="{{ incidentDetail.imageLink }}" ng-show="incidentDetail.imageLink != ''"></img>
+
+					<audio controls ng-show="incidentDetail.audioLink != ''">
+					  <source src="incident.audioUrl" type="audio/mpeg">
+					</audio>
+
+				</div>
+				{{ getWorkerFirstName(incidentDetail.detailEnteredById) }} &middot; {{ incidentDetail.dateEntered | date:'M/dd/yy @ h:mm a' }}
+
+			</ion-item>
+
+		</ion-list>
 
 	</ion-content>
 </ion-view>
