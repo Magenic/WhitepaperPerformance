@@ -1,13 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
-        local:MvxBind="Text User.FirstName" />
+        local:MvxBind="Text User.FullName" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/secondary"
+        android:text="# Open Incidents" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ProgressBar
+            android:id="@+id/closedProgress"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:progressDrawable="@drawable/closedbar"
+            android:max="100"
+            android:progress="50"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/secondary"
+            local:MvxBind="Progress MaxOpenPercent" />
+        <TextView
+            android:background="#00000000"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical|left"
+            android:layout_marginLeft="20dp"
+            android:layout_alignLeft="@id/closedProgress"
+            android:layout_alignTop="@id/closedProgress"
+            android:layout_alignRight="@id/closedProgress"
+            android:layout_alignBottom="@id/closedProgress"
+            local:MvxBind="Text TotalOpenIncidents" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/secondary"
+        android:text="Average Waitime Open Incidents (min)" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ProgressBar
+            android:id="@+id/openProgress"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:progressDrawable="@drawable/openbar"
+            android:max="100"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/secondary"
+            local:MvxBind="Progress MaxAvgWaitTimePercent" />
+        <TextView
+            android:background="#00000000"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical|left"
+            android:layout_marginLeft="20dp"
+            android:layout_alignLeft="@id/openProgress"
+            android:layout_alignTop="@id/openProgress"
+            android:layout_alignRight="@id/openProgress"
+            android:layout_alignBottom="@id/openProgress"
+            local:MvxBind="Text AvgWaitTimeOfOpenIncidents" />
+    </RelativeLayout>
 </LinearLayout>

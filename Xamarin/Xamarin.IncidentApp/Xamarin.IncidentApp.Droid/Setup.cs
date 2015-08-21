@@ -1,10 +1,12 @@
-using System;
+using System.Collections.Generic;
+using System.Reflection;
 using Android.Content;
-using Cirrious.CrossCore;
+using Android.Views;
 using Cirrious.CrossCore.Platform;
+using Cirrious.MvvmCross.Binding.Bindings.Target.Construction;
 using Cirrious.MvvmCross.Droid.Platform;
 using Cirrious.MvvmCross.ViewModels;
-using Xamarin.IncidentApp.Interfaces;
+using Xamarin.IncidentApp.Droid.Bindings;
 
 namespace Xamarin.IncidentApp.Droid
 {
@@ -24,9 +26,23 @@ namespace Xamarin.IncidentApp.Droid
             return new DebugTrace();
         }
 
-        protected override void InitializeFirstChance()
+        protected override void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)
         {
-            base.InitializeFirstChance();
+            registry.RegisterCustomBindingFactory<View>(
+                            "ViewWidth",
+                            v => new ViewWidthBinging(v));
+            base.FillTargetFactories(registry);
+        }
+
+        protected override IList<Assembly> AndroidViewAssemblies
+        {
+            get
+            {
+                var toReturn = base.AndroidViewAssemblies;
+                toReturn.Add(ExecutableAssembly);
+                toReturn.Add(typeof(Android.Support.V7.Widget.CardView).Assembly);
+                return toReturn;
+            }
         }
     }
 }

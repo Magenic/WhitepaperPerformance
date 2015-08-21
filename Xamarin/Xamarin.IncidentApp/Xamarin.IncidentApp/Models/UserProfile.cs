@@ -13,5 +13,20 @@ namespace Xamarin.IncidentApp.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool Manager { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var compareUserProfile = obj as UserProfile;
+            if (compareUserProfile == null)
+            {
+                return false;
+            }
+            return UserId == compareUserProfile.UserId;
+        }
+
+        public override string ToString()
+        {
+            return FullName;
+        }
     }
 }

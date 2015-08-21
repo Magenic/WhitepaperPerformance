@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto" >
+    <item android:id="@+id/mnuAddIncidentContinue"
+          android:icon="@drawable/ic_send_white_24dp"
+          local:showAsAction="ifRoom"/>
+    <item android:id="@+id/mnuAddIncidentTakePhoto"
+          android:title="@string/take_photo" />
+    <item android:id="@+id/mnuAddIncidentAttachImage"
+          android:title="@string/attach_image" />
+    <item android:id="@+id/mnuAddIncidentRecordAudio"
+          android:title="@string/record_audio" />
+</menu>
