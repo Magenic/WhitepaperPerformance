@@ -29,14 +29,14 @@
 		<ion-list>
 
 			<!-- Description  -->
-			<ion-item ng-show="incident.description != ''">
+			<ion-item ng-show="incident.description">
 
 				{{ incident.description }}
 
 			</ion-item>
 
 			<!-- Audio  -->
-			<ion-item ng-show="incident.audioUrl != ''">
+			<ion-item ng-show="incident.audioUrl">
 
 					<audio controls>
 					  <source src="incident.audioUrl" type="audio/mpeg">
@@ -49,10 +49,10 @@
 
 				<div class="detailInner">
 
-					<span ng-show="incidentDetail.detailText != ''">{{ incidentDetail.detailText }}</span>
-					<img src="{{ incidentDetail.imageLink }}" ng-show="incidentDetail.imageLink != ''"></img>
+					<span ng-show="incidentDetail.detailText">{{ incidentDetail.detailText }}</span>
+					<img src="{{ incidentDetail.imageLink }}" ng-show="incidentDetail.imageLink"></img>
 
-					<audio controls ng-show="incidentDetail.audioLink != ''">
+					<audio controls ng-show="incidentDetail.audioLink">
 					  <source src="incident.audioUrl" type="audio/mpeg">
 					</audio>
 
