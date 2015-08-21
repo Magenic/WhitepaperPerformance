@@ -1,4 +1,4 @@
-app.controller('IncidentDetailController', function($scope, Azure, $stateParams, $timeout, $cordovaMedia) {
+app.controller('IncidentDetailController', function($scope, Azure, $stateParams, $timeout, $cordovaMedia, $ionicPopover, $ionicHistory) {
 
   // get incident
   var incidentId = $stateParams.incidentId;
@@ -7,8 +7,8 @@ app.controller('IncidentDetailController', function($scope, Azure, $stateParams,
   // do initial load of incidents
   refreshIncident();
 
+  // get worker name
   var workersList;
-
   getWorker = function(workerId) {
     return workersList.filter(function (el) { return el.userId == workerId; })[0];
   };
@@ -27,15 +27,9 @@ app.controller('IncidentDetailController', function($scope, Azure, $stateParams,
     return worker.firstName;
   };
 
+  // refresh incident
   $scope.doRefresh = function() {
     refreshIncident();
-  };
-
-  $scope.playAudio = function(audioUrl) {
-
-    new Audio(audioUrl).play();
-
-    // $cordovaMedia.newMedia(audioUrl).play();
   };
 
   function refreshIncident() {
@@ -66,6 +60,29 @@ app.controller('IncidentDetailController', function($scope, Azure, $stateParams,
           });
 
       });
+
+  };
+
+  // add popover template
+  $ionicPopover.fromTemplateUrl('templates/incident-detail-menu.html', {
+    scope: $scope
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
+
+  // close incident
+  $scope.closeIncident = function() {
+    Azure.closeIncident($scope.incidentId)
+      .then(function () {
+        $scope.popover.hide();
+        $ionicHistory.goBack();
+      });
+  };
+
+  // add comment
+  $scope.addComment = function() {
+
+    $scope.popover.hide();
 
   };
 

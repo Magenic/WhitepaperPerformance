@@ -265,6 +265,40 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
 
     };
 
+    // Close Incident
+    azureService.closeIncident = function (incidentId) {
+
+      var deferred = $q.defer();
+
+      var incidentTable = mobileService.getTable('Incident')
+        .where({
+            Id: incidentId
+          })
+        .read().done(function (incidentTable) {
+
+            // get Utc date
+            var now = new Date();
+            var now_utc = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),  now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+
+            // https://msdn.microsoft.com/en-us/library/azure/jj554203.aspx
+            var incident = incidentTable[0];
+            incident.closed = true;
+            incident.dateClosed = now_utc;
+
+            mobileService.getTable('Incident').update(incident).done(function (success) {
+              deferred.resolve(true);
+            }, function (error) {
+              alert(error);
+            });
+
+        }, function (err) {
+            alert("Error: " + err);
+        });
+
+      return deferred.promise;
+
+    };
+
     // Get Single Incident
     azureService.getIncidentDetails = function (incidentId) {
 
