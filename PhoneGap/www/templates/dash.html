@@ -17,8 +17,7 @@
 
 		<ion-list>
 
-			<!-- TODO: get this working with collection-repeat -->
-			<ion-item ng-repeat="status in statusList" ng-click="selectUser(status.user.userId, status.user.fullName)">
+			<ion-item collection-repeat="status in statusList" ng-click="selectUser(status.user.userId, status.user.fullName)">
 
 				<div class="dashboardItem">
 
@@ -26,11 +25,11 @@
 
 					<span># Incidents</span><br />
 
-					<progress max="100" value="{{ status.numberOfIncidents }}" class="progressIncidents"></progress><br />
+					<progress max="{{ maxNumberOfIncidents }}" value="{{ status.numberOfIncidents }}" class="progressIncidents"></progress><br />
 
 					<span>Average Wait Time In Minutes</span><br />
 
-					<progress max="100" value="{{ status.averageWaitTime }}" class="progressWaitTime"></progress><br />
+					<progress max="{{ maxAverageWaitTime }}" value="{{ status.averageWaitTime }}" class="progressWaitTime"></progress><br />
 
 				</div>
 

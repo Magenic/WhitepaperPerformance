@@ -176,8 +176,8 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
             results.result.forEach(function(result) {
 
               var status = {
-                numberOfIncidents: Math.floor(Math.random() * 100),
-                averageWaitTime: Math.floor(Math.random() * 100),
+                numberOfIncidents: result.totalOpenIncidents,
+                averageWaitTime: result.avgWaitTimeOfOpenIncidents,
                 user: result.user
               };
 
