@@ -84,11 +84,9 @@ app.controller('IncidentDetailController', function($scope, Azure, $stateParams,
 
     var iid = $scope.incidentId;
 
-    $state.go('incident-detail-add-comment');
-
-    // $state.go('incident-detail-add-comment', {
-    //   incidentId: $scope.incidentId
-    // });
+    $state.go('incident-detail-add-comment', {
+      incidentId: $scope.incidentId
+    });
 
     $scope.popover.hide();
 

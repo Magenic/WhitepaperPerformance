@@ -1,20 +1,27 @@
 app.controller('IncidentDetailAddCommentController', function($scope, Azure, Camera, Audio, $ionicPopover, $state, $ionicLoading, $cordovaFile, $stateParams) {
 
   // get incident Id from params
-  var incidentId = $stateParams.incidentId;
+  //var incidentId = $stateParams.incidentId;
 
-  // create scope
-  $scope.incidentId = incidentId;
-  $scope.comment = "";
-  $scope.attachedPhoto = null;
-  $scope.attachedAudio = null;
+  // create model
+  $scope.comment = {
+    incidentId: $stateParams.incidentId,
+    detailText: "",
+    attachedPhoto: null,
+    attachedAudio: null
+  };
+
+  // $scope.incidentId = incidentId;
+  // $scope.comment = '';
+  // $scope.attachedPhoto = null;
+  // $scope.attachedAudio = null;
 
   // save button disabled state - has to have at least something
   $scope.canSave = function() {
-    if ($scope.comment != "" || $scope.attachedPhoto != null || $scope.attachedAudio != null) {
-      return true;
+    if ($scope.comment.detailText == '' && $scope.comment.attachedPhoto == null && $scope.comment.attachedAudio == null) {
+      return false;
     }
-    return false;
+    return true;
   };
 
   // save comment
@@ -28,7 +35,7 @@ app.controller('IncidentDetailAddCommentController', function($scope, Azure, Cam
       };
 
     // save comment
-    Azure.addIncidentComment($scope.incidentId, $scope.comment, $scope.attachedPhoto, $scope.attachedAudio)
+    Azure.addIncidentComment($scope.comment.incidentId, $scope.comment.detailText, $scope.comment.attachedPhoto, $scope.comment.attachedAudio)
     .then(function () {
 
         // hide activity indication
@@ -38,7 +45,7 @@ app.controller('IncidentDetailAddCommentController', function($scope, Azure, Cam
 
         // go to detail page for incident
         $state.go('incident-detail', {
-          incidentId: $scope.incidentId
+          incidentId: $scope.comment.incidentId
         });
 
     });
@@ -56,7 +63,7 @@ app.controller('IncidentDetailAddCommentController', function($scope, Azure, Cam
   $scope.getPictureFromCamera = function() {
 
     Camera.getPictureFromCamera().then(function (imageData) {
-      $scope.attachedPhoto = "data:image/jpeg;base64," + imageData;
+      $scope.comment.attachedPhoto = "data:image/jpeg;base64," + imageData;
     });
 
     $scope.popover.hide();
@@ -66,7 +73,7 @@ app.controller('IncidentDetailAddCommentController', function($scope, Azure, Cam
   $scope.getPictureFromPhotoLibrary = function() {
 
     Camera.getPictureFromPhotoLibrary().then(function (imageData) {
-      $scope.attachedPhoto = "data:image/jpeg;base64," + imageData;
+      $scope.comment.attachedPhoto = "data:image/jpeg;base64," + imageData;
     });
 
     $scope.popover.hide();
@@ -74,13 +81,13 @@ app.controller('IncidentDetailAddCommentController', function($scope, Azure, Cam
   };
 
   $scope.removeAttachedPhoto = function() {
-    $scope.attachedPhoto = null;
+    $scope.comment.attachedPhoto = null;
   };
 
   $scope.recordAudio = function() {
 
     Audio.recordAudio().then(function (audioUrl) {
-      $scope.attachedAudio = audioUrl;
+      $scope.comment.attachedAudio = audioUrl;
     });
 
     $scope.popover.hide();
@@ -88,7 +95,7 @@ app.controller('IncidentDetailAddCommentController', function($scope, Azure, Cam
   };
 
   $scope.removeAttachedAudio = function() {
-    $scope.attachedAudio = null;
+    $scope.comment.attachedAudio = null;
   };
 
 });

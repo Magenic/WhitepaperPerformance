@@ -4,6 +4,7 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
     var storageAccount = "https://testincidentqueue.blob.core.windows.net/incidentbinaries/";
     var storageAccountName = "/incidentbinaries";
 
+    var userId;
     var mobileService;
     var azureService = {};
 
@@ -11,15 +12,14 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
     // Upload Audio to Azure
     //
 
-    var uploadAudioFileFromArrayOfUrls = function(fileArray) {
+    var uploadAudioFile = function(fileNameWithPath) {
 
       var deferred = $q.defer();
 
-      if (fileArray == null || fileArray.length == 0) {
+      if (fileNameWithPath == null) {
         deferred.resolve(null);
       } else {
 
-        fileNameWithPath = fileArray[0];
         var posOfLastSlash = fileNameWithPath.lastIndexOf("/");
 
         var filePath = 'file://' + fileNameWithPath.substring(0, posOfLastSlash);
@@ -54,39 +54,47 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
 
       var deferred = $q.defer();
 
-      getSASUrl().then(function (sasURL) {
+      if (base64data == null) {
 
-        // convert base64 data
-        var byteArray;
-        if (contentType == 'image/jpeg') {
-          byteArray = convertBase64toBlob(base64data);
-        } else {
-          byteArray = base64data;
-        }
+        deferred.resolve(null);
 
-        // generate blob name and SAS url
-        var blobName = guid() + "." + blobExtension;
-        var storageAccountNameWithBlobName = storageAccountName + "/" + blobName;
-        var sasUrlWithBlobName = sasURL.replace(storageAccountName, storageAccountNameWithBlobName);
+      } else {
 
-        // put file
-        $http.put(sasUrlWithBlobName, byteArray, {
-          headers: {
-            'x-ms-blob-type': 'BlockBlob',
-            'x-ms-blob-content-type': contentType
+        getSASUrl().then(function (sasURL) {
+
+          // convert base64 data
+          var byteArray;
+          if (contentType == 'image/jpeg') {
+            byteArray = convertBase64toBlob(base64data);
+          } else {
+            byteArray = base64data;
           }
-        }).then(function (response) {
 
-          // success
-          deferred.resolve(storageAccount + blobName);
+          // generate blob name and SAS url
+          var blobName = guid() + "." + blobExtension;
+          var storageAccountNameWithBlobName = storageAccountName + "/" + blobName;
+          var sasUrlWithBlobName = sasURL.replace(storageAccountName, storageAccountNameWithBlobName);
 
-        }, function (error) {
+          // put file
+          $http.put(sasUrlWithBlobName, byteArray, {
+            headers: {
+              'x-ms-blob-type': 'BlockBlob',
+              'x-ms-blob-content-type': contentType
+            }
+          }).then(function (response) {
 
-          alert.message(error);
+            // success
+            deferred.resolve(storageAccount + blobName);
 
-        });;
+          }, function (error) {
 
-      });
+            alert.message(error);
+
+          });;
+
+        });
+
+      }
 
       return deferred.promise;
 
@@ -135,7 +143,7 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
       mobileService = new WindowsAzure.MobileServiceClient(azureUrl, azureKey);
       mobileService.login("WindowsAzureActiveDirectory").done(function (results) {
 
-        // var userId = results.userId;
+        userId = results.userId;
         // var token = mobileService.currentUser.mobileServiceAuthenticationToken;
 
         deferred.resolve(true);
@@ -377,7 +385,7 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
       saveBlobToAzure(attachedPhotos[0], 'png', 'image/jpeg').then(function (imagePath) {
 
         // save audio, get audio url
-        uploadAudioFileFromArrayOfUrls(attachedAudioRecordings).then(function (audioPath) {
+        uploadAudioFile(attachedAudioRecordings[0]).then(function (audioPath) {
 
           // save incident
           mobileService.getTable('Incident').insert({
@@ -389,6 +397,43 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
              Closed: false,
              DateOpened: new Date(0),
              DateClosed: new Date(0)
+          }).done(function (result) {
+
+             deferred.resolve(result);
+
+          }, function (err) {
+
+             alert("Error: " + err);
+
+          });
+
+        });
+
+      });
+
+      return deferred.promise;
+
+    };
+
+    // Save New Incident Comment
+    azureService.addIncidentComment = function (incidentId, commentText, attachedPhoto, attachedAudio) {
+
+      var deferred = $q.defer();
+
+      // save photo, get photo url
+      saveBlobToAzure(attachedPhoto, 'png', 'image/jpeg').then(function (imagePath) {
+
+        // save audio, get audio url
+        uploadAudioFile(attachedAudio).then(function (audioPath) {
+
+          // save incident
+          mobileService.getTable('IncidentDetail').insert({
+             IncidentId: incidentId,
+             DetailText: commentText,
+             ImageLink: imagePath,
+             AudioLink: audioPath,
+             DateEntered: new Date(0),
+             DetailedEnteredById: userId
           }).done(function (result) {
 
              deferred.resolve(result);

@@ -1,7 +1,7 @@
 <ion-view view-title="Add Comment" class="addComment">
 
 	<ion-nav-buttons side="right">
-			<button class="button button-icon icon ion-paper-airplane" ng-click="saveIncident()" ng-disabled="!canSave()"></button>
+			<button class="button button-icon icon ion-paper-airplane" ng-click="saveComment()" ng-disabled="!canSave()"></button>
 			<button class="button button-icon icon ion-android-more-vertical" ng-click="popover.show($event)"></button>
 	</ion-nav-buttons>
 
@@ -11,17 +11,17 @@
 
 		  <label class="item item-input item-stacked-label">
 		    <span class="input-label">Comment</span>
-		    <input type="text" ng-model="comment">
+		    <input type="text" ng-model="comment.detailText">
 		  </label>
 
 			<!-- Attached Photo -->
 			<ion-list>
 
-				<ion-item ng-show="attachedPhoto != null">
+				<ion-item ng-show="comment.attachedPhoto != null">
 
 					<div class="attachmentItemPhoto">
 
-						<img data-ng-src="{{ attachedPhoto }}" /><br />
+						<img data-ng-src="{{ comment.attachedPhoto }}" /><br />
 						<button class="button button-icon icon ion-close-round" ng-click="removeAttachedPhoto()"></button>
 
 					</div>
@@ -33,7 +33,7 @@
 			<!-- Attached Audio -->
 			<ion-list>
 
-				<ion-item ng-show="attachedAudio != null">
+				<ion-item ng-show="comment.attachedAudio != null">
 
 					<div class="attachmentItemAudioRecording">
 
