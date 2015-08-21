@@ -25,8 +25,7 @@
 
 	<ion-list>
 
-		<!-- TODO: get this working with collection-repeat -->
-		<ion-item ng-repeat="incident in incidentList | filter: { closed: !showOpen }" ng-click="selectIncident(incident.id)">
+		<ion-item collection-repeat="incident in incidentList | filter: { closed: !showOpen }" ng-click="selectIncident(incident.id)">
 
 			<div class="item-thumbnail-left">
 

@@ -1,4 +1,4 @@
-app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $ionicPopover) {
+app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $ionicPopover, $state, $ionicLoading, $cordovaFile) {
 
   // create incident model
   $scope.incident = {
@@ -26,13 +26,30 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
 
   // save incident
   $scope.saveIncident = function() {
+
+    // show 'saving...' activity indication
+    $scope.show = function() {
+        $ionicLoading.show({
+          template: 'Saving...'
+        });
+      };
+
+    // save incident
     Azure.saveNewIncident($scope.attachedPhotos, $scope.attachedAudioRecordings, $scope.incident.subject, $scope.incident.assignTo, $scope.incident.description)
     .then(function (newIncident) {
 
-        //TODO - forward to new incident
-        var incidentId = newIncident.id;
+        // hide activity indication
+        $scope.hide = function(){
+          $ionicLoading.hide();
+        };
+
+        // go to detail page for new incident
+        $state.go('incident-detail', {
+          incidentId: newIncident.id
+        });
 
     });
+
   };
 
   // get workers list

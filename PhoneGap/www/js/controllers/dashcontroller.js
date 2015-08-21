@@ -5,10 +5,24 @@ app.controller('DashController', function($scope, Azure, $state) {
 
   refreshDashboard();
 
+
   function refreshDashboard() {
 
     Azure.getStatusList()
       .then(function (statusList) {
+
+        $scope.maxNumberOfIncidents = Math.max.apply(Math,statusList.map(function(o){
+          if (o.numberOfIncidents) {
+            return o.numberOfIncidents;
+          }
+          return 0;
+        }))
+        $scope.maxAverageWaitTime = Math.max.apply(Math,statusList.map(function(o){
+          if (o.averageWaitTime) {
+            return o.averageWaitTime;
+          }
+          return 0;
+        }))
 
         $scope.statusList = statusList;
         $scope.$broadcast('scroll.refreshComplete');
