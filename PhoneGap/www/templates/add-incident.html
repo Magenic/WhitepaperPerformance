@@ -1,0 +1,69 @@
+<ion-view view-title="New Incident" class="addIncident">
+
+	<ion-nav-buttons side="right">
+			<button class="button button-icon icon ion-paper-airplane" ng-click="saveIncident()" ng-disabled="!canSave()"></button>
+			<button class="button button-icon icon ion-android-more-vertical" ng-click="popover.show($event)"></button>
+	</ion-nav-buttons>
+
+	<ion-content>
+
+		<div class="list">
+
+		  <label class="item item-input item-stacked-label">
+		    <span class="input-label">Subject</span>
+		    <input type="text" ng-model="incident.subject">
+		  </label>
+
+			<label class="item item-input item-stacked-label">
+		    <span class="input-label">Description</span>
+		    <input type="text" ng-model="incident.description">
+		  </label>
+
+			<label class="item item-input item-stacked-label">
+		    <span class="input-label">Assign To</span>
+
+				<div class="list">
+
+			    <select ng-model="incident.assignTo" ng-options="worker.userId as worker.fullName for worker in workersList">
+			    </select>
+
+				</div>
+
+		  </label>
+
+			<!-- Attached Photos -->
+			<ion-list>
+
+				<ion-item collection-repeat="attachedPhoto in attachedPhotos">
+
+					<div class="attachmentItemPhoto">
+
+						<img data-ng-src="{{ attachedPhoto }}" /><br />
+						<button class="button button-icon icon ion-close-round" ng-click="removeAttachedPhotos(attachedPhoto)"></button>
+
+					</div>
+
+				</ion-item>
+
+			</ion-list>
+
+			<!-- Attached Audio Recordings -->
+			<ion-list>
+
+				<ion-item collection-repeat="attachedAudioRecording in attachedAudioRecordings">
+
+					<div class="attachmentItemAudioRecording">
+
+						<div class="outerSpan"><span class="button button-icon icon ion-ios-recording-outline"></span></div><br />
+						<button class="button button-icon icon ion-close-round" ng-click="removeAttachedAudio(attachedAudioRecording)"></button>
+
+					</div>
+
+				</ion-item>
+
+			</ion-list>
+
+		</div>
+
+	</ion-content>
+</ion-view>

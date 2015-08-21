@@ -1,8 +1,10 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Droid.Views;
 using Xamarin.IncidentApp.Droid.Services;
+using Xamarin.IncidentApp.Interfaces;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.Droid.Views
@@ -16,7 +18,7 @@ namespace Xamarin.IncidentApp.Droid.Views
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Login);
 
-            ViewModel.LoginService = new LoginService(this);
+            ViewModel.LoginService = new LoginService(this, Mvx.Resolve<IAzureService>());
         }
     }
 }

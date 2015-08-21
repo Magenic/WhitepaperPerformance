@@ -1,7 +1,10 @@
 using System;
-using Cirrious.MvvmCross.ViewModels;
-using Xamarin.IncidentApp.ViewModels;
+using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Binding.BindingContext;
+using Cirrious.MvvmCross.ViewModels;
+using Xamarin.IncidentApp.iOS.Services;
+using Xamarin.IncidentApp.Interfaces;
+using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.iOS.Controllers
 {
@@ -34,9 +37,12 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             base.ViewDidLoad();
 
             // Perform any additional setup after loading the view
+            this.ViewModel.LoginService = new LoginService(this, Mvx.Resolve<IAzureService>());
+
             NavigationController.NavigationBarHidden = true;
-            this.CreateBinding(btnClicker).To((LoginViewModel vm) => vm.LoginCommand).Apply();
+            this.CreateBinding(btnLogin).To((LoginViewModel vm) => vm.LoginCommand).Apply();
 
         }
+
     }
 }

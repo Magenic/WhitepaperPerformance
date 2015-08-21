@@ -7,7 +7,7 @@ namespace TestIncidentQueueService.TestHarness.Models
         public string Id { get; set; }
         public string AssignedToId { get; set; }
         public string Subject { get; set; }
-        public int Description { get; set; }
+        public string Description { get; set; }
         public DateTime DateOpened { get; set; }
         public bool Closed { get; set; }
         public DateTime DateClosed { get; set; }

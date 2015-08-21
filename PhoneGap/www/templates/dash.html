@@ -1,5 +1,41 @@
-<ion-view view-title="Dashboard">
-<ion-content>
-	dashboard goes here
-</ion-content>
+<ion-view view-title="Team Performance">
+
+	<div class="float-button" ng-click="addIncident()" ng-show="isAndroid">
+	      <i class="ion-plus-circled"></i>
+	</div>
+
+	<ion-nav-buttons side="right">
+     	<button class="button button-icon icon ion-plus-round" ng-click="addIncident()" ng-show="isIOS"></button>
+	</ion-nav-buttons>
+
+	<ion-content>
+
+		<ion-refresher
+			pulling-text="Pull to refresh..."
+			on-refresh="doRefresh()">
+		</ion-refresher>
+
+		<ion-list>
+
+			<ion-item collection-repeat="status in statusList" ng-click="selectUser(status.user.userId, status.user.fullName)">
+
+				<div class="dashboardItem">
+
+					<span class="name">{{ status.user.fullName }}</span><br />
+
+					<span># Incidents</span><br />
+
+					<progress max="{{ maxNumberOfIncidents }}" value="{{ status.numberOfIncidents }}" class="progressIncidents"></progress><br />
+
+					<span>Average Wait Time In Minutes</span><br />
+
+					<progress max="{{ maxAverageWaitTime }}" value="{{ status.averageWaitTime }}" class="progressWaitTime"></progress><br />
+
+				</div>
+
+			</ion-item>
+
+		</ion-list>
+
+	</ion-content>
 </ion-view>

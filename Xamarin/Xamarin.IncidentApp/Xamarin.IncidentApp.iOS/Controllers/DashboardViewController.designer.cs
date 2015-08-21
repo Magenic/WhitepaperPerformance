@@ -14,8 +14,16 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 	[Register ("DashboardViewController")]
 	partial class DashboardViewController
 	{
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		Xamarin.IncidentApp.iOS.TeamUITableView TeamTableView { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
+			if (TeamTableView != null) {
+				TeamTableView.Dispose ();
+				TeamTableView = null;
+			}
 		}
 	}
 }
