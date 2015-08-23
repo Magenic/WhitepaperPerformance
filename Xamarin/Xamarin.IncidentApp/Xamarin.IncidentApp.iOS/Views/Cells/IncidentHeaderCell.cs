@@ -10,20 +10,19 @@ using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.iOS.Views.Cells
 {
-    //[Register("CommentCell")]
-    public partial class CommentCell : MvxTableViewCell
+    //[Register("IncidentHeaderCell")]
+    public partial class IncidentHeaderCell : MvxTableViewCell
     {
         private string _incidentImage;
         private string _ownerName;
         private string _ownerInfo;
-        private string _audioNote;
 
-        public CommentCell()
+        public IncidentHeaderCell()
         {
             InitializeBindings();
         }
 
-        public CommentCell(IntPtr handle) : base(handle)
+        public IncidentHeaderCell(IntPtr handle) : base(handle)
         {
             InitializeBindings();
         }
@@ -39,12 +38,12 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
             {
                 if (value.Length > 0)
                 {
-                    this.imgCommentImage.Image = LoadImage(value);
-                    imgCommentImage.Hidden = false;
+                    this.imgIncidentImage.Image = LoadImage(value);
+                    imgIncidentImage.Hidden = false;
                 }
                 else
                 {
-                    imgCommentImage.Hidden = true;
+                    imgIncidentImage.Hidden = true;
                 }
                 _incidentImage = value;
             }
@@ -59,7 +58,7 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
         {
             using (var url = new NSUrl(imgUrl))
             using (var data = NSData.FromUrl(url))
-            return UIImage.LoadFromData(data);
+                return UIImage.LoadFromData(data);
         }
 
 
@@ -83,27 +82,17 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
             }
         }
 
-        public string AudioNote
-        {
-            get { return _audioNote; }
-            set
-            {
-                if (btnPlayAudio != null) btnPlayAudio.Hidden = (value.Length == 0);
-                _audioNote = value;
-            }
-        }
-
         private void InitializeBindings()
         {
             this.DelayBind(() =>
             {
-                this.CreateBinding(lblComment).For(c => c.Text).To((DisplayIncidentDetailViewModel property) => property.DetailText).Apply();
-                this.CreateBinding().For(c => c.IncidentImage).To((DisplayIncidentDetailViewModel property) => property.ImageLink).Apply();
-                this.CreateBinding().For(c => c.OwnerName).To((DisplayIncidentDetailViewModel property) => property.FullName).Apply();
-                this.CreateBinding().For(c => c.OwnerInfo).To((DisplayIncidentDetailViewModel property) => property.DateOpened).Apply();
-                this.CreateBinding().For(c => c.AudioNote).To((DisplayIncidentDetailViewModel property) => property.AudioRecordingLink).Apply();
-                this.CreateBinding(btnPlayAudio).To<DisplayIncidentDetailViewModel>(vm => vm.PlayAudioCommand).Apply();
+                this.CreateBinding(lblDescription).For(c => c.Text).To((DisplayIncidentViewModel property) => property.Description).Apply();
+                this.CreateBinding().For(c => c.IncidentImage).To((DisplayIncidentViewModel property) => property.ImageLink).Apply();
+                this.CreateBinding().For(c => c.OwnerName).To((DisplayIncidentViewModel property) => property.FullName).Apply();
+                this.CreateBinding().For(c => c.OwnerInfo).To((DisplayIncidentViewModel property) => property.DateOpened).Apply();
+
             });
         }
+
     }
 }

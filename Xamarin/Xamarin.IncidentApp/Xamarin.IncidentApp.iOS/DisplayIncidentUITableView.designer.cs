@@ -11,8 +11,8 @@ using UIKit;
 
 namespace Xamarin.IncidentApp.iOS
 {
-	[Register ("IncidentCommentTableView")]
-	partial class IncidentCommentTableView
+	[Register ("DisplayIncidentUITableView")]
+	partial class DisplayIncidentUITableView
 	{
 		void ReleaseDesignerOutlets ()
 		{

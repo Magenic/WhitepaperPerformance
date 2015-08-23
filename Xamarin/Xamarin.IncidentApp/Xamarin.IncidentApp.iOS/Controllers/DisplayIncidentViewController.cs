@@ -1,22 +1,12 @@
 using System;
 using System.Collections;
-using System.Diagnostics;
-using System.IO;
-using System.Net;
-using System.Threading;
-using AudioToolbox;
-using AVFoundation;
 using Cirrious.MvvmCross.Binding.BindingContext;
-using Cirrious.MvvmCross.Binding.ExtensionMethods;
 using Cirrious.MvvmCross.Binding.Touch.Views;
 using Cirrious.MvvmCross.ViewModels;
-using CoreGraphics;
 using Foundation;
-using StreamingAudio;
 using UIKit;
 using Xamarin.IncidentApp.iOS.Services;
 using Xamarin.IncidentApp.iOS.Views.Cells;
-using Xamarin.IncidentApp.Interfaces;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.iOS.Controllers
@@ -104,88 +94,6 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             this.Title = "";
 
             SetupBindings();
-
-            //AddComments();
-        }
-
-        private void LoadComments()
-        {
-            double yOffset = 360;
-            double viewSpacing = 10;
-            double labelHeight = 25;
-            double labelWidth = 350;
-            double imageHeight = 150;
-            double imageWidth = 300;
-            double buttonHeight = 30;
-            double buttonWidth = 200;
-
-            try
-            {
-                foreach (var incidentDetailVm in ViewModel.IncidentDetails)
-                {
-                    if (incidentDetailVm.DetailText != null)
-                    {
-                        var comment = new UILabel()
-                        {
-                            Text = incidentDetailVm.DetailText,
-                            Frame = new CGRect(5, yOffset, labelWidth, labelHeight)
-                        };
-                        IncidentScrollView.AddSubview(comment);
-                        yOffset += (labelHeight + viewSpacing);
-                    }
-
-                    if (incidentDetailVm.AudioRecordingLink != null && incidentDetailVm.AudioRecordingLink.Length != 0)
-                    {
-                        var linkCount = _audioLinks.Count();
-                        _audioLinks.Add(incidentDetailVm.AudioRecordingLink);
-
-                        var audioNote = UIButton.FromType(UIButtonType.RoundedRect);
-                        audioNote.SetTitle("Play Audio Note", UIControlState.Normal);
-                        audioNote.SetTitleColor(UIColor.White, UIControlState.Normal );
-                        audioNote.BackgroundColor = UIColor.FromRGB(3, 169, 244);
-                        audioNote.Frame = new CGRect(5, yOffset, buttonWidth, buttonHeight);
-                        audioNote.Tag = linkCount;
-
-                        var bindings = this.CreateBindingSet<DisplayIncidentViewController, DisplayIncidentViewModel>();
-                        bindings.Bind(audioNote).To(x => x.PlayAudioCommand);
-                        bindings.Apply();
-
-                        IncidentScrollView.AddSubview(audioNote);
-                        yOffset += (buttonHeight + viewSpacing);
-                    }
-
-                    if (incidentDetailVm.ImageLink != null && incidentDetailVm.ImageLink.Length != 0)
-                    {
-                        var image = new UIImageView()
-                        {
-                            Image = LoadImage(incidentDetailVm.ImageLink),
-                            Frame = new CGRect(5,yOffset,imageWidth,imageHeight),
-                            ContentMode = UIViewContentMode.ScaleAspectFit
-                        };
-                        IncidentScrollView.AddSubview(image);
-                        yOffset += (imageHeight + viewSpacing);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-
-            yOffset += (labelHeight + imageHeight);
-
-            IncidentScrollView.LayoutIfNeeded();
-            IncidentScrollView.ContentSize = new CGSize(IncidentScrollView.Bounds.Size.Width, yOffset);
-        }
-
-        public int CommentProxy
-        {
-            get { return _commentProxy; }
-            set
-            {
-                if(value > 0) LoadComments();
-                _commentProxy = value;
-            }
         }
 
         public new DisplayIncidentViewModel ViewModel
@@ -199,7 +107,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             get { return _ownerName; }
             set
             {
-                this.lblOwnerInfo.Text = string.Concat(value, " - ", OwnerInfo);
+                //this.lblOwnerInfo.Text = string.Concat(value, " - ", OwnerInfo);
                 _ownerName = value;
             }
         }
@@ -209,7 +117,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             get { return _ownerInfo; }
             set
             {
-                this.lblOwnerInfo.Text = string.Concat(OwnerName, " - ", value);
+                //this.lblOwnerInfo.Text = string.Concat(OwnerName, " - ", value);
                 _ownerInfo = value;
             }
         }
@@ -225,7 +133,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             {
                 if (value != null)
                 {
-                    this.imgIncidentImage.Image = LoadImage(value);
+                    //this.imgIncidentImage.Image = LoadImage(value);
                 }
                 _incidentImage = value;
             }
@@ -250,34 +158,27 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         }
         private void SetupBindings()
         {
-            //var source = new CommentTableSource(CommentTableView);
-            //this.CreateBinding(source).To<DisplayIncidentViewModel>(vm => vm.IncidentDetails).Apply();
+            var headerSource = new HeaderTableSource(DisplayIncidentTableView);
+            this.CreateBinding(headerSource).To<DisplayIncidentViewModel>(vm => vm.IncidentDetails).Apply();
 
-            //CommentTableView.Source = source;
-            //CommentTableView.ReloadData();
-
-            this.CreateBinding().For(c => c.IncidentImage).To((DisplayIncidentViewModel property) => property.ImageLink).Apply();
-            this.CreateBinding(lblSubject).For(f => f.Text).To<DisplayIncidentViewModel>(vm => vm.Subject).Apply();
-            this.CreateBinding().For(c => c.OwnerName).To((DisplayIncidentViewModel property) => property.FullName).Apply();
-            this.CreateBinding().For(c => c.OwnerInfo).To((DisplayIncidentViewModel property) => property.DateOpened).Apply();
-            this.CreateBinding(lblDescription).For(f => f.Text).To<DisplayIncidentViewModel>(vm => vm.Description).Apply();
-
-            this.CreateBinding().For(c => c.CommentProxy).To<DisplayIncidentViewModel>(vm => vm.IncidentDetails.Count).Apply();
+            DisplayIncidentTableView.Source = headerSource;
+            DisplayIncidentTableView.ReloadData();
         }
     }
 
-    public class CommentTableSource : MvxStandardTableViewSource
+    public class HeaderTableSource : MvxStandardTableViewSource
     {
         /// <summary>
         /// The team cell identifier
         /// </summary>
+        private static readonly NSString HeaderCellIdentifier = new NSString("IncidentHeaderCell");
         private static readonly NSString CommentCellIdentifier = new NSString("CommentCell");
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CommentTableSource"/> class.
+        /// Initializes a new instance of the <see cref="HeaderTableSource"/> class.
         /// </summary>
         /// <param name="tableView">The table view.</param>
-        public CommentTableSource(UITableView tableView) : base(tableView) {}
+        public HeaderTableSource(UITableView tableView) : base(tableView) {}
 
         /// <summary>
         /// Returns the custom Comment Cell.
@@ -288,8 +189,10 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         /// <returns>UITableViewCell.</returns>
         protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
         {
-            var cell = (CommentCell)tableView.DequeueReusableCell(CommentCellIdentifier);
-            return cell;
+            var headerCell = (IncidentHeaderCell)tableView.DequeueReusableCell(HeaderCellIdentifier);
+            var commentCell = (CommentCell)tableView.DequeueReusableCell(CommentCellIdentifier);
+
+            return headerCell.OwnerName != null ? (UITableViewCell) headerCell : commentCell;
         }
     }
 }

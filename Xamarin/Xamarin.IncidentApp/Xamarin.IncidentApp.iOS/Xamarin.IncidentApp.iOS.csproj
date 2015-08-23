@@ -264,9 +264,9 @@
       <DependentUpon>WorkerQueueViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="DebugTrace.cs" />
-    <Compile Include="IncidentCommentTableView.cs" />
-    <Compile Include="IncidentCommentTableView.designer.cs">
-      <DependentUpon>IncidentCommentTableView.cs</DependentUpon>
+    <Compile Include="DisplayIncidentUITableView.cs" />
+    <Compile Include="DisplayIncidentUITableView.designer.cs">
+      <DependentUpon>DisplayIncidentUITableView.cs</DependentUpon>
     </Compile>
     <Compile Include="IncidentQueueUITableView.cs" />
     <Compile Include="IncidentQueueUITableView.designer.cs">
@@ -289,6 +289,10 @@
     <Compile Include="Views\Cells\CommentCell.designer.cs">
       <DependentUpon>CommentCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Cells\IncidentHeaderCell.cs" />
+    <Compile Include="Views\Cells\IncidentHeaderCell.designer.cs">
+      <DependentUpon>IncidentHeaderCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Cells\IncidentQueueCell.cs" />
     <Compile Include="Views\Cells\IncidentQueueCell.designer.cs">
       <DependentUpon>IncidentQueueCell.cs</DependentUpon>
@@ -302,7 +306,7 @@
   <ItemGroup>
     <Content Include="AppDelegate.cs.txt" />
     <BundleResource Include="Resources\Incidentrackr_banner.jpg" />
-    <BundleResource Include="Resources\BlackGradient_Background2.png" />
+    <BundleResource Include="Resources\BlackGradient_Background.png" />
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default%402x.png">
       <InProject>false</InProject>
     </ImageAsset>

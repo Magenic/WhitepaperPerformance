@@ -16,53 +16,13 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIImageView imgGradient { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIImageView imgIncidentImage { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIScrollView IncidentScrollView { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel lblDescription { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel lblOwnerInfo { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel lblSubject { get; set; }
+		Xamarin.IncidentApp.iOS.DisplayIncidentUITableView DisplayIncidentTableView { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (imgGradient != null) {
-				imgGradient.Dispose ();
-				imgGradient = null;
-			}
-			if (imgIncidentImage != null) {
-				imgIncidentImage.Dispose ();
-				imgIncidentImage = null;
-			}
-			if (IncidentScrollView != null) {
-				IncidentScrollView.Dispose ();
-				IncidentScrollView = null;
-			}
-			if (lblDescription != null) {
-				lblDescription.Dispose ();
-				lblDescription = null;
-			}
-			if (lblOwnerInfo != null) {
-				lblOwnerInfo.Dispose ();
-				lblOwnerInfo = null;
-			}
-			if (lblSubject != null) {
-				lblSubject.Dispose ();
-				lblSubject = null;
+			if (DisplayIncidentTableView != null) {
+				DisplayIncidentTableView.Dispose ();
+				DisplayIncidentTableView = null;
 			}
 		}
 	}
