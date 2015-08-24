@@ -259,6 +259,7 @@
     <Compile Include="Controllers\DisplayIncidentViewController.designer.cs">
       <DependentUpon>DisplayIncidentViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ImageViewController.cs" />
     <Compile Include="Controllers\WorkerQueueItemViewController.cs" />
     <Compile Include="Controllers\LoginViewController.cs" />
     <Compile Include="Controllers\LoginViewController.designer.cs">

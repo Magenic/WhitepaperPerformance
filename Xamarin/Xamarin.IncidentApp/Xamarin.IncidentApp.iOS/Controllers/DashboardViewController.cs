@@ -64,6 +64,13 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             // Release any cached data, images, etc that aren't in use.
         }
 
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+
+            ViewModel.RefreshDashboardAsync();
+        }
+
         /// <summary>
         /// Fires when the View loads.
         /// </summary>
@@ -102,8 +109,10 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             TeamTableView.AddSubview(refreshControl);
             TeamTableView.ReloadData();
         }
+
     }
 
+    
     /// <summary>
     /// Class DashboardTableSource.
     /// </summary>

@@ -73,6 +73,13 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             }
         }
 
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+
+            ViewModel.LoadIncidentAsync();
+        }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -156,7 +163,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
         private void SetupBindings()
         {
-            var tableSource = new HeaderTableSource(DisplayIncidentTableView);
+            var tableSource = new IncidentTableSource(DisplayIncidentTableView);
             this.CreateBinding(tableSource).To<DisplayIncidentViewModel>(vm => vm.IncidentDetails).Apply();
 
             DisplayIncidentTableView.Source = tableSource;
@@ -164,7 +171,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         }
     }
 
-    public class HeaderTableSource : MvxStandardTableViewSource
+    public class IncidentTableSource : MvxStandardTableViewSource
     {
         /// <summary>
         /// The team cell identifier
@@ -179,10 +186,10 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private static nfloat DetailAudioHeight = 50;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HeaderTableSource"/> class.
+        /// Initializes a new instance of the <see cref="IncidentTableSource"/> class.
         /// </summary>
         /// <param name="tableView">The table view.</param>
-        public HeaderTableSource(UITableView tableView) : base(tableView) {}
+        public IncidentTableSource(UITableView tableView) : base(tableView) {}
 
         public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
         {
@@ -213,7 +220,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         }
 
         /// <summary>
-        /// Returns the custom Comment Cell.
+        /// Returns the custom Comment Cell or Header Cell, depending on the value of indexPath.LongRow.
         /// </summary>
         /// <param name="tableView">The table view.</param>
         /// <param name="indexPath">The index path.</param>
