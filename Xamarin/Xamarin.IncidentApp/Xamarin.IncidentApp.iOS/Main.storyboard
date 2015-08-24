@@ -334,7 +334,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="614" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056" y="792"/>
+            <point key="canvasLocation" x="1435" y="57"/>
         </scene>
         <scene sceneID="638">
             <objects>
@@ -458,6 +458,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="641" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="650" y="790"/>
+        </scene>
+        <scene sceneID="916">
+            <objects>
+                <viewController id="917" sceneMemberID="viewController" customClass="AddIncidentDetailViewController" storyboardIdentifier="AddIncidentDetailViewController" title="Add Comment">
+                    <view key="view" contentMode="scaleToFill" id="918">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="927" fixedFrame="YES" restorationIdentifier="txtComment" placeholder="Enter comment here">
+                                <rect key="frame" x="10" y="85" width="300" height="30"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="930" fixedFrame="YES" restorationIdentifier="btnSaveComment">
+                                <rect key="frame" x="80" y="257" width="160" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save Comment">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="txtComment" destination="927" id="name-outlet-927"/>
+                        <outlet property="btnSaveComment" destination="930" id="name-outlet-930"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="919" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1038" y="788"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

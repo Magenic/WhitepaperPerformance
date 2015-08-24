@@ -20,7 +20,6 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private string _incidentImage;
         private UIActionSheet _actionSheet;
         private int _commentProxy;
-        private ArrayList _audioLinks;
         private MediaService _mediaService;
 
         public DisplayIncidentViewController(IntPtr p) : base(p)
@@ -52,8 +51,6 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             _actionSheet.CancelButtonIndex = 2;
 
             _actionSheet.Clicked += _actionSheet_Clicked;
-
-            _audioLinks = new ArrayList();
         }
 
         void _actionSheet_Clicked(object sender, UIButtonEventArgs e)
@@ -65,6 +62,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
                     break;
 
                 case 1: // Add Comment
+                    ViewModel.AddIncidentDetailCommand.Execute(this);
                     break;
 
                 case 2: // Cancel
