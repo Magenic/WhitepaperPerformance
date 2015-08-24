@@ -27,6 +27,30 @@ app.controller('IncidentDetailController', function($scope, Azure, $stateParams,
     return worker.firstName;
   };
 
+  // play media
+  $scope.playMedia = function(audioUrl) {
+
+    var src = audioUrl;
+    var media = $cordovaMedia.newMedia(src);
+    // media.then(function() {
+    //     // success
+    //     alert("Sucess");
+    // }, function () {
+    //     // error
+    //     alert("error");
+    // });
+
+    var iOSPlayOptions = {
+      playAudioWhenScreenIsLocked : false
+    }
+
+    var playResult = media.play(iOSPlayOptions); // iOS only!
+    //media.play(); // Android
+
+    var a = b;
+
+  };
+
   // refresh incident
   $scope.doRefresh = function() {
     refreshIncident();

@@ -399,15 +399,15 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
     };
 
     // Save New Incident
-    azureService.saveNewIncident = function (attachedPhotos, attachedAudioRecordings, subject, assignedToId, description) {
+    azureService.saveNewIncident = function (attachedPhoto, attachedAudioRecording, subject, assignedToId, description) {
 
       var deferred = $q.defer();
 
       // save photo, get photo url
-      saveBlobToAzure(attachedPhotos[0], 'png', 'image/jpeg').then(function (imagePath) {
+      saveBlobToAzure(attachedPhoto, 'png', 'image/jpeg').then(function (imagePath) {
 
         // save audio, get audio url
-        uploadAudioFile(attachedAudioRecordings[0]).then(function (audioPath) {
+        uploadAudioFile(attachedAudioRecording).then(function (audioPath) {
 
           // save incident
           mobileService.getTable('Incident').insert({
