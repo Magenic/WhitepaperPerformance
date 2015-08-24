@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Binding.Touch.Views;
 using Cirrious.MvvmCross.ViewModels;
+using CoreGraphics;
 using Foundation;
 using UIKit;
 using Xamarin.IncidentApp.iOS.Services;
@@ -157,7 +158,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private void SetupBindings()
         {
             var tableSource = new HeaderTableSource(DisplayIncidentTableView);
-            this.CreateBinding(tableSource).To<DisplayIncidentViewModel>(vm => vm.IncidentDetails).Apply();
+            this.CreateBinding(tableSource).To<DisplayIncidentViewModel>(vm => vm.CurrentViewModel).WithConversion("DetailList").Apply();
 
             DisplayIncidentTableView.Source = tableSource;
             DisplayIncidentTableView.ReloadData();
@@ -172,10 +173,10 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private static readonly NSString HeaderCellIdentifier = new NSString("IncidentHeaderCell");
         private static readonly NSString CommentCellIdentifier = new NSString("CommentCell");
 
-        private static nfloat HeaderHeight = 100;
+        private static nfloat HeaderPaddingHeight = 400;
         private static nfloat DetailMarginHeight = 10;
         private static nfloat DetailCommentHeight = 50;
-        private static nfloat DetailImageHeight = 100;
+        private static nfloat DetailImageHeight = 350;
         private static nfloat DetailAudioHeight = 50;
 
         /// <summary>
@@ -186,13 +187,16 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
         public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
         {
+            var screenRect = TableView.Bounds;
+            var screenWidth = screenRect.Size.Width;
+           
             if (indexPath.LongRow == 0)
             {
-                return HeaderHeight;
+                return HeaderPaddingHeight + screenWidth;
             }
 
-            var vMs = ((IList<DisplayIncidentDetailViewModel>)ItemsSource);
-            var vM = vMs[Convert.ToInt32(indexPath.LongRow)];
+            var vMs = ((IList<BaseViewModel>)ItemsSource);
+            var vM = (DisplayIncidentDetailViewModel)vMs[Convert.ToInt32(indexPath.LongRow)];
             nfloat returnHeight = DetailMarginHeight*2;
             if (!string.IsNullOrEmpty(vM.DetailText))
             {
@@ -201,7 +205,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
             if (!string.IsNullOrEmpty(vM.ImageLink))
             {
-                returnHeight += DetailImageHeight;
+                returnHeight += screenRect.Width;
             }
 
             if (!string.IsNullOrEmpty(vM.AudioRecordingLink))

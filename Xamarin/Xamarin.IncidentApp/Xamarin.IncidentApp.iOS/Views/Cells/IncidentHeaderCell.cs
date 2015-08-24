@@ -86,11 +86,13 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
         {
             this.DelayBind(() =>
             {
+                this.CreateBinding(lblSubject).For(c => c.Text).To((DisplayIncidentViewModel property) => property.Subject).Apply();
                 this.CreateBinding(lblDescription).For(c => c.Text).To((DisplayIncidentViewModel property) => property.Description).Apply();
-                this.CreateBinding().For(c => c.IncidentImage).To((DisplayIncidentViewModel property) => property.ImageLink).Apply();
+                this.CreateBinding(lblDescription).For(c => c.Hidden).To((DisplayIncidentViewModel property) => property.Description).WithConversion("InvertedVisibility").Apply();
+                //this.CreateBinding().For(c => c.IncidentImage).To((DisplayIncidentViewModel property) => property.ImageLink).Apply();
                 this.CreateBinding().For(c => c.OwnerName).To((DisplayIncidentViewModel property) => property.FullName).Apply();
                 this.CreateBinding().For(c => c.OwnerInfo).To((DisplayIncidentViewModel property) => property.DateOpened).Apply();
-
+                this.CreateBinding(imgIncidentImage).For(c => c.Image).To((DisplayIncidentViewModel property) => property.ImageBytes).WithConversion("ByteBitmap").Apply();
             });
         }
 

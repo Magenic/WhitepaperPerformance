@@ -18,11 +18,13 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         public LoginViewController(IntPtr handle) : base(handle)
         {
         }
+
         public new LoginViewModel ViewModel
         {
             get { return (LoginViewModel)base.ViewModel; }
             set { base.ViewModel = value; }
         }
+
         public override void DidReceiveMemoryWarning()
         {
             // Releases the view if it doesn't have a superview.
@@ -33,7 +35,6 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
         public override void ViewDidLoad()
         {
-            
             base.ViewDidLoad();
 
             // Perform any additional setup after loading the view
@@ -41,8 +42,24 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
             NavigationController.NavigationBarHidden = true;
             this.CreateBinding(btnLogin).To((LoginViewModel vm) => vm.LoginCommand).Apply();
-
+            this.txtEmailAddress.ShouldReturn += CloseKeyboard;
+            this.txtPassword.ShouldReturn += CloseKeyboard;
         }
 
+        private bool CloseKeyboard(UIKit.UITextField textField)
+        {
+            if (textField.Equals(txtEmailAddress))
+            {
+                txtPassword.BecomeFirstResponder();
+                return true;
+            }
+            if (textField.Equals(txtPassword))
+            {
+                // validate field inputs as per your requirement
+                textField.ResignFirstResponder();
+                return true;
+            }
+            return true;
+        }
     }
 }
