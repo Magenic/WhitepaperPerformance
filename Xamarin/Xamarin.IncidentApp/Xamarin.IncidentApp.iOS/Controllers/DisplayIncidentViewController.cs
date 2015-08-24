@@ -42,13 +42,14 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         {
             _actionSheet = new UIActionSheet("Incident Actions");
             _actionSheet.AddButton("Close Incident");
-            _actionSheet.AddButton("Take Photo");
-            _actionSheet.AddButton("Attach Image");
-            _actionSheet.AddButton("Record Audio");
+            //_actionSheet.AddButton("Take Photo");
+            //_actionSheet.AddButton("Attach Image");
+            //_actionSheet.AddButton("Record Audio");
+            _actionSheet.AddButton("Add Comment");
             _actionSheet.AddButton("Cancel");
 
             _actionSheet.DestructiveButtonIndex = 0;
-            _actionSheet.CancelButtonIndex = 4;
+            _actionSheet.CancelButtonIndex = 2;
 
             _actionSheet.Clicked += _actionSheet_Clicked;
 
@@ -60,18 +61,13 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             switch (e.ButtonIndex)
             {
                 case 0: // Close Incident
+                    ViewModel.CloseIncidentCommand.Execute(this);
                     break;
 
-                case 1: // Attach Image
+                case 1: // Add Comment
                     break;
 
-                case 2: // Record Audio
-                    break;
-
-                case 3: // Take Photo
-                    break;
-
-                case 4: // Cancel
+                case 2: // Cancel
                     break;
             }
         }
