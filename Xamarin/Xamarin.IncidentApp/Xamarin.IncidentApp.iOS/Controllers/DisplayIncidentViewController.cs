@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Binding.Touch.Views;
 using Cirrious.MvvmCross.ViewModels;
@@ -67,6 +68,8 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
                 case 2: // Cancel
                     break;
+                default:
+                    throw new NotImplementedException();
             }
         }
 
@@ -150,6 +153,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
             return UIImage.LoadFromData(data);
         }
+
         private void SetupBindings()
         {
             var tableSource = new HeaderTableSource(DisplayIncidentTableView);
@@ -168,11 +172,45 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private static readonly NSString HeaderCellIdentifier = new NSString("IncidentHeaderCell");
         private static readonly NSString CommentCellIdentifier = new NSString("CommentCell");
 
+        private static nfloat HeaderHeight = 100;
+        private static nfloat DetailMarginHeight = 10;
+        private static nfloat DetailCommentHeight = 50;
+        private static nfloat DetailImageHeight = 100;
+        private static nfloat DetailAudioHeight = 50;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="HeaderTableSource"/> class.
         /// </summary>
         /// <param name="tableView">The table view.</param>
         public HeaderTableSource(UITableView tableView) : base(tableView) {}
+
+        public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+        {
+            if (indexPath.LongRow == 0)
+            {
+                return HeaderHeight;
+            }
+
+            var vMs = ((IList<DisplayIncidentDetailViewModel>)ItemsSource);
+            var vM = vMs[Convert.ToInt32(indexPath.LongRow)];
+            nfloat returnHeight = DetailMarginHeight*2;
+            if (!string.IsNullOrEmpty(vM.DetailText))
+            {
+                returnHeight += DetailCommentHeight;
+            }
+
+            if (!string.IsNullOrEmpty(vM.ImageLink))
+            {
+                returnHeight += DetailImageHeight;
+            }
+
+            if (!string.IsNullOrEmpty(vM.AudioRecordingLink))
+            {
+                returnHeight += DetailAudioHeight;
+            }
+
+            return returnHeight;
+        }
 
         /// <summary>
         /// Returns the custom Comment Cell.
@@ -183,10 +221,12 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         /// <returns>UITableViewCell.</returns>
         protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
         {
-            var headerCell = (IncidentHeaderCell)tableView.DequeueReusableCell(HeaderCellIdentifier);
-            var commentCell = (CommentCell)tableView.DequeueReusableCell(CommentCellIdentifier);
+            if (indexPath.LongRow == 0)
+            {
+                return (IncidentHeaderCell)tableView.DequeueReusableCell(HeaderCellIdentifier);
+            }
 
-            return headerCell.OwnerName != null ? (UITableViewCell) headerCell : commentCell;
+            return (CommentCell)tableView.DequeueReusableCell(CommentCellIdentifier);
         }
     }
 }
