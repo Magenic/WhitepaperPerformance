@@ -152,10 +152,10 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         }
         private void SetupBindings()
         {
-            var headerSource = new HeaderTableSource(DisplayIncidentTableView);
-            this.CreateBinding(headerSource).To<DisplayIncidentViewModel>(vm => vm.IncidentDetails).Apply();
+            var tableSource = new HeaderTableSource(DisplayIncidentTableView);
+            this.CreateBinding(tableSource).To<DisplayIncidentViewModel>(vm => vm.IncidentDetails).Apply();
 
-            DisplayIncidentTableView.Source = headerSource;
+            DisplayIncidentTableView.Source = tableSource;
             DisplayIncidentTableView.ReloadData();
         }
     }

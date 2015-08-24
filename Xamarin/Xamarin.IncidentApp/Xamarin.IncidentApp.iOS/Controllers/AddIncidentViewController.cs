@@ -1,25 +1,29 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.ViewModels;
+using Foundation;
 using UIKit;
 using Xamarin.IncidentApp.iOS.Services;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.iOS.Controllers
 {
-    //[Register("AddIncidentDetailViewController")]
-    [MvxViewFor(typeof(AddIncidentDetailViewModel))]
-    public partial class AddIncidentDetailViewController : BaseViewController
+    //[Register("AddIncidentViewController")]
+    [MvxViewFor(typeof(AddIncidentViewModel))]
+    public partial class AddIncidentViewController : BaseViewController
     {
         private UIActionSheet _actionSheet;
         private MediaService _mediaService;
 
-        public AddIncidentDetailViewController(IntPtr p) : base(p)
+        public AddIncidentViewController(IntPtr p) : base(p)
         {
             InitView();
         }
 
-        public AddIncidentDetailViewController()
+        public AddIncidentViewController()
         {
             InitView();
         }
@@ -76,15 +80,21 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             })
             , true);
 
-            this.Title = "Add Comment";
+            this.Title = "Add Incident";
 
             SetupBindings();
         }
 
         private void SetupBindings()
         {
-            this.CreateBinding(txtComment).For(c => c.Text).To((AddIncidentDetailViewModel property) => property.DetailText).Apply();
-            this.CreateBinding(btnSaveComment).To<AddIncidentDetailViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
+            this.CreateBinding(txtSubject).For(c => c.Text).To((AddIncidentViewModel property) => property.Subject).Apply();
+            this.CreateBinding(txtSubject).For(c => c.Text).To((AddIncidentViewModel property) => property.Subject).Apply();
+            this.CreateBinding(pkrAssigned).For(c => c.DataSource).To((AddIncidentViewModel property) => property.Workers).Apply();
+            this.CreateBinding(imgPhoto).For(c => c.Image).To((AddIncidentViewModel property) => property.Image).Apply();
+
+            this.CreateBinding(btnSaveIncident).To<AddIncidentViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
+            this.CreateBinding(btnRemoveImage).To<AddIncidentViewModel>(vm => vm.RemoveImageCommand).Apply();
+            this.CreateBinding(btnAudioNote).To<AddIncidentViewModel>(vm => vm.PlayAudioCommand).Apply();
         }
     }
 }

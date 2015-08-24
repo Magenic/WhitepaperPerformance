@@ -76,7 +76,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender, args) =>
                 {
                     // button was clicked
-                    Debug.WriteLine("Add incident pressed!");
+                    ViewModel.AddIncidentCommand.Execute(this);
                 })
             , true);
             SetupTable();

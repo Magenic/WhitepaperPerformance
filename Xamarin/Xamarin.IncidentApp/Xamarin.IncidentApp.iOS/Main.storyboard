@@ -489,7 +489,86 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="919" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038" y="788"/>
+            <point key="canvasLocation" x="1024" y="789"/>
+        </scene>
+        <scene sceneID="937">
+            <objects>
+                <viewController id="938" sceneMemberID="viewController" customClass="AddIncidentViewController" storyboardIdentifier="AddIncidentViewController" restorationIdentifier="AddIncidentViewController" title="Add Incident">
+                    <view key="view" contentMode="scaleToFill" id="939">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="948" fixedFrame="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" id="949" fixedFrame="YES" restorationIdentifier="pkrAssigned">
+                                        <rect key="frame" x="0.0" y="35" width="320" height="162"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </pickerView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="944" fixedFrame="YES" restorationIdentifier="imgPhoto" image="BlackGradient_Background.png">
+                                        <rect key="frame" x="0.0" y="141" width="320" height="240"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="942" fixedFrame="YES" placeholder="Enter Subject" restorationIdentifier="txtSubject">
+                                        <rect key="frame" x="10" y="10" width="300" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="943" fixedFrame="YES" placeholder="Enter Description" restorationIdentifier="txtDescription">
+                                        <rect key="frame" x="10" y="60" width="300" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="945" fixedFrame="YES" restorationIdentifier="btnRemoveImage">
+                                        <rect key="frame" x="1" y="141" width="70" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" colorSpace="calibratedWhite" white="0" alpha="1"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Remove">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="946" fixedFrame="YES" restorationIdentifier="btnAudioNote">
+                                        <rect key="frame" x="0.0" y="405" width="153" height="34"/>
+                                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.20784313725490197" green="0.6588235294117647" blue="0.9137254901960784" alpha="1"/>
+                                        <state key="normal" title="Play Audio Note">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                        </state>
+                                        <state key="highlighted"/>
+                                        <state key="selected"/>
+                                        <state key="disabled"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="947" fixedFrame="YES" restorationIdentifier="btnSaveIncident">
+                                        <rect key="frame" x="80" y="460" width="160" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Save Comment">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="btnSaveIncident" destination="947" id="name-outlet-947"/>
+                        <outlet property="btnAudioNote" destination="946" id="name-outlet-946"/>
+                        <outlet property="imgPhoto" destination="944" id="name-outlet-944"/>
+                        <outlet property="btnRemoveImage" destination="945" id="name-outlet-945"/>
+                        <outlet property="txtDescription" destination="943" id="name-outlet-943"/>
+                        <outlet property="txtSubject" destination="942" id="name-outlet-942"/>
+                        <outlet property="pkrAssigned" destination="949" id="name-outlet-949"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="940" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1399" y="790"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

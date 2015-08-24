@@ -246,6 +246,10 @@
     <Compile Include="Controllers\AddIncidentDetailViewController.designer.cs">
       <DependentUpon>AddIncidentDetailViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AddIncidentViewController.cs" />
+    <Compile Include="Controllers\AddIncidentViewController.designer.cs">
+      <DependentUpon>AddIncidentViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\BaseViewController.cs" />
     <Compile Include="Controllers\DashboardViewController.cs" />
     <Compile Include="Controllers\DashboardViewController.designer.cs">
