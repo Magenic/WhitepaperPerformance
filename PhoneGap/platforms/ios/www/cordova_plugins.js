@@ -314,7 +314,7 @@ module.exports.metadata =
     "cordova-plugin-media-capture": "1.0.1",
     "cordova-plugin-media": "1.0.1",
     "org.apache.cordova.inappbrowser": "0.6.0",
-    "cordova-plugin-file": "2.1.0"
+    "cordova-plugin-file": "3.0.0"
 }
 // BOTTOM OF METADATA
 });

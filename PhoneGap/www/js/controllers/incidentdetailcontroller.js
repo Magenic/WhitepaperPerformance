@@ -1,4 +1,4 @@
-app.controller('IncidentDetailController', function($scope, Azure, $stateParams, $timeout, $cordovaMedia, $ionicPopover, $ionicHistory, $state) {
+app.controller('IncidentDetailController', function($scope, Azure, $stateParams, $timeout, $cordovaMedia, $ionicPopover, $ionicHistory, $state, $cordovaFileTransfer) {
 
   // get incident
   var incidentId = $stateParams.incidentId;
@@ -30,24 +30,31 @@ app.controller('IncidentDetailController', function($scope, Azure, $stateParams,
   // play media
   $scope.playMedia = function(audioUrl) {
 
-    var src = audioUrl;
-    var media = $cordovaMedia.newMedia(src);
-    // media.then(function() {
-    //     // success
-    //     alert("Sucess");
-    // }, function () {
-    //     // error
-    //     alert("error");
-    // });
+    // download file from url
+    var targetPath = cordova.file.documentsDirectory + "tempAudio.wav";
+    var trustHosts = true;
+    var options = {};
 
-    var iOSPlayOptions = {
-      playAudioWhenScreenIsLocked : false
-    }
+    $cordovaFileTransfer.download(audioUrl, targetPath, options, trustHosts).then(function(result) {
 
-    var playResult = media.play(iOSPlayOptions); // iOS only!
-    //media.play(); // Android
+      alert("success .....")
 
-    var a = b;
+      // play downloaded file
+      var src = targetPath;
+      var media = $cordovaMedia.newMedia(src);
+      media.play();
+
+    }, function(err) {
+
+      alert("error .....")
+
+    }, function (progress) {
+
+      $timeout(function () {
+        $scope.downloadProgress = (progress.loaded / progress.total) * 100;
+      })
+
+    });
 
   };
 
