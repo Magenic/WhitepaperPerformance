@@ -12,7 +12,7 @@ namespace Xamarin.IncidentApp.Droid.Converters
     {
         protected override ViewStates Convert(DisplayIncidentDetailViewModel value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (value.ImageBytes != null && value.ImageBytes.Length > 0) || !String.IsNullOrEmpty(value.DetailText)
+            return (!string.IsNullOrEmpty(value.ImageLink) || !String.IsNullOrEmpty(value.DetailText))
                 ? ViewStates.Visible
                 : ViewStates.Gone;
         }

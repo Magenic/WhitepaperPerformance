@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_marginBottom="5dp"
             android:scaleType="centerCrop"
-            local:MvxBind="CurrentBitmap ImageBytes, Mode=TwoWay, Converter=ByteBitmap" />
+            local:MvxBind="ImageUrl ImageLink" />
         <BitmapImageView
             android:id="@+id/MainOverlayImage"
             android:layout_height="wrap_content"

@@ -11,42 +11,42 @@ using UIKit;
 
 namespace Xamarin.IncidentApp.iOS.Views.Cells
 {
-	[Register ("CommentCell")]
-	partial class CommentCell
+	[Register ("IncidentHeaderCell")]
+	partial class IncidentHeaderCell
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton btnPlayAudio { get; set; }
+		Xamarin.IncidentApp.iOS.Views.UrlImageView imgIncidentImage { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		Xamarin.IncidentApp.iOS.Views.UrlImageView imgCommentImage { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel lblComment { get; set; }
+		UILabel lblDescription { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel lblOwner { get; set; }
 
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel lblSubject { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
-			if (btnPlayAudio != null) {
-				btnPlayAudio.Dispose ();
-				btnPlayAudio = null;
+			if (imgIncidentImage != null) {
+				imgIncidentImage.Dispose ();
+				imgIncidentImage = null;
 			}
-			if (imgCommentImage != null) {
-				imgCommentImage.Dispose ();
-				imgCommentImage = null;
-			}
-			if (lblComment != null) {
-				lblComment.Dispose ();
-				lblComment = null;
+			if (lblDescription != null) {
+				lblDescription.Dispose ();
+				lblDescription = null;
 			}
 			if (lblOwner != null) {
 				lblOwner.Dispose ();
 				lblOwner = null;
+			}
+			if (lblSubject != null) {
+				lblSubject.Dispose ();
+				lblSubject = null;
 			}
 		}
 	}

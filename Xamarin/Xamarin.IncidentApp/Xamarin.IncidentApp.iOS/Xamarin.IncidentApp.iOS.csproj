@@ -35,7 +35,12 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: Magenic Technologies, Inc.</CodesignKey>
+    <BuildIpa>True</BuildIpa>
+    <IpaIncludeArtwork>False</IpaIncludeArtwork>
+    <CodesignProvision>25137fd1-57f1-4459-a9fe-1b6e7e884f0c</CodesignProvision>
+    <CodesignResourceRules />
+    <CodesignExtraArgs />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -144,6 +149,9 @@
       <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SDWebImage">
+      <HintPath>..\..\Components\sdwebimage-3.7.3.0\lib\ios-unified\SDWebImage.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Extensions.dll</HintPath>
@@ -242,6 +250,14 @@
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Bootstrap\NetworkPluginBootstrap.cs" />
     <Compile Include="Bootstrap\UserDialogsPluginBootstrap.cs" />
+    <Compile Include="Controllers\AddIncidentDetailViewController.cs" />
+    <Compile Include="Controllers\AddIncidentDetailViewController.designer.cs">
+      <DependentUpon>AddIncidentDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AddIncidentViewController.cs" />
+    <Compile Include="Controllers\AddIncidentViewController.designer.cs">
+      <DependentUpon>AddIncidentViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\BaseViewController.cs" />
     <Compile Include="Controllers\DashboardViewController.cs" />
     <Compile Include="Controllers\DashboardViewController.designer.cs">
@@ -263,10 +279,11 @@
     <Compile Include="Controllers\WorkerQueueViewController.designer.cs">
       <DependentUpon>WorkerQueueViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ByteBitmapConverter.cs" />
     <Compile Include="DebugTrace.cs" />
-    <Compile Include="IncidentCommentTableView.cs" />
-    <Compile Include="IncidentCommentTableView.designer.cs">
-      <DependentUpon>IncidentCommentTableView.cs</DependentUpon>
+    <Compile Include="DisplayIncidentUITableView.cs" />
+    <Compile Include="DisplayIncidentUITableView.designer.cs">
+      <DependentUpon>DisplayIncidentUITableView.cs</DependentUpon>
     </Compile>
     <Compile Include="IncidentQueueUITableView.cs" />
     <Compile Include="IncidentQueueUITableView.designer.cs">
@@ -289,6 +306,10 @@
     <Compile Include="Views\Cells\CommentCell.designer.cs">
       <DependentUpon>CommentCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Cells\IncidentHeaderCell.cs" />
+    <Compile Include="Views\Cells\IncidentHeaderCell.designer.cs">
+      <DependentUpon>IncidentHeaderCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Cells\IncidentQueueCell.cs" />
     <Compile Include="Views\Cells\IncidentQueueCell.designer.cs">
       <DependentUpon>IncidentQueueCell.cs</DependentUpon>
@@ -298,11 +319,15 @@
       <DependentUpon>TeamStatusCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\TouchViewsContainer.cs" />
+    <Compile Include="Views\UrlImageView.cs" />
+    <Compile Include="Views\UrlImageView.designer.cs">
+      <DependentUpon>UrlImageView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppDelegate.cs.txt" />
     <BundleResource Include="Resources\Incidentrackr_banner.jpg" />
-    <BundleResource Include="Resources\BlackGradient_Background2.png" />
+    <BundleResource Include="Resources\BlackGradient_Background.png" />
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default%402x.png">
       <InProject>false</InProject>
     </ImageAsset>
@@ -350,6 +375,10 @@
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>
+    <XamarinComponentReference Include="sdwebimage">
+      <Visible>False</Visible>
+      <Version>3.7.3.0</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="xamarin.mobile">
       <Visible>False</Visible>
       <Version>0.7.6</Version>

@@ -11,18 +11,26 @@ using UIKit;
 
 namespace Xamarin.IncidentApp.iOS.Controllers
 {
-	[Register ("DisplayIncidentViewController")]
-	partial class DisplayIncidentViewController
+	[Register ("AddIncidentDetailViewController")]
+	partial class AddIncidentDetailViewController
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		Xamarin.IncidentApp.iOS.DisplayIncidentUITableView DisplayIncidentTableView { get; set; }
+		UIButton btnSaveComment { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UITextField txtComment { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (DisplayIncidentTableView != null) {
-				DisplayIncidentTableView.Dispose ();
-				DisplayIncidentTableView = null;
+			if (btnSaveComment != null) {
+				btnSaveComment.Dispose ();
+				btnSaveComment = null;
+			}
+			if (txtComment != null) {
+				txtComment.Dispose ();
+				txtComment = null;
 			}
 		}
 	}

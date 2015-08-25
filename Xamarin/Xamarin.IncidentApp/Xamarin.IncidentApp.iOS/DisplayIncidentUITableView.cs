@@ -5,9 +5,9 @@ using UIKit;
 
 namespace Xamarin.IncidentApp.iOS
 {
-	partial class IncidentCommentTableView : UITableView
+	partial class DisplayIncidentUITableView : UITableView
 	{
-		public IncidentCommentTableView (IntPtr handle) : base (handle)
+		public DisplayIncidentUITableView (IntPtr handle) : base (handle)
 		{
 		}
 	}
