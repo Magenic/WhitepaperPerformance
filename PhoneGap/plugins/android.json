@@ -47,6 +47,10 @@
                         {
                             "xml": "<feature name=\"Media\"><param name=\"android-package\" value=\"org.apache.cordova.media.AudioHandler\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -60,7 +64,7 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 4
+                            "count": 5
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />",
@@ -113,6 +117,9 @@
         },
         "cordova-plugin-media": {
             "PACKAGE_NAME": "com.ionicframework.phonegapincidentapp119484"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.magenic.phonegapincidentapp"
         }
     },
     "dependent_plugins": {

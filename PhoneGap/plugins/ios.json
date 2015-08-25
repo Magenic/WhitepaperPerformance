@@ -51,6 +51,10 @@
                         {
                             "xml": "<feature name=\"Media\"><param name=\"ios-package\" value=\"CDVSound\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileTransfer\"><param name=\"ios-package\" value=\"CDVFileTransfer\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -84,7 +88,7 @@
                     "AssetsLibrary.framework": [
                         {
                             "xml": false,
-                            "count": 2
+                            "count": 3
                         }
                     ],
                     "MobileCoreServices.framework": [
@@ -143,6 +147,9 @@
         },
         "cordova-plugin-media": {
             "PACKAGE_NAME": "com.ionicframework.phonegapincidentapp119484"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.magenic.phonegapincidentapp"
         }
     },
     "dependent_plugins": {

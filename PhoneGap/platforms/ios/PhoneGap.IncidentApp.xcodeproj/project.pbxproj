@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		040B45B3A6A0489A8016BAC0 /* CDVCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 879F501F17AF48399EF7E8E0 /* CDVCamera.m */; };
 		08B83E078B2C4E0CA1B82225 /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F2E90705824055A75967A5 /* CDVLocalFilesystem.m */; };
@@ -62,6 +61,7 @@
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		DF8B80BA1DD44FF3AA76E0A0 /* UIImage+CropScaleOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = D531D79C82EB49699AEA7E25 /* UIImage+CropScaleOrientation.m */; };
 		E1E6B267757745F083F97DA0 /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = F17C28471F5845F799A50E72 /* IonicKeyboard.m */; };
+		168F7735E2B04D7BB09CB054 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C0FD3E08CB4EB9B2D12906 /* CDVFileTransfer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +165,8 @@
 		F17C28471F5845F799A50E72 /* IonicKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IonicKeyboard.m; path = com.ionic.keyboard/IonicKeyboard.m; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = PhoneGap.IncidentApp/config.xml; sourceTree = "<group>"; };
 		FC58AFEEFCFD461EB331A96A /* CDVConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVConnection.m; path = "cordova-plugin-network-information/CDVConnection.m"; sourceTree = "<group>"; };
+		22C0FD3E08CB4EB9B2D12906 /* CDVFileTransfer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVFileTransfer.m"; path = "cordova-plugin-file-transfer/CDVFileTransfer.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		82FE0E84A22040BC8411672C /* CDVFileTransfer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVFileTransfer.h"; path = "cordova-plugin-file-transfer/CDVFileTransfer.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +309,8 @@
 				7A927858DD174B73A0AFA7E0 /* CDVCapture.h */,
 				4C620E792E10480395378C1F /* CDVSound.m */,
 				2B10799595A341C79E7035D9 /* CDVSound.h */,
+				22C0FD3E08CB4EB9B2D12906 /* CDVFileTransfer.m */,
+				82FE0E84A22040BC8411672C /* CDVFileTransfer.h */,
 			);
 			name = Plugins;
 			path = PhoneGap.IncidentApp/Plugins;
@@ -509,6 +513,7 @@
 				9A2EA9C6BB3F45409173D4C4 /* CDVAssetLibraryFilesystem.m in Sources */,
 				0CE26759FE154FD793F56A15 /* CDVCapture.m in Sources */,
 				8568F5608F62499AA873A2ED /* CDVSound.m in Sources */,
+				168F7735E2B04D7BB09CB054 /* CDVFileTransfer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

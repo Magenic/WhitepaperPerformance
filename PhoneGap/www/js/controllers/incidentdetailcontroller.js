@@ -31,28 +31,27 @@ app.controller('IncidentDetailController', function($scope, Azure, $stateParams,
   $scope.playMedia = function(audioUrl) {
 
     // download file from url
-    var targetPath = cordova.file.documentsDirectory + "tempAudio.wav";
+    var targetPath;
+
+    if (ionic.Platform.isAndroid()) {
+      targetPath = cordova.file.dataDirectory + "tempAudio.wav";
+    } else {
+      targetPath = cordova.file.documentsDirectory + "tempAudio.wav";
+    }
+
     var trustHosts = true;
     var options = {};
 
     $cordovaFileTransfer.download(audioUrl, targetPath, options, trustHosts).then(function(result) {
 
-      alert("success .....")
-
       // play downloaded file
-      var src = targetPath;
+      var src = targetPath.replace('file://', '');
       var media = $cordovaMedia.newMedia(src);
       media.play();
 
     }, function(err) {
 
       alert("error .....")
-
-    }, function (progress) {
-
-      $timeout(function () {
-        $scope.downloadProgress = (progress.loaded / progress.total) * 100;
-      })
 
     });
 
