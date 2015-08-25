@@ -130,19 +130,7 @@ namespace Xamarin.IncidentApp.ViewModels
                 {
                     _imageLink = value;
                     RaisePropertyChanged(() => ImageLink);
-                    Task.Run(async () => ImageBytes = await BinaryHandling.LoadBytesFromUrlAsync(_imageLink));                    
                 }
-            }
-        }
-
-        private byte[] _imageBytes;
-        public byte[] ImageBytes
-        {
-            get { return _imageBytes; }
-            protected set
-            {
-                _imageBytes = value;
-                RaisePropertyChanged(() => ImageBytes);
             }
         }
 

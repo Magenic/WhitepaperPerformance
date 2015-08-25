@@ -11,7 +11,7 @@
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:scaleType="centerCrop"
-        local:MvxBind="CurrentBitmap ImageBytes, Mode=OneWay, Converter=ByteBitmap" />
+        local:MvxBind="ImageUrl ImageLink" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

@@ -52,26 +52,7 @@ namespace Xamarin.IncidentApp.ViewModels
             {
                 _imageLink = value;
                 RaisePropertyChanged(() => ImageLink);
-                Task.Run(async () => ImageBytes = await Utilities.BinaryHandling.LoadBytesFromUrlAsync(_imageLink));
             }
-        }
-
-        private byte[] _imageBytes;
-        public byte[] ImageBytes
-        {
-            get { return _imageBytes; }
-            set
-            {
-                _imageBytes = value;
-                RaisePropertyChanged(() => ImageBytes);
-            }
-        }
-
-        private async Task LoadImageBytesAsync()
-        {
-            var myWebClient = System.Net.HttpWebRequest.Create(ImageLink);
-            var objResponse = await myWebClient.GetResponseAsync();
-            ImageBytes = Utilities.BinaryHandling.ReadFully(objResponse.GetResponseStream());
         }
 
         private string _userId;

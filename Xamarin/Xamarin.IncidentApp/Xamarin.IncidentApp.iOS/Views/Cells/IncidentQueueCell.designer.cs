@@ -16,7 +16,7 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIImageView imgIncidentPicture { get; set; }
+		Xamarin.IncidentApp.iOS.Views.UrlImageView imgIncidentPicture { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]

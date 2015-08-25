@@ -36,7 +36,17 @@ namespace Xamarin.IncidentApp.Droid.Views
             set
             {
                 SetImageDrawable(value);
-                //SetImageBitmap(value);
+            }
+        }
+
+        public string ImageUrl
+        {
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    Koush.UrlImageViewHelper.SetUrlDrawable(this, value);
+                }
             }
         }
 
