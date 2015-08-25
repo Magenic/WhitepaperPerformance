@@ -65,7 +65,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         {
             base.ViewDidLoad();
 
-            _mediaService = new MediaService();
+            _mediaService = new MediaService(this);
             //ViewModel.SetActivityServices(_mediaService);
 
             NavigationController.NavigationBarHidden = false;

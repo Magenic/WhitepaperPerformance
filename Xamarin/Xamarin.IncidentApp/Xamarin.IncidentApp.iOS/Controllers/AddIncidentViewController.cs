@@ -55,7 +55,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
                     break;
 
                 case 1: // Attach Image
-                    SelectPhoto();
+                    _mediaService.SelectPhoto();
                     break;
 
                 case 2: // Record Audio
@@ -66,27 +66,11 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             }
         }
 
-        private void SelectPhoto()
-        {
-            var window = new UIWindow(UIScreen.MainScreen.Bounds);
-
-            var viewController = new ImageViewController();
-
-            var navigationController = new UINavigationController();
-            navigationController.PushViewController(viewController, false);
-
-            // If you have defined a view, add it here:
-            window.AddSubview(navigationController.View);
-
-            // make the window visible
-            window.MakeKeyAndVisible();
-        }
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-            _mediaService = new MediaService();
+            _mediaService = new MediaService(this);
             //ViewModel.SetActivityServices(_mediaService);
 
             NavigationController.NavigationBarHidden = false;

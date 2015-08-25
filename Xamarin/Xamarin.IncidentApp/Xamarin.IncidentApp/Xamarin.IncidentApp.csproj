@@ -37,6 +37,8 @@
     <Compile Include="Constants\AzureConstants.cs" />
     <Compile Include="Converters\BinaryAssetVisibilityConverter.cs" />
     <Compile Include="Converters\DateConverter.cs" />
+    <Compile Include="Converters\DetailListConverter.cs" />
+    <Compile Include="Converters\InvertedBinaryAssetVisibilityConverter.cs" />
     <Compile Include="Converters\UserProfileIdConverter.cs" />
     <Compile Include="EventArgs\AudioCompleteEventArgs.cs" />
     <Compile Include="EventArgs\PhotoCompleteEventArgs.cs" />

@@ -85,7 +85,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         {
             base.ViewDidLoad();
 
-            _mediaService = new MediaService(this);
+            _mediaService = new MediaService();
             ViewModel.SetActivityServices(_mediaService);
 
             NavigationController.NavigationBarHidden = false;
@@ -164,8 +164,13 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
         private void SetupBindings()
         {
+<<<<<<< HEAD
             var tableSource = new IncidentTableSource(DisplayIncidentTableView);
+            this.CreateBinding(tableSource).To<DisplayIncidentViewModel>(vm => vm.IncidentDetails).Apply();
+=======
+            var tableSource = new HeaderTableSource(DisplayIncidentTableView);
             this.CreateBinding(tableSource).To<DisplayIncidentViewModel>(vm => vm.CurrentViewModel).WithConversion("DetailList").Apply();
+>>>>>>> b72840fa4f65ac17f6e7959b95cef954b5093e1f
 
             DisplayIncidentTableView.Source = tableSource;
             DisplayIncidentTableView.ReloadData();
@@ -180,11 +185,11 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private static readonly NSString HeaderCellIdentifier = new NSString("IncidentHeaderCell");
         private static readonly NSString CommentCellIdentifier = new NSString("CommentCell");
 
-        private static nfloat HeaderPaddingHeight = 320;
+        private static nfloat HeaderPaddingHeight = 400;
         private static nfloat DetailMarginHeight = 10;
-        private static nfloat DetailCommentHeight = 40;
-        private static nfloat DetailImageHeight = 80;
-        private static nfloat DetailAudioHeight = 40;
+        private static nfloat DetailCommentHeight = 50;
+        private static nfloat DetailImageHeight = 350;
+        private static nfloat DetailAudioHeight = 50;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IncidentTableSource"/> class.
@@ -199,13 +204,12 @@ namespace Xamarin.IncidentApp.iOS.Controllers
            
             if (indexPath.LongRow == 0)
             {
-                return HeaderPaddingHeight;// + screenWidth;
+                return HeaderPaddingHeight + screenWidth;
             }
 
             var vMs = ((IList<BaseViewModel>)ItemsSource);
             var vM = (DisplayIncidentDetailViewModel)vMs[Convert.ToInt32(indexPath.LongRow)];
             nfloat returnHeight = DetailMarginHeight*2;
-
             if (!string.IsNullOrEmpty(vM.DetailText))
             {
                 returnHeight += DetailCommentHeight;
@@ -213,7 +217,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
             if (!string.IsNullOrEmpty(vM.ImageLink))
             {
-                returnHeight += DetailImageHeight; // screenRect.Width;
+                returnHeight += screenRect.Width;
             }
 
             if (!string.IsNullOrEmpty(vM.AudioRecordingLink))
