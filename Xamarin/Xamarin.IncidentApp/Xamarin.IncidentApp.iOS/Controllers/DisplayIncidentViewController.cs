@@ -183,7 +183,6 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private static nfloat HeaderPaddingHeight = 320;
         private static nfloat DetailMarginHeight = 10;
         private static nfloat DetailCommentHeight = 40;
-        private static nfloat DetailImageHeight = 80;
         private static nfloat DetailAudioHeight = 40;
 
         /// <summary>
@@ -202,6 +201,8 @@ namespace Xamarin.IncidentApp.iOS.Controllers
                 return HeaderPaddingHeight;// + screenWidth;
             }
 
+            var imageDimension = TableView.ContentSize.Width;
+
             var vMs = ((IList<BaseViewModel>)ItemsSource);
             var vM = (DisplayIncidentDetailViewModel)vMs[Convert.ToInt32(indexPath.LongRow)];
             nfloat returnHeight = DetailMarginHeight*2;
@@ -213,7 +214,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
             if (!string.IsNullOrEmpty(vM.ImageLink))
             {
-                returnHeight += DetailImageHeight; // screenRect.Width;
+                returnHeight += imageDimension; // screenRect.Width;
             }
 
             if (!string.IsNullOrEmpty(vM.AudioRecordingLink))
