@@ -72,12 +72,12 @@ namespace Xamarin.IncidentApp.iOS.Services
             imagePicker.Canceled += Handle_Canceled;
 
             // show the picker
-            _controller.NavigationController.PresentModalViewController(imagePicker, true);
+            _controller.NavigationController.PresentViewController(imagePicker, true, () => {});
         }
 
         private void Handle_Canceled(object sender, System.EventArgs e)
         {
-            _controller.NavigationController.PopToViewController(_controller, true);
+            _controller.NavigationController.PopViewController(true);
         }
 
         private void Handle_FinishedPickingMedia(object sender, UIImagePickerMediaPickedEventArgs e)
