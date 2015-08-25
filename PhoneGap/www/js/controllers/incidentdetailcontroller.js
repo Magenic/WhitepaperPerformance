@@ -36,7 +36,7 @@ app.controller('IncidentDetailController', function($scope, Azure, $stateParams,
     if (ionic.Platform.isAndroid()) {
       targetPath = cordova.file.dataDirectory + "tempAudio.wav";
     } else {
-      targetPath = cordova.file.documentsDirectory + "tempAudio.wav";
+      targetPath = cordova.file.tempDirectory + "tempAudio.wav";
     }
 
     var trustHosts = true;
