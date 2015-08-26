@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Cirrious.MvvmCross.Binding.BindingContext;
+using Cirrious.MvvmCross.Binding.Touch.Views;
 using Cirrious.MvvmCross.ViewModels;
 using Foundation;
 using UIKit;
@@ -66,11 +67,21 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             }
         }
 
+        void _mediaService_PhotoComplete(object source, EventArgs.PhotoCompleteEventArgs e)
+        {
+            NSData imageData = NSData.FromArray(e.ImageStream);
+            imgPhoto.Image = UIImage.LoadFromData(imageData);
+
+            ((AddIncidentViewModel) ViewModel).Image = e.ImageStream;
+
+        }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
             _mediaService = new MediaService(this);
+            _mediaService.PhotoComplete += _mediaService_PhotoComplete;
             //ViewModel.SetActivityServices(_mediaService);
 
             NavigationController.NavigationBarHidden = false;
@@ -92,11 +103,20 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             this.CreateBinding(txtSubject).For(c => c.Text).To((AddIncidentViewModel property) => property.Subject).Apply();
             this.CreateBinding(imgPhoto).For(c => c.Image).To((AddIncidentViewModel property) => property.Image).Apply();
 
-            this.CreateBinding(pkrAssigned).For(c => c.DataSource).To((AddIncidentViewModel property) => property.Workers).Apply();
-
             this.CreateBinding(btnSaveIncident).To<AddIncidentViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
             this.CreateBinding(btnRemoveImage).To<AddIncidentViewModel>(vm => vm.RemoveImageCommand).Apply();
-            this.CreateBinding(btnAudioNote).To<AddIncidentViewModel>(vm => vm.PlayAudioCommand).Apply();
+            this.CreateBinding(btnAudioNote).To<AddIncidentViewModel>(vm => vm.SaveNewIncidentCommand).Apply(); //(vm => vm.PlayAudioCommand).Apply();
+
+            // A little more work involved in binding to the picker
+            var pickerViewModel = new MvxPickerViewModel(pkrAssigned);
+            pkrAssigned.Model = pickerViewModel;
+            pkrAssigned.ShowSelectionIndicator = true;
+
+            var pickerBindingSet = this.CreateBindingSet<AddIncidentViewController, AddIncidentViewModel>();
+            pickerBindingSet.Bind(pickerViewModel).For(c => c.SelectedItem).To(vm => vm.AssignedToId);
+            pickerBindingSet.Bind(pickerViewModel).For(c => c.ItemsSource).To(vm => vm.Workers);
+            pickerBindingSet.Apply();
+
         }
     }
 }

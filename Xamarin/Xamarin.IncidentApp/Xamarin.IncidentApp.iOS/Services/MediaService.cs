@@ -15,15 +15,21 @@ namespace Xamarin.IncidentApp.iOS.Services
         public event AudioCompleteEventHandler AudioComplete;
         public event PhotoCompleteEventHandler PhotoComplete;
 
-        //private StreamingPlayback _audioPlayer;
         public static AVAudioPlayer Player;
+        public static AVAudioRecorder Recorder;
 
-        UIImagePickerController imagePicker;
+        private UIImagePickerController _imagePicker;
         private BaseViewController _controller;
 
         public MediaService(BaseViewController controller)
         {
             _controller = controller;
+
+            // create a new picker controller
+            _imagePicker = new UIImagePickerController();
+            _imagePicker.FinishedPickingMedia += Handle_FinishedPickingMedia;
+            _imagePicker.Canceled += Handle_Canceled;
+
         }
 
         public void PlayAudio(byte[] audioRecording)
@@ -59,35 +65,53 @@ namespace Xamarin.IncidentApp.iOS.Services
 
         public void SelectPhoto()
         {
-            // create a new picker controller
-            imagePicker = new UIImagePickerController();
-
             // set our source to the photo library
-            imagePicker.SourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            _imagePicker.SourceType = UIImagePickerControllerSourceType.PhotoLibrary;
 
             // set what media types
-            imagePicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.PhotoLibrary);
-
-            imagePicker.FinishedPickingMedia += Handle_FinishedPickingMedia;
-            imagePicker.Canceled += Handle_Canceled;
+            _imagePicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.PhotoLibrary);
 
             // show the picker
-            _controller.NavigationController.PresentViewController(imagePicker, true, () => {});
+            _controller.NavigationController.PresentModalViewController(_imagePicker, true);
         }
 
         private void Handle_Canceled(object sender, System.EventArgs e)
         {
-            _controller.NavigationController.PopViewController(true);
+            _imagePicker.DismissModalViewController(true);
         }
 
         private void Handle_FinishedPickingMedia(object sender, UIImagePickerMediaPickedEventArgs e)
         {
-            
+            // get common info (shared between images and video)
+            NSUrl referenceURL = e.Info[new NSString("UIImagePickerControllerReferenceUrl")] as NSUrl;
+
+            // get the original image
+            UIImage originalImage = e.Info[UIImagePickerController.OriginalImage] as UIImage;
+            if (originalImage != null)
+            {
+                // do something with the image
+                PhotoCompleteEventHandler handler = PhotoComplete;
+                if (handler != null)
+                {
+                    PhotoCompleteEventArgs args = new PhotoCompleteEventArgs(originalImage.AsJPEG().ToArray());
+
+                    handler(this, args);
+                }
+            }
+
+            _imagePicker.DismissModalViewController(true);
         }
 
         public void TakePhoto()
         {
-            throw new NotImplementedException();
+            // set our source to the photo library
+            _imagePicker.SourceType = UIImagePickerControllerSourceType.Camera;
+
+            // set what media types
+            _imagePicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.Camera);
+
+            // show the picker
+            _controller.NavigationController.PresentModalViewController(_imagePicker, true);
         }
 
     }
