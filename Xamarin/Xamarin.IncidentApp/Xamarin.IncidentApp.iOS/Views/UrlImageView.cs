@@ -9,6 +9,7 @@ namespace Xamarin.IncidentApp.iOS.Views
     {
         public UrlImageView(IntPtr handle) : base (handle)
 		{
+
 		}
 
         private string _imageUrl;
@@ -19,6 +20,8 @@ namespace Xamarin.IncidentApp.iOS.Views
                 _imageUrl = value;
                 if (!string.IsNullOrEmpty(value))
                 {
+                    ContentMode = UIViewContentMode.ScaleAspectFill;
+                    ClipsToBounds = true;
                     var url = new NSUrl(value);
                     this.SetImage(url);                    
                 }
