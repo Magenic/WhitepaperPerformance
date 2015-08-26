@@ -1,6 +1,7 @@
 using System;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Binding.Touch.Views;
+using UIKit;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.iOS.Views.Cells
@@ -43,12 +44,11 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
 
         private void InitializeBindings()
         {
-
             this.DelayBind(() =>
             {
                 this.CreateBinding(lblSubject).For(c => c.Text).To((DisplayIncidentViewModel property) => property.Subject).Apply();
                 this.CreateBinding(lblDescription).For(c => c.Text).To((DisplayIncidentViewModel property) => property.Description).Apply();
-                this.CreateBinding(lblDescription).For(c => c.Hidden).To((DisplayIncidentViewModel property) => property.Description).WithConversion("InvertedVisibility").Apply();
+                //this.CreateBinding(lblDescription).For(c => c.Hidden).To((DisplayIncidentViewModel property) => property.Description).WithConversion("Visibility").Apply();
                 this.CreateBinding().For(c => c.OwnerName).To((DisplayIncidentViewModel property) => property.FullName).Apply();
                 this.CreateBinding().For(c => c.OwnerInfo).To((DisplayIncidentViewModel property) => property.DateOpened).Apply();
                 this.CreateBinding(imgIncidentImage).For(c => c.ImageUrl).To((WorkerQueueItemViewModel property) => property.ImageLink).Apply();
