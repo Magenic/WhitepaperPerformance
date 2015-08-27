@@ -1,13 +1,12 @@
 using System;
 using System.Diagnostics;
+using System.IO;
 using AVFoundation;
 using Foundation;
-using StreamingAudio;
 using UIKit;
 using Xamarin.IncidentApp.EventArgs;
 using Xamarin.IncidentApp.iOS.Controllers;
 using Xamarin.IncidentApp.Interfaces;
-
 namespace Xamarin.IncidentApp.iOS.Services
 {
     public class MediaService : IMediaService
@@ -15,11 +14,13 @@ namespace Xamarin.IncidentApp.iOS.Services
         public event AudioCompleteEventHandler AudioComplete;
         public event PhotoCompleteEventHandler PhotoComplete;
 
-        public static AVAudioPlayer Player;
         public static AVAudioRecorder Recorder;
 
         private UIImagePickerController _imagePicker;
         private BaseViewController _controller;
+        private AVAudioPlayer _player;
+
+        private string filename;
 
         public MediaService(BaseViewController controller)
         {
@@ -32,8 +33,13 @@ namespace Xamarin.IncidentApp.iOS.Services
 
         }
 
-        public void PlayAudio(byte[] audioRecording)
+        public void PlayAudio(byte[] audioRecording, string fileExtension)
         {
+            if (_player != null)
+            {
+                _player.Dispose();
+                _player = null;
+            }
             var session = AVAudioSession.SharedInstance();
             if (session == null || audioRecording == null)
             {
@@ -43,19 +49,37 @@ namespace Xamarin.IncidentApp.iOS.Services
             }
             else
             {
-                var data = NSData.FromArray(audioRecording);
-                Player = AVAudioPlayer.FromData(data);
+                NSError error;
+                ObjCRuntime.Class.ThrowOnInitFailure = false;
+                session.SetCategory(AVAudioSessionCategory.Playback);
+                session.SetActive(true, out error);
+                var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                var temp = Path.Combine(documents, "..", "tmp");
+                filename = Path.Combine(temp, Guid.NewGuid().ToString() + fileExtension);
+                File.WriteAllBytes(filename, audioRecording);
+                using (var url = new NSUrl(filename))
+                {
+                    _player = AVAudioPlayer.FromUrl(url, out error);
+                }
 
-                Player.Volume = 1.0f;
-                Player.FinishedPlaying += player_FinishedPlaying;
-                Player.PrepareToPlay();
-                Player.Play();
+                _player.Volume = 1.0f;
+                _player.NumberOfLoops = 0;
+                _player.FinishedPlaying += player_FinishedPlaying;
+                _player.PrepareToPlay();
+                _player.Play();
             }
         }
 
         private void player_FinishedPlaying(object sender, AVStatusEventArgs e)
         {
             Debug.WriteLine("Finished playing");
+            if (_player != null)
+            {
+                if (File.Exists(filename))
+                {
+                    File.Delete(filename);
+                }
+            }
         }
 
         public void RecordAudio()
@@ -112,6 +136,27 @@ namespace Xamarin.IncidentApp.iOS.Services
             }
 
             _imagePicker.DismissModalViewController(true);
+        }
+
+
+        public void StartRecording()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StopRecording()
+        {
+            throw new NotImplementedException();
+        }
+
+        public byte[] GetRecording()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetRecordingFileExtension()
+        {
+            throw new NotImplementedException();
         }
     }
 }

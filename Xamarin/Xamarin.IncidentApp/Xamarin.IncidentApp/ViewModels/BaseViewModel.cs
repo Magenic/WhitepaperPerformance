@@ -39,25 +39,15 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
-        public bool IsConnected()
-        {
-            return NetworkService.IsConnected;
-        }
-
-        public void ShowNoConnectionDialog()
-        {
-            UserDialogs.Alert(_noConnectionMessage);
-        }
-
-        protected async Task CheckNetworkConnectionAsync(Func<Task> taskToExecute)
+        protected bool CheckNetworkConnection()
         {
             if (!NetworkService.IsConnected)
             {
                 UserDialogs.Alert(_noConnectionMessage);
-                return;
+                return false;
             }
 
-            await taskToExecute().ConfigureAwait(false);
+            return true;
         }
 
         protected void CheckIfTokenExpired(HttpRequestException e)

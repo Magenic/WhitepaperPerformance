@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -142,6 +143,7 @@ namespace Xamarin.IncidentApp.ViewModels
             {
                 _audioRecordingLink = value;
                 RaisePropertyChanged(() => AudioRecordingLink);
+                AudioRecordingFileExtension = Path.GetExtension(_audioRecordingLink);
                 Task.Run(async () => AudioRecordingBytes = await BinaryHandling.LoadBytesFromUrlAsync(_audioRecordingLink));
             }
         }
@@ -153,6 +155,17 @@ namespace Xamarin.IncidentApp.ViewModels
             protected set
             {
                 _audioRecordingBytes = value;
+                RaisePropertyChanged(() => AudioRecordingBytes);
+            }
+        }
+
+        private string _audioRecordingFileExtension;
+        public string AudioRecordingFileExtension
+        {
+            get { return _audioRecordingFileExtension; }
+            protected set
+            {
+                _audioRecordingFileExtension = value;
                 RaisePropertyChanged(() => AudioRecordingBytes);
             }
         }
@@ -239,22 +252,25 @@ namespace Xamarin.IncidentApp.ViewModels
                 }
                 else
                 {
-                    _mediaService.PlayAudio(AudioRecordingBytes);
+                    _mediaService.PlayAudio(AudioRecordingBytes, AudioRecordingFileExtension);
                 }
             }
         }
 
         private async Task CloseIncidentAsync()
         {
-            var incidents = await _azureService.MobileService.GetTable<Incident>()
-                .Where(r => r.Id == _incidentId).ToListAsync();
+            if (CheckNetworkConnection())
+            {
+                var incidents = await _azureService.MobileService.GetTable<Incident>()
+                    .Where(r => r.Id == _incidentId).ToListAsync();
 
-            var incident = incidents.Single();
-            incident.Closed = true;
-            incident.DateClosed = DateTime.UtcNow;
-            await _azureService.MobileService.GetTable<Incident>().UpdateAsync(incident);
-            
-            Close(this);
+                var incident = incidents.Single();
+                incident.Closed = true;
+                incident.DateClosed = DateTime.UtcNow;
+                await _azureService.MobileService.GetTable<Incident>().UpdateAsync(incident);
+
+                Close(this);
+            }
         }
     }
 }

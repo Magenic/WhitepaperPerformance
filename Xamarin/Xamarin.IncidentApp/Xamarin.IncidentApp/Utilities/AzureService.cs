@@ -34,7 +34,7 @@ namespace Xamarin.IncidentApp.Utilities
 
         public async Task<string> SaveBlobAsync(byte[] bytes, string blobExtension)
         {
-            var blobName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), blobExtension);
+            var blobName = string.Format("{0}{1}", Guid.NewGuid().ToString(), blobExtension);
 
             var sasUrl = await RetrieveStorageAccessSignatureAsync().ConfigureAwait(false);
             sasUrl = sasUrl.Replace(AzureConstants.StorageAccountName, String.Format("{0}/{1}", AzureConstants.StorageAccountName, blobName));

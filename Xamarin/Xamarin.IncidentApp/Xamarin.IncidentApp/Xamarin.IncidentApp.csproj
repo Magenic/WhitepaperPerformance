@@ -56,9 +56,11 @@
     <Compile Include="Interfaces\IDialogProviderService.cs" />
     <Compile Include="Utilities\AzureService.cs" />
     <Compile Include="Utilities\BinaryHandling.cs" />
+    <Compile Include="Utilities\RecordingCompleteMessage.cs" />
     <Compile Include="Utilities\UserContext.cs" />
     <Compile Include="ViewModels\AddIncidentDetailViewModel.cs" />
     <Compile Include="ViewModels\AddIncidentViewModel.cs" />
+    <Compile Include="ViewModels\AudioRecorderViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\DisplayIncidentDetailViewModel.cs" />
