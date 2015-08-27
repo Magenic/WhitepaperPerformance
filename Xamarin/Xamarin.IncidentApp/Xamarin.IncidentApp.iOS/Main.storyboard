@@ -133,7 +133,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="lblTeamLead" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="183" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="lblTeamLead" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="183">
                                                     <rect key="frame" x="2" y="5" width="549" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -154,7 +154,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="lblWaitTime" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="206" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="lblWaitTime" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="206">
                                                     <rect key="frame" x="512" y="56" width="39" height="11"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -165,7 +165,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="253" misplaced="YES">
+                                                <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="253">
                                                     <rect key="frame" x="2" y="40" width="496" height="2"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="2" id="0Vf-4z-1o3"/>
@@ -173,7 +173,7 @@
                                                     <color key="progressTintColor" red="0.9137254901960784" green="0.11764705882352941" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="trackTintColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                                 </progressView>
-                                                <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="258" misplaced="YES">
+                                                <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="258">
                                                     <rect key="frame" x="2" y="65" width="496" height="2"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="2" id="2h2-Uh-b24"/>
@@ -181,7 +181,7 @@
                                                     <color key="progressTintColor" red="1" green="0.75686274509803919" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="trackTintColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                                 </progressView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="# Incidents" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="375" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="# Incidents" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="375">
                                                     <rect key="frame" x="2" y="25" width="549" height="12"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -191,7 +191,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Average Wait Time in Minutes" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="376" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Average Wait Time in Minutes" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="376">
                                                     <rect key="frame" x="2" y="50" width="549" height="12"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -305,14 +305,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="576" customClass="UrlImageView" misplaced="YES">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="576" customClass="UrlImageView">
                                                     <rect key="frame" x="4" y="0.0" width="78" height="78"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="78" id="1051"/>
                                                         <constraint firstAttribute="height" constant="78" id="1053"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="577" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="577">
                                                     <rect key="frame" x="90" y="5" width="469" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -335,7 +335,7 @@
                                                         <rect key="frame" x="165" y="34" width="194" height="21"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="07/14/15 @ 3:41pm" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="579" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="07/14/15 @ 3:41pm" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="579">
                                                     <rect key="frame" x="90" y="57" width="469" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -345,7 +345,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Owner:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1060" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Owner:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1060">
                                                     <rect key="frame" x="90" y="31" width="56" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -528,19 +528,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="714.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="871" customClass="UrlImageView" misplaced="YES">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="871" customClass="UrlImageView">
                                                     <rect key="frame" x="0.0" y="0.0" width="592" height="592"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" secondItem="871" secondAttribute="width" multiplier="1:1" id="px8-gl-OTH"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="BlackGradient_Background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qyp-pW-tl5" misplaced="YES">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="BlackGradient_Background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qyp-pW-tl5">
                                                     <rect key="frame" x="0.0" y="0.0" width="592" height="592"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" secondItem="Qyp-pW-tl5" secondAttribute="width" multiplier="1:1" id="jCT-ea-DwF"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Subject" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="879" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Subject" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="879">
                                                     <rect key="frame" x="8" y="520" width="584" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -550,7 +550,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Owner" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="880" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Owner" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="880">
                                                     <rect key="frame" x="8" y="550" width="584" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -560,7 +560,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" text="Incident description" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="none" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="877" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" text="Incident description" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="none" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="877">
                                                     <rect key="frame" x="8" y="595" width="584" height="106"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -613,7 +613,7 @@
                                                         <rect key="frame" x="5" y="32" width="387" height="2318"/>
                                                     </variation>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="892" misplaced="YES">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="892">
                                                     <rect key="frame" x="18" y="622" width="564" height="34"/>
                                                     <color key="backgroundColor" red="0.20784313725490197" green="0.6588235294117647" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -627,7 +627,7 @@
                                                         <rect key="frame" x="6" y="2350" width="386" height="34"/>
                                                     </variation>
                                                 </button>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Comment text" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="889" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Comment text" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="889">
                                                     <rect key="frame" x="18" y="13" width="564" height="17"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -640,7 +640,7 @@
                                                         <rect key="frame" x="2" y="13" width="395" height="17"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Owner @ date-time" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="890" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Owner @ date-time" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="890">
                                                     <rect key="frame" x="18" y="670" width="564" height="17"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -705,9 +705,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="txtComment" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter comment here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="927">
-                                <rect key="frame" x="16" y="53" width="568" height="25"/>
+                                <rect key="frame" x="16" y="80" width="568" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="yGK-uB-g2D"/>
+                                    <constraint firstAttribute="height" constant="25" id="XNL-Wy-I1v"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -721,18 +721,18 @@
                                     <rect key="frame" x="10" y="85" width="300" height="30"/>
                                 </variation>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ImagePlaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="878" restorationIdentifier="imgPhoto">
-                                <rect key="frame" x="16" y="168" width="573" height="249"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="imgPhoto" image="ImagePlaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="878">
+                                <rect key="frame" x="16" y="145" width="573" height="249"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="249" id="M80-31-hzi"/>
+                                    <constraint firstAttribute="height" constant="249" id="xjU-Rx-Tkk"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRemoveImage" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhg-BX-j0N">
-                                <rect key="frame" x="501" y="168" width="88" height="32"/>
+                                <rect key="frame" x="501" y="145" width="88" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="I0Y-7m-ZtM"/>
-                                    <constraint firstAttribute="width" constant="88" id="f5S-go-DGd"/>
+                                    <constraint firstAttribute="width" constant="88" id="Aky-AP-jeS"/>
+                                    <constraint firstAttribute="height" constant="32" id="kAo-LO-8yo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Remove">
@@ -741,15 +741,15 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWA-o6-OrJ">
-                                <rect key="frame" x="0.0" y="39" width="600" height="1"/>
+                                <rect key="frame" x="0.0" y="62" width="600" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spN-sE-Xxc">
-                                <rect key="frame" x="0.0" y="92" width="600" height="1"/>
+                                <rect key="frame" x="0.0" y="120" width="600" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRemoveAudio" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVJ-Bo-uIp">
-                                <rect key="frame" x="501" y="417" width="88" height="34"/>
+                                <rect key="frame" x="501" y="400" width="88" height="34"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Remove">
@@ -758,17 +758,17 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnAudioNote" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfo-VS-KrK">
-                                <rect key="frame" x="16" y="417" width="486" height="34"/>
+                                <rect key="frame" x="16" y="400" width="486" height="34"/>
                                 <color key="backgroundColor" red="0.20784313730000001" green="0.6588235294" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Play Audio Note">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4lJ-0Q-SSu" restorationIdentifier="btnSaveComment">
-                                <rect key="frame" x="230" y="497" width="145" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnSaveComment" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4lJ-0Q-SSu">
+                                <rect key="frame" x="230" y="470" width="145" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="145" id="eBh-14-zc5"/>
+                                    <constraint firstAttribute="width" constant="145" id="bx9-d0-vaZ"/>
                                 </constraints>
                                 <state key="normal" title="Save Comment">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -777,40 +777,40 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="927" firstAttribute="top" secondItem="918" secondAttribute="top" constant="53" id="1Ko-6j-q8V"/>
-                            <constraint firstItem="sVJ-Bo-uIp" firstAttribute="top" secondItem="rfo-VS-KrK" secondAttribute="top" id="1tz-1X-W0J"/>
-                            <constraint firstItem="nhg-BX-j0N" firstAttribute="trailing" secondItem="878" secondAttribute="trailing" id="1wh-H1-Q0I"/>
-                            <constraint firstItem="974" firstAttribute="top" secondItem="4lJ-0Q-SSu" secondAttribute="bottom" constant="73" id="6ws-Vk-QGJ"/>
-                            <constraint firstItem="rfo-VS-KrK" firstAttribute="leading" secondItem="918" secondAttribute="leadingMargin" id="7CF-J6-dEF"/>
-                            <constraint firstItem="927" firstAttribute="centerX" secondItem="uWA-o6-OrJ" secondAttribute="centerX" id="7zf-od-1rU"/>
-                            <constraint firstItem="spN-sE-Xxc" firstAttribute="top" secondItem="927" secondAttribute="bottom" constant="14" id="D4u-6m-Fpl"/>
-                            <constraint firstItem="sVJ-Bo-uIp" firstAttribute="bottom" secondItem="rfo-VS-KrK" secondAttribute="bottom" id="D8J-Hw-bQV"/>
-                            <constraint firstItem="878" firstAttribute="centerX" secondItem="4lJ-0Q-SSu" secondAttribute="centerX" id="Dlo-WN-0PT"/>
-                            <constraint firstItem="nhg-BX-j0N" firstAttribute="top" secondItem="878" secondAttribute="top" id="EtJ-Vc-ka0"/>
-                            <constraint firstItem="878" firstAttribute="top" secondItem="spN-sE-Xxc" secondAttribute="bottom" constant="75" id="I7u-hr-8Ig"/>
-                            <constraint firstItem="spN-sE-Xxc" firstAttribute="trailing" secondItem="uWA-o6-OrJ" secondAttribute="trailing" id="IgA-mp-6vr"/>
-                            <constraint firstItem="878" firstAttribute="leading" secondItem="rfo-VS-KrK" secondAttribute="leading" id="JBv-3y-luz"/>
-                            <constraint firstItem="uWA-o6-OrJ" firstAttribute="top" secondItem="973" secondAttribute="bottom" constant="19" id="JDI-hs-Zd8"/>
-                            <constraint firstItem="927" firstAttribute="leading" secondItem="878" secondAttribute="leading" id="LTo-4g-piw"/>
-                            <constraint firstItem="927" firstAttribute="top" secondItem="uWA-o6-OrJ" secondAttribute="bottom" constant="13" id="MOu-fw-vOA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nhg-BX-j0N" secondAttribute="trailing" constant="-5" id="NvD-aq-vU2"/>
-                            <constraint firstItem="4lJ-0Q-SSu" firstAttribute="top" secondItem="rfo-VS-KrK" secondAttribute="bottom" constant="46" id="WRT-1i-ASa"/>
-                            <constraint firstItem="uWA-o6-OrJ" firstAttribute="leading" secondItem="spN-sE-Xxc" secondAttribute="leading" id="YxP-fG-ejA"/>
-                            <constraint firstItem="sVJ-Bo-uIp" firstAttribute="trailing" secondItem="878" secondAttribute="trailing" id="Z1g-q9-SqE"/>
-                            <constraint firstItem="rfo-VS-KrK" firstAttribute="top" secondItem="878" secondAttribute="bottom" id="fQZ-qF-nlz"/>
-                            <constraint firstAttribute="trailing" secondItem="uWA-o6-OrJ" secondAttribute="trailing" id="oU8-lg-IDp"/>
-                            <constraint firstItem="uWA-o6-OrJ" firstAttribute="leading" secondItem="918" secondAttribute="leading" id="oep-xW-PN6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rfo-VS-KrK" secondAttribute="trailing" constant="82" id="pWA-3f-0qh"/>
-                            <constraint firstItem="sVJ-Bo-uIp" firstAttribute="leading" secondItem="nhg-BX-j0N" secondAttribute="leading" id="rSO-SU-fZf"/>
+                            <constraint firstItem="spN-sE-Xxc" firstAttribute="leading" secondItem="uWA-o6-OrJ" secondAttribute="leading" id="0AB-CP-9EG"/>
+                            <constraint firstItem="rfo-VS-KrK" firstAttribute="leading" secondItem="918" secondAttribute="leadingMargin" id="0fq-1E-n1B"/>
+                            <constraint firstItem="927" firstAttribute="top" secondItem="918" secondAttribute="top" constant="80" id="0w7-os-TVy"/>
+                            <constraint firstItem="rfo-VS-KrK" firstAttribute="top" secondItem="sVJ-Bo-uIp" secondAttribute="top" id="1ku-9v-Q7H"/>
+                            <constraint firstItem="878" firstAttribute="centerX" secondItem="4lJ-0Q-SSu" secondAttribute="centerX" id="8ga-Ve-l8k"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rfo-VS-KrK" secondAttribute="trailing" constant="82" id="9SN-PW-UfI"/>
+                            <constraint firstItem="rfo-VS-KrK" firstAttribute="bottom" secondItem="sVJ-Bo-uIp" secondAttribute="bottom" id="BUd-pf-cXu"/>
+                            <constraint firstItem="spN-sE-Xxc" firstAttribute="top" secondItem="927" secondAttribute="bottom" constant="15" id="F7C-BE-hbY"/>
+                            <constraint firstAttribute="trailing" secondItem="uWA-o6-OrJ" secondAttribute="trailing" id="GUZ-vs-ev8"/>
+                            <constraint firstItem="927" firstAttribute="top" secondItem="uWA-o6-OrJ" secondAttribute="bottom" constant="17" id="H4L-y0-PeO"/>
+                            <constraint firstItem="878" firstAttribute="top" secondItem="spN-sE-Xxc" secondAttribute="bottom" constant="24" id="HbA-ah-Zpi"/>
+                            <constraint firstItem="878" firstAttribute="leading" secondItem="927" secondAttribute="leading" id="Jf4-zd-QOv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nhg-BX-j0N" secondAttribute="trailing" constant="-5" id="M3Z-kv-Uey"/>
+                            <constraint firstItem="4lJ-0Q-SSu" firstAttribute="top" secondItem="rfo-VS-KrK" secondAttribute="bottom" constant="36" id="QwX-XJ-cUz"/>
+                            <constraint firstItem="spN-sE-Xxc" firstAttribute="leading" secondItem="918" secondAttribute="leading" id="RCj-yc-3M7"/>
+                            <constraint firstItem="974" firstAttribute="top" secondItem="4lJ-0Q-SSu" secondAttribute="bottom" constant="100" id="WA8-hc-55C"/>
+                            <constraint firstItem="sVJ-Bo-uIp" firstAttribute="trailing" secondItem="878" secondAttribute="trailing" id="Zmx-VH-Dh4"/>
+                            <constraint firstItem="nhg-BX-j0N" firstAttribute="top" secondItem="878" secondAttribute="top" id="fAD-Fw-YW4"/>
+                            <constraint firstItem="uWA-o6-OrJ" firstAttribute="trailing" secondItem="spN-sE-Xxc" secondAttribute="trailing" id="gMm-ml-u6u"/>
+                            <constraint firstItem="nhg-BX-j0N" firstAttribute="trailing" secondItem="878" secondAttribute="trailing" id="hvQ-uv-4tt"/>
+                            <constraint firstItem="uWA-o6-OrJ" firstAttribute="top" secondItem="973" secondAttribute="bottom" constant="42" id="j8z-SW-lLG"/>
+                            <constraint firstItem="927" firstAttribute="centerX" secondItem="spN-sE-Xxc" secondAttribute="centerX" id="mvi-XN-Q45"/>
+                            <constraint firstItem="rfo-VS-KrK" firstAttribute="leading" secondItem="878" secondAttribute="leading" id="pGX-5W-LaP"/>
+                            <constraint firstItem="sVJ-Bo-uIp" firstAttribute="leading" secondItem="nhg-BX-j0N" secondAttribute="leading" id="sbz-dP-hpe"/>
+                            <constraint firstItem="rfo-VS-KrK" firstAttribute="top" secondItem="878" secondAttribute="bottom" constant="6" id="wc2-MK-CIb"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="txtComment" destination="927" id="name-outlet-927"/>
+                        <outlet property="btnAudioNote" destination="rfo-VS-KrK" id="name-outlet-rfo-VS-KrK"/>
+                        <outlet property="btnRemoveAudio" destination="sVJ-Bo-uIp" id="name-outlet-sVJ-Bo-uIp"/>
+                        <outlet property="btnRemoveImage" destination="nhg-BX-j0N" id="name-outlet-nhg-BX-j0N"/>
                         <outlet property="btnSaveComment" destination="4lJ-0Q-SSu" id="name-outlet-4lJ-0Q-SSu"/>
                         <outlet property="imgPhoto" destination="878" id="name-outlet-878"/>
-                        <outlet property="btnAudioNote" destination="rfo-VS-KrK" id="name-outlet-rfo-VS-KrK"/>
-                        <outlet property="btnRemoveImage" destination="nhg-BX-j0N" id="name-outlet-nhg-BX-j0N"/>
-                        <outlet property="btnRemoveAudio" destination="sVJ-Bo-uIp" id="name-outlet-sVJ-Bo-uIp"/>
+                        <outlet property="txtComment" destination="927" id="name-outlet-927"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="919" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -832,7 +832,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="948">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="imgPhoto" image="ImagePlaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="944" misplaced="YES">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="imgPhoto" image="ImagePlaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="944">
                                         <rect key="frame" x="8" y="325" width="584" height="201"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="201" id="DkD-PR-M9Z"/>
@@ -854,7 +854,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRemoveAudio" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfH-Ns-8Xk" misplaced="YES">
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRemoveAudio" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfH-Ns-8Xk">
                                         <rect key="frame" x="504" y="528" width="88" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -863,7 +863,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnAudioNote" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="946" misplaced="YES">
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnAudioNote" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="946">
                                         <rect key="frame" x="8" y="528" width="496" height="34"/>
                                         <color key="backgroundColor" red="0.20784313725490197" green="0.6588235294117647" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Play Audio Note">
@@ -892,14 +892,14 @@
                                             <constraint firstAttribute="height" constant="1" id="MMn-9L-5xZ"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loD-C3-p3t" misplaced="YES">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loD-C3-p3t">
                                         <rect key="frame" x="0.0" y="305" width="600" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Ic5-9l-ye0"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRemoveImage" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="945" misplaced="YES">
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRemoveImage" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="945">
                                         <rect key="frame" x="504" y="325" width="88" height="32"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -912,10 +912,10 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <pickerView contentMode="scaleToFill" restorationIdentifier="pkrAssigned" translatesAutoresizingMaskIntoConstraints="NO" id="949" misplaced="YES">
+                                    <pickerView contentMode="scaleToFill" restorationIdentifier="pkrAssigned" translatesAutoresizingMaskIntoConstraints="NO" id="949">
                                         <rect key="frame" x="17" y="140" width="554" height="162"/>
                                     </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaE-I1-zm5" misplaced="YES" restorationIdentifier="btnSaveIncident">
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnSaveIncident" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaE-I1-zm5">
                                         <rect key="frame" x="215" y="565" width="158" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="158" id="aMA-DS-uFg"/>
@@ -976,13 +976,13 @@
                     </view>
                     <connections>
                         <outlet property="btnAudioNote" destination="946" id="name-outlet-946"/>
+                        <outlet property="btnRemoveAudio" destination="pfH-Ns-8Xk" id="name-outlet-pfH-Ns-8Xk"/>
                         <outlet property="btnRemoveImage" destination="945" id="name-outlet-945"/>
+                        <outlet property="btnSaveIncident" destination="kaE-I1-zm5" id="name-outlet-kaE-I1-zm5"/>
                         <outlet property="imgPhoto" destination="944" id="name-outlet-944"/>
                         <outlet property="pkrAssigned" destination="949" id="name-outlet-949"/>
                         <outlet property="txtDescription" destination="943" id="name-outlet-943"/>
                         <outlet property="txtSubject" destination="942" id="name-outlet-942"/>
-                        <outlet property="btnSaveIncident" destination="kaE-I1-zm5" id="name-outlet-kaE-I1-zm5"/>
-                        <outlet property="btnRemoveAudio" destination="pfH-Ns-8Xk" id="name-outlet-pfH-Ns-8Xk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="940" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1011,7 +1011,7 @@
     </scenes>
     <resources>
         <image name="BlackGradient_Background.png" width="400" height="400"/>
-        <image name="Incidentrackr_banner.jpg" width="523" height="74"/>
         <image name="ImagePlaceholder.png" width="400" height="400"/>
+        <image name="Incidentrackr_banner.jpg" width="523" height="74"/>
     </resources>
 </document>
