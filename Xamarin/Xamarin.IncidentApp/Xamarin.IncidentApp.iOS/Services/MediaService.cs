@@ -33,6 +33,14 @@ namespace Xamarin.IncidentApp.iOS.Services
 
         }
 
+        internal void PhotoResult(byte[] photo)
+        {
+            if (PhotoComplete != null)
+            {
+                PhotoComplete(this, new PhotoCompleteEventArgs(photo));
+            }
+        }
+
         public void PlayAudio(byte[] audioRecording, string fileExtension)
         {
             if (_player != null)

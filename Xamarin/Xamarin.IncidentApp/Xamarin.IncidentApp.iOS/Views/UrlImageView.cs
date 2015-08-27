@@ -23,7 +23,7 @@ namespace Xamarin.IncidentApp.iOS.Views
                     ContentMode = UIViewContentMode.ScaleAspectFill;
                     ClipsToBounds = true;
                     var url = new NSUrl(value);
-                    this.SetImage(url);                    
+                    this.SetImage(url);                 
                 }
                 else
                 {

@@ -35,6 +35,12 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             SetupActionSheet();
         }
 
+        public new AddIncidentViewModel ViewModel
+        {
+            get { return (AddIncidentViewModel)base.ViewModel; }
+            set { base.ViewModel = value; }
+        }
+
         private void SetupActionSheet()
         {
             _actionSheet = new UIActionSheet("Comment Actions");
@@ -54,14 +60,15 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             switch (e.ButtonIndex)
             {
                 case 0: // Take Photo
-                    _mediaService.TakePhoto();
+                    ViewModel.TakeNewPhotoCommand.Execute(null);
                     break;
 
                 case 1: // Attach Image
-                    _mediaService.SelectPhoto();
+                    ViewModel.SelectPhotoCommand.Execute(null);
                     break;
 
                 case 2: // Record Audio
+                    ViewModel.RecordAudioCommand.Execute(null);
                     break;
 
                 case 3: // Cancel
@@ -69,21 +76,13 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             }
         }
 
-        void _mediaService_PhotoComplete(object source, EventArgs.PhotoCompleteEventArgs e)
-        {
-            NSData imageData = NSData.FromArray(e.ImageStream);
-            imgPhoto.Image = UIImage.LoadFromData(imageData);
-
-            ((AddIncidentViewModel) ViewModel).Image = e.ImageStream;
-
-        }
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
             _mediaService = new MediaService(this);
-            _mediaService.PhotoComplete += _mediaService_PhotoComplete;
+
+            ViewModel.SetActivityServices(_mediaService);
 
             NavigationController.NavigationBarHidden = false;
             NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Action, (sender, args) =>
@@ -122,7 +121,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             //pickerBindingSet.Bind(pickerViewModel).For(c => ((UserProfile)c.SelectedItem).UserId).To(vm => vm.AssignedToId);
             pickerBindingSet.Bind(pickerViewModel).For(c => c.ItemsSource).To(vm => vm.Workers);
             pickerBindingSet.Apply();
-
+            //imgPhoto.Image = UIImage.LoadFromData(imageData);
         }
     }
 }
