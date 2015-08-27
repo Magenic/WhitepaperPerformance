@@ -67,7 +67,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         void _mediaService_PhotoComplete(object source, EventArgs.PhotoCompleteEventArgs e)
         {
             NSData imageData = NSData.FromArray(e.ImageStream);
-            // imgPhoto.Image = UIImage.LoadFromData(imageData);
+            imgPhoto.Image = UIImage.LoadFromData(imageData);
 
             ((AddIncidentDetailViewModel)ViewModel).Image = e.ImageStream;
 
