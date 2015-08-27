@@ -8,6 +8,7 @@ using Cirrious.MvvmCross.ViewModels;
 using Foundation;
 using UIKit;
 using Xamarin.IncidentApp.iOS.Services;
+using Xamarin.IncidentApp.Models;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.iOS.Controllers
@@ -103,7 +104,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             this.CreateBinding(txtSubject).For(c => c.Text).To((AddIncidentViewModel property) => property.Subject).Apply();
             this.CreateBinding(imgPhoto).For(c => c.Image).To((AddIncidentViewModel property) => property.Image).Apply();
 
-            this.CreateBinding(btnSaveIncident).To<AddIncidentViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
+            //this.CreateBinding(btnSaveIncident).To<AddIncidentViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
             this.CreateBinding(btnRemoveImage).To<AddIncidentViewModel>(vm => vm.RemoveImageCommand).Apply();
             this.CreateBinding(btnAudioNote).To<AddIncidentViewModel>(vm => vm.SaveNewIncidentCommand).Apply(); //(vm => vm.PlayAudioCommand).Apply();
 
@@ -111,9 +112,14 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             var pickerViewModel = new MvxPickerViewModel(pkrAssigned);
             pkrAssigned.Model = pickerViewModel;
             pkrAssigned.ShowSelectionIndicator = true;
+            pickerViewModel.SelectedItemChanged += (sender, args) =>
+            {
+                var selectedAssignee = (UserProfile)pickerViewModel.SelectedItem;
+                ((AddIncidentViewModel)ViewModel).AssignedToId = selectedAssignee.UserId;
+            };
 
             var pickerBindingSet = this.CreateBindingSet<AddIncidentViewController, AddIncidentViewModel>();
-            pickerBindingSet.Bind(pickerViewModel).For(c => c.SelectedItem).To(vm => vm.AssignedToId);
+            //pickerBindingSet.Bind(pickerViewModel).For(c => ((UserProfile)c.SelectedItem).UserId).To(vm => vm.AssignedToId);
             pickerBindingSet.Bind(pickerViewModel).For(c => c.ItemsSource).To(vm => vm.Workers);
             pickerBindingSet.Apply();
 
