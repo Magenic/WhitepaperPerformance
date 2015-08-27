@@ -74,6 +74,18 @@ namespace Xamarin.IncidentApp.iOS.Services
             // show the picker
             _controller.NavigationController.PresentModalViewController(_imagePicker, true);
         }
+        
+        public void TakePhoto()
+        {
+            // set our source to the photo library
+            _imagePicker.SourceType = UIImagePickerControllerSourceType.Camera;
+
+            // set what media types
+            _imagePicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.Camera);
+            
+            // show the picker
+            _controller.NavigationController.PresentModalViewController(_imagePicker, true);
+        }
 
         private void Handle_Canceled(object sender, System.EventArgs e)
         {
@@ -101,18 +113,5 @@ namespace Xamarin.IncidentApp.iOS.Services
 
             _imagePicker.DismissModalViewController(true);
         }
-
-        public void TakePhoto()
-        {
-            // set our source to the photo library
-            _imagePicker.SourceType = UIImagePickerControllerSourceType.Camera;
-
-            // set what media types
-            _imagePicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.Camera);
-
-            // show the picker
-            _controller.NavigationController.PresentModalViewController(_imagePicker, true);
-        }
-
     }
 }

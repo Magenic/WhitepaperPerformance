@@ -304,6 +304,7 @@
     <Content Include="AppDelegate.cs.txt" />
     <BundleResource Include="Resources\Incidentrackr_banner.jpg" />
     <BundleResource Include="Resources\BlackGradient_Background.png" />
+    <BundleResource Include="Resources\ImagePlaceholder.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="sdwebimage">

@@ -54,6 +54,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             switch (e.ButtonIndex)
             {
                 case 0: // Take Photo
+                    _mediaService.TakePhoto();
                     break;
 
                 case 1: // Attach Image
@@ -83,7 +84,6 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
             _mediaService = new MediaService(this);
             _mediaService.PhotoComplete += _mediaService_PhotoComplete;
-            //ViewModel.SetActivityServices(_mediaService);
 
             NavigationController.NavigationBarHidden = false;
             NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Action, (sender, args) =>
@@ -104,9 +104,9 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             this.CreateBinding(txtSubject).For(c => c.Text).To((AddIncidentViewModel property) => property.Subject).Apply();
             this.CreateBinding(imgPhoto).For(c => c.Image).To((AddIncidentViewModel property) => property.Image).Apply();
 
-            //this.CreateBinding(btnSaveIncident).To<AddIncidentViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
+            this.CreateBinding(btnSaveIncident).To<AddIncidentViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
             this.CreateBinding(btnRemoveImage).To<AddIncidentViewModel>(vm => vm.RemoveImageCommand).Apply();
-            this.CreateBinding(btnAudioNote).To<AddIncidentViewModel>(vm => vm.SaveNewIncidentCommand).Apply(); //(vm => vm.PlayAudioCommand).Apply();
+            this.CreateBinding(btnAudioNote).To<AddIncidentViewModel>(vm => vm.PlayAudioCommand).Apply();
 
             // A little more work involved in binding to the picker
             var pickerViewModel = new MvxPickerViewModel(pkrAssigned);

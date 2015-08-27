@@ -1,6 +1,7 @@
 using System;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.ViewModels;
+using Foundation;
 using UIKit;
 using Xamarin.IncidentApp.iOS.Services;
 using Xamarin.IncidentApp.ViewModels;
@@ -48,17 +49,28 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             switch (e.ButtonIndex)
             {
                 case 0: // Take Photo
+                    _mediaService.TakePhoto();
                     break;
 
                 case 1: // Attach Image
+                    _mediaService.SelectPhoto();
                     break;
 
                 case 2: // Record Audio
+                    _mediaService.RecordAudio();
                     break;
 
                 case 3: // Cancel
                     break;
             }
+        }
+        void _mediaService_PhotoComplete(object source, EventArgs.PhotoCompleteEventArgs e)
+        {
+            NSData imageData = NSData.FromArray(e.ImageStream);
+            // imgPhoto.Image = UIImage.LoadFromData(imageData);
+
+            ((AddIncidentDetailViewModel)ViewModel).Image = e.ImageStream;
+
         }
 
         public override void ViewDidLoad()
@@ -66,7 +78,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             base.ViewDidLoad();
 
             _mediaService = new MediaService(this);
-            //ViewModel.SetActivityServices(_mediaService);
+            _mediaService.PhotoComplete += _mediaService_PhotoComplete;
 
             NavigationController.NavigationBarHidden = false;
             NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Action, (sender, args) =>
@@ -84,7 +96,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private void SetupBindings()
         {
             this.CreateBinding(txtComment).For(c => c.Text).To((AddIncidentDetailViewModel property) => property.DetailText).Apply();
-            //this.CreateBinding(btnSaveComment).To<AddIncidentDetailViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
+            this.CreateBinding(btnSaveComment).To<AddIncidentDetailViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
         }
     }
 }

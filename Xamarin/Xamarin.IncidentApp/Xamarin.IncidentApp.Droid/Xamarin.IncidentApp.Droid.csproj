@@ -73,25 +73,12 @@
       <HintPath>..\..\packages\Acr.MvvmCross.Plugins.Network.1.4.0\lib\MonoAndroid10\Acr.MvvmCross.Plugins.Network.Droid.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Acr.MvvmCross.Plugins.UserDialogs, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.UserDialogs.3.1.0\lib\MonoAndroid10\Acr.MvvmCross.Plugins.UserDialogs.dll</HintPath>
+    <Reference Include="Acr.MvvmCross.Plugins.UserDialogs, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.UserDialogs.4.0.0\lib\MonoAndroid10\Acr.MvvmCross.Plugins.UserDialogs.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Acr.MvvmCross.Plugins.UserDialogs.Droid, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.UserDialogs.3.1.0\lib\MonoAndroid10\Acr.MvvmCross.Plugins.UserDialogs.Droid.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Acr.UserDialogs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.UserDialogs.3.4.2\lib\MonoAndroid10\Acr.UserDialogs.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Acr.UserDialogs.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.UserDialogs.3.4.2\lib\MonoAndroid10\Acr.UserDialogs.Interface.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="AndHUD, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.UserDialogs.3.4.2\lib\MonoAndroid10\AndHUD.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Acr.MvvmCross.Plugins.UserDialogs.Droid, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.UserDialogs.4.0.0\lib\MonoAndroid10\Acr.MvvmCross.Plugins.UserDialogs.Droid.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.CrossCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e16445fd9b451819, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\MonoAndroid\Cirrious.CrossCore.dll</HintPath>
