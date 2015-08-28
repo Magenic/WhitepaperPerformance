@@ -1,11 +1,8 @@
 using System;
 using System.IO;
 using Android.App;
-using Android.Content;
 using Android.Media;
-using Android.Provider;
 using Java.IO;
-using Java.Security;
 using Xamarin.IncidentApp.Droid.Constants;
 using Xamarin.IncidentApp.EventArgs;
 using Xamarin.IncidentApp.Interfaces;
@@ -62,12 +59,6 @@ namespace Xamarin.IncidentApp.Droid.Services
             var picker = new MediaPicker(_context);
             var intent = picker.GetPickPhotoUI();
             _context.StartActivityForResult(intent, IntentConstants.SelectPhoto);
-        }
-
-        public void RecordAudio()
-        {
-            var intent = new Intent(MediaStore.Audio.Media.RecordSoundAction);
-            _context.StartActivityForResult(intent, IntentConstants.RecordAudio);
         }
 
         public void PlayAudio(byte[] audioRecording, string fileExtension)
