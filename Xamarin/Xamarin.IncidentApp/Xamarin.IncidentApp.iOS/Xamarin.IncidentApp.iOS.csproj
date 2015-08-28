@@ -233,6 +233,10 @@
     <Compile Include="Controllers\AddIncidentViewController.designer.cs">
       <DependentUpon>AddIncidentViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AudioRecorderViewController.cs" />
+    <Compile Include="Controllers\AudioRecorderViewController.designer.cs">
+      <DependentUpon>AudioRecorderViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\BaseViewController.cs" />
     <Compile Include="Controllers\DashboardViewController.cs" />
     <Compile Include="Controllers\DashboardViewController.designer.cs">

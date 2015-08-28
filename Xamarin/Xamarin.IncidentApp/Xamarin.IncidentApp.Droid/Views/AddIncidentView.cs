@@ -101,7 +101,7 @@ namespace Xamarin.IncidentApp.Droid.Views
             }
             else if (requestCode == Constants.IntentConstants.RecordAudio)
             {
-                await HandleAudioResultAsync(resultCode, data);
+                HandleAudioResult(resultCode, data);
             }
             else
             {
@@ -119,7 +119,7 @@ namespace Xamarin.IncidentApp.Droid.Views
             }
         }
 
-        private async Task HandleAudioResultAsync(Result resultCode, Intent data)
+        private void HandleAudioResult(Result resultCode, Intent data)
         {
             if (resultCode == Result.Ok)
             {
