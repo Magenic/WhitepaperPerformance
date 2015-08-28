@@ -1,11 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Binding.Touch.Views;
 using Cirrious.MvvmCross.ViewModels;
-using Foundation;
 using UIKit;
 using Xamarin.IncidentApp.iOS.Services;
 using Xamarin.IncidentApp.Models;
@@ -92,7 +88,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             })
             , true);
 
-            this.Title = "Add Incident";
+            Title = "Add Incident";
 
             SetupBindings();
         }

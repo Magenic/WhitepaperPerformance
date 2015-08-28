@@ -19,8 +19,10 @@ namespace Xamarin.IncidentApp.iOS.Services
         private UIImagePickerController _imagePicker;
         private BaseViewController _controller;
         private AVAudioPlayer _player;
+        private AVAudioRecorder _recorder;
 
-        private string filename;
+        private string _recordedFileName;
+        private string _tempAudioFile;
 
         public MediaService(BaseViewController controller)
         {
@@ -63,9 +65,9 @@ namespace Xamarin.IncidentApp.iOS.Services
                 session.SetActive(true, out error);
                 var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 var temp = Path.Combine(documents, "..", "tmp");
-                filename = Path.Combine(temp, Guid.NewGuid().ToString() + fileExtension);
-                File.WriteAllBytes(filename, audioRecording);
-                using (var url = new NSUrl(filename))
+                _tempAudioFile = Path.Combine(temp, Guid.NewGuid() + fileExtension);
+                File.WriteAllBytes(_tempAudioFile, audioRecording);
+                using (var url = new NSUrl(_tempAudioFile))
                 {
                     _player = AVAudioPlayer.FromUrl(url, out error);
                 }
@@ -83,30 +85,13 @@ namespace Xamarin.IncidentApp.iOS.Services
             Debug.WriteLine("Finished playing");
             if (_player != null)
             {
-                if (File.Exists(filename))
+                if (File.Exists(_tempAudioFile))
                 {
-                    File.Delete(filename);
+                    File.Delete(_tempAudioFile);
                 }
             }
         }
 
-        public void RecordAudio()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SelectPhoto()
-        {
-            // set our source to the photo library
-            _imagePicker.SourceType = UIImagePickerControllerSourceType.PhotoLibrary;
-
-            // set what media types
-            _imagePicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.PhotoLibrary);
-
-            // show the picker
-            _controller.NavigationController.PresentModalViewController(_imagePicker, true);
-        }
-        
         public void TakePhoto()
         {
             // set our source to the photo library
@@ -149,22 +134,97 @@ namespace Xamarin.IncidentApp.iOS.Services
 
         public void StartRecording()
         {
-            throw new NotImplementedException();
+            NSError error;
+            var audioSession = AVAudioSession.SharedInstance();
+            var err = audioSession.SetCategory(AVAudioSessionCategory.PlayAndRecord);
+            if (err != null)
+            {
+                Console.WriteLine("audioSession: {0}", err);
+                return;
+            }
+            err = audioSession.SetActive(true);
+            if (err != null)
+            {
+                Console.WriteLine("audioSession: {0}", err);
+                return;
+            }
+
+            var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var temp = Path.Combine(documents, "..", "tmp");
+            _recordedFileName = Path.Combine(temp, Guid.NewGuid() + ".mp4");
+
+            using (var url = new NSUrl(_recordedFileName))
+            {
+
+                //set up the NSObject Array of values that will be combined with the keys to make the NSDictionary
+                var values = new NSObject[]
+                {
+                    NSNumber.FromFloat(44100.0f), //Sample Rate
+                    NSNumber.FromInt32((int) AudioToolbox.AudioFormatType.MPEG4AAC), //AVFormat
+                    NSNumber.FromInt32(2), //Channels
+                    NSNumber.FromInt32(16), //PCMBitDepth
+                    NSNumber.FromBoolean(false), //IsBigEndianKey
+                    NSNumber.FromBoolean(false) //IsFloatKey
+                };
+
+                //Set up the NSObject Array of keys that will be combined with the values to make the NSDictionary
+                var keys = new NSObject[]
+                {
+                    AVAudioSettings.AVSampleRateKey,
+                    AVAudioSettings.AVFormatIDKey,
+                    AVAudioSettings.AVNumberOfChannelsKey,
+                    AVAudioSettings.AVLinearPCMBitDepthKey,
+                    AVAudioSettings.AVLinearPCMIsBigEndianKey,
+                    AVAudioSettings.AVLinearPCMIsFloatKey
+                };
+
+                //Set Settings with the Values and Keys to create the NSDictionary
+                var settings = NSDictionary.FromObjectsAndKeys(values, keys);
+
+                //Set recorder parameters
+                _recorder = AVAudioRecorder.Create(url, new AudioSettings(settings), out error);
+            }
+
+            //Set Recorder to Prepare To Record
+            _recorder.PrepareToRecord();
+
+            _recorder.Record();
+        }
+
+        public void SelectPhoto()
+        {
+            // set our source to the photo library
+            _imagePicker.SourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+
+            // set what media types
+            _imagePicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.PhotoLibrary);
+
+            // show the picker
+            _controller.NavigationController.PresentModalViewController(_imagePicker, true);
         }
 
         public void StopRecording()
         {
-            throw new NotImplementedException();
+            if (_recorder != null)
+                _recorder.Stop();
         }
 
         public byte[] GetRecording()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(_recordedFileName))
+            {
+                return null;
+            }
+            return File.ReadAllBytes(_recordedFileName);
         }
 
         public string GetRecordingFileExtension()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(_recordedFileName))
+            {
+                return string.Empty;
+            }
+            return Path.GetExtension(_recordedFileName);
         }
     }
 }

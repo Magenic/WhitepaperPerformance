@@ -30,6 +30,12 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             SetupActionSheet();
         }
 
+        public new AddIncidentDetailViewModel ViewModel
+        {
+            get { return (AddIncidentDetailViewModel)base.ViewModel; }
+            set { base.ViewModel = value; }
+        }
+
         private void SetupActionSheet()
         {
             _actionSheet = new UIActionSheet("Comment Actions");
@@ -49,28 +55,20 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             switch (e.ButtonIndex)
             {
                 case 0: // Take Photo
-                    _mediaService.TakePhoto();
+                    ViewModel.TakeNewPhotoCommand.Execute(null);
                     break;
 
                 case 1: // Attach Image
-                    _mediaService.SelectPhoto();
+                    ViewModel.SelectPhotoCommand.Execute(null);
                     break;
 
                 case 2: // Record Audio
-                    _mediaService.RecordAudio();
+                    ViewModel.RecordAudioCommand.Execute(null);
                     break;
 
                 case 3: // Cancel
                     break;
             }
-        }
-        void _mediaService_PhotoComplete(object source, EventArgs.PhotoCompleteEventArgs e)
-        {
-            NSData imageData = NSData.FromArray(e.ImageStream);
-            // imgPhoto.Image = UIImage.LoadFromData(imageData);
-
-            ((AddIncidentDetailViewModel)ViewModel).Image = e.ImageStream;
-
         }
 
         public override void ViewDidLoad()
@@ -78,7 +76,8 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             base.ViewDidLoad();
 
             _mediaService = new MediaService(this);
-            _mediaService.PhotoComplete += _mediaService_PhotoComplete;
+
+            ViewModel.SetActivityServices(_mediaService);
 
             NavigationController.NavigationBarHidden = false;
             NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Action, (sender, args) =>
@@ -88,7 +87,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             })
             , true);
 
-            this.Title = "Add Comment";
+            Title = "Add Comment";
 
             SetupBindings();
         }

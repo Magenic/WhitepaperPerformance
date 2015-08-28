@@ -1,6 +1,7 @@
 ﻿using System;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.ViewModels;
+using Xamarin.IncidentApp.iOS.Services;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.iOS.Controllers
@@ -38,6 +39,9 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            var mediaService = new MediaService(this);
+
+            ViewModel.SetActivityServices(mediaService);
 
             // Perform any additional setup after loading the view
             NavigationController.NavigationBarHidden = false;
