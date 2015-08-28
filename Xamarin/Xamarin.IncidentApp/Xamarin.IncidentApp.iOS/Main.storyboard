@@ -133,7 +133,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="lblTeamLead" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="183" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="lblTeamLead" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="183">
                                                     <rect key="frame" x="2" y="5" width="549" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -154,7 +154,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="lblWaitTime" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="206" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="lblWaitTime" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="206">
                                                     <rect key="frame" x="512" y="56" width="39" height="11"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -165,7 +165,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="253" misplaced="YES">
+                                                <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="253">
                                                     <rect key="frame" x="2" y="40" width="496" height="2"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="2" id="0Vf-4z-1o3"/>
@@ -173,7 +173,7 @@
                                                     <color key="progressTintColor" red="0.9137254901960784" green="0.11764705882352941" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="trackTintColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                                 </progressView>
-                                                <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="258" misplaced="YES">
+                                                <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="258">
                                                     <rect key="frame" x="2" y="65" width="496" height="2"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="2" id="2h2-Uh-b24"/>
@@ -181,7 +181,7 @@
                                                     <color key="progressTintColor" red="1" green="0.75686274509803919" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="trackTintColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                                 </progressView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="# Incidents" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="375" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="# Incidents" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="375">
                                                     <rect key="frame" x="2" y="25" width="549" height="12"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -191,7 +191,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Average Wait Time in Minutes" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="376" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Average Wait Time in Minutes" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="376">
                                                     <rect key="frame" x="2" y="50" width="549" height="12"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -305,14 +305,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="576" customClass="UrlImageView" misplaced="YES">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="576" customClass="UrlImageView">
                                                     <rect key="frame" x="4" y="0.0" width="78" height="78"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="78" id="1051"/>
                                                         <constraint firstAttribute="height" constant="78" id="1053"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="577" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="577">
                                                     <rect key="frame" x="90" y="5" width="469" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -335,7 +335,7 @@
                                                         <rect key="frame" x="165" y="34" width="194" height="21"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="07/14/15 @ 3:41pm" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="579" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="07/14/15 @ 3:41pm" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="579">
                                                     <rect key="frame" x="90" y="57" width="469" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -345,7 +345,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Owner:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1060" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Owner:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1060">
                                                     <rect key="frame" x="90" y="31" width="56" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -528,19 +528,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="714.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="871" customClass="UrlImageView" misplaced="YES">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="871" customClass="UrlImageView">
                                                     <rect key="frame" x="0.0" y="0.0" width="592" height="592"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" secondItem="871" secondAttribute="width" multiplier="1:1" id="px8-gl-OTH"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="BlackGradient_Background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qyp-pW-tl5" misplaced="YES">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="BlackGradient_Background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qyp-pW-tl5">
                                                     <rect key="frame" x="0.0" y="0.0" width="592" height="592"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" secondItem="Qyp-pW-tl5" secondAttribute="width" multiplier="1:1" id="jCT-ea-DwF"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Subject" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="879" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Subject" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="879">
                                                     <rect key="frame" x="8" y="520" width="584" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -550,7 +550,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Owner" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="880" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Owner" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="880">
                                                     <rect key="frame" x="8" y="550" width="584" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -560,7 +560,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" text="Incident description" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="none" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="877" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" text="Incident description" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="none" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="877">
                                                     <rect key="frame" x="8" y="595" width="584" height="106"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -627,7 +627,7 @@
                                                         <rect key="frame" x="6" y="2350" width="386" height="34"/>
                                                     </variation>
                                                 </button>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Comment text" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="889" misplaced="YES">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Comment text" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="889">
                                                     <rect key="frame" x="18" y="13" width="564" height="17"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -707,15 +707,12 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="txtComment" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter comment here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="927">
                                 <rect key="frame" x="16" y="80" width="568" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="XNL-Wy-I1v"/>
+                                    <constraint firstAttribute="height" constant="25" id="BZL-rM-Blh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="10" y="85" width="300" height="30"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <rect key="frame" x="16" y="80" width="343" height="25"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="10" y="85" width="300" height="30"/>
@@ -724,15 +721,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="imgPhoto" image="ImagePlaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="878">
                                 <rect key="frame" x="16" y="145" width="573" height="249"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="249" id="xjU-Rx-Tkk"/>
+                                    <constraint firstAttribute="height" constant="249" id="Ulo-Wk-CSW"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRemoveImage" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhg-BX-j0N">
                                 <rect key="frame" x="501" y="145" width="88" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="88" id="Aky-AP-jeS"/>
-                                    <constraint firstAttribute="height" constant="32" id="kAo-LO-8yo"/>
+                                    <constraint firstAttribute="height" constant="32" id="AIZ-xl-VDU"/>
+                                    <constraint firstAttribute="width" constant="88" id="nax-wi-BMJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Remove">
@@ -749,7 +746,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRemoveAudio" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVJ-Bo-uIp">
-                                <rect key="frame" x="501" y="400" width="88" height="34"/>
+                                <rect key="frame" x="501" y="430" width="88" height="34"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Remove">
@@ -758,7 +755,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnAudioNote" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfo-VS-KrK">
-                                <rect key="frame" x="16" y="400" width="486" height="34"/>
+                                <rect key="frame" x="16" y="430" width="486" height="34"/>
                                 <color key="backgroundColor" red="0.20784313730000001" green="0.6588235294" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Play Audio Note">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -766,9 +763,9 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnSaveComment" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4lJ-0Q-SSu">
-                                <rect key="frame" x="230" y="470" width="145" height="30"/>
+                                <rect key="frame" x="230" y="500" width="145" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="145" id="bx9-d0-vaZ"/>
+                                    <constraint firstAttribute="width" constant="145" id="rEP-m6-vq3"/>
                                 </constraints>
                                 <state key="normal" title="Save Comment">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -777,31 +774,31 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="spN-sE-Xxc" firstAttribute="leading" secondItem="uWA-o6-OrJ" secondAttribute="leading" id="0AB-CP-9EG"/>
-                            <constraint firstItem="rfo-VS-KrK" firstAttribute="leading" secondItem="918" secondAttribute="leadingMargin" id="0fq-1E-n1B"/>
-                            <constraint firstItem="927" firstAttribute="top" secondItem="918" secondAttribute="top" constant="80" id="0w7-os-TVy"/>
-                            <constraint firstItem="rfo-VS-KrK" firstAttribute="top" secondItem="sVJ-Bo-uIp" secondAttribute="top" id="1ku-9v-Q7H"/>
-                            <constraint firstItem="878" firstAttribute="centerX" secondItem="4lJ-0Q-SSu" secondAttribute="centerX" id="8ga-Ve-l8k"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rfo-VS-KrK" secondAttribute="trailing" constant="82" id="9SN-PW-UfI"/>
-                            <constraint firstItem="rfo-VS-KrK" firstAttribute="bottom" secondItem="sVJ-Bo-uIp" secondAttribute="bottom" id="BUd-pf-cXu"/>
-                            <constraint firstItem="spN-sE-Xxc" firstAttribute="top" secondItem="927" secondAttribute="bottom" constant="15" id="F7C-BE-hbY"/>
-                            <constraint firstAttribute="trailing" secondItem="uWA-o6-OrJ" secondAttribute="trailing" id="GUZ-vs-ev8"/>
-                            <constraint firstItem="927" firstAttribute="top" secondItem="uWA-o6-OrJ" secondAttribute="bottom" constant="17" id="H4L-y0-PeO"/>
-                            <constraint firstItem="878" firstAttribute="top" secondItem="spN-sE-Xxc" secondAttribute="bottom" constant="24" id="HbA-ah-Zpi"/>
-                            <constraint firstItem="878" firstAttribute="leading" secondItem="927" secondAttribute="leading" id="Jf4-zd-QOv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nhg-BX-j0N" secondAttribute="trailing" constant="-5" id="M3Z-kv-Uey"/>
-                            <constraint firstItem="4lJ-0Q-SSu" firstAttribute="top" secondItem="rfo-VS-KrK" secondAttribute="bottom" constant="36" id="QwX-XJ-cUz"/>
-                            <constraint firstItem="spN-sE-Xxc" firstAttribute="leading" secondItem="918" secondAttribute="leading" id="RCj-yc-3M7"/>
-                            <constraint firstItem="974" firstAttribute="top" secondItem="4lJ-0Q-SSu" secondAttribute="bottom" constant="100" id="WA8-hc-55C"/>
-                            <constraint firstItem="sVJ-Bo-uIp" firstAttribute="trailing" secondItem="878" secondAttribute="trailing" id="Zmx-VH-Dh4"/>
-                            <constraint firstItem="nhg-BX-j0N" firstAttribute="top" secondItem="878" secondAttribute="top" id="fAD-Fw-YW4"/>
-                            <constraint firstItem="uWA-o6-OrJ" firstAttribute="trailing" secondItem="spN-sE-Xxc" secondAttribute="trailing" id="gMm-ml-u6u"/>
-                            <constraint firstItem="nhg-BX-j0N" firstAttribute="trailing" secondItem="878" secondAttribute="trailing" id="hvQ-uv-4tt"/>
-                            <constraint firstItem="uWA-o6-OrJ" firstAttribute="top" secondItem="973" secondAttribute="bottom" constant="42" id="j8z-SW-lLG"/>
-                            <constraint firstItem="927" firstAttribute="centerX" secondItem="spN-sE-Xxc" secondAttribute="centerX" id="mvi-XN-Q45"/>
-                            <constraint firstItem="rfo-VS-KrK" firstAttribute="leading" secondItem="878" secondAttribute="leading" id="pGX-5W-LaP"/>
-                            <constraint firstItem="sVJ-Bo-uIp" firstAttribute="leading" secondItem="nhg-BX-j0N" secondAttribute="leading" id="sbz-dP-hpe"/>
-                            <constraint firstItem="rfo-VS-KrK" firstAttribute="top" secondItem="878" secondAttribute="bottom" constant="6" id="wc2-MK-CIb"/>
+                            <constraint firstItem="sVJ-Bo-uIp" firstAttribute="trailing" secondItem="nhg-BX-j0N" secondAttribute="trailing" id="02w-RW-swd"/>
+                            <constraint firstItem="878" firstAttribute="leading" secondItem="rfo-VS-KrK" secondAttribute="leading" id="6BX-Ih-6h6"/>
+                            <constraint firstItem="spN-sE-Xxc" firstAttribute="top" secondItem="927" secondAttribute="bottom" constant="15" id="8QD-8r-Mik"/>
+                            <constraint firstItem="sVJ-Bo-uIp" firstAttribute="bottom" secondItem="rfo-VS-KrK" secondAttribute="bottom" id="C3W-J9-yjb"/>
+                            <constraint firstItem="927" firstAttribute="top" secondItem="918" secondAttribute="top" constant="80" id="E0D-1L-PEo"/>
+                            <constraint firstAttribute="trailing" secondItem="uWA-o6-OrJ" secondAttribute="trailing" id="Fuw-Op-3y4"/>
+                            <constraint firstItem="927" firstAttribute="top" secondItem="uWA-o6-OrJ" secondAttribute="bottom" constant="17" id="NzA-Zg-b3o"/>
+                            <constraint firstItem="spN-sE-Xxc" firstAttribute="leading" secondItem="uWA-o6-OrJ" secondAttribute="leading" id="Q7S-sU-TkP"/>
+                            <constraint firstItem="rfo-VS-KrK" firstAttribute="top" secondItem="878" secondAttribute="bottom" constant="36" id="R5g-hV-A4F"/>
+                            <constraint firstItem="974" firstAttribute="top" secondItem="4lJ-0Q-SSu" secondAttribute="bottom" constant="70" id="V5j-qT-PYL"/>
+                            <constraint firstItem="rfo-VS-KrK" firstAttribute="top" secondItem="sVJ-Bo-uIp" secondAttribute="top" id="Xa1-kU-eUs"/>
+                            <constraint firstItem="878" firstAttribute="top" secondItem="spN-sE-Xxc" secondAttribute="bottom" constant="24" id="afH-ue-0IW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nhg-BX-j0N" secondAttribute="trailing" constant="-5" id="g0d-2p-0ey"/>
+                            <constraint firstItem="uWA-o6-OrJ" firstAttribute="top" secondItem="973" secondAttribute="bottom" constant="42" id="iKr-ai-XuB"/>
+                            <constraint firstItem="927" firstAttribute="leading" secondItem="918" secondAttribute="leadingMargin" id="kdp-wK-gda"/>
+                            <constraint firstItem="uWA-o6-OrJ" firstAttribute="leading" secondItem="918" secondAttribute="leading" id="lKa-Rm-Dsx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rfo-VS-KrK" secondAttribute="trailing" constant="82" id="m1V-CX-QF2"/>
+                            <constraint firstItem="4lJ-0Q-SSu" firstAttribute="top" secondItem="rfo-VS-KrK" secondAttribute="bottom" constant="36" id="npI-M2-TGk"/>
+                            <constraint firstItem="878" firstAttribute="centerX" secondItem="4lJ-0Q-SSu" secondAttribute="centerX" id="nsa-RD-d4e"/>
+                            <constraint firstItem="927" firstAttribute="centerX" secondItem="spN-sE-Xxc" secondAttribute="centerX" id="p4C-Hw-gX0"/>
+                            <constraint firstItem="nhg-BX-j0N" firstAttribute="trailing" secondItem="878" secondAttribute="trailing" id="pXr-iK-nr8"/>
+                            <constraint firstItem="uWA-o6-OrJ" firstAttribute="trailing" secondItem="spN-sE-Xxc" secondAttribute="trailing" id="rUy-tK-m1z"/>
+                            <constraint firstItem="878" firstAttribute="top" secondItem="nhg-BX-j0N" secondAttribute="top" id="s6k-yG-b3m"/>
+                            <constraint firstItem="sVJ-Bo-uIp" firstAttribute="leading" secondItem="nhg-BX-j0N" secondAttribute="leading" id="sWW-Sc-FEY"/>
+                            <constraint firstItem="927" firstAttribute="leading" secondItem="878" secondAttribute="leading" id="tpf-ro-H6g"/>
                         </constraints>
                     </view>
                     <connections>
@@ -832,7 +829,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="948">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="imgPhoto" image="ImagePlaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="944" misplaced="YES">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="imgPhoto" image="ImagePlaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="944">
                                         <rect key="frame" x="8" y="325" width="584" height="201"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="201" id="DkD-PR-M9Z"/>
@@ -854,7 +851,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRemoveAudio" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfH-Ns-8Xk" misplaced="YES">
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRemoveAudio" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfH-Ns-8Xk">
                                         <rect key="frame" x="504" y="528" width="88" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -863,7 +860,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnAudioNote" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="946" misplaced="YES">
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnAudioNote" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="946">
                                         <rect key="frame" x="8" y="528" width="496" height="34"/>
                                         <color key="backgroundColor" red="0.20784313725490197" green="0.6588235294117647" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Play Audio Note">
@@ -892,14 +889,14 @@
                                             <constraint firstAttribute="height" constant="1" id="MMn-9L-5xZ"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loD-C3-p3t" misplaced="YES">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loD-C3-p3t">
                                         <rect key="frame" x="0.0" y="305" width="600" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Ic5-9l-ye0"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRemoveImage" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="945" misplaced="YES">
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRemoveImage" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="945">
                                         <rect key="frame" x="504" y="325" width="88" height="32"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -912,10 +909,10 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <pickerView contentMode="scaleToFill" restorationIdentifier="pkrAssigned" translatesAutoresizingMaskIntoConstraints="NO" id="949" misplaced="YES">
+                                    <pickerView contentMode="scaleToFill" restorationIdentifier="pkrAssigned" translatesAutoresizingMaskIntoConstraints="NO" id="949">
                                         <rect key="frame" x="17" y="140" width="554" height="162"/>
                                     </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnSaveIncident" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaE-I1-zm5" misplaced="YES">
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnSaveIncident" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaE-I1-zm5">
                                         <rect key="frame" x="215" y="565" width="158" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="158" id="aMA-DS-uFg"/>
@@ -1008,9 +1005,10 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
+        <!--Audio Recorder View Controller-->
         <scene sceneID="1294">
             <objects>
-                <viewController id="1295" sceneMemberID="viewController" customClass="AudioRecorderViewController" storyboardIdentifier="AudioRecorderViewController" restorationIdentifier="AudioRecorderViewController">
+                <viewController restorationIdentifier="AudioRecorderViewController" storyboardIdentifier="AudioRecorderViewController" id="1295" customClass="AudioRecorderViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1292"/>
                         <viewControllerLayoutGuide type="bottom" id="1293"/>
@@ -1018,71 +1016,71 @@
                     <view key="view" contentMode="scaleToFill" id="1296">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRecord" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1299">
                                 <rect key="frame" x="133" y="283" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.20784313725490197" green="0.6588235294117647" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="1325"/>
+                                    <constraint firstAttribute="height" constant="34" id="1326"/>
+                                </constraints>
                                 <state key="normal" title="Record">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <constraints>
-                                    <constraint id="1325" firstItem="1299" firstAttribute="width" constant="80"/>
-                                    <constraint id="1326" firstItem="1299" firstAttribute="height" constant="34"/>
-                                </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnPlay" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1300">
                                 <rect key="frame" x="260" y="283" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.20784313725490197" green="0.6588235294117647" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="1322"/>
+                                    <constraint firstAttribute="height" constant="34" id="1323"/>
+                                </constraints>
                                 <state key="normal" title="Play">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <constraints>
-                                    <constraint id="1322" firstItem="1300" firstAttribute="width" constant="80"/>
-                                    <constraint id="1323" firstItem="1300" firstAttribute="height" constant="34"/>
-                                </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnStop" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1301">
                                 <rect key="frame" x="387" y="283" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.20784313725490197" green="0.6588235294117647" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="1330"/>
+                                    <constraint firstAttribute="width" constant="80" id="1331"/>
+                                </constraints>
                                 <state key="normal" title="Stop">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <constraints>
-                                    <constraint id="1330" firstItem="1301" firstAttribute="height" constant="34"/>
-                                    <constraint id="1331" firstItem="1301" firstAttribute="width" constant="80"/>
-                                </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnSaveRecording" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1302">
                                 <rect key="frame" x="221" y="422" width="158" height="30"/>
                                 <constraints>
-                                    <constraint id="1335" firstItem="1302" firstAttribute="width" constant="158"/>
-                                    <constraint id="1336" firstItem="1302" firstAttribute="height" constant="30"/>
+                                    <constraint firstAttribute="width" constant="158" id="1335"/>
+                                    <constraint firstAttribute="height" constant="30" id="1336"/>
                                 </constraints>
                                 <state key="normal" title="Save Recording">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1300" firstAttribute="centerX" secondItem="1296" secondAttribute="centerX" constant="0.0" id="1321"/>
-                            <constraint firstItem="1300" firstAttribute="centerY" secondItem="1296" secondAttribute="centerY" constant="0.0" id="1324"/>
-                            <constraint firstItem="1299" firstAttribute="centerY" secondItem="1296" secondAttribute="centerY" constant="0.0" id="1327"/>
+                            <constraint firstItem="1300" firstAttribute="centerX" secondItem="1296" secondAttribute="centerX" id="1321"/>
+                            <constraint firstItem="1300" firstAttribute="centerY" secondItem="1296" secondAttribute="centerY" id="1324"/>
+                            <constraint firstItem="1299" firstAttribute="centerY" secondItem="1296" secondAttribute="centerY" id="1327"/>
                             <constraint firstItem="1300" firstAttribute="leading" secondItem="1299" secondAttribute="trailing" constant="47" id="1328"/>
-                            <constraint firstItem="1301" firstAttribute="centerY" secondItem="1296" secondAttribute="centerY" constant="0.0" id="1329"/>
+                            <constraint firstItem="1301" firstAttribute="centerY" secondItem="1296" secondAttribute="centerY" id="1329"/>
                             <constraint firstItem="1301" firstAttribute="leading" secondItem="1300" secondAttribute="trailing" constant="47" id="1332"/>
-                            <constraint firstItem="1302" firstAttribute="centerX" secondItem="1296" secondAttribute="centerX" constant="0.0" id="1333"/>
+                            <constraint firstItem="1302" firstAttribute="centerX" secondItem="1296" secondAttribute="centerX" id="1333"/>
                             <constraint firstItem="1302" firstAttribute="top" secondItem="1300" secondAttribute="bottom" constant="105" id="1334"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="btnRecord" destination="1299" id="name-outlet-1299"/>
                         <outlet property="btnPlay" destination="1300" id="name-outlet-1300"/>
-                        <outlet property="btnStop" destination="1301" id="name-outlet-1301"/>
+                        <outlet property="btnRecord" destination="1299" id="name-outlet-1299"/>
                         <outlet property="btnSaveRecording" destination="1302" id="name-outlet-1302"/>
+                        <outlet property="btnStop" destination="1301" id="name-outlet-1301"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1297" userLabel="First Responder" sceneMemberID="firstResponder"/>
