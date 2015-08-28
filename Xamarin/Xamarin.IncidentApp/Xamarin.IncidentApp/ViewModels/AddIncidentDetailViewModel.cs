@@ -16,6 +16,8 @@ namespace Xamarin.IncidentApp.ViewModels
         private IAzureService _azureService;
         private IMediaService _mediaService;
         private IMvxMessenger _messenger;
+        private MvxSubscriptionToken _subscriptionToken;
+
         private string _incidentId;
 
         public AddIncidentDetailViewModel(INetworkService networkService, IUserDialogs userDialogs, IAzureService azureService, IMvxMessenger messenger)
@@ -23,12 +25,13 @@ namespace Xamarin.IncidentApp.ViewModels
         {
             _azureService = azureService;
             _messenger = messenger;
+
         }
 
         public void Init(string incidentId)
         {
             _incidentId = incidentId;
-            _messenger.Subscribe<RecordingCompleteMessage>(RecordingComplete);
+            _subscriptionToken = _messenger.Subscribe<RecordingCompleteMessage>(RecordingComplete);
         }
 
         private string _detailText;
