@@ -1,4 +1,4 @@
-var app = angular.module('IncidentApp', ['ionic'])
+var app = angular.module('IncidentApp', ['ionic', 'ngCordova']);
 
 app.run(function($ionicPlatform, $state, ClearNavigationHistory) {
   $ionicPlatform.ready(function() {
@@ -57,6 +57,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: '/incidents/:userId/:userFullName',
     templateUrl: 'templates/incidents.html',
     controller: 'IncidentsController'
+  })
+
+  .state('incident-detail', {
+    url: '/incident-detail/:incidentId',
+    templateUrl: 'templates/incident-detail.html',
+    controller: 'IncidentDetailController'
+  })
+
+  .state('incident-detail-add-comment', {
+    url: '/incident-detail-add-comment/:incidentId',
+    templateUrl: 'templates/incident-detail-add-comment.html',
+    controller: 'IncidentDetailAddCommentController'
   })
 
   .state('add-incident', {

@@ -31,15 +31,15 @@
 
 		  </label>
 
-			<!-- Attached Photos -->
+			<!-- Attached Photo -->
 			<ion-list>
 
-				<ion-item ng-repeat="attachedPhoto in attachedPhotos">
+				<ion-item ng-show="incident.attachedPhoto">
 
 					<div class="attachmentItemPhoto">
 
-						<img data-ng-src="{{ attachedPhoto }}" /><br />
-						<button class="button button-icon icon ion-close-round" ng-click="removeAttachedPhotos(attachedPhoto)"></button>
+						<img data-ng-src="{{ incident.attachedPhoto }}" /><br />
+						<button class="button button-icon icon ion-close-round" ng-click="removeAttachedPhoto()"></button>
 
 					</div>
 
@@ -47,15 +47,15 @@
 
 			</ion-list>
 
-			<!-- Attached Audio Recordings -->
+			<!-- Attached Audio -->
 			<ion-list>
 
-				<ion-item ng-repeat="attachedAudioRecording in attachedAudioRecordings">
+				<ion-item ng-show="incident.attachedAudio">
 
 					<div class="attachmentItemAudioRecording">
 
-						<div class="outerSpan"><span class="button button-icon icon ion-ios-recording-outline"></span></div><br />
-						<button class="button button-icon icon ion-close-round" ng-click="removeAttachedAudio(attachedAudioRecording)"></button>
+						<div class="outerSpan"><span class="button button-icon icon ion-arrow-right-b" ng-click="playMedia()"></span></div><br />
+						<button class="button button-icon icon ion-close-round" ng-click="removeAttachedAudio()"></button>
 
 					</div>
 

@@ -1,4 +1,4 @@
-app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $ionicPopover) {
+app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $ionicPopover, $state, $ionicLoading, $cordovaFile, $cordovaMedia) {
 
   // create incident model
   $scope.incident = {
@@ -9,14 +9,11 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
     attachedAudio: null
   };
 
-  $scope.attachedPhotos = [];
-  $scope.attachedAudioRecordings = [];
-
   // save button disabled state
   $scope.canSave = function() {
 
     // required subject and at least one image
-    if ($scope.incident.subject === "" || $scope.attachedPhotos.length == 0) {
+    if ($scope.incident.subject === "" || $scope.incident.attachedPhoto == null) {
       return false;
     }
 
@@ -26,14 +23,39 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
 
   // save incident
   $scope.saveIncident = function() {
-    Azure.saveNewIncident($scope.attachedPhotos, $scope.attachedAudioRecordings, $scope.incident.subject, $scope.incident.assignTo, $scope.incident.description)
+
+    // show 'saving...' activity indication
+    $scope.show = function() {
+        $ionicLoading.show({
+          template: 'Saving...'
+        });
+      };
+
+    // save incident
+    Azure.saveNewIncident($scope.incident.attachedPhoto, $scope.incident.attachedAudio, $scope.incident.subject, $scope.incident.assignTo, $scope.incident.description)
     .then(function (newIncident) {
 
-        //TODO - forward to new incident
-        var incidentId = newIncident.id;
+        // hide activity indication
+        $scope.hide = function(){
+          $ionicLoading.hide();
+        };
+
+        // go to detail page for new incident
+        $state.go('incident-detail', {
+          incidentId: newIncident.id
+        });
 
     });
+
   };
+
+  // play audio
+  $scope.playMedia = function() {
+    var src = $scope.incident.attachedAudio;
+    var media = $cordovaMedia.newMedia(src);
+    media.play();
+  };
+
 
   // get workers list
   Azure.getWorkersList()
@@ -56,7 +78,7 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
 
     Camera.getPictureFromCamera().then(function (imageData) {
 
-      $scope.attachedPhotos.push("data:image/jpeg;base64," + imageData);
+      $scope.incident.attachedPhoto = "data:image/jpeg;base64," + imageData;
 
     });
 
@@ -68,7 +90,7 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
 
     Camera.getPictureFromPhotoLibrary().then(function (imageData) {
 
-      $scope.attachedPhotos.push("data:image/jpeg;base64," + imageData);
+      $scope.incident.attachedPhoto = "data:image/jpeg;base64," + imageData;
 
     });
 
@@ -76,15 +98,15 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
 
   };
 
-  $scope.removeAttachedPhotos = function(attachedPhoto) {
-    $scope.attachedPhotos.splice($scope.attachedPhotos.indexOf(attachedPhoto), 1);
+  $scope.removeAttachedPhoto = function() {
+    $scope.incident.attachedPhoto = null;
   };
 
   $scope.recordAudio = function() {
 
     Audio.recordAudio().then(function (audioUrl) {
 
-      $scope.attachedAudioRecordings.push(audioUrl);
+      $scope.incident.attachedAudio = audioUrl;
 
     });
 
@@ -92,8 +114,8 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
 
   };
 
-  $scope.removeAttachedAudio = function(attachedAudio) {
-    $scope.attachedAudioRecordings.splice($scope.attachedAudioRecordings.indexOf(attachedAudio), 1);
+  $scope.removeAttachedAudio = function() {
+    $scope.incident.attachedAudio = null;
   };
 
 });

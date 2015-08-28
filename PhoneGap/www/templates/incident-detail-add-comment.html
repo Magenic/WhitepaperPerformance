@@ -1,0 +1,52 @@
+<ion-view view-title="Add Comment" class="addComment">
+
+	<ion-nav-buttons side="right">
+			<button class="button button-icon icon ion-paper-airplane" ng-click="saveComment()" ng-disabled="!canSave()"></button>
+			<button class="button button-icon icon ion-android-more-vertical" ng-click="popover.show($event)"></button>
+	</ion-nav-buttons>
+
+	<ion-content>
+
+		<div class="list">
+
+		  <label class="item item-input item-stacked-label">
+		    <span class="input-label">Comment</span>
+		    <input type="text" ng-model="comment.detailText">
+		  </label>
+
+			<!-- Attached Photo -->
+			<ion-list>
+
+				<ion-item ng-show="comment.attachedPhoto != null">
+
+					<div class="attachmentItemPhoto">
+
+						<img data-ng-src="{{ comment.attachedPhoto }}" /><br />
+						<button class="button button-icon icon ion-close-round" ng-click="removeAttachedPhoto()"></button>
+
+					</div>
+
+				</ion-item>
+
+			</ion-list>
+
+			<!-- Attached Audio -->
+			<ion-list>
+
+				<ion-item ng-show="comment.attachedAudio != null">
+
+					<div class="attachmentItemAudioRecording">
+
+						<div class="outerSpan"><span class="button button-icon icon ion-ios-recording-outline"></span></div><br />
+						<button class="button button-icon icon ion-close-round" ng-click="removeAttachedAudio()"></button>
+
+					</div>
+
+				</ion-item>
+
+			</ion-list>
+
+		</div>
+
+	</ion-content>
+</ion-view>

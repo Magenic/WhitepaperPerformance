@@ -1,6 +1,6 @@
 app.controller('LoginController', function(Azure, $state, ClearNavigationHistory, $scope) {
 
-  $scope.$on('$ionicView.enter', function(e) {
+  $scope.logon = function() {
 
     Azure.login()
       .then(function (result) {
@@ -33,6 +33,6 @@ app.controller('LoginController', function(Azure, $state, ClearNavigationHistory
 
       });
 
-  });
+  };
 
 });
