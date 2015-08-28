@@ -11,11 +11,6 @@ app.controller('IncidentDetailAddCommentController', function($scope, Azure, Cam
     attachedAudio: null
   };
 
-  // $scope.incidentId = incidentId;
-  // $scope.comment = '';
-  // $scope.attachedPhoto = null;
-  // $scope.attachedAudio = null;
-
   // save button disabled state - has to have at least something
   $scope.canSave = function() {
     if ($scope.comment.detailText == '' && $scope.comment.attachedPhoto == null && $scope.comment.attachedAudio == null) {

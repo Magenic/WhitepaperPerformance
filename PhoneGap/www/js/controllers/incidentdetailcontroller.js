@@ -1,4 +1,4 @@
-app.controller('IncidentDetailController', function($scope, Azure, $stateParams, $timeout, $cordovaMedia, $ionicPopover, $ionicHistory, $state) {
+app.controller('IncidentDetailController', function($scope, Azure, $stateParams, $timeout, $cordovaMedia, $ionicPopover, $ionicHistory, $state, $cordovaFileTransfer) {
 
   // get incident
   var incidentId = $stateParams.incidentId;
@@ -25,6 +25,36 @@ app.controller('IncidentDetailController', function($scope, Azure, $stateParams,
         return "unknown";
     }
     return worker.firstName;
+  };
+
+  // play media
+  $scope.playMedia = function(audioUrl) {
+
+    // download file from url
+    var targetPath;
+
+    if (ionic.Platform.isAndroid()) {
+      targetPath = cordova.file.dataDirectory + "tempAudio.wav";
+    } else {
+      targetPath = cordova.file.tempDirectory + "tempAudio.wav";
+    }
+
+    var trustHosts = true;
+    var options = {};
+
+    $cordovaFileTransfer.download(audioUrl, targetPath, options, trustHosts).then(function(result) {
+
+      // play downloaded file
+      var src = targetPath.replace('file://', '');
+      var media = $cordovaMedia.newMedia(src);
+      media.play();
+
+    }, function(err) {
+
+      alert("error .....")
+
+    });
+
   };
 
   // refresh incident
