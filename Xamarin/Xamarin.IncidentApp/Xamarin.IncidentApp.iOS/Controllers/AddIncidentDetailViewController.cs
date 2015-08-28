@@ -1,6 +1,7 @@
 using System;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.ViewModels;
+using Foundation;
 using UIKit;
 using Xamarin.IncidentApp.iOS.Services;
 using Xamarin.IncidentApp.ViewModels;
@@ -29,6 +30,12 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             SetupActionSheet();
         }
 
+        public new AddIncidentDetailViewModel ViewModel
+        {
+            get { return (AddIncidentDetailViewModel)base.ViewModel; }
+            set { base.ViewModel = value; }
+        }
+
         private void SetupActionSheet()
         {
             _actionSheet = new UIActionSheet("Comment Actions");
@@ -48,12 +55,15 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             switch (e.ButtonIndex)
             {
                 case 0: // Take Photo
+                    ViewModel.TakeNewPhotoCommand.Execute(null);
                     break;
 
                 case 1: // Attach Image
+                    ViewModel.SelectPhotoCommand.Execute(null);
                     break;
 
                 case 2: // Record Audio
+                    ViewModel.RecordAudioCommand.Execute(null);
                     break;
 
                 case 3: // Cancel
@@ -66,7 +76,8 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             base.ViewDidLoad();
 
             _mediaService = new MediaService(this);
-            //ViewModel.SetActivityServices(_mediaService);
+
+            ViewModel.SetActivityServices(_mediaService);
 
             NavigationController.NavigationBarHidden = false;
             NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Action, (sender, args) =>
@@ -76,7 +87,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             })
             , true);
 
-            this.Title = "Add Comment";
+            Title = "Add Comment";
 
             SetupBindings();
         }
@@ -84,7 +95,12 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private void SetupBindings()
         {
             this.CreateBinding(txtComment).For(c => c.Text).To((AddIncidentDetailViewModel property) => property.DetailText).Apply();
+            this.CreateBinding(imgPhoto).For(c => c.Image).To((AddIncidentDetailViewModel property) => property.Image).WithConversion("ByteBitmap").Apply();
+
             this.CreateBinding(btnSaveComment).To<AddIncidentDetailViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
+            this.CreateBinding(btnRemoveImage).To<AddIncidentDetailViewModel>(vm => vm.RemoveImageCommand).Apply();
+            this.CreateBinding(btnAudioNote).To<AddIncidentDetailViewModel>(vm => vm.PlayAudioCommand).Apply();
+            this.CreateBinding(btnRemoveAudio).To<AddIncidentDetailViewModel>(vm => vm.RemoveAudioCommand).Apply();
         }
     }
 }

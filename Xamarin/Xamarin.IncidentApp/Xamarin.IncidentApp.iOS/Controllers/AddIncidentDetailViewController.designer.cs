@@ -16,7 +16,23 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton btnAudioNote { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton btnRemoveAudio { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton btnRemoveImage { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UIButton btnSaveComment { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIImageView imgPhoto { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
@@ -24,9 +40,25 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnAudioNote != null) {
+				btnAudioNote.Dispose ();
+				btnAudioNote = null;
+			}
+			if (btnRemoveAudio != null) {
+				btnRemoveAudio.Dispose ();
+				btnRemoveAudio = null;
+			}
+			if (btnRemoveImage != null) {
+				btnRemoveImage.Dispose ();
+				btnRemoveImage = null;
+			}
 			if (btnSaveComment != null) {
 				btnSaveComment.Dispose ();
 				btnSaveComment = null;
+			}
+			if (imgPhoto != null) {
+				imgPhoto.Dispose ();
+				imgPhoto = null;
 			}
 			if (txtComment != null) {
 				txtComment.Dispose ();

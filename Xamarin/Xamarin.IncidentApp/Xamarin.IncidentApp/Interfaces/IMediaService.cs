@@ -9,8 +9,11 @@ namespace Xamarin.IncidentApp.Interfaces
     {
         void TakePhoto();
         void SelectPhoto();
-        void RecordAudio();
-        void PlayAudio(byte[] audioRecording);
+        void StartRecording();
+        void StopRecording();
+        byte[] GetRecording();
+        string GetRecordingFileExtension();
+        void PlayAudio(byte[] audioRecording, string fileExtension);
         event PhotoCompleteEventHandler PhotoComplete;
         event AudioCompleteEventHandler AudioComplete;
     }

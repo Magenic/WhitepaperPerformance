@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Cirrious.MvvmCross.Binding.BindingContext;
+using Cirrious.MvvmCross.Binding.Touch.Views;
 using Cirrious.MvvmCross.ViewModels;
-using Foundation;
 using UIKit;
 using Xamarin.IncidentApp.iOS.Services;
+using Xamarin.IncidentApp.Models;
 using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.iOS.Controllers
@@ -33,6 +31,12 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             SetupActionSheet();
         }
 
+        public new AddIncidentViewModel ViewModel
+        {
+            get { return (AddIncidentViewModel)base.ViewModel; }
+            set { base.ViewModel = value; }
+        }
+
         private void SetupActionSheet()
         {
             _actionSheet = new UIActionSheet("Comment Actions");
@@ -52,13 +56,15 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             switch (e.ButtonIndex)
             {
                 case 0: // Take Photo
+                    ViewModel.TakeNewPhotoCommand.Execute(null);
                     break;
 
                 case 1: // Attach Image
-                    _mediaService.SelectPhoto();
+                    ViewModel.SelectPhotoCommand.Execute(null);
                     break;
 
                 case 2: // Record Audio
+                    ViewModel.RecordAudioCommand.Execute(null);
                     break;
 
                 case 3: // Cancel
@@ -71,7 +77,8 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             base.ViewDidLoad();
 
             _mediaService = new MediaService(this);
-            //ViewModel.SetActivityServices(_mediaService);
+
+            ViewModel.SetActivityServices(_mediaService);
 
             NavigationController.NavigationBarHidden = false;
             NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Action, (sender, args) =>
@@ -81,7 +88,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             })
             , true);
 
-            this.Title = "Add Incident";
+            Title = "Add Incident";
 
             SetupBindings();
         }
@@ -89,13 +96,28 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private void SetupBindings()
         {
             this.CreateBinding(txtSubject).For(c => c.Text).To((AddIncidentViewModel property) => property.Subject).Apply();
-            this.CreateBinding(txtSubject).For(c => c.Text).To((AddIncidentViewModel property) => property.Subject).Apply();
-            this.CreateBinding(pkrAssigned).For(c => c.DataSource).To((AddIncidentViewModel property) => property.Workers).Apply();
-            this.CreateBinding(imgPhoto).For(c => c.Image).To((AddIncidentViewModel property) => property.Image).Apply();
+            this.CreateBinding(txtDescription).For(c => c.Text).To((AddIncidentViewModel property) => property.Description).Apply();
+            this.CreateBinding(imgPhoto).For(c => c.Image).To((AddIncidentViewModel property) => property.Image).WithConversion("ByteBitmap").Apply();
 
             this.CreateBinding(btnSaveIncident).To<AddIncidentViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
             this.CreateBinding(btnRemoveImage).To<AddIncidentViewModel>(vm => vm.RemoveImageCommand).Apply();
             this.CreateBinding(btnAudioNote).To<AddIncidentViewModel>(vm => vm.PlayAudioCommand).Apply();
+            this.CreateBinding(btnRemoveAudio).To<AddIncidentViewModel>(vm => vm.RemoveAudioCommand).Apply();
+
+            // A little more work involved in binding to the picker
+            var pickerViewModel = new MvxPickerViewModel(pkrAssigned);
+            pkrAssigned.Model = pickerViewModel;
+            pkrAssigned.ShowSelectionIndicator = true;
+            pickerViewModel.SelectedItemChanged += (sender, args) =>
+            {
+                var selectedAssignee = (UserProfile)pickerViewModel.SelectedItem;
+                ((AddIncidentViewModel)ViewModel).AssignedToId = selectedAssignee.UserId;
+            };
+
+            var pickerBindingSet = this.CreateBindingSet<AddIncidentViewController, AddIncidentViewModel>();
+            pickerBindingSet.Bind(pickerViewModel).For(c => c.ItemsSource).To(vm => vm.Workers);
+            pickerBindingSet.Apply();
+            //imgPhoto.Image = UIImage.LoadFromData(imageData);
         }
     }
 }

@@ -20,6 +20,10 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton btnRemoveAudio { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UIButton btnRemoveImage { get; set; }
 
 		[Outlet]
@@ -47,6 +51,10 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 			if (btnAudioNote != null) {
 				btnAudioNote.Dispose ();
 				btnAudioNote = null;
+			}
+			if (btnRemoveAudio != null) {
+				btnRemoveAudio.Dispose ();
+				btnRemoveAudio = null;
 			}
 			if (btnRemoveImage != null) {
 				btnRemoveImage.Dispose ();

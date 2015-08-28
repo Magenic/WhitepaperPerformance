@@ -1,10 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Binding.Touch.Views;
 using Cirrious.MvvmCross.ViewModels;
-using CoreGraphics;
 using Foundation;
 using UIKit;
 using Xamarin.IncidentApp.iOS.Services;
@@ -21,7 +19,6 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private string _ownerInfo;
         private string _incidentImage;
         private UIActionSheet _actionSheet;
-        private int _commentProxy;
         private MediaService _mediaService;
 
         public DisplayIncidentViewController(IntPtr p) : base(p)
@@ -96,7 +93,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             })
             , true);
 
-            this.Title = "";
+            Title = "";
 
             SetupBindings();
         }
@@ -144,24 +141,6 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             }
         }
 
-        /// <summary>
-        /// Loads the image based on the provided URL.
-        /// </summary>
-        /// <param name="imgUrl">The img URL.</param>
-        /// <returns>UIImage.</returns>
-        private UIImage LoadImage(string imgUrl)
-        {
-            if (imgUrl.Length == 0)
-            {
-                return new UIImage();
-            }
-
-            using (var url = new NSUrl(imgUrl))
-            using (var data = NSData.FromUrl(url))
-
-            return UIImage.LoadFromData(data);
-        }
-
         private void SetupBindings()
         {
             var tableSource = new IncidentTableSource(DisplayIncidentTableView);
@@ -180,11 +159,11 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private static readonly NSString HeaderCellIdentifier = new NSString("IncidentHeaderCell");
         private static readonly NSString CommentCellIdentifier = new NSString("CommentCell");
 
-        private static nfloat HeaderPaddingHeight = 320;
-        private static nfloat DetailMarginHeight = 10;
+        private static nfloat HeaderPaddingHeight = 100;
+        private static nfloat DetailMarginHeight = 20;
         private static nfloat DetailCommentHeight = 40;
-        private static nfloat DetailImageHeight = 80;
-        private static nfloat DetailAudioHeight = 40;
+        private static nfloat DetailAudioHeight = 55;
+        private static nfloat DetailImageMargin = 22;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IncidentTableSource"/> class.
@@ -194,12 +173,13 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
         public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
         {
-            var screenRect = TableView.Bounds;
-            var screenWidth = screenRect.Size.Width;
+            //var screenRect = TableView.Bounds;
+            //var screenWidth = screenRect.Size.Width;
+            var imageDimension = TableView.ContentSize.Width;
            
             if (indexPath.LongRow == 0)
             {
-                return HeaderPaddingHeight;// + screenWidth;
+                return HeaderPaddingHeight + imageDimension;
             }
 
             var vMs = ((IList<BaseViewModel>)ItemsSource);
@@ -213,7 +193,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
             if (!string.IsNullOrEmpty(vM.ImageLink))
             {
-                returnHeight += DetailImageHeight; // screenRect.Width;
+                returnHeight += (imageDimension - (DetailImageMargin * 2)); // screenRect.Width;
             }
 
             if (!string.IsNullOrEmpty(vM.AudioRecordingLink))

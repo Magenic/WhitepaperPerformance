@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.MvvmCross.Plugins.Network;
@@ -69,6 +70,7 @@ namespace Xamarin.IncidentApp.ViewModels
             {
                 _audioRecordingLink = value;
                 RaisePropertyChanged(() => AudioRecordingLink);
+                AudioRecordingFileExtension = Path.GetExtension(_audioRecordingLink);
                 Task.Run(async () => AudioRecordingBytes = await BinaryHandling.LoadBytesFromUrlAsync(_audioRecordingLink));
             }
         }
@@ -84,6 +86,17 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
+        private string _audioRecordingFileExtension;
+        public string AudioRecordingFileExtension
+        {
+            get { return _audioRecordingFileExtension; }
+            protected set
+            {
+                _audioRecordingFileExtension = value;
+                RaisePropertyChanged(() => AudioRecordingBytes);
+            }
+        }
+        
         private DateTime _dateOpened;
         public DateTime DateOpened
         {
@@ -116,7 +129,7 @@ namespace Xamarin.IncidentApp.ViewModels
                 {
                     UserDialogs.Alert("No audio recording to play", "Playback Error");
                 }
-                mediaService.PlayAudio(AudioRecordingBytes);
+                mediaService.PlayAudio(AudioRecordingBytes, AudioRecordingFileExtension);
             }
         }
     }
