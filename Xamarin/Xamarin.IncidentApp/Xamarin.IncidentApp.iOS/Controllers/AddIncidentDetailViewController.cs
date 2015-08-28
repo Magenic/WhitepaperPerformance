@@ -64,21 +64,21 @@ namespace Xamarin.IncidentApp.iOS.Controllers
                     break;
             }
         }
-        void _mediaService_PhotoComplete(object source, EventArgs.PhotoCompleteEventArgs e)
-        {
-            NSData imageData = NSData.FromArray(e.ImageStream);
-            imgPhoto.Image = UIImage.LoadFromData(imageData);
+        //void _mediaService_PhotoComplete(object source, EventArgs.PhotoCompleteEventArgs e)
+        //{
+        //    NSData imageData = NSData.FromArray(e.ImageStream);
+        //    imgPhoto.Image = UIImage.LoadFromData(imageData);
 
-            ((AddIncidentDetailViewModel)ViewModel).Image = e.ImageStream;
+        //    ((AddIncidentDetailViewModel)ViewModel).Image = e.ImageStream;
 
-        }
+        //}
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
             _mediaService = new MediaService(this);
-            _mediaService.PhotoComplete += _mediaService_PhotoComplete;
+            //_mediaService.PhotoComplete += _mediaService_PhotoComplete;
 
             NavigationController.NavigationBarHidden = false;
             NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Action, (sender, args) =>
@@ -96,7 +96,12 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private void SetupBindings()
         {
             this.CreateBinding(txtComment).For(c => c.Text).To((AddIncidentDetailViewModel property) => property.DetailText).Apply();
+            this.CreateBinding(imgPhoto).For(c => c.Image).To((AddIncidentDetailViewModel property) => property.Image).WithConversion("ByteBitmap").Apply();
+
             this.CreateBinding(btnSaveComment).To<AddIncidentDetailViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
+            this.CreateBinding(btnRemoveImage).To<AddIncidentDetailViewModel>(vm => vm.RemoveImageCommand).Apply();
+            this.CreateBinding(btnAudioNote).To<AddIncidentDetailViewModel>(vm => vm.PlayAudioCommand).Apply();
+            this.CreateBinding(btnRemoveAudio).To<AddIncidentDetailViewModel>(vm => vm.RemoveAudioCommand).Apply();
         }
     }
 }
