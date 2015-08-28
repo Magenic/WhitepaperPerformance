@@ -101,12 +101,13 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private void SetupBindings()
         {
             this.CreateBinding(txtSubject).For(c => c.Text).To((AddIncidentViewModel property) => property.Subject).Apply();
-            this.CreateBinding(txtSubject).For(c => c.Text).To((AddIncidentViewModel property) => property.Subject).Apply();
+            this.CreateBinding(txtDescription).For(c => c.Text).To((AddIncidentViewModel property) => property.Description).Apply();
             this.CreateBinding(imgPhoto).For(c => c.Image).To((AddIncidentViewModel property) => property.Image).Apply();
 
             this.CreateBinding(btnSaveIncident).To<AddIncidentViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
             this.CreateBinding(btnRemoveImage).To<AddIncidentViewModel>(vm => vm.RemoveImageCommand).Apply();
             this.CreateBinding(btnAudioNote).To<AddIncidentViewModel>(vm => vm.PlayAudioCommand).Apply();
+            this.CreateBinding(btnRemoveAudio).To<AddIncidentViewModel>(vm => vm.RemoveAudioCommand).Apply();
 
             // A little more work involved in binding to the picker
             var pickerViewModel = new MvxPickerViewModel(pkrAssigned);
@@ -119,7 +120,6 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             };
 
             var pickerBindingSet = this.CreateBindingSet<AddIncidentViewController, AddIncidentViewModel>();
-            //pickerBindingSet.Bind(pickerViewModel).For(c => ((UserProfile)c.SelectedItem).UserId).To(vm => vm.AssignedToId);
             pickerBindingSet.Bind(pickerViewModel).For(c => c.ItemsSource).To(vm => vm.Workers);
             pickerBindingSet.Apply();
 
