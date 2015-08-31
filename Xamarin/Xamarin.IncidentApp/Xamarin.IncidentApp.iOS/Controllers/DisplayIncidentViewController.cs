@@ -33,6 +33,7 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
         private void InitView()
         {
+            this.EdgesForExtendedLayout = UIRectEdge.None;
             SetupActionSheet();
         }
 
@@ -159,7 +160,9 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         private static readonly NSString HeaderCellIdentifier = new NSString("IncidentHeaderCell");
         private static readonly NSString CommentCellIdentifier = new NSString("CommentCell");
 
-        private static nfloat HeaderPaddingHeight = 100;
+        private static nfloat HeaderPaddingHeight = 5;
+        private static nfloat HeaderDescriptionHeight = 106;
+        private static nfloat HeaderAudioNoteHeight = 34;
         private static nfloat DetailMarginHeight = 20;
         private static nfloat DetailCommentHeight = 40;
         private static nfloat DetailAudioHeight = 55;
@@ -175,14 +178,24 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         {
             //var screenRect = TableView.Bounds;
             //var screenWidth = screenRect.Size.Width;
+            var vMs = ((IList<BaseViewModel>)ItemsSource);
             var imageDimension = TableView.ContentSize.Width;
            
             if (indexPath.LongRow == 0)
             {
-                return HeaderPaddingHeight + imageDimension;
+                var returnValue = HeaderPaddingHeight + imageDimension;
+                var headerVm = (DisplayIncidentViewModel)vMs[Convert.ToInt32(indexPath.LongRow)];
+                if (!string.IsNullOrEmpty(headerVm.Description))
+                {
+                    returnValue += HeaderDescriptionHeight;
+                }
+                if (!string.IsNullOrEmpty(headerVm.AudioRecordingLink))
+                {
+                    returnValue += HeaderAudioNoteHeight;
+                }
+                return returnValue;
             }
 
-            var vMs = ((IList<BaseViewModel>)ItemsSource);
             var vM = (DisplayIncidentDetailViewModel)vMs[Convert.ToInt32(indexPath.LongRow)];
             nfloat returnHeight = DetailMarginHeight*2;
 
@@ -213,12 +226,23 @@ namespace Xamarin.IncidentApp.iOS.Controllers
         /// <returns>UITableViewCell.</returns>
         protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
         {
+            var vMs = ((IList<BaseViewModel>)ItemsSource);
             if (indexPath.LongRow == 0)
             {
-                return (IncidentHeaderCell)tableView.DequeueReusableCell(HeaderCellIdentifier);
+                var headerCell = (IncidentHeaderCell)tableView.DequeueReusableCell(HeaderCellIdentifier);
+                var headerVm = (DisplayIncidentViewModel)vMs[Convert.ToInt32(indexPath.LongRow)];
+                headerCell.SetDescriptionHeight(string.IsNullOrEmpty(headerVm.Description) ? 0 : HeaderDescriptionHeight);
+                headerCell.SetPlayAudioHeight(string.IsNullOrEmpty(headerVm.AudioRecordingLink) ? 0 : HeaderAudioNoteHeight);
+                return headerCell;
             }
 
-            return (CommentCell)tableView.DequeueReusableCell(CommentCellIdentifier);
+            var vM = (DisplayIncidentDetailViewModel)vMs[Convert.ToInt32(indexPath.LongRow)];
+            var detailCell = (CommentCell)tableView.DequeueReusableCell(CommentCellIdentifier);
+
+            detailCell.SetCommentHeight(string.IsNullOrEmpty(vM.DetailText) ? 0 : DetailCommentHeight);
+            detailCell.SetImageHeight(string.IsNullOrEmpty(vM.ImageLink) ? 0 : 1);
+            detailCell.SetPlayAudioHeight(string.IsNullOrEmpty(vM.AudioRecordingLink) ? 0 : DetailAudioHeight);
+            return detailCell;
         }
     }
 }

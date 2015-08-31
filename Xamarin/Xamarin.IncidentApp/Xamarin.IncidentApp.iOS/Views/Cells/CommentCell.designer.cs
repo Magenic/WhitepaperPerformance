@@ -20,6 +20,18 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		NSLayoutConstraint conCommentHeight { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		NSLayoutConstraint conCommentImageHeight { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		NSLayoutConstraint conPlayAudioHeight { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		Xamarin.IncidentApp.iOS.Views.UrlImageView imgCommentImage { get; set; }
 
 		[Outlet]
@@ -35,6 +47,18 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
 			if (btnPlayAudio != null) {
 				btnPlayAudio.Dispose ();
 				btnPlayAudio = null;
+			}
+			if (conCommentHeight != null) {
+				conCommentHeight.Dispose ();
+				conCommentHeight = null;
+			}
+			if (conCommentImageHeight != null) {
+				conCommentImageHeight.Dispose ();
+				conCommentImageHeight = null;
+			}
+			if (conPlayAudioHeight != null) {
+				conPlayAudioHeight.Dispose ();
+				conPlayAudioHeight = null;
 			}
 			if (imgCommentImage != null) {
 				imgCommentImage.Dispose ();

@@ -89,6 +89,8 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
             Title = "Add Comment";
 
+            txtComment.ShouldReturn += CloseKeyboard;
+
             SetupBindings();
         }
 
@@ -99,8 +101,22 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
             this.CreateBinding(btnSaveComment).To<AddIncidentDetailViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
             this.CreateBinding(btnRemoveImage).To<AddIncidentDetailViewModel>(vm => vm.RemoveImageCommand).Apply();
+            this.CreateBinding(btnRemoveImage).For(c => c.Hidden).To<AddIncidentDetailViewModel>(vm => vm.Image).WithConversion("ByteBitmapHidden").Apply();
             this.CreateBinding(btnAudioNote).To<AddIncidentDetailViewModel>(vm => vm.PlayAudioCommand).Apply();
+            this.CreateBinding(btnAudioNote).For(c => c.Hidden).To<AddIncidentDetailViewModel>(vm => vm.AudioRecording).WithConversion("ByteBitmapHidden").Apply();
             this.CreateBinding(btnRemoveAudio).To<AddIncidentDetailViewModel>(vm => vm.RemoveAudioCommand).Apply();
+            this.CreateBinding(btnRemoveAudio).For(c => c.Hidden).To<AddIncidentDetailViewModel>(vm => vm.AudioRecording).WithConversion("ByteBitmapHidden").Apply();
+        }
+
+        private bool CloseKeyboard(UITextField textField)
+        {
+            if (textField.Equals(txtComment))
+            {
+                // validate field inputs as per your requirement
+                textField.ResignFirstResponder();
+                return true;
+            }
+            return true;
         }
     }
 }

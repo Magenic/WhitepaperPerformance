@@ -16,6 +16,18 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton btnPlayAudio { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		NSLayoutConstraint conDescriptionHeight { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		NSLayoutConstraint conPlayAudioHeight { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		Xamarin.IncidentApp.iOS.Views.UrlImageView imgIncidentImage { get; set; }
 
 		[Outlet]
@@ -32,6 +44,18 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnPlayAudio != null) {
+				btnPlayAudio.Dispose ();
+				btnPlayAudio = null;
+			}
+			if (conDescriptionHeight != null) {
+				conDescriptionHeight.Dispose ();
+				conDescriptionHeight = null;
+			}
+			if (conPlayAudioHeight != null) {
+				conPlayAudioHeight.Dispose ();
+				conPlayAudioHeight = null;
+			}
 			if (imgIncidentImage != null) {
 				imgIncidentImage.Dispose ();
 				imgIncidentImage = null;

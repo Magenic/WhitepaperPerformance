@@ -109,10 +109,8 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             TeamTableView.AddSubview(refreshControl);
             TeamTableView.ReloadData();
         }
-
     }
 
-    
     /// <summary>
     /// Class DashboardTableSource.
     /// </summary>
