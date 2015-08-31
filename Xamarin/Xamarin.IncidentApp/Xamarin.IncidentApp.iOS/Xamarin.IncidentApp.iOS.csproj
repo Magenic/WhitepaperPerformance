@@ -9,6 +9,8 @@
     <RootNamespace>Xamarin.IncidentApp.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>XamarinIncidentAppiOS</AssemblyName>
+    <NuGetPackageImportStamp>779941cf</NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,7 +35,22 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: Magenic Technologies, Inc.</CodesignKey>
+    <BuildIpa>True</BuildIpa>
+    <CodesignProvision>25137fd1-57f1-4459-a9fe-1b6e7e884f0c</CodesignProvision>
+    <CodesignExtraArgs>
+    </CodesignExtraArgs>
+    <MtouchSdkVersion>8.4</MtouchSdkVersion>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchDebug>False</MtouchDebug>
+    <MtouchProfiling>False</MtouchProfiling>
+    <MtouchFastDev>False</MtouchFastDev>
+    <MtouchUseLlvm>True</MtouchUseLlvm>
+    <MtouchUseThumb>False</MtouchUseThumb>
+    <MtouchUseSGen>True</MtouchUseSGen>
+    <MtouchUseRefCounting>False</MtouchUseRefCounting>
+    <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
+    <MtouchI18n />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -43,7 +60,22 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>i386</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchSdkVersion>8.4</MtouchSdkVersion>
+    <MtouchDebug>False</MtouchDebug>
+    <MtouchProfiling>False</MtouchProfiling>
+    <MtouchFastDev>False</MtouchFastDev>
+    <MtouchUseLlvm>False</MtouchUseLlvm>
+    <MtouchUseThumb>False</MtouchUseThumb>
+    <MtouchUseSGen>False</MtouchUseSGen>
+    <MtouchUseRefCounting>False</MtouchUseRefCounting>
+    <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
+    <MtouchI18n />
+    <CodesignKey>iPhone Distribution: Magenic Technologies, Inc.</CodesignKey>
+    <CodesignProvision>25137fd1-57f1-4459-a9fe-1b6e7e884f0c</CodesignProvision>
+    <CodesignEntitlements />
+    <CodesignResourceRules />
+    <CodesignExtraArgs />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,91 +93,92 @@
     <MtouchDebug>True</MtouchDebug>
     <MtouchSdkVersion>8.4</MtouchSdkVersion>
     <MtouchLink>None</MtouchLink>
-    <MtouchFastDev>False</MtouchFastDev>
-    <MtouchUseLlvm>False</MtouchUseLlvm>
-    <MtouchUseThumb>False</MtouchUseThumb>
-    <MtouchUseSGen>False</MtouchUseSGen>
-    <MtouchUseRefCounting>False</MtouchUseRefCounting>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
-    <MtouchI18n />
+    <MtouchI18n>
+    </MtouchI18n>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Acr.MvvmCross.Plugins.Network, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.Network.1.4.0\lib\Xamarin.iOS10\Acr.MvvmCross.Plugins.Network.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Acr.MvvmCross.Plugins.Network.Touch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.Network.1.4.0\lib\Xamarin.iOS10\Acr.MvvmCross.Plugins.Network.Touch.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Acr.MvvmCross.Plugins.UserDialogs, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.UserDialogs.3.1.0\lib\Xamarin.iOS10\Acr.MvvmCross.Plugins.UserDialogs.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Acr.MvvmCross.Plugins.UserDialogs.Touch, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.UserDialogs.3.1.0\lib\Xamarin.iOS10\Acr.MvvmCross.Plugins.UserDialogs.Touch.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Acr.UserDialogs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.UserDialogs.3.4.1\lib\Xamarin.iOS10\Acr.UserDialogs.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Acr.UserDialogs.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.UserDialogs.3.4.1\lib\Xamarin.iOS10\Acr.UserDialogs.Interface.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="BTProgressHUD, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.UserDialogs.3.4.1\lib\Xamarin.iOS10\BTProgressHUD.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.CrossCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e16445fd9b451819, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\Xamarin.iOS10\Cirrious.CrossCore.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.CrossCore.Touch, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\Xamarin.iOS10\Cirrious.CrossCore.Touch.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e16445fd9b451819, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.1\lib\Xamarin.iOS10\Cirrious.MvvmCross.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Binding, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\Xamarin.iOS10\Cirrious.MvvmCross.Binding.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Binding.Touch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\Xamarin.iOS10\Cirrious.MvvmCross.Binding.Touch.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Localization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\Xamarin.iOS10\Cirrious.MvvmCross.Localization.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.Messenger, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.Plugin.Messenger.3.5.0\lib\Xamarin.iOS10\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Touch, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.1\lib\Xamarin.iOS10\Cirrious.MvvmCross.Touch.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Extensions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Primitives.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Acr.MvvmCross.Plugins.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.Network.1.4.0\lib\Xamarin.iOS10\Acr.MvvmCross.Plugins.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.MvvmCross.Plugins.Network.Touch, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.Network.1.4.0\lib\Xamarin.iOS10\Acr.MvvmCross.Plugins.Network.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.CrossCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e16445fd9b451819">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\Xamarin.iOS10\Cirrious.CrossCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.CrossCore.Touch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\Xamarin.iOS10\Cirrious.CrossCore.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e16445fd9b451819">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.1\lib\Xamarin.iOS10\Cirrious.MvvmCross.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Binding, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\Xamarin.iOS10\Cirrious.MvvmCross.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Binding.Touch, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\Xamarin.iOS10\Cirrious.MvvmCross.Binding.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Localization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\Xamarin.iOS10\Cirrious.MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Messenger, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.Plugin.Messenger.3.5.1\lib\Xamarin.iOS10\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Touch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.1\lib\Xamarin.iOS10\Cirrious.MvvmCross.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Mobile, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\..\packages\WindowsAzure.MobileServices.1.3.2\lib\Xamarin.iOS10\Microsoft.WindowsAzure.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Mobile.Ext, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\..\packages\WindowsAzure.MobileServices.1.3.2\lib\Xamarin.iOS10\Microsoft.WindowsAzure.Mobile.Ext.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Splat">
+      <HintPath>..\..\packages\Splat.1.6.2\lib\Xamarin.iOS10\Splat.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.Support.iOS">
+      <HintPath>..\..\packages\Acr.Support.1.0.0\lib\Xamarin.iOS10\Acr.Support.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.UserDialogs">
+      <HintPath>..\..\packages\Acr.UserDialogs.4.1.3\lib\Xamarin.iOS10\Acr.UserDialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.UserDialogs.Interface">
+      <HintPath>..\..\packages\Acr.UserDialogs.4.1.3\lib\Xamarin.iOS10\Acr.UserDialogs.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="BTProgressHUD">
+      <HintPath>..\..\packages\Acr.UserDialogs.4.1.3\lib\Xamarin.iOS10\BTProgressHUD.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.MvvmCross.Plugins.UserDialogs">
+      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.UserDialogs.4.1.0\lib\Xamarin.iOS10\Acr.MvvmCross.Plugins.UserDialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.MvvmCross.Plugins.UserDialogs.Touch">
+      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.UserDialogs.4.1.0\lib\Xamarin.iOS10\Acr.MvvmCross.Plugins.UserDialogs.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Mobile">
+      <HintPath>..\..\Components\xamarin.mobile-0.7.6\lib\ios-unified\Xamarin.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="SDWebImage">
+      <HintPath>..\..\Components\sdwebimage-3.7.3.0\lib\ios-unified\SDWebImage.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xamarin.IncidentApp\Xamarin.IncidentApp.csproj">
       <Name>Xamarin.IncidentApp</Name>
+      <Project>{C86ED0E8-9792-43D4-B029-827D5BE682C7}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -213,37 +246,112 @@
     <None Include="app.config" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Bootstrap\NetworkPluginBootstrap.cs" />
-    <Compile Include="Bootstrap\UserDialogsPluginBootstrap.cs" />
+    <Compile Include="Controllers\AddIncidentDetailViewController.cs" />
+    <Compile Include="Controllers\AddIncidentDetailViewController.designer.cs">
+      <DependentUpon>AddIncidentDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AddIncidentViewController.cs" />
+    <Compile Include="Controllers\AddIncidentViewController.designer.cs">
+      <DependentUpon>AddIncidentViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AudioRecorderViewController.cs" />
+    <Compile Include="Controllers\AudioRecorderViewController.designer.cs">
+      <DependentUpon>AudioRecorderViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\BaseViewController.cs" />
     <Compile Include="Controllers\DashboardViewController.cs" />
     <Compile Include="Controllers\DashboardViewController.designer.cs">
       <DependentUpon>DashboardViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\DisplayIncidentViewController.cs" />
+    <Compile Include="Controllers\DisplayIncidentViewController.designer.cs">
+      <DependentUpon>DisplayIncidentViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\WorkerQueueItemViewController.cs" />
     <Compile Include="Controllers\LoginViewController.cs" />
     <Compile Include="Controllers\LoginViewController.designer.cs">
       <DependentUpon>LoginViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\WorkerQueueItemViewController.designer.cs">
+      <DependentUpon>WorkerQueueItemViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\WorkerQueueViewController.cs" />
+    <Compile Include="Controllers\WorkerQueueViewController.designer.cs">
+      <DependentUpon>WorkerQueueViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\ByteBitmapConverter.cs" />
+    <Compile Include="Converters\ByteBitmapHiddenConverter.cs" />
+    <Compile Include="Converters\PercentConverter.cs" />
+    <Compile Include="Converters\StringHeightConverter.cs" />
+    <Compile Include="Converters\StringHiddenConverter.cs" />
     <Compile Include="DebugTrace.cs" />
+    <Compile Include="DisplayIncidentUITableView.cs" />
+    <Compile Include="DisplayIncidentUITableView.designer.cs">
+      <DependentUpon>DisplayIncidentUITableView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IncidentQueueUITableView.cs" />
+    <Compile Include="IncidentQueueUITableView.designer.cs">
+      <DependentUpon>IncidentQueueUITableView.cs</DependentUpon>
+    </Compile>
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Services\LoginService.cs" />
+    <Compile Include="Services\MediaService.cs" />
     <Compile Include="Setup.cs" />
+    <Compile Include="TeamUITableView.cs" />
+    <Compile Include="TeamUITableView.designer.cs">
+      <DependentUpon>TeamUITableView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\MediaUtility.cs" />
+    <Compile Include="Utility\StreamingPlayback.cs" />
     <Compile Include="ViewPresenter.cs" />
+    <Compile Include="Views\Cells\CommentCell.cs" />
+    <Compile Include="Views\Cells\CommentCell.designer.cs">
+      <DependentUpon>CommentCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cells\IncidentHeaderCell.cs" />
+    <Compile Include="Views\Cells\IncidentHeaderCell.designer.cs">
+      <DependentUpon>IncidentHeaderCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cells\IncidentQueueCell.cs" />
+    <Compile Include="Views\Cells\IncidentQueueCell.designer.cs">
+      <DependentUpon>IncidentQueueCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cells\TeamStatusCell.cs" />
+    <Compile Include="Views\Cells\TeamStatusCell.designer.cs">
+      <DependentUpon>TeamStatusCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\TouchViewsContainer.cs" />
+    <Compile Include="Views\UrlImageView.cs" />
+    <Compile Include="Views\UrlImageView.designer.cs">
+      <DependentUpon>UrlImageView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap\UserDialogsPluginBootstrap.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppDelegate.cs.txt" />
+    <BundleResource Include="Resources\Incidentrackr_banner.jpg" />
+    <BundleResource Include="Resources\BlackGradient_Background.png" />
+    <BundleResource Include="Resources\ImagePlaceholder.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <XamarinComponentReference Include="sdwebimage">
+      <Version>3.7.3.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="xamarin.mobile">
+      <Version>0.7.6</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
-  </Target>
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
 </Project>

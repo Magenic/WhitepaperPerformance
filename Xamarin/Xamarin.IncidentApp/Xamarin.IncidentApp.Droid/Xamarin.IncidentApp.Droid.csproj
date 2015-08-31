@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\xamstore-xamarin.mobile.0.7.1\build\monoandroid\xamstore-xamarin.mobile.props" Condition="Exists('..\..\packages\xamstore-xamarin.mobile.0.7.1\build\monoandroid\xamstore-xamarin.mobile.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -15,7 +16,10 @@
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <AssemblyName>Xamarin.IncidentApp.Droid</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>ff2bdef6</NuGetPackageImportStamp>
+    <AndroidLinkSkip />
+    <AndroidStoreUncompressedFileExtensions />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,8 +29,20 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
+    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
+    <MandroidI18n>
+    </MandroidI18n>
+    <Debugger>Xamarin</Debugger>
+    <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
+    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
+    <AndroidLinkSkip />
+    <BundleAssemblies>False</BundleAssemblies>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <AndroidStoreUncompressedFileExtensions />
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -34,119 +50,183 @@
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <ConsolePause>false</ConsolePause>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <AndroidSupportedAbis>armeabi,armeabi-v7a</AndroidSupportedAbis>
+    <MandroidI18n>
+    </MandroidI18n>
+    <Debugger>Xamarin</Debugger>
+    <DevInstrumentationEnabled>False</DevInstrumentationEnabled>
+    <AndroidLinkSkip />
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <BundleAssemblies>False</BundleAssemblies>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <AndroidStoreUncompressedFileExtensions />
+    <AotAssemblies>False</AotAssemblies>
+    <EnableLLVM>False</EnableLLVM>
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <EnableProguard>False</EnableProguard>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Acr.MvvmCross.Plugins.Network, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.Network.1.4.0\lib\MonoAndroid10\Acr.MvvmCross.Plugins.Network.dll</HintPath>
+    <Reference Include="Acr.MvvmCross.Plugins.UserDialogs">
+      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.UserDialogs.4.1.0\lib\MonoAndroid10\Acr.MvvmCross.Plugins.UserDialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.MvvmCross.Plugins.UserDialogs.Droid">
+      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.UserDialogs.4.1.0\lib\MonoAndroid10\Acr.MvvmCross.Plugins.UserDialogs.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.Support.Android">
+      <HintPath>..\..\packages\Acr.Support.1.0.0\lib\MonoAndroid10\Acr.Support.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.UserDialogs">
+      <HintPath>..\..\packages\Acr.UserDialogs.4.1.0\lib\MonoAndroid10\Acr.UserDialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.UserDialogs.Interface">
+      <HintPath>..\..\packages\Acr.UserDialogs.4.1.0\lib\MonoAndroid10\Acr.UserDialogs.Interface.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Acr.MvvmCross.Plugins.Network.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.Network.1.4.0\lib\MonoAndroid10\Acr.MvvmCross.Plugins.Network.Droid.dll</HintPath>
+    <Reference Include="AndHUD">
+      <HintPath>..\..\packages\Acr.UserDialogs.4.1.0\lib\MonoAndroid10\AndHUD.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Acr.MvvmCross.Plugins.UserDialogs, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.UserDialogs.3.1.0\lib\MonoAndroid10\Acr.MvvmCross.Plugins.UserDialogs.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.5.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
     </Reference>
-    <Reference Include="Acr.MvvmCross.Plugins.UserDialogs.Droid, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.UserDialogs.3.1.0\lib\MonoAndroid10\Acr.MvvmCross.Plugins.UserDialogs.Droid.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Acr.UserDialogs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.UserDialogs.3.4.1\lib\MonoAndroid10\Acr.UserDialogs.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Acr.UserDialogs.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.UserDialogs.3.4.1\lib\MonoAndroid10\Acr.UserDialogs.Interface.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="AndHUD, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Acr.UserDialogs.3.4.1\lib\MonoAndroid10\AndHUD.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.CrossCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e16445fd9b451819, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\MonoAndroid\Cirrious.CrossCore.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.CrossCore.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\MonoAndroid\Cirrious.CrossCore.Droid.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e16445fd9b451819, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.1\lib\MonoAndroid\Cirrious.MvvmCross.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Binding, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\MonoAndroid\Cirrious.MvvmCross.Binding.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Binding.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\MonoAndroid\Cirrious.MvvmCross.Binding.Droid.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.1\lib\MonoAndroid\Cirrious.MvvmCross.Droid.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Localization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\MonoAndroid\Cirrious.MvvmCross.Localization.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.Messenger, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.HotTuna.Plugin.Messenger.3.5.0\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility.Droid">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.5.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Visibility.Droid.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Mobile">
       <HintPath>..\..\packages\WindowsAzure.MobileServices.1.3.2\lib\monoandroid\Microsoft.WindowsAzure.Mobile.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Mobile.Ext">
       <HintPath>..\..\packages\WindowsAzure.MobileServices.1.3.2\lib\monoandroid\Microsoft.WindowsAzure.Mobile.Ext.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Splat">
+      <HintPath>..\..\packages\Splat.1.6.2\lib\monoandroid\Splat.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\monoandroid\System.Net.Http.Extensions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\monoandroid\System.Net.Http.Primitives.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
+    <Reference Include="Xamarin.Android.Support.Design">
+      <HintPath>..\..\packages\Xamarin.Android.Support.Design.22.2.1.0\lib\MonoAndroid403\Xamarin.Android.Support.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.CardView">
+      <HintPath>..\..\packages\Xamarin.Android.Support.v7.CardView.22.2.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.CardView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
+      <HintPath>..\..\packages\Xamarin.Android.Support.v7.RecyclerView.22.2.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Mobile">
+      <HintPath>..\..\Components\xamarin.mobile-0.7.1\lib\android\Xamarin.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.MvvmCross.Plugins.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.Network.1.4.0\lib\MonoAndroid10\Acr.MvvmCross.Plugins.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.MvvmCross.Plugins.Network.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\Acr.MvvmCross.Plugins.Network.1.4.0\lib\MonoAndroid10\Acr.MvvmCross.Plugins.Network.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.CrossCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e16445fd9b451819">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\MonoAndroid\Cirrious.CrossCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.CrossCore.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\MonoAndroid\Cirrious.CrossCore.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e16445fd9b451819">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.1\lib\MonoAndroid\Cirrious.MvvmCross.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Binding, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\MonoAndroid\Cirrious.MvvmCross.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Binding.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\MonoAndroid\Cirrious.MvvmCross.Binding.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.1\lib\MonoAndroid\Cirrious.MvvmCross.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Localization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\MonoAndroid\Cirrious.MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Messenger, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.Plugin.Messenger.3.5.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\monoandroid\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\monoandroid\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\..\packages\Xamarin.Android.Support.v4.22.2.0.0\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Android.Support.v4.22.2.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.v7.AppCompat">
-      <HintPath>..\..\packages\Xamarin.Android.Support.v7.AppCompat.22.2.0.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Android.Support.v7.AppCompat.22.2.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+    </Reference>
+    <Reference Include="UrlImageViewHelper">
+      <HintPath>..\..\Components\urlimageviewhelper-1.0.4\lib\android\UrlImageViewHelper.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xamarin.IncidentApp\Xamarin.IncidentApp.csproj">
       <Name>Xamarin.IncidentApp</Name>
+      <Project>{C86ED0E8-9792-43D4-B029-827D5BE682C7}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bindings\ViewWidthBinding.cs" />
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Bootstrap\NetworkPluginBootstrap.cs" />
     <Compile Include="Bootstrap\UserDialogsPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
+    <Compile Include="Constants\IntentConstants.cs" />
+    <Compile Include="Constants\KeyConstants.cs" />
+    <Compile Include="Converters\BinaryAssetExistsConverter.cs" />
+    <Compile Include="Converters\ByteBitmapConverter.cs" />
+    <Compile Include="Converters\DetailListConverter.cs" />
+    <Compile Include="Converters\TextImageExistsConverter.cs" />
     <Compile Include="DebugTrace.cs" />
+    <Compile Include="MvxMaterial\IMvxEventSourceFragment.cs" />
+    <Compile Include="MvxMaterial\IMvxFragmentView.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
+    <Compile Include="MvxMaterial\IMvxRecyclerViewHolder.cs" />
+    <Compile Include="MvxMaterial\MvxActionBarActivity.cs" />
+    <Compile Include="MvxMaterial\MvxActionBarEventSourceActivity.cs" />
+    <Compile Include="MvxMaterial\MvxAppCompatSpinner.cs" />
+    <Compile Include="MvxMaterial\MvxAppCompatSpinnerSelectedItemBinding.cs" />
+    <Compile Include="MvxMaterial\MvxBaseFragmentAdapter.cs" />
+    <Compile Include="MvxMaterial\MvxBindingFragmentAdapter.cs" />
+    <Compile Include="MvxMaterial\MvxCreateViewParameters.cs" />
+    <Compile Include="MvxMaterial\MvxFragment.cs" />
+    <Compile Include="MvxMaterial\MvxEventSourceFragment.cs" />
+    <Compile Include="MvxMaterial\MvxFragmentExtensions.cs" />
+    <Compile Include="MvxMaterial\MvxOwnedViewModelFragmentAttribute.cs" />
+    <Compile Include="MvxMaterial\MvxOwnedViewModelFragmentAttributeExtensionMethods.cs" />
+    <Compile Include="MvxMaterial\IMvxRecyclerAdapter.cs" />
+    <Compile Include="MvxMaterial\MvxRecyclerAdapter.cs" />
+    <Compile Include="MvxMaterial\MvxRecyclerView.cs" />
+    <Compile Include="MvxMaterial\MvxRecyclerViewHolder.cs" />
+    <Compile Include="MvxMaterial\MvxSimpleLayoutInflaterHolder.cs" />
+    <Compile Include="MvxMaterial\MvxSwipeRefreshLayout.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LoginService.cs" />
+    <Compile Include="Services\MediaService.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="SplashScreen.cs" />
+    <Compile Include="Views\AddIncidentDetailView.cs" />
+    <Compile Include="Views\AddIncidentView.cs" />
+    <Compile Include="Views\AudioRecorderView.cs" />
+    <Compile Include="Views\BitmapImageView.cs" />
     <Compile Include="Views\DashboardView.cs" />
+    <Compile Include="Views\DisplayIncidentView.cs" />
+    <Compile Include="Views\DisplayIncidentAdapter.cs" />
     <Compile Include="Views\LoginView.cs" />
+    <Compile Include="Views\TabListener.cs" />
+    <Compile Include="Views\WorkerQueueFragment.cs" />
     <Compile Include="Views\WorkerQueueView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -156,28 +236,48 @@
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\SplashScreen.axml" />
-    <AndroidResource Include="Resources\layout\Login.axml" />
+    <AndroidResource Include="Resources\layout\Login.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\WorkerQueue.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Dashboard.axml">
-      <SubType>AndroidResource</SubType>
+      <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\StatusItem.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\incidentracker_tab_indicator_holo.axml" />
+    <AndroidResource Include="Resources\layout\AddIncident.axml">
       <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\WorkerQueueItem.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\DisplayIncident.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\DisplayIncidentHeader.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\DisplayIncidentDetail.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AddIncidentDetail.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AudioRecorder.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml">
+      <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
-    <AndroidResource Include="Resources\drawable-hdpi\Icon.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\Icon.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\Icon.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
-    <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\values\MvxBindingAttributes.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\values\Styles.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -189,12 +289,135 @@
     <AndroidResource Include="Resources\drawable-mdpi\segmented_control_first_background.xml" />
     <AndroidResource Include="Resources\drawable-mdpi\segmented_control_last_background.xml" />
     <AndroidResource Include="Resources\Color\segmented_control_text.xml" />
+    <AndroidResource Include="Resources\drawable\ClosedBar.xml" />
+    <AndroidResource Include="Resources\drawable\OpenBar.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon.png" />
+    <AndroidResource Include="Resources\values\colors_incidentracker.xml" />
+    <AndroidResource Include="Resources\values\dimens_incidentracker.xml" />
+    <AndroidResource Include="Resources\values\styles_incidentracker.xml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_btn_default_disabled_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_btn_default_disabled_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_btn_default_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_btn_default_normal_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_btn_default_pressed_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_tab_selected_focused_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_tab_selected_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_tab_selected_pressed_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_tab_unselected_focused_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_tab_unselected_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_tab_unselected_pressed_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_textfield_activated_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_textfield_default_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_textfield_disabled_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_textfield_disabled_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\incidentracker_textfield_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_btn_default_disabled_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_btn_default_disabled_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_btn_default_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_btn_default_normal_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_btn_default_pressed_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_tab_selected_focused_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_tab_selected_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_tab_selected_pressed_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_tab_unselected_focused_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_tab_unselected_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_tab_unselected_pressed_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_textfield_activated_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_textfield_default_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_textfield_disabled_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_textfield_disabled_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\incidentracker_textfield_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_btn_default_disabled_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_btn_default_disabled_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_btn_default_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_btn_default_normal_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_btn_default_pressed_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_tab_selected_focused_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_tab_selected_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_tab_selected_pressed_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_tab_unselected_focused_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_tab_unselected_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_tab_unselected_pressed_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_textfield_activated_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_textfield_default_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_textfield_disabled_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_textfield_disabled_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\incidentracker_textfield_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_btn_default_disabled_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_btn_default_disabled_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_btn_default_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_btn_default_normal_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_btn_default_pressed_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_tab_selected_focused_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_tab_selected_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_tab_selected_pressed_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_tab_unselected_focused_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_tab_unselected_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_tab_unselected_pressed_holo.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_textfield_activated_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_textfield_default_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_textfield_disabled_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_textfield_disabled_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\incidentracker_textfield_focused_holo_light.9.png" />
+    <AndroidResource Include="Resources\drawable\incidentracker_btn_default_holo_light.xml" />
+    <AndroidResource Include="Resources\drawable\incidentracker_edit_text_holo_light.xml" />
+    <AndroidResource Include="Resources\drawable\incidentracker_tab_indicator_holo.xml" />
+    <AndroidResource Include="Resources\values-v11\styles_incidentracker.xml" />
+    <AndroidResource Include="Resources\values-v11\themes_incidentracker.xml" />
+    <AndroidResource Include="Resources\values\themes_incidentracker.xml" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_add_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_add_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_add_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_add_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_add_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_send_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_send_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_send_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_send_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_send_white_24dp.png" />
+    <AndroidResource Include="Resources\menu\AddIncidentMenu.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_clear_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_play_arrow_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_clear_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_play_arrow_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_clear_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_play_arrow_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_clear_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_play_arrow_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_clear_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_play_arrow_black_24dp.png" />
+    <AndroidResource Include="Resources\menu\DisplayIncidentMenu.xml" />
+    <AndroidResource Include="Resources\drawable\BlackGradient_Background2.png" />
+    <AndroidResource Include="Resources\menu\RecordAudio.xml" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="urlimageviewhelper">
+      <Version>1.0.4</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
-  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\xamstore-xamarin.mobile.0.7.1\build\monoandroid\xamstore-xamarin.mobile.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\xamstore-xamarin.mobile.0.7.1\build\monoandroid\xamstore-xamarin.mobile.props'))" />
   </Target>
 </Project>

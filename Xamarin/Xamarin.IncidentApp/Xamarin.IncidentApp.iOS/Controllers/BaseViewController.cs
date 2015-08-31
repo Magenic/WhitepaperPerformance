@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using Cirrious.MvvmCross.Touch.Views;
+using UIKit;
 
 namespace Xamarin.IncidentApp.iOS.Controllers
 {
@@ -21,6 +22,8 @@ namespace Xamarin.IncidentApp.iOS.Controllers
                 Debug.WriteLine(e);
             }
         }
+
+        
 
         public override void DidReceiveMemoryWarning()
         {

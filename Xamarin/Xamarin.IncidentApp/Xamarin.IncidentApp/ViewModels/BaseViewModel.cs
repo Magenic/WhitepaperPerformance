@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Acr.MvvmCross.Plugins.Network;
 using Acr.UserDialogs;
 using Cirrious.MvvmCross.ViewModels;
-using Xamarin.IncidentApp.Interfaces;
+
 
 namespace Xamarin.IncidentApp.ViewModels
 {
@@ -42,25 +39,15 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
-        public bool IsConnected()
-        {
-            return NetworkService.IsConnected;
-        }
-
-        public void ShowNoConnectionDialog()
-        {
-            UserDialogs.Alert(_noConnectionMessage);
-        }
-
-        protected async Task CheckNetworkConnectionAsync(Func<Task> taskToExecute)
+        protected bool CheckNetworkConnection()
         {
             if (!NetworkService.IsConnected)
             {
                 UserDialogs.Alert(_noConnectionMessage);
-                return;
+                return false;
             }
 
-            await taskToExecute().ConfigureAwait(false);
+            return true;
         }
 
         protected void CheckIfTokenExpired(HttpRequestException e)

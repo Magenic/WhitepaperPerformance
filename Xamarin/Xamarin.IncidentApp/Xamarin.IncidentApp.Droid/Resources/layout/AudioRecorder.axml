@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:textSize="20sp"
+            android:text="Record"
+            local:MvxBind="Click StartRecordingCommand"
+            android:textColor="@color/normal"
+            style="@style/ButtonIncidentracker" />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:textSize="20sp"
+            android:text="Play"
+            local:MvxBind="Click PlayRecordingCommand"
+            android:textColor="@color/normal"
+            style="@style/ButtonIncidentracker" />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:textSize="20sp"
+            android:text="Stop"
+            local:MvxBind="Click StopRecordingCommand"
+            android:textColor="@color/normal"
+            style="@style/ButtonIncidentracker" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

@@ -7,11 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.IncidentApp", "Xama
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.IncidentApp.iOS", "Xamarin.IncidentApp\Xamarin.IncidentApp.iOS\Xamarin.IncidentApp.iOS.csproj", "{3DDD7469-65FA-4136-B9C8-1ECF1BDC2366}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.IncidentApp.Droid", "Xamarin.IncidentApp\Xamarin.IncidentApp.Droid\Xamarin.IncidentApp.Droid.csproj", "{C6CBB778-4F33-4D1C-9F52-45EBE989D361}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{3869909E-FA20-43C3-9E0C-A585CF92D5D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{560DB7DE-D761-4A2F-BFF3-9503781357F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.IncidentApp.Droid", "Xamarin.IncidentApp\Xamarin.IncidentApp.Droid\Xamarin.IncidentApp.Droid.csproj", "{C6CBB778-4F33-4D1C-9F52-45EBE989D361}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +33,7 @@ Global
 		{C86ED0E8-9792-43D4-B029-827D5BE682C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C86ED0E8-9792-43D4-B029-827D5BE682C7}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{C86ED0E8-9792-43D4-B029-827D5BE682C7}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{C86ED0E8-9792-43D4-B029-827D5BE682C7}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{C86ED0E8-9792-43D4-B029-827D5BE682C7}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
 		{C86ED0E8-9792-43D4-B029-827D5BE682C7}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
 		{C86ED0E8-9792-43D4-B029-827D5BE682C7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -43,6 +44,7 @@ Global
 		{C86ED0E8-9792-43D4-B029-827D5BE682C7}.Release|ARM.ActiveCfg = Release|Any CPU
 		{C86ED0E8-9792-43D4-B029-827D5BE682C7}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{C86ED0E8-9792-43D4-B029-827D5BE682C7}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{C86ED0E8-9792-43D4-B029-827D5BE682C7}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{C86ED0E8-9792-43D4-B029-827D5BE682C7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C86ED0E8-9792-43D4-B029-827D5BE682C7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C86ED0E8-9792-43D4-B029-827D5BE682C7}.Release|x86.ActiveCfg = Release|Any CPU

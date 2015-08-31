@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <BitmapImageView
+            android:id="@+id/MainIncidentImage"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+            android:scaleType="centerCrop"
+            local:MvxBind="ImageUrl ImageLink" />
+        <BitmapImageView
+            android:id="@+id/MainOverlayImage"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/BlackGradient_Background2" />
+        <TextView
+            android:id="@+id/MainOverlayFullName"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:layout_alignBottom="@id/MainOverlayImage"
+            android:textColor="@color/secondary"
+            local:MvxBind="Text FullName" />
+        <TextView
+            android:id="@+id/queue_item_subject"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_above="@id/MainOverlayFullName"
+            android:textColor="@color/normal"
+            android:textSize="20sp"
+            local:MvxBind="Text Subject" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_alignBottom="@id/MainOverlayImage"
+            android:layout_toRightOf="@id/MainOverlayFullName"
+            android:textColor="@color/secondary"
+            local:MvxBind="Text DateOpened, Converter=Date" />
+    </RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/secondary"
+        local:MvxBind="Visibility AudioRecordingBytes, Converter=BinaryAssetExists">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Audio Recording"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center_vertical" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <ImageView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:src="@drawable/ic_play_arrow_black_24dp"
+            local:MvxBind="Click PlayAudioCommand" />
+    </LinearLayout>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/darktext"
+        local:MvxBind="Text Description; Visibility Description, Converter=Visibility" />
+</LinearLayout>

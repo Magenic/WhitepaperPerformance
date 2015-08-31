@@ -1,4 +1,14 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : Xamarin.IncidentApp
+// Author           : Ken Ross
+// Created          : 07-26-2015
+//
+// Last Modified By : Ken Ross
+// Last Modified On : 07-26-2015
+// ***********************************************************************
+
+using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -12,66 +22,95 @@ using Xamarin.IncidentApp.Utilities;
 
 namespace Xamarin.IncidentApp.ViewModels
 {
+    /// <summary>
+    ///     Class LoginViewModel.
+    /// </summary>
     public class LoginViewModel : BaseViewModel
     {
-        private ILoginService _login;
+        private ILoginService _loginService;
+        private ICommand _loginCommand;
+        private IAzureService _azureService;
 
-        public LoginViewModel(INetworkService networkService, IUserDialogs userDialogs)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoginViewModel" /> class.
+        /// </summary>
+        /// <param name="networkService">The network service.</param>
+        /// <param name="userDialogs">The user dialogs.</param>
+        /// <param name="azureService">Link to Azure service Proxy.</param>
+        public LoginViewModel(INetworkService networkService, IUserDialogs userDialogs, IAzureService azureService)
             : base(networkService, userDialogs)
         {
+            _azureService = azureService;
         }
 
+        /// <summary>
+        /// Sets the login service.
+        /// </summary>
+        /// <value>The login service.</value>
         public ILoginService LoginService
         {
-            set { _login = value; }
+            set { _loginService = value; }
         }
 
-        private ICommand _loginCommand;
+        /// <summary>
+        /// Gets the login command.
+        /// </summary>
+        /// <value>The login command.</value>
         public ICommand LoginCommand
         {
             get
             {
-                return _loginCommand ?? (_loginCommand = new MvxCommand(async () =>
-                {
-                    await LoginAndGo();
-                }));
+                return _loginCommand ?? (_loginCommand =
+                    new MvxCommand(async () => { await LoginAndGo(); }));
             }
         }
 
-        public async Task LoginAndGo()
+        /// <summary>
+        /// Checks for network connectivity, launches the user login, and if successful navigates to the
+        /// appropriate start page based on the user's role (manager or not). Note also that we're using a
+        /// presentation bundle in order to control clearing the navigation stack when showing the post-login
+        /// page [so we don't end up with a Back button in iOS].
+        /// </summary>
+        /// <returns>Task.</returns>
+        /// <exception cref="System.ArgumentException">Login Service must be set.</exception>
+        private async Task LoginAndGo()
         {
-            if (_login == null)
+            if (_loginService == null)
             {
                 throw new ArgumentException("Login Service must be set.");
             }
 
             if (!NetworkService.IsConnected)
             {
-                await UserDialogs.AlertAsync("Device not connected to network, cannot login. Please try again later", "Network Error");
+                await
+                    UserDialogs.AlertAsync("Device not connected to network, cannot login. Please try again later",
+                        "Network Error");
                 return;
             }
 
             try
             {
-                var service = MobileService.Service;
-
-               await _login.LoginAsync().ConfigureAwait(true);
+                var service = _azureService.MobileService;
+                
+                await _loginService.LoginAsync().ConfigureAwait(true);
                 var profile = await LoadProfileAsync(service);
                 UserContext.UserProfile = profile;
 
+                var clearStackBundle = new MvxBundle(new Dictionary<string, string> { {PresentationBundleFlagKeys.ClearStack, "" } });
+
                 if (profile.Manager)
                 {
-                    ShowViewModel<DashboardViewModel>();
+                    ShowViewModel<DashboardViewModel>(presentationBundle: clearStackBundle);
                 }
                 else
                 {
-                    ShowViewModel<WorkerQueueViewModel>();
+                    ShowViewModel<WorkerQueueViewModel>(new { userId = profile.UserId }, clearStackBundle);
                 }
                 Close(this);
             }
             catch (InvalidOperationException)
             {
-                UserDialogs.Alert("User login cancelled", "Login Error");
+                UserDialogs.Alert("User login canceled", "Login Error");
             }
             catch (Exception)
             {
@@ -79,7 +118,12 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
-        private async Task<UserProfile> LoadProfileAsync(MobileServiceClient service)
+        /// <summary>
+        /// Load the user profile as an asynchronous operation.
+        /// </summary>
+        /// <param name="service">The service.</param>
+        /// <returns>Task&lt;UserProfile&gt;.</returns>
+        private async Task<UserProfile> LoadProfileAsync(IMobileServiceClient service)
         {
             try
             {

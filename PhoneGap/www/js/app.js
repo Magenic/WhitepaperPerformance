@@ -1,16 +1,16 @@
-var app = angular.module('IncidentApp', ['ionic'])
+var app = angular.module('IncidentApp', ['ionic', 'ngCordova']);
 
-app.run(function($ionicPlatform) {
+app.run(function($ionicPlatform, $state, ClearNavigationHistory) {
   $ionicPlatform.ready(function() {
-    
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)    
+    // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
-    
+
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
@@ -18,27 +18,20 @@ app.run(function($ionicPlatform) {
 
 
     document.addEventListener("offline", onOffline, false);
-
-    function onOffline() {
-        alert('you have gone offline');
-    }
-
     document.addEventListener("online", onOnline, false);
 
+    function onOffline() {
+        ClearNavigationHistory.clear();
+        $state.go('offline');
+    }
+
     function onOnline() {
-        alert('you have gone back online');
+        ClearNavigationHistory.clear();
+        $state.go('login');
     }
 
   });
 });
-
-function onOffline() {
-
-  //clearNavigationHistory();
-
-  $state.go('offline');
-
-}
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
@@ -60,61 +53,47 @@ app.config(function($stateProvider, $urlRouterProvider) {
     controller: 'DashController'
   })
 
+  .state('incidents', {
+    url: '/incidents/:userId/:userFullName',
+    templateUrl: 'templates/incidents.html',
+    controller: 'IncidentsController'
+  })
+
+  .state('incident-detail', {
+    url: '/incident-detail/:incidentId',
+    templateUrl: 'templates/incident-detail.html',
+    controller: 'IncidentDetailController'
+  })
+
+  .state('incident-detail-add-comment', {
+    url: '/incident-detail-add-comment/:incidentId',
+    templateUrl: 'templates/incident-detail-add-comment.html',
+    controller: 'IncidentDetailAddCommentController'
+  })
+
+  .state('add-incident', {
+    url: '/add-incident',
+    templateUrl: 'templates/add-incident.html',
+    controller: 'AddIncidentController'
+  })
+
   .state('offline', {
     url: '/offline',
     templateUrl: 'templates/offline.html',
     controller: 'OfflineController'
   })
 
-  // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
-
-  // Each tab has its own nav history stack:
-
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  });
-
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 
 });
+
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}
