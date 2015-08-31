@@ -9,7 +9,6 @@ using Xamarin.IncidentApp.ViewModels;
 
 namespace Xamarin.IncidentApp.iOS.Controllers
 {
-    //[Register("AddIncidentViewController")]
     [MvxViewFor(typeof(AddIncidentViewModel))]
     public partial class AddIncidentViewController : BaseViewController
     {
@@ -90,6 +89,9 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
             Title = "Add Incident";
 
+            txtSubject.ShouldReturn += CloseKeyboard;
+            txtDescription.ShouldReturn += CloseKeyboard;
+
             SetupBindings();
         }
 
@@ -101,8 +103,11 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
             this.CreateBinding(btnSaveIncident).To<AddIncidentViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
             this.CreateBinding(btnRemoveImage).To<AddIncidentViewModel>(vm => vm.RemoveImageCommand).Apply();
+            this.CreateBinding(btnRemoveImage).For(c => c.Hidden).To<AddIncidentDetailViewModel>(vm => vm.Image).WithConversion("ByteBitmapHidden").Apply();
             this.CreateBinding(btnAudioNote).To<AddIncidentViewModel>(vm => vm.PlayAudioCommand).Apply();
+            this.CreateBinding(btnAudioNote).For(c => c.Hidden).To<AddIncidentDetailViewModel>(vm => vm.AudioRecording).WithConversion("ByteBitmapHidden").Apply();
             this.CreateBinding(btnRemoveAudio).To<AddIncidentViewModel>(vm => vm.RemoveAudioCommand).Apply();
+            this.CreateBinding(btnRemoveAudio).For(c => c.Hidden).To<AddIncidentDetailViewModel>(vm => vm.AudioRecording).WithConversion("ByteBitmapHidden").Apply();
 
             // A little more work involved in binding to the picker
             var pickerViewModel = new MvxPickerViewModel(pkrAssigned);
@@ -118,6 +123,23 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             pickerBindingSet.Bind(pickerViewModel).For(c => c.ItemsSource).To(vm => vm.Workers);
             pickerBindingSet.Apply();
             //imgPhoto.Image = UIImage.LoadFromData(imageData);
+        }
+
+        private bool CloseKeyboard(UITextField textField)
+        {
+            if (textField.Equals(txtSubject))
+            {
+                // validate field inputs as per your requirement
+                txtDescription.BecomeFirstResponder();
+                return true;
+            }
+            if (textField.Equals(txtDescription))
+            {
+                // validate field inputs as per your requirement
+                textField.ResignFirstResponder();
+                return true;
+            }
+            return true;
         }
     }
 }

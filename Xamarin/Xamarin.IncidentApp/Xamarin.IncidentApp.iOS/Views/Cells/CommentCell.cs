@@ -59,10 +59,27 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
                 this.CreateBinding(lblComment).For(c => c.Text).To((DisplayIncidentDetailViewModel property) => property.DetailText).Apply();
                 this.CreateBinding().For(c => c.OwnerName).To((DisplayIncidentDetailViewModel property) => property.FullName).Apply();
                 this.CreateBinding().For(c => c.OwnerInfo).To((DisplayIncidentDetailViewModel property) => property.DateOpened).Apply();
-                this.CreateBinding().For(c => c.AudioNote).To((DisplayIncidentDetailViewModel property) => property.AudioRecordingLink).Apply();
                 this.CreateBinding(btnPlayAudio).To<DisplayIncidentDetailViewModel>(vm => vm.PlayAudioCommand).Apply();
                 this.CreateBinding(imgCommentImage).For(c => c.ImageUrl).To((WorkerQueueItemViewModel property) => property.ImageLink).Apply();
             });
+        }
+
+        public void SetCommentHeight(nfloat height)
+        {
+            lblComment.Hidden = height == 0;
+            conCommentHeight.Constant = height;
+        }
+
+        public void SetImageHeight(nfloat height)
+        {
+            imgCommentImage.Hidden = height == 0;
+            conCommentImageHeight.Constant = height;
+        }
+
+        public void SetPlayAudioHeight(nfloat height)
+        {
+            btnPlayAudio.Hidden = height == 0;
+            conPlayAudioHeight.Constant = height;
         }
     }
 }

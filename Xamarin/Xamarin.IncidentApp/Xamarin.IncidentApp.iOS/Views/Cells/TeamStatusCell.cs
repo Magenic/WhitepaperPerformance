@@ -46,32 +46,6 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
 		}
 
         /// <summary>
-        /// Gets or sets the maximum completed percentage, divided by 100 for easy binding to a progress bar.
-        /// </summary>
-        /// <value>The maximum completed percent.</value>
-        public float MaxCompletedPercentConv
-        {
-            get { return pvCompletedBar.Progress; }
-            set
-            {
-                pvCompletedBar.Progress = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the maximum average wait time, divided by 100 for easy binding to a progress bar.
-        /// </summary>
-        /// <value>The maximum average wait time.</value>
-        public float MaxAvgWaitTimeConv
-        {
-            get { return pvWaitTimeBar.Progress; }
-            set
-            {
-                pvWaitTimeBar.Progress = value;
-            }
-        }
-
-        /// <summary>
         /// Initializes the bindings.
         /// </summary>
         private void InitializeBindings()
@@ -81,10 +55,9 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
                 this.CreateBinding(lblTeamLead).For(c => c.Text).To((UserStatus property) => property.User.FullName).Apply();
                 this.CreateBinding(lblCompleted).For(c => c.Text).To((UserStatus property) => property.TotalOpenIncidents).Apply();
                 this.CreateBinding(lblWaitTime).For(c => c.Text).To((UserStatus property) => property.AvgWaitTimeOfOpenIncidents).Apply();
-                this.CreateBinding().For(c => c.MaxCompletedPercentConv).To((UserStatus property) => property.MaxCompletedPercent).Apply();
-                this.CreateBinding().For(c => c.MaxAvgWaitTimeConv).To((UserStatus property) => property.MaxAvgWaitTimePercent).Apply();
+                this.CreateBinding(pvCompletedBar).For(c => c.Progress).To((UserStatus property) => property.MaxOpenPercent).WithConversion("Percent").Apply();
+                this.CreateBinding(pvWaitTimeBar).For(c => c.Progress).To((UserStatus property) => property.MaxAvgWaitTimePercent).WithConversion("Percent").Apply();
             });
         }
-
     }
 }

@@ -65,5 +65,4 @@ namespace Xamarin.IncidentApp.iOS.Converters
             return unchecked(longSum);
         }
     }
-
 }

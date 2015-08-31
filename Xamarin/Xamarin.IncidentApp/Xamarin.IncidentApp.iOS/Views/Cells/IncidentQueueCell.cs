@@ -101,6 +101,5 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
                 this.CreateBinding(imgIncidentPicture).For(c => c.ImageUrl).To((WorkerQueueItemViewModel property) => property.ImageLink).Apply();
             });
         }
-
     }
 }
