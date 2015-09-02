@@ -229,6 +229,7 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
       var deferred = $q.defer();
 
       var incidentTable = mobileService.getTable('Incident')
+        .take(1000)
         .where({
 
             assignedToId: assignedToUserId
