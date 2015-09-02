@@ -4,6 +4,7 @@ using System.Windows.Input;
 using Acr.MvvmCross.Plugins.Network;
 using Acr.UserDialogs;
 using Cirrious.MvvmCross.Commands;
+using Cirrious.MvvmCross.Plugins.Messenger;
 using Xamarin.IncidentApp.Interfaces;
 using Xamarin.IncidentApp.Models;
 using Xamarin.IncidentApp.Utilities;
@@ -14,17 +15,23 @@ namespace Xamarin.IncidentApp.ViewModels
     {
         private IAzureService _azureService;
         private IMediaService _mediaService;
+        private IMvxMessenger _messenger;
+        private MvxSubscriptionToken _subscriptionToken;
+
         private string _incidentId;
 
-        public AddIncidentDetailViewModel(INetworkService networkService, IUserDialogs userDialogs, IAzureService azureService)
+        public AddIncidentDetailViewModel(INetworkService networkService, IUserDialogs userDialogs, IAzureService azureService, IMvxMessenger messenger)
             : base(networkService, userDialogs)
         {
             _azureService = azureService;
+            _messenger = messenger;
+
         }
 
         public void Init(string incidentId)
         {
             _incidentId = incidentId;
+            _subscriptionToken = _messenger.Subscribe<RecordingCompleteMessage>(RecordingComplete);
         }
 
         private string _detailText;
@@ -38,10 +45,9 @@ namespace Xamarin.IncidentApp.ViewModels
             }
         }
 
-
-        public void SetActivityServices(IMediaService takePhotoService)
+        public void SetActivityServices(IMediaService mediaService)
         {
-            _mediaService = takePhotoService;
+            _mediaService = mediaService;
         }
 
         private byte[] _image;
@@ -63,6 +69,17 @@ namespace Xamarin.IncidentApp.ViewModels
             {
                 _audioRecording = value;
                 RaisePropertyChanged(() => AudioRecording);
+            }
+        }
+
+        private string _audioRecordingFileExtension;
+        public string AudioRecordingFileExtension
+        {
+            get { return _audioRecordingFileExtension; }
+            set
+            {
+                _audioRecordingFileExtension = value;
+                RaisePropertyChanged(() => AudioRecordingFileExtension);
             }
         }
 
@@ -160,6 +177,7 @@ namespace Xamarin.IncidentApp.ViewModels
             if (response)
             {
                 AudioRecording = null;
+                AudioRecordingFileExtension = string.Empty;
             }
         }
 
@@ -184,7 +202,7 @@ namespace Xamarin.IncidentApp.ViewModels
                 {
                     UserDialogs.Alert("No audio recording to play", "Playback Error");
                 }
-                _mediaService.PlayAudio(AudioRecording);
+                _mediaService.PlayAudio(AudioRecording, AudioRecordingFileExtension);
             }
         }
 
@@ -192,9 +210,7 @@ namespace Xamarin.IncidentApp.ViewModels
         {
             if (_mediaService != null)
             {
-                _mediaService.AudioComplete -= AudioComplete;
-                _mediaService.AudioComplete += AudioComplete;
-                _mediaService.RecordAudio();
+                ShowViewModel<AudioRecorderViewModel>();
             }
         }
 
@@ -223,14 +239,6 @@ namespace Xamarin.IncidentApp.ViewModels
             if (e.ImageStream != null && e.ImageStream.Length > 0)
             {
                 Image = e.ImageStream;
-            }
-        }
-
-        private void AudioComplete(object source, EventArgs.AudioCompleteEventArgs e)
-        {
-            if (e.AudioStream != null && e.AudioStream.Length > 0)
-            {
-                AudioRecording = e.AudioStream;
             }
         }
 
@@ -266,30 +274,39 @@ namespace Xamarin.IncidentApp.ViewModels
 
         private async Task SaveIncidentDetailDataAsync()
         {
-// First save the image/audio
-            string imagePath = string.Empty;
-            if (Image != null && Image.Length > 0)
+            if (CheckNetworkConnection())
             {
-                imagePath = await _azureService.SaveBlobAsync(Image, "png");
+                // First save the image/audio
+                string imagePath = string.Empty;
+                if (Image != null && Image.Length > 0)
+                {
+                    imagePath = await _azureService.SaveBlobAsync(Image, "png");
+                }
+
+                string audioPath = string.Empty;
+                if (AudioRecording != null && AudioRecording.Length > 0)
+                {
+                    audioPath = await _azureService.SaveBlobAsync(AudioRecording, AudioRecordingFileExtension);
+                }
+
+                var newIncidentDetail = new IncidentDetail
+                {
+                    IncidentId = _incidentId,
+                    DetailText = DetailText,
+                    AudioLink = audioPath,
+                    DateEntered = DateTime.UtcNow,
+                    DetailEnteredById = UserContext.UserProfile.UserId,
+                    ImageLink = imagePath
+                };
+
+                await _azureService.MobileService.GetTable<IncidentDetail>().InsertAsync(newIncidentDetail);
             }
+        }
 
-            string audioPath = string.Empty;
-            if (AudioRecording != null && AudioRecording.Length > 0)
-            {
-                audioPath = await _azureService.SaveBlobAsync(AudioRecording, "wav");
-            }
-
-            var newIncidentDetail = new IncidentDetail
-            {
-                IncidentId = _incidentId,
-                DetailText = DetailText,
-                AudioLink = audioPath,
-                DateEntered = DateTime.UtcNow,
-                DetailEnteredById = UserContext.UserProfile.UserId,
-                ImageLink = imagePath
-            };
-
-            await _azureService.MobileService.GetTable<IncidentDetail>().InsertAsync(newIncidentDetail);
+        public void RecordingComplete(RecordingCompleteMessage message)
+        {
+            AudioRecording = message.Recording;
+            AudioRecordingFileExtension = message.FileExtension;
         }
     }
 }

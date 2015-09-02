@@ -28,6 +28,8 @@ namespace Xamarin.IncidentApp.Droid
 		{
 			global::Acr.MvvmCross.Plugins.Network.Droid.Resource.String.ApplicationName = global::Xamarin.IncidentApp.Droid.Resource.String.ApplicationName;
 			global::Acr.MvvmCross.Plugins.Network.Droid.Resource.String.Hello = global::Xamarin.IncidentApp.Droid.Resource.String.Hello;
+			global::Acr.Support.Android.Resource.String.ApplicationName = global::Xamarin.IncidentApp.Droid.Resource.String.ApplicationName;
+			global::Acr.Support.Android.Resource.String.Hello = global::Xamarin.IncidentApp.Droid.Resource.String.Hello;
 			global::AndroidHUD.Resource.Attribute.ahBarColor = global::Xamarin.IncidentApp.Droid.Resource.Attribute.ahBarColor;
 			global::AndroidHUD.Resource.Attribute.ahBarLength = global::Xamarin.IncidentApp.Droid.Resource.Attribute.ahBarLength;
 			global::AndroidHUD.Resource.Attribute.ahBarWidth = global::Xamarin.IncidentApp.Droid.Resource.Attribute.ahBarWidth;
@@ -65,6 +67,7 @@ namespace Xamarin.IncidentApp.Droid
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahText = global::Xamarin.IncidentApp.Droid.Resource.Styleable.ProgressWheel_ahText;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextColor = global::Xamarin.IncidentApp.Droid.Resource.Styleable.ProgressWheel_ahTextColor;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::Xamarin.IncidentApp.Droid.Resource.Styleable.ProgressWheel_ahTextSize;
+			global::Splat.Resource.String.library_name = global::Xamarin.IncidentApp.Droid.Resource.String.library_name;
 		}
 		
 		public partial class Animation
@@ -2227,6 +2230,9 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f06009b
 			public const int mnuDisplayIncidentClose = 2131099803;
 			
+			// aapt resource value: 0x7f06009c
+			public const int mnuRecordAudioContinue = 2131099804;
+			
 			// aapt resource value: 0x7f060021
 			public const int multiply = 2131099681;
 			
@@ -2545,106 +2551,109 @@ namespace Xamarin.IncidentApp.Droid
 			public const int AddIncidentDetail = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int Dashboard = 2130903067;
+			public const int AudioRecorder = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int design_navigation_item = 2130903068;
+			public const int Dashboard = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int design_navigation_item_header = 2130903069;
+			public const int design_navigation_item = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int design_navigation_item_separator = 2130903070;
+			public const int design_navigation_item_header = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int design_navigation_item_subheader = 2130903071;
+			public const int design_navigation_item_separator = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int design_navigation_menu = 2130903072;
+			public const int design_navigation_item_subheader = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int DisplayIncident = 2130903073;
+			public const int design_navigation_menu = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int DisplayIncidentDetail = 2130903074;
+			public const int DisplayIncident = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int DisplayIncidentHeader = 2130903075;
+			public const int DisplayIncidentDetail = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int incidentracker_tab_indicator_holo = 2130903076;
+			public const int DisplayIncidentHeader = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int layout_snackbar = 2130903077;
+			public const int incidentracker_tab_indicator_holo = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int layout_snackbar_include = 2130903078;
+			public const int layout_snackbar = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int layout_tab_icon = 2130903079;
+			public const int layout_snackbar_include = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int layout_tab_text = 2130903080;
+			public const int layout_tab_icon = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int loading = 2130903081;
+			public const int layout_tab_text = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int loadingimage = 2130903082;
+			public const int loading = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int loadingprogress = 2130903083;
+			public const int loadingimage = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int Login = 2130903084;
+			public const int loadingprogress = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int notification_media_action = 2130903085;
+			public const int Login = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int notification_media_cancel_action = 2130903086;
+			public const int notification_media_action = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int notification_template_big_media = 2130903087;
+			public const int notification_media_cancel_action = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int notification_template_big_media_narrow = 2130903088;
+			public const int notification_template_big_media = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int notification_template_lines = 2130903089;
+			public const int notification_template_big_media_narrow = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int notification_template_media = 2130903090;
+			public const int notification_template_lines = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int notification_template_part_chronometer = 2130903091;
+			public const int notification_template_media = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int notification_template_part_time = 2130903092;
+			public const int notification_template_part_chronometer = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int select_dialog_item_material = 2130903093;
+			public const int notification_template_part_time = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int select_dialog_multichoice_material = 2130903094;
+			public const int select_dialog_item_material = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int select_dialog_singlechoice_material = 2130903095;
+			public const int select_dialog_multichoice_material = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int SplashScreen = 2130903096;
+			public const int select_dialog_singlechoice_material = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int StatusItem = 2130903097;
+			public const int SplashScreen = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int support_simple_spinner_dropdown_item = 2130903098;
+			public const int StatusItem = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int WorkerQueue = 2130903099;
+			public const int support_simple_spinner_dropdown_item = 2130903099;
 			
 			// aapt resource value: 0x7f03003c
-			public const int WorkerQueueItem = 2130903100;
+			public const int WorkerQueue = 2130903100;
+			
+			// aapt resource value: 0x7f03003d
+			public const int WorkerQueueItem = 2130903101;
 			
 			static Layout()
 			{
@@ -2664,6 +2673,9 @@ namespace Xamarin.IncidentApp.Droid
 			
 			// aapt resource value: 0x7f0c0001
 			public const int DisplayIncidentMenu = 2131492865;
+			
+			// aapt resource value: 0x7f0c0002
+			public const int RecordAudio = 2131492866;
 			
 			static Menu()
 			{

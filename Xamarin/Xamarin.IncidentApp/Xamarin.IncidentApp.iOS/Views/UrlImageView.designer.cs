@@ -9,10 +9,10 @@ using System;
 using System.CodeDom.Compiler;
 using UIKit;
 
-namespace Xamarin.IncidentApp.iOS
+namespace Xamarin.IncidentApp.iOS.Views
 {
-	[Register ("IncidentCommentTableView")]
-	partial class IncidentCommentTableView
+	[Register ("UrlImageView")]
+	partial class UrlImageView
 	{
 		void ReleaseDesignerOutlets ()
 		{

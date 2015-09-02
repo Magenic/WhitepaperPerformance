@@ -97,9 +97,9 @@ namespace Xamarin.IncidentApp.iOS.Views.Cells
                 this.CreateBinding(lblSubject).For(c => c.Text).To((WorkerQueueItemViewModel property) => property.Subject).Apply();
                 this.CreateBinding().For(c => c.OwnerName).To((WorkerQueueItemViewModel property) => property.FullName).Apply();
                 this.CreateBinding(lblIncidentDate).For(c => c.Text).To((WorkerQueueItemViewModel property) => property.DateOpened).Apply();
-                this.CreateBinding().For(c => c.IncidentImage).To((WorkerQueueItemViewModel property) => property.ImageLink).Apply();
+                this.CreateBinding(lblIncidentDate).For(c => c.Text).To((WorkerQueueItemViewModel property) => property.DateOpened).WithConversion("Date").Apply();
+                this.CreateBinding(imgIncidentPicture).For(c => c.ImageUrl).To((WorkerQueueItemViewModel property) => property.ImageLink).Apply();
             });
         }
-
     }
 }

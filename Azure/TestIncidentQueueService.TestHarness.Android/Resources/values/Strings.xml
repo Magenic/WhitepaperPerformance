@@ -8,4 +8,5 @@
     <string name="Incidents">Get Incidents For User</string>
     <string name="GenerateSasKey">Generate Sas Key</string>
     <string name="ApplicationName">TestIncidentQueueService.TestHarness</string>
+    <string name="Create1000ClosedRequests">Create 1000 Closed Reqeusts</string>
 </resources>

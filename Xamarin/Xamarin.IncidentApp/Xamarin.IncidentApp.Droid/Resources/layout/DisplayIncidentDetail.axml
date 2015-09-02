@@ -36,7 +36,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:scaleType="centerCrop"
-                local:MvxBind="CurrentBitmap ImageBytes, Mode=TwoWay, Converter=ByteBitmap; Visibility ImageBytes, Converter=BinaryAssetExists" />
+                local:MvxBind="ImageUrl ImageLink; Visibility ImageLink, Converter=Visibility" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"

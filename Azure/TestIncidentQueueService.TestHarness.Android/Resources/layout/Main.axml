@@ -38,4 +38,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/GenerateSasKey" />
+    <Button
+        android:id="@+id/btnCreate1000ClosedRequests"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Create1000ClosedRequests" />
 </LinearLayout>

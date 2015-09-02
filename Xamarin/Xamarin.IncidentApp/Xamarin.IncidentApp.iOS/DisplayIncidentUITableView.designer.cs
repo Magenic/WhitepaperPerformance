@@ -11,19 +11,11 @@ using UIKit;
 
 namespace Xamarin.IncidentApp.iOS
 {
-	[Register ("FirstViewController")]
-	partial class FirstViewController
+	[Register ("DisplayIncidentUITableView")]
+	partial class DisplayIncidentUITableView
 	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel txtHello { get; set; }
-
 		void ReleaseDesignerOutlets ()
 		{
-			if (txtHello != null) {
-				txtHello.Dispose ();
-				txtHello = null;
-			}
 		}
 	}
 }

@@ -1,0 +1,248 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Cirrious.MvvmCross.Binding.BindingContext;
+using Cirrious.MvvmCross.Binding.Touch.Views;
+using Cirrious.MvvmCross.ViewModels;
+using CoreGraphics;
+using Foundation;
+using UIKit;
+using Xamarin.IncidentApp.iOS.Services;
+using Xamarin.IncidentApp.iOS.Views.Cells;
+using Xamarin.IncidentApp.ViewModels;
+
+namespace Xamarin.IncidentApp.iOS.Controllers
+{
+    //[Register("DisplayIncidentViewController")]    
+    [MvxViewFor(typeof(DisplayIncidentViewModel))]
+    public partial class DisplayIncidentViewController : BaseViewController
+    {
+        private string _ownerName;
+        private string _ownerInfo;
+        private string _incidentImage;
+        private UIActionSheet _actionSheet;
+        private int _commentProxy;
+        private MediaService _mediaService;
+
+        public DisplayIncidentViewController(IntPtr p) : base(p)
+        {
+            InitView();
+        }
+
+        public DisplayIncidentViewController()
+        {
+            InitView();
+        }
+
+        private void InitView()
+        {
+            SetupActionSheet();
+        }
+
+        private void SetupActionSheet()
+        {
+            _actionSheet = new UIActionSheet("Incident Actions");
+            _actionSheet.AddButton("Close Incident");
+            //_actionSheet.AddButton("Take Photo");
+            //_actionSheet.AddButton("Attach Image");
+            //_actionSheet.AddButton("Record Audio");
+            _actionSheet.AddButton("Add Comment");
+            _actionSheet.AddButton("Cancel");
+
+            _actionSheet.DestructiveButtonIndex = 0;
+            _actionSheet.CancelButtonIndex = 2;
+
+            _actionSheet.Clicked += _actionSheet_Clicked;
+        }
+
+        void _actionSheet_Clicked(object sender, UIButtonEventArgs e)
+        {
+            switch (e.ButtonIndex)
+            {
+                case 0: // Close Incident
+                    ViewModel.CloseIncidentCommand.Execute(this);
+                    break;
+
+                case 1: // Add Comment
+                    ViewModel.AddIncidentDetailCommand.Execute(this);
+                    break;
+
+                case 2: // Cancel
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+
+            ViewModel.LoadIncidentAsync();
+        }
+
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+
+            _mediaService = new MediaService();
+            ViewModel.SetActivityServices(_mediaService);
+
+            NavigationController.NavigationBarHidden = false;
+            NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIBarButtonSystemItem.Action, (sender, args) =>
+            {
+                // button was clicked
+                _actionSheet.ShowInView(View);
+            })
+            , true);
+
+            this.Title = "";
+
+            SetupBindings();
+        }
+
+        public new DisplayIncidentViewModel ViewModel
+        {
+            get { return (DisplayIncidentViewModel)base.ViewModel; }
+            set { base.ViewModel = value; }
+        }
+
+        public string OwnerName
+        {
+            get { return _ownerName; }
+            set
+            {
+                //this.lblOwnerInfo.Text = string.Concat(value, " - ", OwnerInfo);
+                _ownerName = value;
+            }
+        }
+
+        public string OwnerInfo
+        {
+            get { return _ownerInfo; }
+            set
+            {
+                //this.lblOwnerInfo.Text = string.Concat(OwnerName, " - ", value);
+                _ownerInfo = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the incident image.
+        /// </summary>
+        /// <value>The incident image.</value>
+        public string IncidentImage
+        {
+            get { return _incidentImage; }
+            set
+            {
+                if (value != null)
+                {
+                    //this.imgIncidentImage.Image = LoadImage(value);
+                }
+                _incidentImage = value;
+            }
+        }
+
+        /// <summary>
+        /// Loads the image based on the provided URL.
+        /// </summary>
+        /// <param name="imgUrl">The img URL.</param>
+        /// <returns>UIImage.</returns>
+        private UIImage LoadImage(string imgUrl)
+        {
+            if (imgUrl.Length == 0)
+            {
+                return new UIImage();
+            }
+
+            using (var url = new NSUrl(imgUrl))
+            using (var data = NSData.FromUrl(url))
+
+            return UIImage.LoadFromData(data);
+        }
+
+        private void SetupBindings()
+        {
+<<<<<<< HEAD
+            var tableSource = new IncidentTableSource(DisplayIncidentTableView);
+            this.CreateBinding(tableSource).To<DisplayIncidentViewModel>(vm => vm.IncidentDetails).Apply();
+=======
+            var tableSource = new HeaderTableSource(DisplayIncidentTableView);
+            this.CreateBinding(tableSource).To<DisplayIncidentViewModel>(vm => vm.CurrentViewModel).WithConversion("DetailList").Apply();
+>>>>>>> b72840fa4f65ac17f6e7959b95cef954b5093e1f
+
+            DisplayIncidentTableView.Source = tableSource;
+            DisplayIncidentTableView.ReloadData();
+        }
+    }
+
+    public class IncidentTableSource : MvxStandardTableViewSource
+    {
+        /// <summary>
+        /// The team cell identifier
+        /// </summary>
+        private static readonly NSString HeaderCellIdentifier = new NSString("IncidentHeaderCell");
+        private static readonly NSString CommentCellIdentifier = new NSString("CommentCell");
+
+        private static nfloat HeaderPaddingHeight = 400;
+        private static nfloat DetailMarginHeight = 10;
+        private static nfloat DetailCommentHeight = 50;
+        private static nfloat DetailImageHeight = 350;
+        private static nfloat DetailAudioHeight = 50;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IncidentTableSource"/> class.
+        /// </summary>
+        /// <param name="tableView">The table view.</param>
+        public IncidentTableSource(UITableView tableView) : base(tableView) {}
+
+        public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+        {
+            var screenRect = TableView.Bounds;
+            var screenWidth = screenRect.Size.Width;
+           
+            if (indexPath.LongRow == 0)
+            {
+                return HeaderPaddingHeight + screenWidth;
+            }
+
+            var vMs = ((IList<BaseViewModel>)ItemsSource);
+            var vM = (DisplayIncidentDetailViewModel)vMs[Convert.ToInt32(indexPath.LongRow)];
+            nfloat returnHeight = DetailMarginHeight*2;
+            if (!string.IsNullOrEmpty(vM.DetailText))
+            {
+                returnHeight += DetailCommentHeight;
+            }
+
+            if (!string.IsNullOrEmpty(vM.ImageLink))
+            {
+                returnHeight += screenRect.Width;
+            }
+
+            if (!string.IsNullOrEmpty(vM.AudioRecordingLink))
+            {
+                returnHeight += DetailAudioHeight;
+            }
+
+            return returnHeight;
+        }
+
+        /// <summary>
+        /// Returns the custom Comment Cell or Header Cell, depending on the value of indexPath.LongRow.
+        /// </summary>
+        /// <param name="tableView">The table view.</param>
+        /// <param name="indexPath">The index path.</param>
+        /// <param name="item">The item.</param>
+        /// <returns>UITableViewCell.</returns>
+        protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
+        {
+            if (indexPath.LongRow == 0)
+            {
+                return (IncidentHeaderCell)tableView.DequeueReusableCell(HeaderCellIdentifier);
+            }
+
+            return (CommentCell)tableView.DequeueReusableCell(CommentCellIdentifier);
+        }
+    }
+}
