@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Xamarin.IncidentApp.ViewModels
     public class WorkerQueueViewModel : BaseViewModel
     {
         private string _userId;
-        private IList<WorkerQueueItemViewModel> _incidents;
+        private ObservableCollection<WorkerQueueItemViewModel> _incidents;
         private bool _showClosed;
         private IAzureService _azureService;
 
@@ -30,7 +31,7 @@ namespace Xamarin.IncidentApp.ViewModels
              Task.Run(async () => await RefeshIncidentListAsync());
         }
 
-        public IList<WorkerQueueItemViewModel> Incidents
+        public ObservableCollection<WorkerQueueItemViewModel> Incidents
         {
             get { return _incidents; }
             set
@@ -70,35 +71,25 @@ namespace Xamarin.IncidentApp.ViewModels
             {
                 if (NetworkService.IsConnected)
                 {
+                    IList<Incident> incidents;
                     try
                     {
                         UserDialogs.ShowLoading("Retrieving Worker Queue...");
+                        var returnValue = new ObservableCollection<WorkerQueueItemViewModel>();
 
-                        var incidents = await _azureService.MobileService.GetTable<Incident>()
+                        incidents = await _azureService.MobileService.GetTable<Incident>()
                             .Where(r => r.AssignedToId == _userId && r.Closed == _showClosed)
+                            .Take(1000)
                             .ToListAsync();
-
-                        var newIncidents = new List<WorkerQueueItemViewModel>();
-                        foreach (var incident in incidents)
-                        {
-                            var newIncident = new WorkerQueueItemViewModel(NetworkService, UserDialogs)
-                            {
-                                DateOpened = incident.DateOpened,
-                                Id = incident.Id,
-                                ImageLink = incident.ImageLink,
-                                Subject = incident.Subject,
-                                UserId = incident.AssignedToId
-                            };
-                            newIncidents.Add(newIncident);
-                        }
-                        Incidents = newIncidents;
 
                         var workers = await service.InvokeApiAsync<IList<UserProfile>>("WorkerList", HttpMethod.Get, null);
                         FullName = workers.Single(w => w.UserId == _userId).FullName;
-                        foreach (var incident in Incidents)
+
+                        foreach (var incident in incidents)
                         {
-                            incident.FullName = FullName;
+                            returnValue.Add(new WorkerQueueItemViewModel(NetworkService, UserDialogs, incident, FullName));
                         }
+                        Incidents = returnValue;
                     }
                     finally
                     {

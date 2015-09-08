@@ -1990,8 +1990,8 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f06000b
 			public const int MvxBindingTagUnique = 2131099659;
 			
-			// aapt resource value: 0x7f060083
-			public const int action0 = 2131099779;
+			// aapt resource value: 0x7f060081
+			public const int action0 = 2131099777;
 			
 			// aapt resource value: 0x7f060059
 			public const int action_bar = 2131099737;
@@ -2017,8 +2017,8 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f06005a
 			public const int action_context_bar = 2131099738;
 			
-			// aapt resource value: 0x7f060087
-			public const int action_divider = 2131099783;
+			// aapt resource value: 0x7f060085
+			public const int action_divider = 2131099781;
 			
 			// aapt resource value: 0x7f060003
 			public const int action_menu_divider = 2131099651;
@@ -2059,8 +2059,8 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f06004f
 			public const int buttonPanel = 2131099727;
 			
-			// aapt resource value: 0x7f060084
-			public const int cancel_action = 2131099780;
+			// aapt resource value: 0x7f060082
+			public const int cancel_action = 2131099778;
 			
 			// aapt resource value: 0x7f06002d
 			public const int center = 2131099693;
@@ -2074,8 +2074,8 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f060051
 			public const int checkbox = 2131099729;
 			
-			// aapt resource value: 0x7f06008a
-			public const int chronometer = 2131099786;
+			// aapt resource value: 0x7f060088
+			public const int chronometer = 2131099784;
 			
 			// aapt resource value: 0x7f060030
 			public const int clip_horizontal = 2131099696;
@@ -2083,8 +2083,8 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f060031
 			public const int clip_vertical = 2131099697;
 			
-			// aapt resource value: 0x7f060090
-			public const int closedProgress = 2131099792;
+			// aapt resource value: 0x7f06008e
+			public const int closedProgress = 2131099790;
 			
 			// aapt resource value: 0x7f06001a
 			public const int collapseActionView = 2131099674;
@@ -2116,14 +2116,11 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f06005b
 			public const int edit_query = 2131099739;
 			
-			// aapt resource value: 0x7f060080
-			public const int emailAdress = 2131099776;
-			
 			// aapt resource value: 0x7f060017
 			public const int end = 2131099671;
 			
-			// aapt resource value: 0x7f06008f
-			public const int end_padder = 2131099791;
+			// aapt resource value: 0x7f06008d
+			public const int end_padder = 2131099789;
 			
 			// aapt resource value: 0x7f060026
 			public const int enterAlways = 2131099686;
@@ -2173,8 +2170,8 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f060071
 			public const int incident_detail_list = 2131099761;
 			
-			// aapt resource value: 0x7f06008e
-			public const int info = 2131099790;
+			// aapt resource value: 0x7f06008c
+			public const int info = 2131099788;
 			
 			// aapt resource value: 0x7f060000
 			public const int item_touch_helper_previous_elevation = 2131099648;
@@ -2182,11 +2179,11 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f060035
 			public const int left = 2131099701;
 			
-			// aapt resource value: 0x7f060088
-			public const int line1 = 2131099784;
+			// aapt resource value: 0x7f060086
+			public const int line1 = 2131099782;
 			
-			// aapt resource value: 0x7f06008c
-			public const int line3 = 2131099788;
+			// aapt resource value: 0x7f06008a
+			public const int line3 = 2131099786;
 			
 			// aapt resource value: 0x7f06000c
 			public const int listMode = 2131099660;
@@ -2203,11 +2200,11 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f06007e
 			public const int loadingProgressWheel = 2131099774;
 			
-			// aapt resource value: 0x7f060082
-			public const int login_button = 2131099778;
+			// aapt resource value: 0x7f060080
+			public const int login_button = 2131099776;
 			
-			// aapt resource value: 0x7f060086
-			public const int media_actions = 2131099782;
+			// aapt resource value: 0x7f060084
+			public const int media_actions = 2131099780;
 			
 			// aapt resource value: 0x7f060018
 			public const int middle = 2131099672;
@@ -2215,23 +2212,23 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f060039
 			public const int mini = 2131099705;
 			
-			// aapt resource value: 0x7f060099
-			public const int mnuAddIncidentAttachImage = 2131099801;
-			
 			// aapt resource value: 0x7f060097
-			public const int mnuAddIncidentContinue = 2131099799;
+			public const int mnuAddIncidentAttachImage = 2131099799;
 			
-			// aapt resource value: 0x7f06009a
-			public const int mnuAddIncidentRecordAudio = 2131099802;
+			// aapt resource value: 0x7f060095
+			public const int mnuAddIncidentContinue = 2131099797;
 			
 			// aapt resource value: 0x7f060098
-			public const int mnuAddIncidentTakePhoto = 2131099800;
+			public const int mnuAddIncidentRecordAudio = 2131099800;
 			
-			// aapt resource value: 0x7f06009b
-			public const int mnuDisplayIncidentClose = 2131099803;
+			// aapt resource value: 0x7f060096
+			public const int mnuAddIncidentTakePhoto = 2131099798;
 			
-			// aapt resource value: 0x7f06009c
-			public const int mnuRecordAudioContinue = 2131099804;
+			// aapt resource value: 0x7f060099
+			public const int mnuDisplayIncidentClose = 2131099801;
+			
+			// aapt resource value: 0x7f06009a
+			public const int mnuRecordAudioContinue = 2131099802;
 			
 			// aapt resource value: 0x7f060021
 			public const int multiply = 2131099681;
@@ -2245,17 +2242,14 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f06000d
 			public const int normal = 2131099661;
 			
-			// aapt resource value: 0x7f060091
-			public const int openProgress = 2131099793;
+			// aapt resource value: 0x7f06008f
+			public const int openProgress = 2131099791;
 			
 			// aapt resource value: 0x7f06002a
 			public const int parallax = 2131099690;
 			
 			// aapt resource value: 0x7f060046
 			public const int parentPanel = 2131099718;
-			
-			// aapt resource value: 0x7f060081
-			public const int password = 2131099777;
 			
 			// aapt resource value: 0x7f06002b
 			public const int pin = 2131099691;
@@ -2266,14 +2260,14 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f060007
 			public const int progress_horizontal = 2131099655;
 			
-			// aapt resource value: 0x7f060095
-			public const int queue_item_assigned_to_name = 2131099797;
-			
-			// aapt resource value: 0x7f060096
-			public const int queue_item_description = 2131099798;
+			// aapt resource value: 0x7f060093
+			public const int queue_item_assigned_to_name = 2131099795;
 			
 			// aapt resource value: 0x7f060094
-			public const int queue_item_image = 2131099796;
+			public const int queue_item_description = 2131099796;
+			
+			// aapt resource value: 0x7f060092
+			public const int queue_item_image = 2131099794;
 			
 			// aapt resource value: 0x7f060078
 			public const int queue_item_subject = 2131099768;
@@ -2365,8 +2359,8 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f060037
 			public const int start = 2131099703;
 			
-			// aapt resource value: 0x7f060085
-			public const int status_bar_latest_event_content = 2131099781;
+			// aapt resource value: 0x7f060083
+			public const int status_bar_latest_event_content = 2131099779;
 			
 			// aapt resource value: 0x7f060064
 			public const int submit_area = 2131099748;
@@ -2374,11 +2368,11 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f06000e
 			public const int tabMode = 2131099662;
 			
-			// aapt resource value: 0x7f06008d
-			public const int text = 2131099789;
-			
 			// aapt resource value: 0x7f06008b
-			public const int text2 = 2131099787;
+			public const int text = 2131099787;
+			
+			// aapt resource value: 0x7f060089
+			public const int text2 = 2131099785;
 			
 			// aapt resource value: 0x7f06004c
 			public const int textSpacerNoButtons = 2131099724;
@@ -2386,8 +2380,8 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f06007c
 			public const int textViewStatus = 2131099772;
 			
-			// aapt resource value: 0x7f060089
-			public const int time = 2131099785;
+			// aapt resource value: 0x7f060087
+			public const int time = 2131099783;
 			
 			// aapt resource value: 0x7f060045
 			public const int title = 2131099717;
@@ -2416,11 +2410,11 @@ namespace Xamarin.IncidentApp.Droid
 			// aapt resource value: 0x7f06006f
 			public const int worker_list = 2131099759;
 			
-			// aapt resource value: 0x7f060093
-			public const int worker_queue_list = 2131099795;
+			// aapt resource value: 0x7f060091
+			public const int worker_queue_list = 2131099793;
 			
-			// aapt resource value: 0x7f060092
-			public const int worker_refresh_layout = 2131099794;
+			// aapt resource value: 0x7f060090
+			public const int worker_refresh_layout = 2131099792;
 			
 			// aapt resource value: 0x7f060020
 			public const int wrap_content = 2131099680;
