@@ -42,39 +42,18 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
         </LinearLayout>
-        <EditText
-            android:id="@+id/emailAdress"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:hint="Email Address"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/appTitle"
-            style="@style/EditTextIncidentracker" />
-        <EditText
-            android:id="@+id/password"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:ellipsize="start"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_below="@id/emailAdress"
-            style="@style/EditTextIncidentracker" />
         <Button
             android:id="@+id/login_button"
             android:layout_height="wrap_content"
             android:layout_width="150dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="100dp"
             android:textSize="20sp"
             android:text="Sign In"
             android:layout_centerHorizontal="true"
             local:MvxBind="Click LoginCommand"
             android:textColor="@color/normal"
             style="@style/ButtonIncidentracker"
-            android:layout_below="@id/password" />
+            android:layout_below="@id/appTitle" />
     </RelativeLayout>
     <View
         android:layout_width="match_parent"

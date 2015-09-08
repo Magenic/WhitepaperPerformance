@@ -37,72 +37,17 @@
                                     <constraint firstAttribute="height" constant="74" id="982"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="265">
-                                <rect key="frame" x="24" y="211" width="565" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="994"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="266">
-                                <rect key="frame" x="24" y="275" width="565" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="1004"/>
-                                </constraints>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
-                            </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="267">
-                                <rect key="frame" x="0.0" y="195" width="600" height="1"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="989"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="270">
-                                <rect key="frame" x="0.0" y="255" width="600" height="1"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="1000"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="271">
-                                <rect key="frame" x="0.0" y="318" width="600" height="1"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="987"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="264" firstAttribute="centerX" secondItem="26" secondAttribute="centerX" constant="2" id="983"/>
                             <constraint firstItem="264" firstAttribute="top" secondItem="26" secondAttribute="top" constant="77" id="984"/>
-                            <constraint firstItem="271" firstAttribute="leading" secondItem="26" secondAttribute="leading" id="985"/>
-                            <constraint firstItem="271" firstAttribute="trailing" secondItem="26" secondAttribute="trailing" id="986"/>
-                            <constraint firstItem="267" firstAttribute="top" secondItem="264" secondAttribute="bottom" constant="44" id="988"/>
-                            <constraint firstItem="267" firstAttribute="trailing" secondItem="26" secondAttribute="trailing" id="990"/>
-                            <constraint firstItem="267" firstAttribute="leading" secondItem="26" secondAttribute="leading" id="991"/>
-                            <constraint firstItem="265" firstAttribute="leading" secondItem="26" secondAttribute="leading" constant="24" id="992"/>
-                            <constraint firstAttribute="trailing" secondItem="265" secondAttribute="trailing" constant="11" id="993"/>
-                            <constraint firstItem="265" firstAttribute="top" secondItem="264" secondAttribute="bottom" constant="60" id="997"/>
-                            <constraint firstItem="270" firstAttribute="leading" secondItem="26" secondAttribute="leading" id="998"/>
-                            <constraint firstItem="270" firstAttribute="trailing" secondItem="26" secondAttribute="trailing" id="999"/>
-                            <constraint firstItem="270" firstAttribute="top" secondItem="264" secondAttribute="bottom" constant="104" id="1001"/>
-                            <constraint firstItem="266" firstAttribute="leading" secondItem="26" secondAttribute="leading" constant="24" id="1002"/>
-                            <constraint firstAttribute="trailing" secondItem="266" secondAttribute="trailing" constant="11" id="1003"/>
-                            <constraint firstItem="266" firstAttribute="top" secondItem="264" secondAttribute="bottom" constant="124" id="1005"/>
-                            <constraint firstItem="271" firstAttribute="top" secondItem="264" secondAttribute="bottom" constant="167" id="1006"/>
                             <constraint firstItem="47" firstAttribute="centerX" secondItem="26" secondAttribute="centerX" id="1007"/>
                             <constraint firstItem="47" firstAttribute="top" secondItem="264" secondAttribute="bottom" constant="237" id="1010"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="btnLogin" destination="47" id="name-outlet-47"/>
-                        <outlet property="txtEmailAddress" destination="265" id="name-outlet-265"/>
-                        <outlet property="txtPassword" destination="266" id="name-outlet-266"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1022,7 +967,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHi-As-2Mn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-610" y="55"/>
         </scene>
         <!--Audio Recorder View Controller-->
         <scene sceneID="1294">

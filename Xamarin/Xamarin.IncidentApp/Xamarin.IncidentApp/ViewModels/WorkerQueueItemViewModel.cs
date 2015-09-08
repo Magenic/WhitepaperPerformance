@@ -2,13 +2,20 @@
 using System.Threading.Tasks;
 using Acr.MvvmCross.Plugins.Network;
 using Acr.UserDialogs;
+using Xamarin.IncidentApp.Models;
 
 namespace Xamarin.IncidentApp.ViewModels
 {
     public class WorkerQueueItemViewModel : BaseViewModel
     {
-        public WorkerQueueItemViewModel(INetworkService networkService, IUserDialogs userDialogs) : base(networkService, userDialogs)
+        public WorkerQueueItemViewModel(INetworkService networkService, IUserDialogs userDialogs, Incident incident, string fullName) : base(networkService, userDialogs)
         {
+            DateOpened = incident.DateOpened;
+            Id = incident.Id;
+            ImageLink = incident.ImageLink;
+            Subject = incident.Subject;
+            UserId = incident.AssignedToId;
+            FullName = fullName;
         }
 
         private string _id;
