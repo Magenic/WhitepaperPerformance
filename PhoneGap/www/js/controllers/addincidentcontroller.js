@@ -25,20 +25,16 @@ app.controller('AddIncidentController', function($scope, Azure, Camera, Audio, $
   $scope.saveIncident = function() {
 
     // show 'saving...' activity indication
-    $scope.show = function() {
-        $ionicLoading.show({
-          template: 'Saving...'
-        });
-      };
+      $ionicLoading.show({
+        template: 'Saving...'
+      });
 
     // save incident
     Azure.saveNewIncident($scope.incident.attachedPhoto, $scope.incident.attachedAudio, $scope.incident.subject, $scope.incident.assignTo, $scope.incident.description)
     .then(function (newIncident) {
 
         // hide activity indication
-        $scope.hide = function(){
-          $ionicLoading.hide();
-        };
+        $ionicLoading.hide();
 
         // go to detail page for new incident
         $state.go('incident-detail', {

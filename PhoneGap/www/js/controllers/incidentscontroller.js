@@ -1,4 +1,4 @@
-app.controller('IncidentsController', function($scope, Azure, $stateParams, $state) {
+app.controller('IncidentsController', function($scope, Azure, $stateParams, $state, $ionicLoading) {
 
   // get user
   var userId = $stateParams.userId;
@@ -40,12 +40,17 @@ app.controller('IncidentsController', function($scope, Azure, $stateParams, $sta
 
   function refreshIncidents() {
 
+    $ionicLoading.show({
+      template: 'loading'
+    });
+
     Azure.getIncidentList(userId)
       .then(function (incidentList) {
 
         var showClosed = !$scope.currentlyShowingOpen;
         $scope.incidentList = incidentList.filter(function (el) { return el.closed == showClosed; });
         $scope.$broadcast('scroll.refreshComplete');
+        $ionicLoading.hide();
 
       });
 
