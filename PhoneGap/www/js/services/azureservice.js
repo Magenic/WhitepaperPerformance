@@ -143,7 +143,7 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
       mobileService = new WindowsAzure.MobileServiceClient(azureUrl, azureKey);
       mobileService.login("WindowsAzureActiveDirectory").done(function (results) {
 
-        userId = results.userId;
+        // userId = results.userId;
         // var token = mobileService.currentUser.mobileServiceAuthenticationToken;
 
         deferred.resolve(true);
@@ -211,6 +211,7 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
           method: "get"
       }).done(function (results) {
 
+          userId = results.result.userId;
           deferred.resolve(results.result);
 
       }, function(error) {
@@ -229,6 +230,7 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
       var deferred = $q.defer();
 
       var incidentTable = mobileService.getTable('Incident')
+        .take(1000)
         .where({
 
             assignedToId: assignedToUserId
@@ -455,7 +457,7 @@ app.factory('Azure', function($q, $http, $window, $cordovaFile) {
              ImageLink: imagePath,
              AudioLink: audioPath,
              DateEntered: new Date(0),
-             DetailedEnteredById: userId
+             DetailEnteredById: userId
           }).done(function (result) {
 
              deferred.resolve(result);

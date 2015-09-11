@@ -22,21 +22,16 @@ app.controller('IncidentDetailAddCommentController', function($scope, Azure, Cam
   // save comment
   $scope.saveComment = function() {
 
-    // show 'saving...' activity indication
-    $scope.show = function() {
-        $ionicLoading.show({
-          template: 'Saving...'
-        });
-      };
+    $ionicLoading.show({
+      template: 'saving'
+    });
 
     // save comment
     Azure.addIncidentComment($scope.comment.incidentId, $scope.comment.detailText, $scope.comment.attachedPhoto, $scope.comment.attachedAudio)
     .then(function () {
 
         // hide activity indication
-        $scope.hide = function(){
-          $ionicLoading.hide();
-        };
+        $ionicLoading.hide();
 
         // go to detail page for incident
         $state.go('incident-detail', {

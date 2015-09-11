@@ -1,4 +1,4 @@
-app.controller('IncidentDetailController', function($scope, Azure, $stateParams, $timeout, $cordovaMedia, $ionicPopover, $ionicHistory, $state, $cordovaFileTransfer) {
+app.controller('IncidentDetailController', function($scope, Azure, $stateParams, $timeout, $cordovaMedia, $ionicPopover, $ionicHistory, $state, $cordovaFileTransfer, $ionicLoading) {
 
   // get incident
   var incidentId = $stateParams.incidentId;
@@ -64,6 +64,10 @@ app.controller('IncidentDetailController', function($scope, Azure, $stateParams,
 
   function refreshIncident() {
 
+    $ionicLoading.show({
+      template: 'loading'
+    });
+
     Azure.getAllUserList()
       .then(function (workersListFromAzure) {
 
@@ -79,6 +83,7 @@ app.controller('IncidentDetailController', function($scope, Azure, $stateParams,
 
                 $scope.incidentDetails = incidentDetails;
                 $scope.$broadcast('scroll.refreshComplete');
+                $ionicLoading.hide();
 
               });
 
