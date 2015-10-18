@@ -40,12 +40,6 @@ namespace Xamarin.IncidentApp.Droid.Views
             return base.OnCreateOptionsMenu(menu);
         }
 
-        protected override void OnPause()
-        {
-            base.OnPause();
-            ByteBitmapConverter.ClearCache();
-        }
-
         public new AddIncidentViewModel ViewModel
         {
             get { return (AddIncidentViewModel)base.ViewModel; }

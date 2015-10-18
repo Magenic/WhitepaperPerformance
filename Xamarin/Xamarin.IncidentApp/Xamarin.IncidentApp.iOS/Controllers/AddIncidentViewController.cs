@@ -92,7 +92,15 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             txtSubject.ShouldReturn += CloseKeyboard;
             txtDescription.ShouldReturn += CloseKeyboard;
 
+            ViewModel.PropertyChanged += Vm_PropertyChanged;
+
             SetupBindings();
+        }
+
+        private void Vm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Image" || e.PropertyName == "AudioRecording")
+            scrlMain.LayoutIfNeeded();
         }
 
         private void SetupBindings()
@@ -100,12 +108,14 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             this.CreateBinding(txtSubject).For(c => c.Text).To((AddIncidentViewModel property) => property.Subject).Apply();
             this.CreateBinding(txtDescription).For(c => c.Text).To((AddIncidentViewModel property) => property.Description).Apply();
             this.CreateBinding(imgPhoto).For(c => c.Image).To((AddIncidentViewModel property) => property.Image).WithConversion("ByteBitmap").Apply();
+            this.CreateBinding(conPhotoHeight).For(c => c.Constant).To<AddIncidentViewModel>(vm => vm.Image).WithConversion("ByteBitmapHiddenHeight", 201).Apply();
 
             this.CreateBinding(btnSaveIncident).To<AddIncidentViewModel>(vm => vm.SaveNewIncidentCommand).Apply();
             this.CreateBinding(btnRemoveImage).To<AddIncidentViewModel>(vm => vm.RemoveImageCommand).Apply();
             this.CreateBinding(btnRemoveImage).For(c => c.Hidden).To<AddIncidentDetailViewModel>(vm => vm.Image).WithConversion("ByteBitmapHidden").Apply();
             this.CreateBinding(btnAudioNote).To<AddIncidentViewModel>(vm => vm.PlayAudioCommand).Apply();
             this.CreateBinding(btnAudioNote).For(c => c.Hidden).To<AddIncidentDetailViewModel>(vm => vm.AudioRecording).WithConversion("ByteBitmapHidden").Apply();
+            this.CreateBinding(conAudioHeight).For(c => c.Constant).To<AddIncidentViewModel>(vm => vm.AudioRecording).WithConversion("ByteBitmapHiddenHeight", 34).Apply();
             this.CreateBinding(btnRemoveAudio).To<AddIncidentViewModel>(vm => vm.RemoveAudioCommand).Apply();
             this.CreateBinding(btnRemoveAudio).For(c => c.Hidden).To<AddIncidentDetailViewModel>(vm => vm.AudioRecording).WithConversion("ByteBitmapHidden").Apply();
 
@@ -116,13 +126,12 @@ namespace Xamarin.IncidentApp.iOS.Controllers
             pickerViewModel.SelectedItemChanged += (sender, args) =>
             {
                 var selectedAssignee = (UserProfile)pickerViewModel.SelectedItem;
-                ((AddIncidentViewModel)ViewModel).AssignedToId = selectedAssignee.UserId;
+                ViewModel.AssignedToId = selectedAssignee.UserId;
             };
 
             var pickerBindingSet = this.CreateBindingSet<AddIncidentViewController, AddIncidentViewModel>();
             pickerBindingSet.Bind(pickerViewModel).For(c => c.ItemsSource).To(vm => vm.Workers);
             pickerBindingSet.Apply();
-            //imgPhoto.Image = UIImage.LoadFromData(imageData);
         }
 
         private bool CloseKeyboard(UITextField textField)

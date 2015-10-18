@@ -13,6 +13,7 @@ using TestIncidentQueueService.Models;
 namespace TestIncidentQueueService.Controllers
 {
     [AuthorizeLevel(AuthorizationLevel.User)]
+    [EnableQuery(MaxTop = 1000)] 
     public class IncidentController : TableController<Incident>
     {
         internal void InitializeInt(HttpControllerContext controllerContext)

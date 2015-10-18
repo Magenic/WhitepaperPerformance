@@ -4,11 +4,11 @@
 
 		<div class="button-bar">
 
-			<button class="button button-full incidentListHeaderButton" ng-class="{active: showOpen}" ng-click="showOpen = true">
+			<button class="button button-full incidentListHeaderButton" ng-class="{active: currentlyShowingOpen}" ng-click="showOpen()">
 			  OPEN
 			</button>
 
-			<button class="button button-full incidentListHeaderButton" ng-class="{active: !showOpen}" ng-click="showOpen = false">
+			<button class="button button-full incidentListHeaderButton" ng-class="{active: !currentlyShowingOpen}" ng-click="showClosed()">
 	  		CLOSED
 			</button>
 
@@ -25,7 +25,7 @@
 
 	<ion-list>
 
-		<ion-item collection-repeat="incident in incidentList | filter: { closed: !showOpen }" ng-click="selectIncident(incident.id)">
+		<ion-item collection-repeat="incident in incidentList" ng-click="selectIncident(incident.id)">
 
 			<div class="item-thumbnail-left">
 

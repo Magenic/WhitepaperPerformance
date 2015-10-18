@@ -32,11 +32,23 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		NSLayoutConstraint conAudioHeight { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		NSLayoutConstraint conPhotoHeight { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UIImageView imgPhoto { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UIPickerView pkrAssigned { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIScrollView scrlMain { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
@@ -64,6 +76,14 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 				btnSaveIncident.Dispose ();
 				btnSaveIncident = null;
 			}
+			if (conAudioHeight != null) {
+				conAudioHeight.Dispose ();
+				conAudioHeight = null;
+			}
+			if (conPhotoHeight != null) {
+				conPhotoHeight.Dispose ();
+				conPhotoHeight = null;
+			}
 			if (imgPhoto != null) {
 				imgPhoto.Dispose ();
 				imgPhoto = null;
@@ -71,6 +91,10 @@ namespace Xamarin.IncidentApp.iOS.Controllers
 			if (pkrAssigned != null) {
 				pkrAssigned.Dispose ();
 				pkrAssigned = null;
+			}
+			if (scrlMain != null) {
+				scrlMain.Dispose ();
+				scrlMain = null;
 			}
 			if (txtDescription != null) {
 				txtDescription.Dispose ();

@@ -63,11 +63,9 @@ namespace Xamarin.IncidentApp.ViewModels
                         DateOpened = incident.DateOpened;
                         Closed = incident.Closed;
 
-                        var workers = await service.InvokeApiAsync<IList<UserProfile>>("WorkerList", HttpMethod.Get, null);
-                        FullName = workers.Single(w => w.UserId == incident.AssignedToId).FullName;
-
                         var users = await _azureService.MobileService.InvokeApiAsync<IList<UserProfile>>("AllUserList", HttpMethod.Get, null);
-                        
+                        FullName = users.Single(w => w.UserId == incident.AssignedToId).FullName;
+
                         var details = await _azureService.MobileService.GetTable<IncidentDetail>()
                             .Where(r => r.IncidentId == _incidentId)
                             .OrderBy(r => r.DateEntered)

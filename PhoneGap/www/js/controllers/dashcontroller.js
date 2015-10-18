@@ -1,12 +1,15 @@
-app.controller('DashController', function($scope, Azure, $state) {
+app.controller('DashController', function($scope, Azure, $state, $ionicLoading) {
 
   $scope.isIOS = ionic.Platform.isIOS();
   $scope.isAndroid = ionic.Platform.isAndroid();
 
   refreshDashboard();
 
-
   function refreshDashboard() {
+
+    $ionicLoading.show({
+      template: 'loading'
+    });
 
     Azure.getStatusList()
       .then(function (statusList) {
@@ -26,6 +29,7 @@ app.controller('DashController', function($scope, Azure, $state) {
 
         $scope.statusList = statusList;
         $scope.$broadcast('scroll.refreshComplete');
+        $ionicLoading.hide();
 
       });
 

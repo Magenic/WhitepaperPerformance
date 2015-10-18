@@ -57,7 +57,6 @@ namespace Xamarin.IncidentApp.Droid.Views
         {
             base.OnPause();
             ViewModel.PropertyChanged -= PropertyChanged;
-            ByteBitmapConverter.ClearCache();
         }
 
         private void PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

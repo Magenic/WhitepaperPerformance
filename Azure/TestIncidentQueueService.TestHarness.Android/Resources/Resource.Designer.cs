@@ -60,6 +60,9 @@ namespace TestIncidentQueueService.TestHarness
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050007
+			public const int btnCreate1000ClosedRequests = 2131034119;
+			
 			// aapt resource value: 0x7f050005
 			public const int btnIncidents = 2131034117;
 			
@@ -112,6 +115,9 @@ namespace TestIncidentQueueService.TestHarness
 			
 			// aapt resource value: 0x7f040007
 			public const int ApplicationName = 2130968583;
+			
+			// aapt resource value: 0x7f040008
+			public const int Create1000ClosedRequests = 2130968584;
 			
 			// aapt resource value: 0x7f040006
 			public const int GenerateSasKey = 2130968582;
