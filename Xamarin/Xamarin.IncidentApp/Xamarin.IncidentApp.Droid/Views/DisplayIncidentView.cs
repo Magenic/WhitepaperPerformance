@@ -63,8 +63,6 @@ namespace Xamarin.IncidentApp.Droid.Views
             fab.Click -= Fab_Click;
             ViewModel.PropertyChanged -= PropertyChanged;
 
-            ByteBitmapConverter.ClearCache();
-
             base.OnPause();
         }
 
