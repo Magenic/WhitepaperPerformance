@@ -19,7 +19,7 @@ app.controller('LoginController', function(Azure, $state, ClearNavigationHistory
 
                 } else {
 
-                  $state.go('incidents');
+                  $state.go('incidents', { userId: userProfile.userId, userFullName: userProfile.fullName });
 
                 }
 
